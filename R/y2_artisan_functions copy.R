@@ -316,7 +316,7 @@ bar_stacked <- function(
   overlapping = 100,
   direction = 'horizontal',
   legend_text_size = 16,
-  legend_pos = 't',
+  legend_pos = 't'
 ){
   ms_barchart(
     data,
