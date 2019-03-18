@@ -3,28 +3,30 @@
 #' Create an ugrouped mschart object
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
-#' @param data The name of the data frame that the mscharts pulls from.
-#' @param x_var When using the freqs function, will typically be label (is by default).
-#' @param y_var When using the freqs function, will typically be result (is by default).
-#' @param group_var Is null by default. If you want the bars to be different colors, set group_var to the same variable as x_var. Then set overlap to 100.
-#' @param label_text A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
-#' @param label_color A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)
-#' @param label_show_values TRUE or FALSE. Show percent labels for each value.
-#' @param label_position Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_num_fmt Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
-#' @param axis_num_fmt Unlike label_num_fmt, the default for percentages is "0\%\%".
-#' @param axis_x_label Title for the x_axis. Blank by default.
-#' @param axis_y_label Title for the y_axis. Blank by default.
-#' @param axis_y_min Set to 0 to show full data without skewing perspective, but can be adjusted.
-#' @param axis_y_max No maximum specified by default.
-#' @param axis_text_size Font size for variable levels and percentages.
-#' @param axis_title_size Font size for axis_x_label and axis_y_label.
-#' @param title_label Add the question wording from the survey in "" as the title of the chart.
-#' @param rotate Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
-#' @param grouping grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param overlapping Set to -50 by default. This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
-#' @param direction Two options: "vertical" (default) OR "horizontal"
-#' @param legend_pos Set to 'n' for none. Other legend positions are 'b', 'tr', 'l', 'r', 't'.
+#' @param data DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.
+#' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
+#' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
+#' @param group_var DEFAULT = NULL; If you want the bars to be different colors, set group_var to the same variable as x_var. Then set overlap to 100.
+#' @param label_text DEFAULT = 'test_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
+#' @param label_color DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)
+#' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
+#' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
+#' @param label_num_fmt DEFAULT = '0%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0%%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param axis_x_label DEFAULT = ''; Title for the x_axis
+#' @param axis_y_label DEFAULT = ''; Title for the y_axis
+#' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
+#' @param axis_y_max DEFAULT = NULL
+#' @param axis_y_display DEFAULT = T
+#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+#' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
+#' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
+#' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param overlapping DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
+#' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
+#' @param legend_text_size DEFAULT = 16
+#' @param legend_pos DEFAULT = 'n' for none. Other legend positions are 'b', 'tr', 'l', 'r', 't'.
 #' @keywords chart
 #' @export
 #' @examples
@@ -129,28 +131,32 @@ bar_single <-  function(
 #' Create a groupedbar mschart object
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
-#' @param data The name of the data frame that the mscharts pulls from.
-#' @param x_var When using the freqs function, will typically be label (is by default).
-#' @param y_var When using the freqs function, will typically be result (is by default).
-#' @param group_var All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
-#' @param label_text A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
-#' @param label_color A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
-#' @param label_show_values TRUE or FALSE. Show percent labels for each value.
-#' @param label_position Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_num_fmt Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
-#' @param axis_num_fmt Unlike label_num_fmt, the default for percentages is "0\%\%".
-#' @param axis_x_label Title for the x_axis. Blank by default.
-#' @param axis_y_label Title for the y_axis. Blank by default.
-#' @param axis_y_min Set to 0 to show full data without skewing perspective, but can be adjusted.
-#' @param axis_y_max No maximum specified by default.
-#' @param axis_text_size Font size for variable levels and percentages.
-#' @param axis_title_size Font size for axis_x_label and axis_y_label.
-#' @param title_label Add the question wording from the survey in "" as the title of the chart.
-#' @param rotate Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
-#' @param grouping grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param overlapping Set to -50 by default. This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
-#' @param direction Two options: "vertical" (default) OR "horizontal"
-#' @param legend_pos Set to 't' for top. Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
+#' @param data DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.
+#' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
+#' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
+#' @param group_var DEFAULT = 'group_var'; All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
+#' @param label_text DEFAULT = 'text_settings_grouped'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
+#' @param label_color DEFAULT = 'color_settings_grouped'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
+#' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
+#' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
+#' @param label_num_fmt DEFAULT = '0%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0%%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param axis_x_label DEFAULT = ''; Title for the x_axis
+#' @param axis_x_display DEFAULT = T
+#' @param axis_y_label DEFAULT = ''; Title for the y_axis
+#' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
+#' @param axis_y_max DEFAULT = NULL
+#' @param axis_y_display DEFAULT = T
+#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+#' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
+#' @param title_size DEFAULT = 18
+#' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
+#' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param overlapping DEFAULT = -50 This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
+#' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
+#' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
+#' @param legend_text_size DEFAULT = 16
 #' @keywords chart grouped
 #' @export
 #' @examples
@@ -253,29 +259,32 @@ bar_grouped <-  function(
 #' Create a groupedbar mschart object
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
-#' @param data The name of the data frame that the mscharts pulls from.
-#' @param x_var For a single stacked bar, use
-#' @param y_var When using the freqs function, will typically be result (is by default).
-#' @param group_var When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
-#' @param label_text A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
-#' @param label_color A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
-#' @param label_show_values TRUE or FALSE. Show percent labels for each value.
-#' @param label_position Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_num_fmt Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
-#' @param axis_num_fmt Unlike label_num_fmt, the default for percentages is "0\%\%".
-#' @param axis_x_label Title for the x_axis. Blank by default.
-#' @param axis_y_label Title for the y_axis. Blank by default.
-#' @param axis_y_min Set to 0 to show full data without skewing perspective, but can be adjusted.
-#' @param axis_y_max Set to 1 by default to allow percent totals to add to 100%.
-#' @param axis_x_text_color Default: 'black'. Specify 'transparent' for single bar to remove pointless label.
-#' @param axis_text_size Font size for variable levels and percentages.
-#' @param axis_title_size Font size for axis_x_label and axis_y_label.
-#' @param title_label Add the question wording from the survey in "" as the title of the chart.
-#' @param rotate Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
-#' @param grouping grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param overlapping Set to -50 by default. This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
-#' @param direction Two options: "horizontal" (default) OR "vertical"
-#' @param legend_pos Set to 't' for top. Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
+#' @param data DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.
+#' @param x_var DEFAULT = 'group_var'; For a single stacked bar, use
+#' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
+#' @param group_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
+#' @param label_text DEFAULT = 'text_settings_stacked'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
+#' @param label_color DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
+#' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
+#' @param label_show_percent DEFAULT = F
+#' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
+#' @param label_num_fmt DEFAULT = '0%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0%%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param axis_x_text_color DEFAULT = 'black'; Set to 'transparent' for no text on single bars
+#' @param axis_x_label DEFAULT = ''; Title for the x_axis
+#' @param axis_y_label DEFAULT = ''; Title for the y_axis
+#' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
+#' @param axis_y_max DEFAULT = 1 to allow percent totals to add to 100%.
+#' @param axis_y_display DEFAULT = F
+#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+#' @param title_label DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.
+#' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
+#' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param overlapping DEFAULT = 100
+#' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
+#' @param legend_text_size DEFAULT = 16
+#' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
 #' @keywords chart stacked
 #' @export
 #' @examples
@@ -422,12 +431,17 @@ add1c <- function(
 #' This function adds 2 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
 #' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2c(chart_name, 'left')
 #' doc <- add2c(chart_name, 'right')
+#' OR
+#' #' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add2c(chart_name, 'left', label_first_only = T)
+#' doc <- add2c(chart_name, 'right', label_first_only = T)
 #' OR
 #' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2c(chart_name, 'top')
@@ -436,8 +450,10 @@ add1c <- function(
 ### Function
 add2c <- function(
   name,
-  position
+  position,
+  label_first_only = F
 ) {
+  if(label_first_only == F) {
   ph_with_chart_at(
     doc,
     chart = name,
@@ -466,6 +482,36 @@ add2c <- function(
       position == 'right' ~ 6
     )
   )
+  } else{ #label_first_only == T
+    ph_with_chart_at(
+      doc,
+      chart = name,
+      left = case_when(
+        position == 'top' ~ .5,
+        position == 'bottom' ~ .5,
+        position == 'left' ~ 0,
+        position == 'right' ~ 8
+      ),
+      top = case_when(
+        position == 'top' ~ 2,
+        position == 'bottom' ~ 4.5,
+        position == 'left' ~ 2,
+        position == 'right' ~ 2
+      ),
+      height = case_when(
+        position == 'top' ~ 3,
+        position == 'bottom' ~ 3,
+        position == 'left' ~ 5.5,
+        position == 'right' ~ 5.5
+      ),
+      width = case_when(
+        position == 'top' ~ 12,
+        position == 'bottom' ~ 12,
+        position == 'left' ~ 8,
+        position == 'right' ~ 5
+      )
+    )
+  }
 }
 
 #### Add 3 Charts ####
@@ -475,6 +521,7 @@ add2c <- function(
 #' This function adds 3 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "left"; "center"; "right"; "bottomright"; "topright". The chart layout can either be left-center-right OR left-topright-bottomright.
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
@@ -484,16 +531,24 @@ add2c <- function(
 #' doc <- add3c(chart_name, 'right')
 #' OR
 #' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add3c(chart_name, 'left', label_first_only = T)
+#' doc <- add3c(chart_name, 'middle', label_first_only = T)
+#' doc <- add3c(chart_name, 'right', label_first_only = T)
+#' OR
+#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add3c(chart_name, 'topright')
 #' doc <- add3c(chart_name, 'bottomright')
 #' doc <- add3c(chart_name, 'left')
 
 
+
 ### Function
 add3c <- function(
   name,
-  position
+  position,
+  label_first_only = F
 ) {
+  if(label_first_only == F) {
   ph_with_chart_at(
     doc,
     chart = name,
@@ -539,6 +594,53 @@ add3c <- function(
       position == 'right' ~ 4.5
     )
   )
+  } else{ #label_first_only == T
+    ph_with_chart_at(
+      doc,
+      chart = name,
+      left = case_when(
+        position == 'topright' ~ 4.375,
+        position == 'righttop' ~ 4.375,
+        position == 'bottomright' ~ 4.375,
+        position == 'rightbottom' ~ 4.375,
+        position == 'left' ~ .0,
+        position == 'center' ~ 5.875,
+        position == 'middle' ~ 5.875,
+        position == 'right' ~ 9.5
+
+      ),
+      top = case_when(
+        position == 'topright' ~ 2,
+        position == 'righttop' ~ 2,
+        position == 'bottomright' ~ 4.5,
+        position == 'rightbottom' ~ 4.5,
+        position == 'left' ~ 2,
+        position == 'center' ~ 2,
+        position == 'middle' ~ 2,
+        position == 'right' ~ 2
+      ),
+      height = case_when(
+        position == 'topright' ~ 3,
+        position == 'righttop' ~ 3,
+        position == 'bottomright' ~ 3,
+        position == 'rightbottom' ~ 3,
+        position == 'left' ~ 5.5,
+        position == 'center' ~ 5.5,
+        position == 'middle' ~ 5.5,
+        position == 'right' ~ 5.5
+      ),
+      width = case_when(
+        position == 'topright' ~ 8.615,
+        position == 'righttop' ~ 8.615,
+        position == 'bottomright' ~ 8.615,
+        position == 'rightbottom' ~ 8.615,
+        position == 'left' ~ 6,
+        position == 'center' ~ 3.75,
+        position == 'middle' ~ 3.75,
+        position == 'right' ~ 3.75
+      )
+    )
+  }
 }
 
 #### Add 4 Charts ####
@@ -548,6 +650,7 @@ add3c <- function(
 #' This function adds 4 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "left"; "centerleft"; "centerright"; "right". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
@@ -562,15 +665,21 @@ add3c <- function(
 #' doc <- add4c(chart_name, 'centerleft')
 #' doc <- add4c(chart_name, 'centerright')
 #' doc <- add4c(chart_name, 'right')
+#' OR
+#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add4c(chart_name, 'left', label_first_only = T)
+#' doc <- add4c(chart_name, 'centerleft', label_first_only = T)
+#' doc <- add4c(chart_name, 'centerright', label_first_only = T)
+#' doc <- add4c(chart_name, 'right', label_first_only = T)
 
 
 ### Function
 add4c <- function(
   name,
   position,
-  label_first = F
+  label_first_only = F
 ) {
-  if(label_first == F){
+  if(label_first_only == F){
   ph_with_chart_at(
     doc,
     chart = name,
