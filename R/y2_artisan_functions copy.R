@@ -11,8 +11,8 @@
 #' @param label_color DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_num_fmt DEFAULT = '0%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
-#' @param axis_num_fmt DEFAULT = '0%%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
 #' @param axis_x_label DEFAULT = ''; Title for the x_axis
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
@@ -139,8 +139,8 @@ bar_single <-  function(
 #' @param label_color DEFAULT = 'color_settings_grouped'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_num_fmt DEFAULT = '0%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
-#' @param axis_num_fmt DEFAULT = '0%%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
 #' @param axis_x_label DEFAULT = ''; Title for the x_axis
 #' @param axis_x_display DEFAULT = T
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
@@ -268,8 +268,8 @@ bar_grouped <-  function(
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_show_percent DEFAULT = F
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_num_fmt DEFAULT = '0%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
-#' @param axis_num_fmt DEFAULT = '0%%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
 #' @param axis_x_text_color DEFAULT = 'black'; Set to 'transparent' for no text on single bars
 #' @param axis_x_label DEFAULT = ''; Title for the x_axis
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
