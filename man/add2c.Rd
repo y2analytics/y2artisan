@@ -4,12 +4,14 @@
 \alias{add2c}
 \title{Add 2 charts to PowerPoint slide}
 \usage{
-add2c(name, position)
+add2c(name, position, label_first_only = F)
 }
 \arguments{
 \item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
 
 \item{position}{Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.}
+
+\item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
 This function adds 2 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
@@ -18,6 +20,10 @@ This function adds 2 charts to a PowerPoint slide. The charts are automatically 
 doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add2c(chart_name, 'left')
 doc <- add2c(chart_name, 'right')
+OR
+#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- add2c(chart_name, 'left', label_first_only = T)
+doc <- add2c(chart_name, 'right', label_first_only = T)
 OR
 doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add2c(chart_name, 'top')

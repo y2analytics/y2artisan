@@ -4,12 +4,14 @@
 \alias{add4c}
 \title{Add 4 charts to PowerPoint slide}
 \usage{
-add4c(name, position)
+add4c(name, position, label_first_only = F)
 }
 \arguments{
 \item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
 
 \item{position}{Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "left"; "centerleft"; "centerright"; "right". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.}
+
+\item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
 This function adds 4 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
@@ -26,5 +28,11 @@ doc <- add4c(chart_name, 'left')
 doc <- add4c(chart_name, 'centerleft')
 doc <- add4c(chart_name, 'centerright')
 doc <- add4c(chart_name, 'right')
+OR
+doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- add4c(chart_name, 'left', label_first_only = T)
+doc <- add4c(chart_name, 'centerleft', label_first_only = T)
+doc <- add4c(chart_name, 'centerright', label_first_only = T)
+doc <- add4c(chart_name, 'right', label_first_only = T)
 }
 \keyword{chart}

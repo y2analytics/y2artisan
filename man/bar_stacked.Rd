@@ -10,59 +10,66 @@ bar_stacked(data = frequencies, x_var = "group_var",
   label_color = color_settings_stacked, label_show_values = T,
   label_show_percent = F, label_position = "outEnd",
   label_num_fmt = "0\%", axis_num_fmt = "0\%\%",
-  axis_x_text_color = "black", axis_x_label = "", axis_y_label = "",
-  axis_y_min = 0, axis_y_max = 1, axis_text_size = 14,
-  axis_title_size = 18, title_label = "", title_size = 18,
-  rotate = 0, rotate_axis_y_title = 360, grouping = "percentStacked",
+  axis_x_text_color = "black", axis_x_label = "", axis_x_display = T,
+  axis_y_label = "", axis_y_min = 0, axis_y_max = 1,
+  axis_y_display = F, axis_text_size = 14, axis_title_size = 18,
+  title_label = "", title_size = 18, rotate = 0,
+  rotate_axis_y_title = 360, grouping = "percentStacked",
   overlapping = 100, direction = "horizontal", legend_text_size = 16,
   legend_pos = "t")
 }
 \arguments{
-\item{data}{The name of the data frame that the mscharts pulls from.}
+\item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
 
-\item{x_var}{For a single stacked bar, use}
+\item{x_var}{DEFAULT = 'group_var'; For a single stacked bar, use}
 
-\item{y_var}{When using the freqs function, will typically be result (is by default).}
+\item{y_var}{DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).}
 
-\item{group_var}{When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.}
+\item{group_var}{DEFAULT = 'label'; When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.}
 
-\item{label_text}{A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))}
+\item{label_text}{DEFAULT = 'text_settings_stacked'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))}
 
-\item{label_color}{A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
+\item{label_color}{DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
 
-\item{label_show_values}{TRUE or FALSE. Show percent labels for each value.}
+\item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
 
-\item{label_position}{Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
+\item{label_show_percent}{DEFAULT = F}
 
-\item{label_num_fmt}{Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.}
+\item{label_position}{DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
 
-\item{axis_num_fmt}{Unlike label_num_fmt, the default for percentages is "0\%\%".}
+\item{label_num_fmt}{DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.}
 
-\item{axis_x_text_color}{Default: 'black'. Specify 'transparent' for single bar to remove pointless label.}
+\item{axis_num_fmt}{DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".}
 
-\item{axis_x_label}{Title for the x_axis. Blank by default.}
+\item{axis_x_text_color}{DEFAULT = 'black'; Set to 'transparent' for no text on single bars}
 
-\item{axis_y_label}{Title for the y_axis. Blank by default.}
+\item{axis_x_label}{DEFAULT = ''; Title for the x_axis}
 
-\item{axis_y_min}{Set to 0 to show full data without skewing perspective, but can be adjusted.}
+\item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
 
-\item{axis_y_max}{Set to 1 by default to allow percent totals to add to 100%.}
+\item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
-\item{axis_text_size}{Font size for variable levels and percentages.}
+\item{axis_y_max}{DEFAULT = 1 to allow percent totals to add to 100%.}
 
-\item{axis_title_size}{Font size for axis_x_label and axis_y_label.}
+\item{axis_y_display}{DEFAULT = F}
 
-\item{title_label}{Add the question wording from the survey in "" as the title of the chart.}
+\item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
-\item{rotate}{Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
+\item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{grouping}{grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
+\item{title_label}{DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.}
 
-\item{overlapping}{Set to -50 by default. This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.}
+\item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
 
-\item{direction}{Two options: "horizontal" (default) OR "vertical"}
+\item{grouping}{DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 
-\item{legend_pos}{Set to 't' for top. Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
+\item{overlapping}{DEFAULT = 100}
+
+\item{direction}{DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"}
+
+\item{legend_text_size}{DEFAULT = 16}
+
+\item{legend_pos}{DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
 }
 \description{
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
