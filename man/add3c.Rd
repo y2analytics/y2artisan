@@ -17,17 +17,17 @@ add3c(name, position, label_first_only = F)
 This function adds 3 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 }
 \examples{
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add3c(chart_name, 'left')
-doc <- add3c(chart_name, 'middle')
+doc <- add3c(chart_name, 'center')
 doc <- add3c(chart_name, 'right')
 OR
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add3c(chart_name, 'left', label_first_only = T)
-doc <- add3c(chart_name, 'middle', label_first_only = T)
-doc <- add3c(chart_name, 'right', label_first_only = T)
+doc <- add3c(chart_name, 'middle', T)
+doc <- add3c(chart_name, 'right', T)
 OR
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add3c(chart_name, 'topright')
 doc <- add3c(chart_name, 'bottomright')
 doc <- add3c(chart_name, 'left')

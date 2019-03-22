@@ -17,22 +17,22 @@ add4c(name, position, label_first_only = F)
 This function adds 4 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 }
 \examples{
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add4c(chart_name, 'topright')
 doc <- add4c(chart_name, 'bottomright')
 doc <- add4c(chart_name, 'topleft')
 doc <- add4c(chart_name, 'bottomleft')
 OR
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add4c(chart_name, 'left')
 doc <- add4c(chart_name, 'centerleft')
 doc <- add4c(chart_name, 'centerright')
 doc <- add4c(chart_name, 'right')
 OR
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add4c(chart_name, 'left', label_first_only = T)
 doc <- add4c(chart_name, 'centerleft', label_first_only = T)
-doc <- add4c(chart_name, 'centerright', label_first_only = T)
-doc <- add4c(chart_name, 'right', label_first_only = T)
+doc <- add4c(chart_name, 'centerright', T)
+doc <- add4c(chart_name, 'right', T)
 }
 \keyword{chart}

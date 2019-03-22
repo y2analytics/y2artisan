@@ -68,45 +68,45 @@ bar_single <-  function(
   legend_text_size = 16,
   legend_pos = 'n'
 ) {
-  ms_barchart(
+  mschart::ms_barchart(
     data,
     x = x_var,
     y = y_var,
     group = group_var
   ) %>%
-    chart_settings(
+    mschart::chart_settings(
       dir = direction,
       grouping = grouping,
       overlap = overlapping
     ) %>%
-    chart_data_labels(
+    mschart::chart_data_labels(
       show_val = label_show_values,
       num_fmt = label_num_fmt,
       position = label_position
     ) %>%
-    chart_labels_text(
+    mschart::chart_labels_text(
       values = label_text
     ) %>%
-    chart_data_fill(
+    mschart::chart_data_fill(
       values = label_color
     ) %>%
-    chart_data_stroke(
+    mschart::chart_data_stroke(
       values = label_color
     ) %>%
-    chart_ax_y(
+    mschart::chart_ax_y(
       num_fmt = axis_num_fmt,
       limit_min = axis_y_min,
       limit_max = axis_y_max
     ) %>%
-    chart_ax_x(
+    mschart::chart_ax_x(
       rotation = rotate
     ) %>%
-    chart_labels(
+    mschart::chart_labels(
       xlab = axis_x_label,
       ylab = axis_y_label,
       title = title_label
     ) %>%
-    chart_theme(
+    mschart::chart_theme(
       legend_position = legend_pos,
       main_title = fp_text(font.size = title_size),
       axis_text_x = fp_text(font.size = axis_text_size),
@@ -117,10 +117,10 @@ bar_single <-  function(
       grid_major_line_x = fp_border(width = 0),
       grid_major_line_y = fp_border(width = 0)
     ) %>%
-    chart_ax_x(
+    mschart::chart_ax_x(
       display = axis_x_display
     )  %>%
-    chart_ax_y(
+    mschart::chart_ax_y(
       display = axis_y_display
     )
 }
@@ -197,45 +197,45 @@ bar_grouped <-  function(
   legend_text_size = 16,
   legend_pos = 't'
 ) {
-  ms_barchart(
+  mschart::ms_barchart(
     data,
     x = x_var,
     y = y_var,
     group = group_var
   ) %>%
-    chart_settings(
+    mschart::chart_settings(
       dir = direction,
       grouping = grouping,
       overlap = overlapping
     ) %>%
-    chart_data_labels(
+    mschart::chart_data_labels(
       show_val = label_show_values,
       num_fmt = label_num_fmt,
       position = label_position
     ) %>%
-    chart_labels_text(
+    mschart::chart_labels_text(
       values = label_text
     ) %>%
-    chart_data_fill(
+    mschart::chart_data_fill(
       values = label_color
     ) %>%
-    chart_data_stroke(
+    mschart::chart_data_stroke(
       values = label_color
     ) %>%
-    chart_ax_y(
+    mschart::chart_ax_y(
       num_fmt = axis_num_fmt,
       limit_min = axis_y_min,
       limit_max = axis_y_max
     ) %>%
-    chart_ax_x(
+    mschart::chart_ax_x(
       rotation = rotate
     ) %>%
-    chart_labels(
+    mschart::chart_labels(
       xlab = axis_x_label,
       ylab = axis_y_label,
       title = title_label
     ) %>%
-    chart_theme(
+    mschart::chart_theme(
       legend_position = legend_pos,
       main_title = fp_text(font.size = title_size),
       axis_text_x = fp_text(font.size = axis_text_size),
@@ -246,10 +246,10 @@ bar_grouped <-  function(
       grid_major_line_x = fp_border(width = 0),
       grid_major_line_y = fp_border(width = 0)
     ) %>%
-    chart_ax_x(
+    mschart::chart_ax_x(
       display = axis_x_display
     )  %>%
-    chart_ax_y(
+    mschart::chart_ax_y(
       display = axis_y_display
     )
 }
@@ -327,45 +327,45 @@ bar_stacked <- function(
   legend_text_size = 16,
   legend_pos = 't'
 ){
-  ms_barchart(
+  mschart::ms_barchart(
     data,
     x = x_var,
     y = y_var,
     group = group_var
   ) %>%
-    chart_settings(
+    mschart::chart_settings(
       dir = direction,
       grouping = grouping,
       overlap = overlapping
     ) %>%
-    chart_data_labels(
+    mschart::chart_data_labels(
       show_val = label_show_values,
       num_fmt = label_num_fmt,
       show_percent = label_show_percent
     ) %>%
-    chart_labels_text(
+    mschart::chart_labels_text(
       values = label_text
     ) %>%
-    chart_data_fill(
+    mschart::chart_data_fill(
       values = label_color
     ) %>%
-    chart_data_stroke(
+    mschart::chart_data_stroke(
       values = label_color
     ) %>%
-    chart_ax_y(
+    mschart::chart_ax_y(
       num_fmt = axis_num_fmt,
       limit_min = axis_y_min,
       limit_max = axis_y_max
     ) %>%
-    chart_ax_x(
+    mschart::chart_ax_x(
       rotation = rotate
     ) %>%
-    chart_labels(
+    mschart::chart_labels(
       xlab = axis_x_label,
       ylab = axis_y_label,
       title = title_label
     ) %>%
-    chart_theme(
+    mschart::chart_theme(
       legend_position = legend_pos,
       main_title = fp_text(font.size = title_size),
       axis_text_x = fp_text(font.size = axis_text_size, color = axis_x_text_color),
@@ -377,10 +377,10 @@ bar_stacked <- function(
       grid_major_line_y = fp_border(style = 'none'),
       title_y_rot = rotate_axis_y_title
     )  %>%
-    chart_ax_x(
+    mschart::chart_ax_x(
       display = axis_x_display
     )  %>%
-    chart_ax_y(
+    mschart::chart_ax_y(
       display = axis_y_display
     )
 }
@@ -410,11 +410,11 @@ add1c <- function(
   height = 5.5,
   width = 12
 ) {
-  doc <- add_slide(
+  doc <- officer::add_slide(
     doc,
     layout = slide_name,
     master = master_name)
-  ph_with_chart_at(
+  mschart::ph_with_chart_at(
     doc,
     chart = name,
     left = left_start,
@@ -435,15 +435,15 @@ add1c <- function(
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2c(chart_name, 'left')
 #' doc <- add2c(chart_name, 'right')
 #' OR
-#' #' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' #' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2c(chart_name, 'left', label_first_only = T)
-#' doc <- add2c(chart_name, 'right', label_first_only = T)
+#' doc <- add2c(chart_name, 'right', T)
 #' OR
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2c(chart_name, 'top')
 #' doc <- add2c(chart_name, 'bottom')
 
@@ -454,28 +454,28 @@ add2c <- function(
   label_first_only = F
 ) {
   if(label_first_only == F) {
-  ph_with_chart_at(
+  mschart::ph_with_chart_at(
     doc,
     chart = name,
-    left = case_when(
+    left = dplyr::case_when(
       position == 'top' ~ .5,
       position == 'bottom' ~ .5,
       position == 'left' ~ .5,
       position == 'right' ~ 6.5
     ),
-    top = case_when(
+    top = dplyr::case_when(
       position == 'top' ~ 2,
       position == 'bottom' ~ 4.5,
       position == 'left' ~ 2,
       position == 'right' ~ 2
     ),
-    height = case_when(
+    height = dplyr::case_when(
       position == 'top' ~ 3,
       position == 'bottom' ~ 3,
       position == 'left' ~ 5.5,
       position == 'right' ~ 5.5
     ),
-    width = case_when(
+    width = dplyr::case_when(
       position == 'top' ~ 12,
       position == 'bottom' ~ 12,
       position == 'left' ~ 6,
@@ -483,28 +483,28 @@ add2c <- function(
     )
   )
   } else{ #label_first_only == T
-    ph_with_chart_at(
+    mschart::ph_with_chart_at(
       doc,
       chart = name,
-      left = case_when(
+      left = dplyr::case_when(
         position == 'top' ~ .5,
         position == 'bottom' ~ .5,
         position == 'left' ~ 0,
         position == 'right' ~ 8
       ),
-      top = case_when(
+      top = dplyr::case_when(
         position == 'top' ~ 2,
         position == 'bottom' ~ 4.5,
         position == 'left' ~ 2,
         position == 'right' ~ 2
       ),
-      height = case_when(
+      height = dplyr::case_when(
         position == 'top' ~ 3,
         position == 'bottom' ~ 3,
         position == 'left' ~ 5.5,
         position == 'right' ~ 5.5
       ),
-      width = case_when(
+      width = dplyr::case_when(
         position == 'top' ~ 12,
         position == 'bottom' ~ 12,
         position == 'left' ~ 8,
@@ -525,17 +525,17 @@ add2c <- function(
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add3c(chart_name, 'left')
-#' doc <- add3c(chart_name, 'middle')
+#' doc <- add3c(chart_name, 'center')
 #' doc <- add3c(chart_name, 'right')
 #' OR
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add3c(chart_name, 'left', label_first_only = T)
-#' doc <- add3c(chart_name, 'middle', label_first_only = T)
-#' doc <- add3c(chart_name, 'right', label_first_only = T)
+#' doc <- add3c(chart_name, 'middle', T)
+#' doc <- add3c(chart_name, 'right', T)
 #' OR
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add3c(chart_name, 'topright')
 #' doc <- add3c(chart_name, 'bottomright')
 #' doc <- add3c(chart_name, 'left')
@@ -549,10 +549,10 @@ add3c <- function(
   label_first_only = F
 ) {
   if(label_first_only == F) {
-  ph_with_chart_at(
+  mschart::ph_with_chart_at(
     doc,
     chart = name,
-    left = case_when(
+    left = dplyr::case_when(
       position == 'topright' ~ 4.375,
       position == 'righttop' ~ 4.375,
       position == 'bottomright' ~ 4.375,
@@ -563,7 +563,7 @@ add3c <- function(
       position == 'right' ~ 8.5
 
     ),
-    top = case_when(
+    top = dplyr::case_when(
       position == 'topright' ~ 2,
       position == 'righttop' ~ 2,
       position == 'bottomright' ~ 4.5,
@@ -573,7 +573,7 @@ add3c <- function(
       position == 'middle' ~ 2,
       position == 'right' ~ 2
     ),
-    height = case_when(
+    height = dplyr::case_when(
       position == 'topright' ~ 3,
       position == 'righttop' ~ 3,
       position == 'bottomright' ~ 3,
@@ -583,7 +583,7 @@ add3c <- function(
       position == 'middle' ~ 5.5,
       position == 'right' ~ 5.5
     ),
-    width = case_when(
+    width = dplyr::case_when(
       position == 'topright' ~ 8.615,
       position == 'righttop' ~ 8.615,
       position == 'bottomright' ~ 8.615,
@@ -595,10 +595,10 @@ add3c <- function(
     )
   )
   } else{ #label_first_only == T
-    ph_with_chart_at(
+    mschart::ph_with_chart_at(
       doc,
       chart = name,
-      left = case_when(
+      left = dplyr::case_when(
         position == 'topright' ~ 4.375,
         position == 'righttop' ~ 4.375,
         position == 'bottomright' ~ 4.375,
@@ -609,7 +609,7 @@ add3c <- function(
         position == 'right' ~ 9.5
 
       ),
-      top = case_when(
+      top = dplyr::case_when(
         position == 'topright' ~ 2,
         position == 'righttop' ~ 2,
         position == 'bottomright' ~ 4.5,
@@ -619,7 +619,7 @@ add3c <- function(
         position == 'middle' ~ 2,
         position == 'right' ~ 2
       ),
-      height = case_when(
+      height = dplyr::case_when(
         position == 'topright' ~ 3,
         position == 'righttop' ~ 3,
         position == 'bottomright' ~ 3,
@@ -629,7 +629,7 @@ add3c <- function(
         position == 'middle' ~ 5.5,
         position == 'right' ~ 5.5
       ),
-      width = case_when(
+      width = dplyr::case_when(
         position == 'topright' ~ 8.615,
         position == 'righttop' ~ 8.615,
         position == 'bottomright' ~ 8.615,
@@ -654,23 +654,23 @@ add3c <- function(
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add4c(chart_name, 'topright')
 #' doc <- add4c(chart_name, 'bottomright')
 #' doc <- add4c(chart_name, 'topleft')
 #' doc <- add4c(chart_name, 'bottomleft')
 #' OR
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add4c(chart_name, 'left')
 #' doc <- add4c(chart_name, 'centerleft')
 #' doc <- add4c(chart_name, 'centerright')
 #' doc <- add4c(chart_name, 'right')
 #' OR
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add4c(chart_name, 'left', label_first_only = T)
 #' doc <- add4c(chart_name, 'centerleft', label_first_only = T)
-#' doc <- add4c(chart_name, 'centerright', label_first_only = T)
-#' doc <- add4c(chart_name, 'right', label_first_only = T)
+#' doc <- add4c(chart_name, 'centerright', T)
+#' doc <- add4c(chart_name, 'right', T)
 
 
 ### Function
@@ -680,10 +680,10 @@ add4c <- function(
   label_first_only = F
 ) {
   if(label_first_only == F){
-  ph_with_chart_at(
+  mschart::ph_with_chart_at(
     doc,
     chart = name,
-    left = case_when(
+    left = dplyr::case_when(
       position == 'topright' ~ 6.5,
       position == 'righttop' ~ 6.5,
       position == 'bottomright' ~ 6.5,
@@ -697,7 +697,7 @@ add4c <- function(
       position == 'centerright' ~ 6.5,
       position == 'right' ~ 9.75
     ),
-    top = case_when(
+    top = dplyr::case_when(
       position == 'topright' ~ 2,
       position == 'righttop' ~ 2,
       position == 'bottomright' ~ 4.5,
@@ -711,7 +711,7 @@ add4c <- function(
       position == 'centerright' ~ 2,
       position == 'right' ~ 2
     ),
-    height = case_when(
+    height = dplyr::case_when(
       position == 'topright' ~ 3,
       position == 'righttop' ~ 3,
       position == 'bottomright' ~ 3,
@@ -725,7 +725,7 @@ add4c <- function(
       position == 'centerright' ~ 5.5,
       position == 'right' ~ 5.5
     ),
-    width = case_when(
+    width = dplyr::case_when(
       position == 'topright' ~ 6,
       position == 'righttop' ~ 6,
       position == 'bottomright' ~ 6,
@@ -740,10 +740,10 @@ add4c <- function(
       position == 'right' ~ 3.5
     )
   ) } else{ #label_first == T
-    ph_with_chart_at(
+    mschart::ph_with_chart_at(
       doc,
       chart = name,
-      left = case_when(
+      left = dplyr::case_when(
         position == 'topright' ~ 6.5,
         position == 'righttop' ~ 6.5,
         position == 'bottomright' ~ 6.5,
@@ -757,7 +757,7 @@ add4c <- function(
         position == 'centerright' ~ 7.5,
         position == 'right' ~ 10.25
       ),
-      top = case_when(
+      top = dplyr::case_when(
         position == 'topright' ~ 2,
         position == 'righttop' ~ 2,
         position == 'bottomright' ~ 4.5,
@@ -771,7 +771,7 @@ add4c <- function(
         position == 'centerright' ~ 2,
         position == 'right' ~ 2
       ),
-      height = case_when(
+      height = dplyr::case_when(
         position == 'topright' ~ 3,
         position == 'righttop' ~ 3,
         position == 'bottomright' ~ 3,
@@ -785,7 +785,7 @@ add4c <- function(
         position == 'centerright' ~ 5.5,
         position == 'right' ~ 5.5
       ),
-      width = case_when(
+      width = dplyr::case_when(
         position == 'topright' ~ 6,
         position == 'righttop' ~ 6,
         position == 'bottomright' ~ 6,
@@ -802,6 +802,105 @@ add4c <- function(
     )
   }
 }
+#### Add 5 Charts ####
+#' Add 5 charts to PowerPoint slide
+#'
+#' This function adds 5 vertical charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
+#' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
+#' @param position Position options: "left"; "centerleft"; "center"; centerright"; "right". The chart layout is always 5 tall charts
+#' @param label_first_only DEFAULT = F; Set to T if only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @keywords chart
+#' @export
+#' @examples
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add5c(chart_name, 'left')
+#' doc <- add5c(chart_name, 'centerleft')
+#' doc <- add5c(chart_name, 'center')
+#' doc <- add5c(chart_name, 'centerright')
+#' doc <- add5c(chart_name, 'right')
+#' OR
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add5c(chart_name, 'left', label_first_only = T)
+#' doc <- add5c(chart_name, 'centerleft', label_first_only = T)
+#' doc <- add5c(chart_name, 'center', T)
+#' doc <- add5c(chart_name, 'centerright', T)
+#' doc <- add5c(chart_name, 'right', T)
+
+
+### Function
+add5c <- function(
+  name,
+  position,
+  label_first_only = F
+) {
+  if(label_first_only == F){
+    mschart::ph_with_chart_at(
+      doc,
+      chart = name,
+      left = dplyr::case_when(
+        position == 'left' ~ -.125,
+        position == 'centerleft' ~ 2.5,
+        position == 'center' ~ 5.125,
+        position == 'centerright' ~ 7.75,
+        position == 'right' ~ 10.375
+      ),
+      top = dplyr::case_when(
+        position == 'left' ~ 2,
+        position == 'centerleft' ~ 2,
+        position == 'center' ~ 2,
+        position == 'centerright' ~ 2,
+        position == 'right' ~ 2
+      ),
+      height = dplyr::case_when(
+        position == 'left' ~ 5.5,
+        position == 'centerleft' ~ 5.5,
+        position == 'center' ~ 5.5,
+        position == 'centerright' ~ 5.5,
+        position == 'right' ~ 5.5
+      ),
+      width = dplyr::case_when(
+        position == 'left' ~ 2.875,
+        position == 'centerleft' ~ 2.875,
+        position == 'center' ~ 2.875,
+        position == 'centerright' ~ 2.875,
+        position == 'right' ~ 2.875
+      )
+    ) } else{ #label_first == T
+      mschart::ph_with_chart_at(
+        doc,
+        chart = name,
+        left = dplyr::case_when(
+          position == 'left' ~ .0,
+          position == 'centerleft' ~ 4.4375,
+          position == 'center' ~ 6.625,
+          position == 'centerright' ~ 8.8125,
+          position == 'right' ~ 11
+        ),
+        top = dplyr::case_when(
+          position == 'left' ~ 2,
+          position == 'centerleft' ~ 2,
+          position == 'center' ~ 2,
+          position == 'centerright' ~ 2,
+          position == 'right' ~ 2
+        ),
+        height = dplyr::case_when(
+          position == 'left' ~ 5.5,
+          position == 'centerleft' ~ 5.5,
+          position == 'center' ~ 5.5,
+          position == 'centerright' ~ 5.5,
+          position == 'right' ~ 5.5
+        ),
+        width = dplyr::case_when(
+          position == 'left' ~ 4.5,
+          position == 'centerleft' ~ 2.25,
+          position == 'center' ~ 2.25,
+          position == 'centerright' ~ 2.25,
+          position == 'right' ~ 2.25
+        )
+      )
+    }
+}
+
 #### Add 1 Table ####
 ### Check if flextable
 
@@ -815,11 +914,11 @@ add1_table <- function(
   height = 5.5,
   width = 12
 ) {
-  doc <- add_slide(
+  doc <- officer::add_slide(
     doc,
     layout = slide_name,
     master = master_name)
-  ph_with_table_at(
+  officer::ph_with_table_at(
     doc,
     value = name,
     left = left_start,
@@ -838,7 +937,7 @@ add1_flextable <- function(
   height = NULL,
   width = NULL
 ) {
-  doc <- add_slide(
+  doc <- officer::add_slide(
     doc,
     layout = slide_name,
     master = master_name)
@@ -889,28 +988,28 @@ add2_table <- function(
   name,
   position
 ) {
-  ph_with_table_at(
+  officer::ph_with_table_at(
     doc,
     value = name,
-    left = case_when(
+    left = dplyr::case_when(
       position == 'top' ~ .5,
       position == 'bottom' ~ .5,
       position == 'left' ~ .5,
       position == 'right' ~ 6.5
     ),
-    top = case_when(
+    top = dplyr::case_when(
       position == 'top' ~ 2,
       position == 'bottom' ~ 4.5,
       position == 'left' ~ 2,
       position == 'right' ~ 2
     ),
-    height = case_when(
+    height = dplyr::case_when(
       position == 'top' ~ 3,
       position == 'bottom' ~ 3,
       position == 'left' ~ 5.5,
       position == 'right' ~ 5.5
     ),
-    width = case_when(
+    width = dplyr::case_when(
       position == 'top' ~ 12,
       position == 'bottom' ~ 12,
       position == 'left' ~ 6,
@@ -924,16 +1023,16 @@ add2_flextable <- function(
   name,
   position
 ) {
-  ph_with_chart_at(
+  mschart::ph_with_chart_at(
     doc,
     value = name,
-    left = case_when(
+    left = dplyr::case_when(
       position == 'top' ~ .5,
       position == 'bottom' ~ .5,
       position == 'left' ~ .5,
       position == 'right' ~ 6.5
     ),
-    top = case_when(
+    top = dplyr::case_when(
       position == 'top' ~ 2,
       position == 'bottom' ~ 4.5,
       position == 'left' ~ 2,
@@ -951,11 +1050,11 @@ add2_flextable <- function(
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2t(my_table, 'left')
 #' doc <- add2t(my_table, 'right')
 #' OR
-#' doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 #' doc <- add2t(my_flextables, 'top')
 #' doc <- add2t(my_flextables, 'bottom')
 

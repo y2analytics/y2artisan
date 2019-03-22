@@ -15,11 +15,11 @@ add2t(name, position)
 This function adds 2 tables to a PowerPoint slide. The tables are automatically added to the last slide of the PP object in R. Beware that if the object passed to the function is not a pre-formated flextable, it automatically assigns a background color to the table and sets the fontsize to 18.
 }
 \examples{
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add2t(my_table, 'left')
 doc <- add2t(my_table, 'right')
 OR
-doc <- add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
 doc <- add2t(my_flextables, 'top')
 doc <- add2t(my_flextables, 'bottom')
 }
