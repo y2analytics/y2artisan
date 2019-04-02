@@ -283,7 +283,7 @@ bar_grouped <-  function(
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param overlapping DEFAULT = 100
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
-#' @param legend_text_size DEFAULT = 16
+#' @param legend_text_size DEFAULT = 10
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
 #' @keywords chart stacked
 #' @export
@@ -324,7 +324,7 @@ bar_stacked <- function(
   grouping = 'percentStacked',
   overlapping = 100,
   direction = 'horizontal',
-  legend_text_size = 16,
+  legend_text_size = 10,
   legend_pos = 't'
 ){
   mschart::ms_barchart(
@@ -490,7 +490,7 @@ add2c <- function(
         position == 'top' ~ .5,
         position == 'bottom' ~ .5,
         position == 'left' ~ 0,
-        position == 'right' ~ 8
+        position == 'right' ~ 8.25
       ),
       top = dplyr::case_when(
         position == 'top' ~ 2,
@@ -507,8 +507,8 @@ add2c <- function(
       width = dplyr::case_when(
         position == 'top' ~ 12,
         position == 'bottom' ~ 12,
-        position == 'left' ~ 8,
-        position == 'right' ~ 5
+        position == 'left' ~ 8.25,
+        position == 'right' ~ 4.75
       )
     )
   }
@@ -559,7 +559,6 @@ add3c <- function(
       position == 'rightbottom' ~ 4.375,
       position == 'left' ~ .0,
       position == 'center' ~ 4.25,
-      position == 'middle' ~ 4.25,
       position == 'right' ~ 8.5
 
     ),
@@ -570,7 +569,6 @@ add3c <- function(
       position == 'rightbottom' ~ 4.5,
       position == 'left' ~ 2,
       position == 'center' ~ 2,
-      position == 'middle' ~ 2,
       position == 'right' ~ 2
     ),
     height = dplyr::case_when(
@@ -580,7 +578,6 @@ add3c <- function(
       position == 'rightbottom' ~ 3,
       position == 'left' ~ 5.5,
       position == 'center' ~ 5.5,
-      position == 'middle' ~ 5.5,
       position == 'right' ~ 5.5
     ),
     width = dplyr::case_when(
@@ -590,7 +587,6 @@ add3c <- function(
       position == 'rightbottom' ~ 8.615,
       position == 'left' ~ 4.5,
       position == 'center' ~ 4.5,
-      position == 'middle' ~ 4.5,
       position == 'right' ~ 4.5
     )
   )
@@ -604,9 +600,8 @@ add3c <- function(
         position == 'bottomright' ~ 4.375,
         position == 'rightbottom' ~ 4.375,
         position == 'left' ~ .0,
-        position == 'center' ~ 5.875,
-        position == 'middle' ~ 5.875,
-        position == 'right' ~ 9.5
+        position == 'center' ~ 6.25,
+        position == 'right' ~ 9.75
 
       ),
       top = dplyr::case_when(
@@ -616,7 +611,6 @@ add3c <- function(
         position == 'rightbottom' ~ 4.5,
         position == 'left' ~ 2,
         position == 'center' ~ 2,
-        position == 'middle' ~ 2,
         position == 'right' ~ 2
       ),
       height = dplyr::case_when(
@@ -626,7 +620,6 @@ add3c <- function(
         position == 'rightbottom' ~ 3,
         position == 'left' ~ 5.5,
         position == 'center' ~ 5.5,
-        position == 'middle' ~ 5.5,
         position == 'right' ~ 5.5
       ),
       width = dplyr::case_when(
@@ -634,10 +627,9 @@ add3c <- function(
         position == 'righttop' ~ 8.615,
         position == 'bottomright' ~ 8.615,
         position == 'rightbottom' ~ 8.615,
-        position == 'left' ~ 6,
-        position == 'center' ~ 3.75,
-        position == 'middle' ~ 3.75,
-        position == 'right' ~ 3.75
+        position == 'left' ~ 6.25,
+        position == 'center' ~ 3.625,
+        position == 'right' ~ 3.625
       )
     )
   }
@@ -685,13 +677,9 @@ add4c <- function(
     chart = name,
     left = dplyr::case_when(
       position == 'topright' ~ 6.5,
-      position == 'righttop' ~ 6.5,
       position == 'bottomright' ~ 6.5,
-      position == 'rightbottom' ~ 6.5,
       position == 'topleft' ~ .5,
-      position == 'lefttop' ~ .5,
       position == 'bottomleft' ~ .5,
-      position == 'leftbottom' ~ .5,
       position == 'left' ~ .0,
       position == 'centerleft' ~ 3.25,
       position == 'centerright' ~ 6.5,
@@ -699,13 +687,9 @@ add4c <- function(
     ),
     top = dplyr::case_when(
       position == 'topright' ~ 2,
-      position == 'righttop' ~ 2,
       position == 'bottomright' ~ 4.5,
-      position == 'rightbottom' ~ 4.5,
       position == 'topleft' ~ 2,
-      position == 'lefttop' ~ 2,
       position == 'bottomleft' ~ 4.5,
-      position == 'leftbottom' ~ 4.5,
       position == 'left' ~ 2,
       position == 'centerleft' ~ 2,
       position == 'centerright' ~ 2,
@@ -713,13 +697,9 @@ add4c <- function(
     ),
     height = dplyr::case_when(
       position == 'topright' ~ 3,
-      position == 'righttop' ~ 3,
       position == 'bottomright' ~ 3,
-      position == 'rightbottom' ~ 3,
       position == 'topleft' ~ 3,
-      position == 'lefttop' ~ 3,
       position == 'bottomleft' ~ 3,
-      position == 'leftbottom' ~ 3,
       position == 'left' ~ 5.5,
       position == 'centerleft' ~ 5.5,
       position == 'centerright' ~ 5.5,
@@ -727,13 +707,9 @@ add4c <- function(
     ),
     width = dplyr::case_when(
       position == 'topright' ~ 6,
-      position == 'righttop' ~ 6,
       position == 'bottomright' ~ 6,
-      position == 'rightbottom' ~ 6,
       position == 'topleft' ~ 6,
-      position == 'lefttop' ~ 6,
       position == 'bottomleft' ~ 6,
-      position == 'leftbottom' ~ 6,
       position == 'left' ~ 3.5,
       position == 'centerleft' ~ 3.5,
       position == 'centerright' ~ 3.5,
@@ -744,14 +720,10 @@ add4c <- function(
       doc,
       chart = name,
       left = dplyr::case_when(
-        position == 'topright' ~ 6.5,
-        position == 'righttop' ~ 6.5,
-        position == 'bottomright' ~ 6.5,
-        position == 'rightbottom' ~ 6.5,
-        position == 'topleft' ~ .5,
-        position == 'lefttop' ~ .5,
-        position == 'bottomleft' ~ .5,
-        position == 'leftbottom' ~ .5,
+        position == 'topright' ~ 8.25,
+        position == 'bottomright' ~ 8.25,
+        position == 'topleft' ~ 0,
+        position == 'bottomleft' ~ 0,
         position == 'left' ~ .0,
         position == 'centerleft' ~ 4.75,
         position == 'centerright' ~ 7.5,
@@ -759,13 +731,9 @@ add4c <- function(
       ),
       top = dplyr::case_when(
         position == 'topright' ~ 2,
-        position == 'righttop' ~ 2,
         position == 'bottomright' ~ 4.5,
-        position == 'rightbottom' ~ 4.5,
         position == 'topleft' ~ 2,
-        position == 'lefttop' ~ 2,
         position == 'bottomleft' ~ 4.5,
-        position == 'leftbottom' ~ 4.5,
         position == 'left' ~ 2,
         position == 'centerleft' ~ 2,
         position == 'centerright' ~ 2,
@@ -773,27 +741,19 @@ add4c <- function(
       ),
       height = dplyr::case_when(
         position == 'topright' ~ 3,
-        position == 'righttop' ~ 3,
         position == 'bottomright' ~ 3,
-        position == 'rightbottom' ~ 3,
         position == 'topleft' ~ 3,
-        position == 'lefttop' ~ 3,
         position == 'bottomleft' ~ 3,
-        position == 'leftbottom' ~ 3,
         position == 'left' ~ 5.5,
         position == 'centerleft' ~ 5.5,
         position == 'centerright' ~ 5.5,
         position == 'right' ~ 5.5
       ),
       width = dplyr::case_when(
-        position == 'topright' ~ 6,
-        position == 'righttop' ~ 6,
-        position == 'bottomright' ~ 6,
-        position == 'rightbottom' ~ 6,
-        position == 'topleft' ~ 6,
-        position == 'lefttop' ~ 6,
-        position == 'bottomleft' ~ 6,
-        position == 'leftbottom' ~ 6,
+        position == 'topright' ~ 4.75,
+        position == 'bottomright' ~ 4.75,
+        position == 'topleft' ~ 8.25,
+        position == 'bottomleft' ~ 8.25,
         position == 'left' ~ 5,
         position == 'centerleft' ~ 3,
         position == 'centerright' ~ 3,
@@ -897,6 +857,120 @@ add5c <- function(
           position == 'centerright' ~ 2.25,
           position == 'right' ~ 2.25
         )
+      )
+    }
+}
+
+#### Add 6 Charts ####
+### Description
+#' Add 4 charts to PowerPoint slide
+#'
+#' This function adds 4 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
+#' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
+#' @param position Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "left"; "centerleft"; "centerright"; "right". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @keywords chart
+#' @export
+#' @examples
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add4c(chart_name, 'topright')
+#' doc <- add4c(chart_name, 'bottomright')
+#' doc <- add4c(chart_name, 'topleft')
+#' doc <- add4c(chart_name, 'bottomleft')
+#' OR
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add4c(chart_name, 'left')
+#' doc <- add4c(chart_name, 'centerleft')
+#' doc <- add4c(chart_name, 'centerright')
+#' doc <- add4c(chart_name, 'right')
+#' OR
+#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' doc <- add4c(chart_name, 'left', label_first_only = T)
+#' doc <- add4c(chart_name, 'centerleft', label_first_only = T)
+#' doc <- add4c(chart_name, 'centerright', T)
+#' doc <- add4c(chart_name, 'right', T)
+
+
+### Function
+add6c <- function(
+  name,
+  position,
+  label_first_only = F
+) {
+  if(label_first_only == F){
+    mschart::ph_with_chart_at(
+      doc,
+      chart = name,
+      left = dplyr::case_when(
+        position == 'topright' ~ 8.5,
+        position == 'bottomright' ~ 8.5,
+        position == 'topleft' ~ 0,
+        position == 'bottomleft' ~ 0,
+        position == 'topcenter' ~ 4.25,
+        position == 'bottomcenter' ~ 4.25
+
+      ),
+      top = dplyr::case_when(
+        position == 'topright' ~ 2,
+        position == 'bottomright' ~ 4.5,
+        position == 'topleft' ~ 2,
+        position == 'bottomleft' ~ 4.5,
+        position == 'topcenter' ~ 2,
+        position == 'bottomcenter' ~ 4.5
+      ),
+      height = dplyr::case_when(
+        position == 'topright' ~ 3,
+        position == 'bottomright' ~ 3,
+        position == 'topleft' ~ 3,
+        position == 'bottomleft' ~ 3,
+        position == 'topcenter' ~ 3,
+        position == 'bottomcenter' ~ 3
+      ),
+      width = dplyr::case_when(
+        position == 'topright' ~ 4.5,
+        position == 'bottomright' ~ 4.5,
+        position == 'topleft' ~ 4.5,
+        position == 'bottomleft' ~ 4.5,
+        position == 'topcenter' ~ 4.5,
+        position == 'bottomcenter' ~ 4.5
+      )
+    ) } else{ #label_first == T
+      mschart::ph_with_chart_at(
+        doc,
+        chart = name,
+        left = dplyr::case_when(
+          position == 'topright' ~ 9.5,
+          position == 'bottomright' ~ 9.5,
+          position == 'topleft' ~ 0,
+          position == 'bottomleft' ~ 0,
+          position == 'topcenter' ~ 5.875,
+          position == 'bottomcenter' ~ 5.875
+
+        ),
+        top = dplyr::case_when(
+          position == 'topright' ~ 2,
+          position == 'bottomright' ~ 4.5,
+          position == 'topleft' ~ 2,
+          position == 'bottomleft' ~ 4.5,
+          position == 'topcenter' ~ 2,
+          position == 'bottomcenter' ~ 4.5
+        ),
+        height = dplyr::case_when(
+          position == 'topright' ~ 3,
+          position == 'bottomright' ~ 3,
+          position == 'topleft' ~ 3,
+          position == 'bottomleft' ~ 3,
+          position == 'topcenter' ~ 3,
+          position == 'bottomcenter' ~ 3
+        ),
+        width = dplyr::case_when(
+          position == 'topright' ~ 3.75,
+          position == 'bottomright' ~ 3.75,
+          position == 'topleft' ~ 6,
+          position == 'bottomleft' ~ 6,
+          position == 'topcenter' ~ 3.75,
+          position == 'bottomcenter' ~ 3.75
+          )
       )
     }
 }
