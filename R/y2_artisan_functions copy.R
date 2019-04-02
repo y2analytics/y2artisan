@@ -863,32 +863,23 @@ add5c <- function(
 
 #### Add 6 Charts ####
 ### Description
-#' Add 4 charts to PowerPoint slide
+#' Add 6 charts to PowerPoint slide
 #'
-#' This function adds 4 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
+#' This function adds 6 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
-#' @param position Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "left"; "centerleft"; "centerright"; "right". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.
-#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @param position Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "topcenter"; "bottomcenter". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.
+#' @param label_first_only DEFAULT = F; Set to T for only the first chart to have axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
 #' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add4c(chart_name, 'topright')
-#' doc <- add4c(chart_name, 'bottomright')
-#' doc <- add4c(chart_name, 'topleft')
-#' doc <- add4c(chart_name, 'bottomleft')
-#' OR
-#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add4c(chart_name, 'left')
-#' doc <- add4c(chart_name, 'centerleft')
-#' doc <- add4c(chart_name, 'centerright')
-#' doc <- add4c(chart_name, 'right')
-#' OR
-#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add4c(chart_name, 'left', label_first_only = T)
-#' doc <- add4c(chart_name, 'centerleft', label_first_only = T)
-#' doc <- add4c(chart_name, 'centerright', T)
-#' doc <- add4c(chart_name, 'right', T)
+#' doc <- add6c(chart_name, 'topleft')
+#' doc <- add6c(chart_name, 'bottomleft')
+#' doc <- add6c(chart_name, 'topcenter')
+#' doc <- add6c(chart_name, 'bottomcenter')
+#' doc <- add6c(chart_name, 'topright')
+#' doc <- add6c(chart_name, 'bottomright')
+
 
 
 ### Function

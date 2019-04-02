@@ -15,7 +15,7 @@ bar_stacked(data = frequencies, x_var = "group_var",
   axis_y_display = F, axis_text_size = 14, axis_title_size = 18,
   title_label = "", title_size = 18, rotate = 0,
   rotate_axis_y_title = 360, grouping = "percentStacked",
-  overlapping = 100, direction = "horizontal", legend_text_size = 16,
+  overlapping = 100, direction = "horizontal", legend_text_size = 10,
   legend_pos = "t")
 }
 \arguments{
@@ -67,7 +67,7 @@ bar_stacked(data = frequencies, x_var = "group_var",
 
 \item{direction}{DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"}
 
-\item{legend_text_size}{DEFAULT = 16}
+\item{legend_text_size}{DEFAULT = 10}
 
 \item{legend_pos}{DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
 }
