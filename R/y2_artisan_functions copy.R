@@ -1006,7 +1006,7 @@ add1_flextable <- function(
     doc,
     layout = slide_name,
     master = master_name)
-  ph_with_flextable_at(
+  flextable:: ph_with_flextable_at(
     doc,
     value = name,
     left = left_start,
@@ -1039,11 +1039,11 @@ add1t <- function(
   height = 5.5,
   width = 12
 ) {
-  ifelse(
-    class(name) == 'flextable',
-    add1_flextable(name, slide_name, master_name, left_start, top_start, height, width),
+    if(class(name)[1] == 'flextable'){
+    add1_flextable(name, slide_name, master_name, left_start, top_start, height, width)
+    } else{
     add1_table(name, slide_name, master_name, left_start, top_start, height, width)
-  )
+    }
 }
 
 #### Add 2 Tables ####
@@ -1088,7 +1088,7 @@ add2_flextable <- function(
   name,
   position
 ) {
-  mschart::ph_with_chart_at(
+  flextable:: ph_with_flextable_at(
     doc,
     value = name,
     left = dplyr::case_when(
@@ -1128,10 +1128,10 @@ add2t <- function(
   name,
   position
 ) {
-  ifelse(
-    class(name) == 'flextable',
-    add2_flextable(name, position),
+  if(class(name)[1] == 'flextable'){
+    add2_flextable(name, position)
+  } else{
     add2_table(name, position)
-  )
+  }
 }
 
