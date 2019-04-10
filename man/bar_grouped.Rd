@@ -12,8 +12,8 @@ bar_grouped(data = frequencies, x_var = "label", y_var = "result",
   axis_x_display = T, axis_y_min = 0, axis_y_max = NULL,
   axis_y_display = T, axis_text_size = 14, axis_title_size = 18,
   title_label = "", title_size = 18, rotate = 0,
-  grouping = "standard", overlapping = -50, direction = "vertical",
-  legend_text_size = 16, legend_pos = "t")
+  grouping = "standard", gap_width = 150, overlapping = -50,
+  direction = "vertical", legend_text_size = 16, legend_pos = "t")
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
@@ -59,6 +59,8 @@ bar_grouped(data = frequencies, x_var = "label", y_var = "result",
 \item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
 
 \item{grouping}{DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
+
+\item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself}
 
 \item{overlapping}{DEFAULT = -50 This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.}
 

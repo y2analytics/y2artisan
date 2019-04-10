@@ -23,6 +23,7 @@
 #' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
 #' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself
 #' @param overlapping DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param legend_text_size DEFAULT = 16
@@ -63,6 +64,7 @@ bar_single <-  function(
   title_size = 18,
   rotate = 0,
   grouping = 'standard',
+  gap_width = 150,
   overlapping = -50,
   direction = 'vertical',
   legend_text_size = 16,
@@ -77,7 +79,8 @@ bar_single <-  function(
     mschart::chart_settings(
       dir = direction,
       grouping = grouping,
-      overlap = overlapping
+      overlap = overlapping,
+      gap_width = gap_width
     ) %>%
     mschart::chart_data_labels(
       show_val = label_show_values,
@@ -153,6 +156,7 @@ bar_single <-  function(
 #' @param title_size DEFAULT = 18
 #' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself
 #' @param overlapping DEFAULT = -50 This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
@@ -192,6 +196,7 @@ bar_grouped <-  function(
   title_size = 18,
   rotate = 0,
   grouping = 'standard',
+  gap_width = 150,
   overlapping = -50,
   direction = 'vertical',
   legend_text_size = 16,
@@ -206,7 +211,8 @@ bar_grouped <-  function(
     mschart::chart_settings(
       dir = direction,
       grouping = grouping,
-      overlap = overlapping
+      overlap = overlapping,
+      gap_width = gap_width
     ) %>%
     mschart::chart_data_labels(
       show_val = label_show_values,
@@ -281,6 +287,7 @@ bar_grouped <-  function(
 #' @param title_label DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.
 #' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself
 #' @param overlapping DEFAULT = 100
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
 #' @param legend_text_size DEFAULT = 10
@@ -322,6 +329,7 @@ bar_stacked <- function(
   rotate = 0,
   rotate_axis_y_title = 360,
   grouping = 'percentStacked',
+  gap_width = 150,
   overlapping = 100,
   direction = 'horizontal',
   legend_text_size = 10,
@@ -336,7 +344,8 @@ bar_stacked <- function(
     mschart::chart_settings(
       dir = direction,
       grouping = grouping,
-      overlap = overlapping
+      overlap = overlapping,
+      gap_width = gap_width
     ) %>%
     mschart::chart_data_labels(
       show_val = label_show_values,

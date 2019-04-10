@@ -15,8 +15,8 @@ bar_stacked(data = frequencies, x_var = "group_var",
   axis_y_display = F, axis_text_size = 14, axis_title_size = 18,
   title_label = "", title_size = 18, rotate = 0,
   rotate_axis_y_title = 360, grouping = "percentStacked",
-  overlapping = 100, direction = "horizontal", legend_text_size = 10,
-  legend_pos = "t")
+  gap_width = 150, overlapping = 100, direction = "horizontal",
+  legend_text_size = 10, legend_pos = "t")
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
@@ -62,6 +62,8 @@ bar_stacked(data = frequencies, x_var = "group_var",
 \item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
 
 \item{grouping}{DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
+
+\item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself}
 
 \item{overlapping}{DEFAULT = 100}
 
