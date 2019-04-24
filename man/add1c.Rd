@@ -4,16 +4,16 @@
 \alias{add1c}
 \title{Add PowerPoint slide & 1 chart}
 \usage{
-add1c(name, slide_name = "Findings / 1 chart",
+add1c(name, add_slide = T, slide_name = "Findings / 1 chart",
   master_name = "Office Theme", left_start = 0.5, top_start = 2,
   height = 5.5, width = 12)
 }
 \arguments{
 \item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
 
-\item{slide_name}{The name of the type of the PP slide you want added to the PP. DEFAULT: "Findings / 1 chart"}
+\item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
 
-\item{master_name}{The name of the PP master layout that the slide_name comes from. DEFAULT: "Office Theme"}
+\item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}
 }
 \description{
 This function adds a new PowerPoint slide and fits 1 chart onto it. It automatically fits the location to the center of the slide.

@@ -56,7 +56,7 @@ bar_single(data = frequencies, x_var = "label", y_var = "result",
 
 \item{grouping}{DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 
-\item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself}
+\item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself}
 
 \item{overlapping}{DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.}
 

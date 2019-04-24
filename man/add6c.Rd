@@ -11,7 +11,7 @@ add6c(name, position, label_first_only = F)
 
 \item{position}{Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "topcenter"; "bottomcenter". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.}
 
-\item{label_first_only}{DEFAULT = F; Set to T for only the first chart to have axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
+\item{label_first_only}{DEFAULT = F; Set to T when only the first charts on the left has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
 This function adds 6 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.

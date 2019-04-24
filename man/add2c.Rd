@@ -11,7 +11,7 @@ add2c(name, position, label_first_only = F)
 
 \item{position}{Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.}
 
-\item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
+\item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
 This function adds 2 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.

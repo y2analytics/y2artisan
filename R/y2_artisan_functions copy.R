@@ -24,7 +24,7 @@
 #' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
 #' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself
+#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
 #' @param overlapping DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param legend_text_size DEFAULT = 16
@@ -157,7 +157,7 @@ bar_single <-  function(
 #' @param title_size DEFAULT = 18
 #' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself
+#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
 #' @param overlapping DEFAULT = -50 This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
@@ -288,7 +288,7 @@ bar_grouped <-  function(
 #' @param title_label DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.
 #' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150% the size of the bar itself
+#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
 #' @param overlapping DEFAULT = 100
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
 #' @param legend_text_size DEFAULT = 10
@@ -505,14 +505,47 @@ line_chart <- function(
     )
 }
 
+#### Add 1 Slide ####
+### Description
+#' Add 1 Blank PowerPoint slide
+#'
+#' This function adds a new PowerPoint slide along with a title and commentary box to the current pp object in R
+#' @param slide_name DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
+#' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from
+#' @keywords powerpoint slide
+#' @export
+#' @examples
+#' doc <- add1s()
+
+add1s <- function(
+  slide_name = "Findings / 1 chart",
+  master_name = "Office Theme"
+) {
+  doc <- officer::add_slide(
+    doc,
+    layout = slide_name,
+    master = master_name
+    )
+  doc <- ph_with_text(
+    doc,
+    type = 'title',
+    str = 'xxx'
+  )
+  doc <- ph_with_text(
+    doc,
+    type = 'body',
+    str = 'xxx'
+  )
+}
+
 #### Add 1 Chart ####
 ### Description
 #' Add PowerPoint slide & 1 chart
 #'
 #' This function adds a new PowerPoint slide and fits 1 chart onto it. It automatically fits the location to the center of the slide.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
-#' @param slide_name The name of the type of the PP slide you want added to the PP. DEFAULT: "Findings / 1 chart"
-#' @param master_name The name of the PP master layout that the slide_name comes from. DEFAULT: "Office Theme"
+#' @param slide_name DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
+#' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from
 #' @keywords chart
 #' @export
 #' @examples
@@ -523,6 +556,7 @@ line_chart <- function(
 ### Function
 add1c <- function(
   name,
+  add_slide = T,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme",
   left_start = .5,
@@ -530,10 +564,11 @@ add1c <- function(
   height = 5.5,
   width = 12
 ) {
-  doc <- officer::add_slide(
-    doc,
-    layout = slide_name,
-    master = master_name)
+  if(add_slide == T) {
+    doc <- add1s(slide_name, master_name)
+  } else {
+    doc <- doc
+  }
   mschart::ph_with_chart_at(
     doc,
     chart = name,
@@ -551,7 +586,7 @@ add1c <- function(
 #' This function adds 2 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.
-#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
@@ -641,7 +676,7 @@ add2c <- function(
 #' This function adds 3 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "left"; "center"; "right"; "bottomright"; "topright". The chart layout can either be left-center-right OR left-topright-bottomright.
-#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
@@ -762,7 +797,7 @@ add3c <- function(
 #' This function adds 4 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "left"; "centerleft"; "centerright"; "right". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.
-#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts, only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
@@ -988,7 +1023,7 @@ add5c <- function(
 #' This function adds 6 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
 #' @param position Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "topcenter"; "bottomcenter". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.
-#' @param label_first_only DEFAULT = F; Set to T for only the first chart to have axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @param label_first_only DEFAULT = F; Set to T when only the first charts on the left has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
 #' @export
 #' @examples
@@ -1099,10 +1134,11 @@ add1_table <- function(
   height = 5.5,
   width = 12
 ) {
-  doc <- officer::add_slide(
-    doc,
-    layout = slide_name,
-    master = master_name)
+  if(add_slide == T) {
+    doc <- add1s(slide_name, master_name)
+  } else {
+    doc <- doc
+  }
   officer::ph_with_table_at(
     doc,
     value = name,
@@ -1122,10 +1158,11 @@ add1_flextable <- function(
   height = NULL,
   width = NULL
 ) {
-  doc <- officer::add_slide(
-    doc,
-    layout = slide_name,
-    master = master_name)
+  if(add_slide == T) {
+    doc <- add1s(slide_name, master_name)
+  } else {
+    doc <- doc
+  }
   flextable::ph_with_flextable_at(
     doc,
     value = name,
@@ -1519,6 +1556,7 @@ wordcloud <- function(
 #' @export
 #' @examples
 #' chart <- wordcloud(QOPEN_END)
+#' chart <- wordcloud(QOPEN_END, '#FAEFF2')
 
 wordcloud2 <- function(
   variable,

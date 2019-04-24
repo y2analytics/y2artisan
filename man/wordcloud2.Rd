@@ -18,6 +18,7 @@ Finds the frequencies of each word in an open end question and creates a word cl
 }
 \examples{
 chart <- wordcloud(QOPEN_END)
+chart <- wordcloud(QOPEN_END, '#FAEFF2')
 }
 \keyword{cloud}
 \keyword{end}
