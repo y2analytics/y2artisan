@@ -14,5 +14,6 @@ Imports:
   officer,
   flextable,
   stringr,
-  ggplot2
+  ggplot2,
+  ggrepel
 RoxygenNote: 6.1.1
