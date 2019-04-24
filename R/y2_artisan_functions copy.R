@@ -538,6 +538,34 @@ add1s <- function(
   )
 }
 
+#### Add section header ####
+### Description
+#' Add Blank PowerPoint Section Header
+#'
+#' This function adds a new PowerPoint section header along with a title box
+#' @param slide_name DEFAULT: "Section Header"; The name of the type of the PP slide you want added to the PP
+#' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from
+#' @keywords powerpoint slide
+#' @export
+#' @examples
+#' doc <- add_section_header()
+
+add_section_header <- function(
+  slide_name = "Section Header",
+  master_name = "Office Theme"
+) {
+  doc <- officer::add_slide(
+    doc,
+    layout = slide_name,
+    master = master_name
+  )
+  doc <- ph_with_text(
+    doc,
+    type = 'title',
+    str = 'xxx'
+  )
+}
+
 #### Add 1 Chart ####
 ### Description
 #' Add PowerPoint slide & 1 chart
