@@ -1,3 +1,4 @@
+#### ***** MS CHARTS ***** ####
 #### Bar Single ####
 ### Description
 #' Create an ugrouped mschart object
@@ -7,7 +8,7 @@
 #' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = NULL; If you want the bars to be different colors, set group_var to the same variable as x_var. Then set overlap to 100.
-#' @param label_text DEFAULT = 'test_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
+#' @param label_text DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
 #' @param label_color DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
@@ -386,6 +387,116 @@ bar_stacked <- function(
       grid_major_line_y = fp_border(style = 'none'),
       title_y_rot = rotate_axis_y_title
     )  %>%
+    mschart::chart_ax_x(
+      display = axis_x_display
+    )  %>%
+    mschart::chart_ax_y(
+      display = axis_y_display
+    )
+}
+
+#### Line chart ####
+#' Create an ugrouped mschart object
+#'
+#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' @param data DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.
+#' @param x_var DEFAULT = 'year'; The name of your time variable
+#' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
+#' @param group_var DEFAULT = 'label'; Each line will be a distinct value of this variable
+#' @param label_text DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
+#' @param label_color DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list('District 1' = lime, 'District 2' = bluepurple)
+#' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
+#' @param label_position DEFAULT = 't'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
+#' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
+#' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
+#' @param axis_x_label DEFAULT = ''; Title for the x_axis
+#' @param axis_y_label DEFAULT = ''; Title for the y_axis
+#' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
+#' @param axis_y_max DEFAULT = NULL
+#' @param axis_y_display DEFAULT = T
+#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+#' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
+#' @param legend_text_size DEFAULT = 14
+#' @param legend_pos DEFAULT = 't' for top Other legend positions are 'b', 'tr', 'l', 'r', 't'.
+#' @keywords chart
+#' @export
+#' @examples
+#' my_ms_chart <- line()
+#' OR
+#' my_ms_chart <- line(
+#'   x_var = 'month',
+#'   group_var = 'brand,
+#'   title_label  = 'Title of my chart',
+#' )
+
+
+line_chart <- function(
+  data = frequencies,
+  x_var = 'year',
+  y_var = 'result',
+  group_var = 'label',
+  label_text = text_settings,
+  label_color = color_settings,
+  label_show_values = T,
+  label_position = 't',
+  label_num_fmt = '0%',
+  axis_num_fmt = '0%%',
+  axis_x_display = T,
+  axis_x_label = '',
+  axis_y_label = '',
+  axis_y_min = 0,
+  axis_y_max = NULL,
+  axis_y_display = T,
+  axis_text_size = 14,
+  axis_title_size = 18,
+  title_label = '',
+  title_size = 18,
+  rotate = 0,
+  legend_text_size = 16,
+  legend_pos = 'n'
+){
+  ms_linechart(
+    data = data,
+    x = x_var,
+    y = y_var,
+    group = group_var
+  ) %>%
+    chart_data_labels(
+      show_val = label_show_values,
+      num_fmt = label_num_fmt,
+      position = label_position
+    ) %>%
+    chart_labels_text(
+      values = label_text
+    ) %>%
+    chart_data_fill(
+      values = label_color
+    ) %>%
+    chart_data_stroke(
+      values = label_color
+    ) %>%
+    chart_ax_y(
+      num_fmt = axis_num_fmt,
+      limit_min = axis_y_min,
+      limit_max = axis_y_max
+    ) %>%
+    chart_labels(
+      xlab = axis_x_label,
+      ylab = axis_y_label,
+      title = title_label
+    ) %>%
+    chart_theme(
+      legend_position = 't',
+      main_title = fp_text(font.size = title_size),
+      axis_text_x = fp_text(font.size = axis_text_size),
+      axis_text_y = fp_text(font.size = axis_text_size),
+      axis_title_x = fp_text(font.size = axis_title_size),
+      axis_title_y = fp_text(font.size = axis_title_size),
+      legend_text = fp_text(font.size = legend_text_size),
+      grid_major_line_x = fp_border(width = 0),
+      grid_major_line_y = fp_border(width = 0)
+    ) %>%
     mschart::chart_ax_x(
       display = axis_x_display
     )  %>%
@@ -1015,7 +1126,7 @@ add1_flextable <- function(
     doc,
     layout = slide_name,
     master = master_name)
-  flextable:: ph_with_flextable_at(
+  flextable::ph_with_flextable_at(
     doc,
     value = name,
     left = left_start,
@@ -1097,7 +1208,7 @@ add2_flextable <- function(
   name,
   position
 ) {
-  flextable:: ph_with_flextable_at(
+  flextable::ph_with_flextable_at(
     doc,
     value = name,
     left = dplyr::case_when(
@@ -1144,3 +1255,300 @@ add2t <- function(
   }
 }
 
+
+#### ***** GG PLOT ***** ####
+#### ggchart_save ####
+### Description
+#' Quickly save out a chart from ggplot
+#'
+#' Saves a ggplot chart. All you need to add is the file name
+#' @param chartname The name you want to give your file, ex: "brands by age". Do not specify the whole file path. However, you do need to have an object that is the path to your chart folder saved in R as CHART_PATH
+#' @param width DEFAULT = 11
+#' @param height DEFAULT = 5.5
+#' @keywords chart save ggplot
+#' @export
+#' @examples
+#' ggchart_save('An easily saved chart')
+
+
+ggchart_save <- function(chartname, width = 11, height = 5.5){
+  ggplot2::ggsave(
+    stringr::str_c(CHART_PATH, '/', chartname, '.png'),
+    chart + y2_type,
+    width = width,
+    height = height,
+    bg = 'transparent'
+  )
+}
+
+
+
+
+#### wc_filter ####
+wc_filter <- function(dataset){
+  dataset %>%
+    filter(
+      !label %in% c(
+        'AND',
+        'THE',
+        'I',
+        'THAT',
+        'TO',
+        'A',
+        'IT',
+        'OF',
+        'IS',
+        'ARE',
+        'ITS',
+        'IN',
+        'BE',
+        'AS',
+        'SO',
+        'AN',
+        'IF',
+        'BY',
+        'AM',
+        'AT',
+        'IM',
+        'NA',
+        'DO',
+        'THIS',
+        'OR',
+        'FOR',
+        'YES',
+        'NO',
+        'NOT',
+        'NONE',
+        'REALLY',
+        'NOTHING',
+        'ALL',
+        'ME',
+        'HE',
+        'SHE',
+        'MY',
+        'WHEN',
+        'CAN',
+        'ON',
+        'DONT',
+        'KNOW',
+        'IDK',
+        'VERY',
+        'WITH',
+        'FROM',
+        'WHO',
+        'BUT',
+        'WHOM',
+        'ALSO',
+        'OUR',
+        'WOULD',
+        'HAVE',
+        'WE',
+        'BACK',
+        'HAS',
+        'HAD',
+        'YOU',
+        'THERE',
+        'WAS',
+        'HERE',
+        'SHOULD',
+        'JUST',
+        'THEIR',
+        'THEM',
+        'ABOUT',
+        'THEY',
+        'WILL'
+      )
+    )
+}
+#### openend (wc_prepper) ####
+### Description
+#' Look at the frequencies of each word in an open end question
+#'
+#' Breaks down an open ended question on spaces, giving you the frequencies of each word mentioned
+#' @param variable The name of the openended variable from your dataset you want to look at
+#' @param dataset DEFAULT = responses
+#' @keywords openend open end frequencies freqs
+#' @export
+#' @examples
+#' frequencies <- openend(QOPEN_END)
+
+openend <- function(
+  variable,
+  dataset = responses
+) {
+  flag <- dplyr::enquo(variable)
+  frequencies <- dataset %>%
+    select(
+      !!flag
+    ) %>%
+    dplyr::mutate(
+      variable = toupper(!!flag)
+    ) %>%
+    dplyr::select(
+      variable
+    ) %>%
+    tidyr::separate(
+      variable,
+      into = paste("V", 1:100, sep = "_"),
+      sep = ' '
+    ) %>%
+    tidyr::gather(
+      Names,
+      Words
+    ) %>%
+    dplyr::filter(
+      Words != ''
+    ) %>%
+    dplyr::select(
+      -Names
+    ) %>%
+    dplyr::mutate(
+      Words = str_replace_all(Words, '\\.COM', ''),
+      Words = str_replace_all(Words, "[^[:alnum:]]", ""),
+      Words = str_replace_all(Words, 'DO NOT', 'DONT'),
+      Words = str_replace_all(Words, 'CAN NOT', 'CANT'),
+      Words = str_replace_all(Words, 'CANNOT', 'CANT')
+    ) %>%
+    y2clerk::freqs(
+      Words
+    ) %>%
+    wc_filter() %>%
+    dplyr::filter(
+      label != ''
+    ) %>%
+    dplyr::arrange(
+      n %>% desc
+    ) %>%
+    dplyr::slice(
+      1:50
+    ) %>%
+    dplyr::mutate(
+      total =  dataset %>%
+        dplyr::filter(
+          !is.na(!!flag),
+          !!flag != ''
+          ) %>%
+        dplyr::count() %>%
+        as.numeric(),
+      result = n / total,
+      result = round(result, 2)
+    ) %>%
+    dplyr::select(
+      - total
+    )
+}
+
+#### wordcloud ####
+### Description
+#' Creates a word cloud from an open end question
+#'
+#' Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller and lighter in color
+#' @param variable The name of the openended variable from your dataset you want to look at
+#' @param colors DEFAULT = 'bluepurple'; 4 qualtrics colors as pre-made options: "bluepurple", "lime", "teal", "brightblue". May also specify a vector of 3 scaled colors ranging from lightest to darkest
+#' @param dataset DEFAULT = responses
+#' @keywords openend open end wordcloud word cloud
+#' @export
+#' @examples
+#' chart <- wordcloud(QOPEN_END)
+#' chart <- wordcloud(QOPEN_END, lime)
+#' chart <- wordcloud(QOPEN_END, c('#FAEFF2', '#CC6078', '#6D0018'))
+
+wordcloud <- function(
+  variable,
+  colors = 'bluepurple',
+  dataset = responses
+) {
+  flag <- dplyr::enquo(variable)
+  lows = dplyr::case_when(
+    colors == 'bluepurple' ~ '#EEEEF3',
+    colors == 'lime' ~ '#F6FBEB',
+    colors == 'teal' ~ '#F1FCFC',
+    colors == 'brightblue' ~ '#EDF4FB',
+    T ~ colors[1]
+  )
+  mids = dplyr::case_when(
+    colors == 'bluepurple' ~ '#BABDCF',
+    colors == 'lime' ~ '#C6E881',
+    colors == 'teal' ~ '#A5EAEC',
+    colors == 'brightblue' ~ '#89B7E5',
+    T ~ colors[2]
+  )
+  highs = dplyr::case_when(
+    colors == 'bluepurple' ~ '#464E7E',
+    colors == 'lime' ~ '#6A9D02',
+    colors == 'teal' ~ '#389FA3',
+    colors == 'brightblue' ~ '#0E5498',
+    T ~ colors[3]
+  )
+  wordcloud <- openend(!!flag, dataset)
+  ggplot2::ggplot(
+    wordcloud,
+    ggplot2::aes(
+      x = 1,
+      y = 1,
+      size = n
+    )
+  ) +
+    ggrepel::geom_text_repel(
+      ggplot2::aes(
+        label = label,
+        color = n
+      ),
+      segment.size = 0
+    ) +
+    ggplot2::scale_color_gradient2(low = lows, mid = mids, high = highs, midpoint = 0.5, guide = F) +
+    ggplot2::scale_size(range = c(1, 12), guide = FALSE) +
+    ggplot2::scale_y_continuous(breaks = NULL) +
+    ggplot2::scale_x_continuous(breaks = NULL) +
+    ggplot2::theme_minimal()+
+    ggplot2::theme(
+      axis.text = element_blank(),
+      axis.title = element_blank()
+    )
+}
+
+#### wordcloud2 ####
+### Description
+#' Creates a word cloud from an open end question
+#'
+#' Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller
+#' @param variable The name of the openended variable from your dataset you want to look at
+#' @param colors DEFAULT = '#474E7E' (bluepurple from Qualtrics template). All words are the same color. Any color may be specified as a hexcode
+#' @param dataset DEFAULT = responses
+#' @keywords openend open end wordcloud word cloud
+#' @export
+#' @examples
+#' chart <- wordcloud(QOPEN_END)
+
+wordcloud2 <- function(
+  variable,
+  colors = '#474E7E',
+  dataset = responses
+) {
+  flag <- dplyr::enquo(variable)
+  wordcloud <- openend(!!flag, dataset)
+  ggplot2::ggplot(
+    wordcloud,
+    ggplot2::aes(
+      x = 1,
+      y = 1,
+      size = n
+    )
+  ) +
+    ggrepel::geom_text_repel(
+      ggplot2::aes(
+        label = label,
+        color = variable
+      ),
+      segment.size = 0
+    ) +
+    ggplot2::scale_color_manual(values = colors, guide = F) +
+    ggplot2::scale_size(range = c(1, 12), guide = FALSE) +
+    ggplot2::scale_y_continuous(breaks = NULL) +
+    ggplot2::scale_x_continuous(breaks = NULL) +
+    ggplot2::theme_minimal()+
+    ggplot2::theme(
+      axis.text = element_blank(),
+      axis.title = element_blank()
+    )
+}
