@@ -4,10 +4,12 @@
 \alias{add_section_header}
 \title{Add Blank PowerPoint Section Header}
 \usage{
-add_section_header(slide_name = "Section Header",
+add_section_header(title = "xxx", slide_name = "Section Header",
   master_name = "Office Theme")
 }
 \arguments{
+\item{title}{DEFAULT: "xxx"; Add a title in quotes here to have your Section Headers put in for you by R}
+
 \item{slide_name}{DEFAULT: "Section Header"; The name of the type of the PP slide you want added to the PP}
 
 \item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}

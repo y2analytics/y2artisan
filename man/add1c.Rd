@@ -11,6 +11,8 @@ add1c(name, add_slide = T, slide_name = "Findings / 1 chart",
 \arguments{
 \item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
 
+\item{add_slide}{DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added}
+
 \item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
 
 \item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}

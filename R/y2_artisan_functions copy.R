@@ -543,6 +543,7 @@ add1s <- function(
 #' Add Blank PowerPoint Section Header
 #'
 #' This function adds a new PowerPoint section header along with a title box
+#' @param title DEFAULT: "xxx"; Add a title in quotes here to have your Section Headers put in for you by R
 #' @param slide_name DEFAULT: "Section Header"; The name of the type of the PP slide you want added to the PP
 #' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from
 #' @keywords powerpoint slide
@@ -551,6 +552,7 @@ add1s <- function(
 #' doc <- add_section_header()
 
 add_section_header <- function(
+  title = 'xxx',
   slide_name = "Section Header",
   master_name = "Office Theme"
 ) {
@@ -562,7 +564,7 @@ add_section_header <- function(
   doc <- ph_with_text(
     doc,
     type = 'title',
-    str = 'xxx'
+    str = title
   )
 }
 
@@ -572,6 +574,7 @@ add_section_header <- function(
 #'
 #' This function adds a new PowerPoint slide and fits 1 chart onto it. It automatically fits the location to the center of the slide.
 #' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
+#' @param add_slide DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added
 #' @param slide_name DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
 #' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from
 #' @keywords chart
@@ -1155,6 +1158,7 @@ add6c <- function(
 ### If NOT flextable
 add1_table <- function(
   name,
+  add_slide = T,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme",
   left_start = .5,
@@ -1179,6 +1183,7 @@ add1_table <- function(
 ### If YES flextable
 add1_flextable <- function(
   name,
+  add_slide = T,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme",
   left_start = .5,
@@ -1204,6 +1209,7 @@ add1_flextable <- function(
 #'
 #' This function adds a new PowerPoint slide and fits 1 table onto it. It automatically fits the location to the center of the slide. Beware that if the object passed to the function is not a pre-formated flextable, it automatically assigns a background color to the table and sets the fontsize to 18.
 #' @param name The name of the dataframe to be added to a new PowerPoint slide.
+#' @param add_slide DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added
 #' @param slide_name The name of the type of the PP slide you want added to the PP. DEFAULT: "Findings / 1 chart"
 #' @param master_name The name of the PP master layout that the slide_name comes from. DEFAULT: "Office Theme"
 #' @keywords chart
@@ -1217,6 +1223,7 @@ add1_flextable <- function(
 ### Function
 add1t <- function(
   name,
+  add_slide = T,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme",
   left_start = .5,
@@ -1225,9 +1232,9 @@ add1t <- function(
   width = 12
 ) {
     if(class(name)[1] == 'flextable'){
-    add1_flextable(name, slide_name, master_name, left_start, top_start, height, width)
+    add1_flextable(name, add_slide, slide_name, master_name, left_start, top_start, height, width)
     } else{
-    add1_table(name, slide_name, master_name, left_start, top_start, height, width)
+    add1_table(name, add_slide, slide_name, master_name, left_start, top_start, height, width)
     }
 }
 
