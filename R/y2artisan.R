@@ -418,7 +418,7 @@ bar_stacked <- function(
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
 #' @param legend_text_size DEFAULT = 14
-#' @param legend_pos DEFAULT = 't' for top Other legend positions are 'b', 'tr', 'l', 'r', 't'.
+#' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', 't'.
 #' @keywords chart
 #' @export
 #' @examples
@@ -487,7 +487,7 @@ line_chart <- function(
       title = title_label
     ) %>%
     chart_theme(
-      legend_position = 't',
+      legend_position = legend_pos,
       main_title = fp_text(font.size = title_size),
       axis_text_x = fp_text(font.size = axis_text_size),
       axis_text_y = fp_text(font.size = axis_text_size),
