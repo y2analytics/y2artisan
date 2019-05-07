@@ -4,14 +4,16 @@
 \alias{add1t}
 \title{Add PowerPoint slide & 1 table}
 \usage{
-add1t(name, add_slide = T, slide_name = "Findings / 1 chart",
-  master_name = "Office Theme", left_start = 0.5, top_start = 2,
-  height = 5.5, width = 12)
+add1t(name, add_slide = T, text_boxes = T,
+  slide_name = "Findings / 1 chart", master_name = "Office Theme",
+  left_start = 0.5, top_start = 2, height = 5.5, width = 12)
 }
 \arguments{
 \item{name}{The name of the dataframe to be added to a new PowerPoint slide.}
 
 \item{add_slide}{DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added}
+
+\item{text_boxes}{DEFAULT = T; Automatically adds title and commentary boxes to the blank slide. Set to F for no text boxes}
 
 \item{slide_name}{The name of the type of the PP slide you want added to the PP. DEFAULT: "Findings / 1 chart"}
 
