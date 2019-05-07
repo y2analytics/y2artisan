@@ -1,7 +1,7 @@
 Package: y2artisan
 Type: Package
 Title: Wrapper for mscharts
-Version: 0.0.4.1000
+Version: 0.0.4.2000
 Authors@R: person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre"))
 Description: Creates mschart objects in one line of code. Also imports these charts and tables into PowerPoint slides. 
 License: What license is it under?
