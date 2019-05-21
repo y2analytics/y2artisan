@@ -48,11 +48,11 @@ add5c <- function(
         position == 'right' ~ 2
       ),
       height = dplyr::case_when(
-        position == 'left' ~ 5.5,
-        position == 'centerleft' ~ 5.5,
-        position == 'center' ~ 5.5,
-        position == 'centerright' ~ 5.5,
-        position == 'right' ~ 5.5
+        position == 'left' ~ 5,
+        position == 'centerleft' ~ 5,
+        position == 'center' ~ 5,
+        position == 'centerright' ~ 5,
+        position == 'right' ~ 5
       ),
       width = dplyr::case_when(
         position == 'left' ~ 2.875,
@@ -80,11 +80,11 @@ add5c <- function(
           position == 'right' ~ 2
         ),
         height = dplyr::case_when(
-          position == 'left' ~ 5.5,
-          position == 'centerleft' ~ 5.5,
-          position == 'center' ~ 5.5,
-          position == 'centerright' ~ 5.5,
-          position == 'right' ~ 5.5
+          position == 'left' ~ 5,
+          position == 'centerleft' ~ 5,
+          position == 'center' ~ 5,
+          position == 'centerright' ~ 5,
+          position == 'right' ~ 5
         ),
         width = dplyr::case_when(
           position == 'left' ~ 4.5,

@@ -6,14 +6,14 @@
 \usage{
 add1c(name, add_slide = T, text_boxes = T,
   slide_name = "Findings / 1 chart", master_name = "Office Theme",
-  left_start = 0.5, top_start = 2, height = 5.5, width = 12)
+  left_start = 0.5, top_start = 2, height = 5, width = 12)
 }
 \arguments{
 \item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
 
 \item{add_slide}{DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added}
 
-\item{text_boxes}{DEFAULT = T; Automatically adds title and commentary boxes to the blank slide. Set to F for no text boxes}
+\item{text_boxes}{DEFAULT = T; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
 \item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
 
@@ -25,6 +25,6 @@ This function adds a new PowerPoint slide and fits 1 chart onto it. It automatic
 \examples{
 doc <- add1c(my_ms_chart)
 OR
-doc <- add1c(my_ms_chart, slide_name = "1_Blank", master = "Custom Design")
+add1c(my_ms_chart, slide_name = "1_Blank", master = "Custom Design")
 }
 \keyword{chart}

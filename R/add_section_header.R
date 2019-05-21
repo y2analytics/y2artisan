@@ -10,6 +10,8 @@
 #' @export
 #' @examples
 #' doc <- add_section_header()
+#' OR
+#' add_section_header()
 
 add_section_header <- function(
   title = 'xxx',
@@ -21,7 +23,7 @@ add_section_header <- function(
     layout = slide_name,
     master = master_name
   )
-  doc <- ph_with_text(
+  doc <- officer::ph_with_text(
     doc,
     type = 'title',
     str = title

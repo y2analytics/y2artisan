@@ -19,6 +19,8 @@ This function adds a new PowerPoint section header along with a title box
 }
 \examples{
 doc <- add_section_header()
+OR
+add_section_header()
 }
 \keyword{powerpoint}
 \keyword{slide}

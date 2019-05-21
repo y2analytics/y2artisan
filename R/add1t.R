@@ -25,7 +25,7 @@ add1t <- function(
   master_name = "Office Theme",
   left_start = .5,
   top_start = 2,
-  height = 5.5,
+  height = 5,
   width = 12
 ) {
   if(class(name)[1] == 'flextable'){

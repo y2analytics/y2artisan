@@ -40,19 +40,19 @@ add6c <- function(
       ),
       top = dplyr::case_when(
         position == 'topright' ~ 2,
-        position == 'bottomright' ~ 4.5,
+        position == 'bottomright' ~ 4.25,
         position == 'topleft' ~ 2,
-        position == 'bottomleft' ~ 4.5,
+        position == 'bottomleft' ~ 4.25,
         position == 'topcenter' ~ 2,
-        position == 'bottomcenter' ~ 4.5
+        position == 'bottomcenter' ~ 4.25
       ),
       height = dplyr::case_when(
-        position == 'topright' ~ 3,
-        position == 'bottomright' ~ 3,
-        position == 'topleft' ~ 3,
-        position == 'bottomleft' ~ 3,
-        position == 'topcenter' ~ 3,
-        position == 'bottomcenter' ~ 3
+        position == 'topright' ~ 2.75,
+        position == 'bottomright' ~ 2.75,
+        position == 'topleft' ~ 2.75,
+        position == 'bottomleft' ~ 2.75,
+        position == 'topcenter' ~ 2.75,
+        position == 'bottomcenter' ~ 2.75
       ),
       width = dplyr::case_when(
         position == 'topright' ~ 4.5,
@@ -77,19 +77,19 @@ add6c <- function(
         ),
         top = dplyr::case_when(
           position == 'topright' ~ 2,
-          position == 'bottomright' ~ 4.5,
+          position == 'bottomright' ~ 4.25,
           position == 'topleft' ~ 2,
-          position == 'bottomleft' ~ 4.5,
+          position == 'bottomleft' ~ 4.25,
           position == 'topcenter' ~ 2,
-          position == 'bottomcenter' ~ 4.5
+          position == 'bottomcenter' ~ 4.25
         ),
         height = dplyr::case_when(
-          position == 'topright' ~ 3,
-          position == 'bottomright' ~ 3,
-          position == 'topleft' ~ 3,
-          position == 'bottomleft' ~ 3,
-          position == 'topcenter' ~ 3,
-          position == 'bottomcenter' ~ 3
+          position == 'topright' ~ 2.75,
+          position == 'bottomright' ~ 2.75,
+          position == 'topleft' ~ 2.75,
+          position == 'bottomleft' ~ 2.75,
+          position == 'topcenter' ~ 2.75,
+          position == 'bottomcenter' ~ 2.75
         ),
         width = dplyr::case_when(
           position == 'topright' ~ 3.75,

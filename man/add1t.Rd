@@ -6,7 +6,7 @@
 \usage{
 add1t(name, add_slide = T, text_boxes = T,
   slide_name = "Findings / 1 chart", master_name = "Office Theme",
-  left_start = 0.5, top_start = 2, height = 5.5, width = 12)
+  left_start = 0.5, top_start = 2, height = 5, width = 12)
 }
 \arguments{
 \item{name}{The name of the dataframe to be added to a new PowerPoint slide.}

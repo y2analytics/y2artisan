@@ -39,15 +39,15 @@ add2c <- function(
       ),
       top = dplyr::case_when(
         position == 'top' ~ 2,
-        position == 'bottom' ~ 4.5,
+        position == 'bottom' ~ 4.25,
         position == 'left' ~ 2,
         position == 'right' ~ 2
       ),
       height = dplyr::case_when(
-        position == 'top' ~ 3,
-        position == 'bottom' ~ 3,
-        position == 'left' ~ 5.5,
-        position == 'right' ~ 5.5
+        position == 'top' ~ 2.75,
+        position == 'bottom' ~ 2.75,
+        position == 'left' ~ 5,
+        position == 'right' ~ 5
       ),
       width = dplyr::case_when(
         position == 'top' ~ 12,
@@ -68,15 +68,15 @@ add2c <- function(
       ),
       top = dplyr::case_when(
         position == 'top' ~ 2,
-        position == 'bottom' ~ 4.5,
+        position == 'bottom' ~ 4.25,
         position == 'left' ~ 2,
         position == 'right' ~ 2
       ),
       height = dplyr::case_when(
-        position == 'top' ~ 3,
-        position == 'bottom' ~ 3,
-        position == 'left' ~ 5.5,
-        position == 'right' ~ 5.5
+        position == 'top' ~ 2.75,
+        position == 'bottom' ~ 2.75,
+        position == 'left' ~ 5,
+        position == 'right' ~ 5
       ),
       width = dplyr::case_when(
         position == 'top' ~ 12,

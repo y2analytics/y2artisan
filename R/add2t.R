@@ -1,63 +1,3 @@
-#### Add 2 Tables ####
-
-### 2 Tables
-add2_table <- function(
-  name,
-  position
-) {
-  officer::ph_with_table_at(
-    doc,
-    value = name,
-    left = dplyr::case_when(
-      position == 'top' ~ .5,
-      position == 'bottom' ~ .5,
-      position == 'left' ~ .5,
-      position == 'right' ~ 6.5
-    ),
-    top = dplyr::case_when(
-      position == 'top' ~ 2,
-      position == 'bottom' ~ 4.5,
-      position == 'left' ~ 2,
-      position == 'right' ~ 2
-    ),
-    height = dplyr::case_when(
-      position == 'top' ~ 3,
-      position == 'bottom' ~ 3,
-      position == 'left' ~ 5.5,
-      position == 'right' ~ 5.5
-    ),
-    width = dplyr::case_when(
-      position == 'top' ~ 12,
-      position == 'bottom' ~ 12,
-      position == 'left' ~ 6,
-      position == 'right' ~ 6
-    )
-  )
-}
-
-### 2 Flextables
-add2_flextable <- function(
-  name,
-  position
-) {
-  flextable::ph_with_flextable_at(
-    doc,
-    value = name,
-    left = dplyr::case_when(
-      position == 'top' ~ .5,
-      position == 'bottom' ~ .5,
-      position == 'left' ~ .5,
-      position == 'right' ~ 6.5
-    ),
-    top = dplyr::case_when(
-      position == 'top' ~ 2,
-      position == 'bottom' ~ 4.5,
-      position == 'left' ~ 2,
-      position == 'right' ~ 2
-    )
-  )
-}
-
 ### Description
 #' Add 2 tables to PowerPoint slide
 #'
@@ -87,4 +27,63 @@ add2t <- function(
   }
 }
 
+
+### 2 Tables
+add2_table <- function(
+  name,
+  position
+) {
+  officer::ph_with_table_at(
+    doc,
+    value = name,
+    left = dplyr::case_when(
+      position == 'top' ~ .5,
+      position == 'bottom' ~ .5,
+      position == 'left' ~ .5,
+      position == 'right' ~ 6.5
+    ),
+    top = dplyr::case_when(
+      position == 'top' ~ 2,
+      position == 'bottom' ~ 4.25,
+      position == 'left' ~ 2,
+      position == 'right' ~ 2
+    ),
+    height = dplyr::case_when(
+      position == 'top' ~ 2.75,
+      position == 'bottom' ~ 2.75,
+      position == 'left' ~ 5,
+      position == 'right' ~ 5
+    ),
+    width = dplyr::case_when(
+      position == 'top' ~ 12,
+      position == 'bottom' ~ 12,
+      position == 'left' ~ 6,
+      position == 'right' ~ 6
+    )
+  )
+}
+
+
+### 2 Flextables
+add2_flextable <- function(
+  name,
+  position
+) {
+  flextable::ph_with_flextable_at(
+    doc,
+    value = name,
+    left = dplyr::case_when(
+      position == 'top' ~ .5,
+      position == 'bottom' ~ .5,
+      position == 'left' ~ .5,
+      position == 'right' ~ 6.5
+    ),
+    top = dplyr::case_when(
+      position == 'top' ~ 2,
+      position == 'bottom' ~ 4.25,
+      position == 'left' ~ 2,
+      position == 'right' ~ 2
+    )
+  )
+}
 

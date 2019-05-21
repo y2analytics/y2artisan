@@ -8,7 +8,7 @@ add1s(text_boxes = T, slide_name = "Findings / 1 chart",
   master_name = "Office Theme")
 }
 \arguments{
-\item{text_boxes}{DEFAULT = T; Automatically adds title and commentary boxes to the blank slide. Set to F for no text boxes}
+\item{text_boxes}{DEFAULT = T; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
 \item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
 
