@@ -3,16 +3,18 @@
 #' Look at the frequencies of each word in an open end question
 #'
 #' Breaks down an open ended question on spaces, giving you the frequencies of each word mentioned
+#' @param dataset no default. Usually piped in from your main dataset
 #' @param variable The name of the openended variable from your dataset you want to look at
-#' @param dataset DEFAULT = responses
+#' @param top_x DEFAULT = 50; the top X most commongly mentioned words you want to see from the open-end
 #' @keywords openend open end frequencies freqs
 #' @export
 #' @examples
 #' frequencies <- openend(QOPEN_END)
 
 openend <- function(
+  dataset,
   variable,
-  dataset = responses
+  top_x = 50
 ) {
   flag <- dplyr::enquo(variable)
   frequencies <- dataset %>%
@@ -58,7 +60,7 @@ openend <- function(
       n %>% desc
     ) %>%
     dplyr::slice(
-      1:50
+      1:top_x
     ) %>%
     dplyr::mutate(
       total =  dataset %>%
@@ -148,7 +150,8 @@ wc_filter <- function(dataset){
         'THEM',
         'ABOUT',
         'THEY',
-        'WILL'
+        'WILL',
+        'BECAUSE'
       )
     )
 }

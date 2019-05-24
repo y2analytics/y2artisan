@@ -3,9 +3,9 @@
 #' Creates a word cloud from an open end question
 #'
 #' Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller and lighter in color
+#' @param dataset no default. Usually piped in from your main dataset
 #' @param variable The name of the openended variable from your dataset you want to look at
 #' @param colors DEFAULT = 'bluepurple'; 4 qualtrics colors as pre-made options: "bluepurple", "lime", "teal", "brightblue". May also specify a vector of 3 scaled colors ranging from lightest to darkest
-#' @param dataset DEFAULT = responses
 #' @keywords openend open end wordcloud word cloud
 #' @export
 #' @examples
@@ -14,9 +14,9 @@
 #' chart <- wordcloud(QOPEN_END, c('#FAEFF2', '#CC6078', '#6D0018'))
 
 wordcloud <- function(
+  dataset,
   variable,
-  colors = 'bluepurple',
-  dataset = responses
+  colors = 'bluepurple'
 ) {
   flag <- dplyr::enquo(variable)
   lows = dplyr::case_when(
@@ -40,7 +40,8 @@ wordcloud <- function(
     colors == 'brightblue' ~ '#0E5498',
     T ~ colors[3]
   )
-  wordcloud <- openend(!!flag, dataset)
+
+  wordcloud <- openend(dataset, !!flag)
   ggplot2::ggplot(
     wordcloud,
     ggplot2::aes(

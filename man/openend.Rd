@@ -4,12 +4,14 @@
 \alias{openend}
 \title{Look at the frequencies of each word in an open end question}
 \usage{
-openend(variable, dataset = responses)
+openend(dataset, variable, top_x = 50)
 }
 \arguments{
+\item{dataset}{no default. Usually piped in from your main dataset}
+
 \item{variable}{The name of the openended variable from your dataset you want to look at}
 
-\item{dataset}{DEFAULT = responses}
+\item{top_x}{DEFAULT = 50; the top X most commongly mentioned words you want to see from the open-end}
 }
 \description{
 Breaks down an open ended question on spaces, giving you the frequencies of each word mentioned

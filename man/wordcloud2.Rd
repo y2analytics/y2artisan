@@ -4,14 +4,14 @@
 \alias{wordcloud2}
 \title{Creates a word cloud from an open end question}
 \usage{
-wordcloud2(variable, colors = "#474E7E", dataset = responses)
+wordcloud2(dataset, variable, colors = "#474E7E")
 }
 \arguments{
+\item{dataset}{no default. Usually piped in from your main dataset}
+
 \item{variable}{The name of the openended variable from your dataset you want to look at}
 
 \item{colors}{DEFAULT = '#474E7E' (bluepurple from Qualtrics template). All words are the same color. Any color may be specified as a hexcode}
-
-\item{dataset}{DEFAULT = responses}
 }
 \description{
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller
