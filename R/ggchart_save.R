@@ -12,7 +12,11 @@
 #' ggchart_save('An easily saved chart')
 
 
-ggchart_save <- function(chartname, width = 11, height = 5.5){
+ggchart_save <- function(
+  chartname,
+  width = 11,
+  height = 5.5
+  ){
   ggplot2::ggsave(
     stringr::str_c(CHART_PATH, '/', chartname, '.png'),
     chart + y2_type,
