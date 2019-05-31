@@ -9,11 +9,13 @@ max_dif(data = frequencies, x_var = "label", y_var = "result",
   label_color = color_settings_grouped, label_show_values = T,
   label_position = "outEnd", label_num_fmt = "0\%",
   axis_num_fmt = "0\%\%", axis_y_label = "", axis_x_label = "",
-  axis_x_display = T, axis_y_min = NULL, axis_y_max = NULL,
-  axis_y_display = T, axis_text_size = 14, axis_title_size = 18,
-  title_label = "", title_size = 18, rotate = 0,
-  grouping = "standard", gap_width = 150, overlapping = 100,
-  direction = "horizontal", legend_text_size = 16, legend_pos = "n")
+  axis_x_display = T, axis_x_rotate = 0, axis_y_min = NULL,
+  axis_y_max = NULL, axis_y_display = T, axis_y_rotate = 0,
+  axis_text_size = 14, axis_title_size = 18,
+  axis_y_rotate_title = 360, axis_x_rotate_title = 0,
+  title_label = "", title_size = 18, grouping = "standard",
+  gap_width = 150, overlapping = 100, direction = "horizontal",
+  legend_text_size = 16, legend_pos = "n")
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
@@ -56,8 +58,6 @@ max_dif(data = frequencies, x_var = "label", y_var = "result",
 
 \item{title_size}{DEFAULT = 18}
 
-\item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
-
 \item{grouping}{DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 
 \item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself}
@@ -69,6 +69,8 @@ max_dif(data = frequencies, x_var = "label", y_var = "result",
 \item{legend_text_size}{DEFAULT = 16}
 
 \item{legend_pos}{DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', and 't' for top}
+
+\item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
 }
 \description{
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.

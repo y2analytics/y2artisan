@@ -7,27 +7,28 @@
 #' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = NULL; If you want the bars to be different colors, set group_var to the same variable as x_var. Then set overlap to 100.
+#' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param label_text DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
 #' @param label_color DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
 #' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
 #' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
-#' @param axis_x_label DEFAULT = ''; Title for the x_axis
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = NULL
 #' @param axis_y_display DEFAULT = T
+#' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
+#' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
-#' @param rotate DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.
-#' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param title_size DEFAULT = 18
 #' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
+#' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param overlapping DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
-#' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
-#' @param legend_text_size DEFAULT = 16
 #' @param legend_pos DEFAULT = 'n' for none. Other legend positions are 'b', 'tr', 'l', 'r', 't'.
+#' @param legend_text_size DEFAULT = 16
 #' @keywords chart
 #' @export
 #' @examples
@@ -53,16 +54,19 @@ bar_single <-  function(
   label_num_fmt = '0%',
   axis_num_fmt = '0%%',
   axis_x_label = '',
-  axis_y_label = '',
   axis_x_display = T,
+  axis_x_rotate = 0,
+  axis_y_label = '',
   axis_y_min = 0,
   axis_y_max = NULL,
   axis_y_display = T,
+  axis_y_rotate = 0,
   axis_text_size = 14,
   axis_title_size = 18,
+  axis_y_rotate_title = 360,
+  axis_x_rotate_title = 0,
   title_label = '',
   title_size = 18,
-  rotate = 0,
   grouping = 'standard',
   gap_width = 150,
   overlapping = -50,
@@ -102,7 +106,10 @@ bar_single <-  function(
       limit_max = axis_y_max
     ) %>%
     mschart::chart_ax_x(
-      rotation = rotate
+      rotation = axis_x_rotate
+    ) %>%
+    mschart::chart_ax_y(
+      rotation = axis_y_rotate
     ) %>%
     mschart::chart_labels(
       xlab = axis_x_label,
@@ -118,7 +125,9 @@ bar_single <-  function(
       axis_title_y = fp_text(font.size = axis_title_size),
       legend_text = fp_text(font.size = legend_text_size),
       grid_major_line_x = fp_border(width = 0),
-      grid_major_line_y = fp_border(width = 0)
+      grid_major_line_y = fp_border(width = 0),
+      title_y_rot = axis_y_rotate_title,
+      title_x_rot = axis_x_rotate_title
     ) %>%
     mschart::chart_ax_x(
       display = axis_x_display

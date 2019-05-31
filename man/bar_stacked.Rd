@@ -11,10 +11,11 @@ bar_stacked(data = frequencies, x_var = "group_var",
   label_show_percent = F, label_position = "outEnd",
   label_num_fmt = "0\%", axis_num_fmt = "0\%\%",
   axis_x_text_color = "black", axis_x_label = "", axis_x_display = T,
-  axis_y_label = "", axis_y_min = 0, axis_y_max = 1,
-  axis_y_display = F, axis_text_size = 14, axis_title_size = 18,
-  title_label = "", title_size = 18, rotate = 0,
-  rotate_axis_y_title = 360, grouping = "percentStacked",
+  axis_x_rotate = 0, axis_y_label = "", axis_y_min = 0,
+  axis_y_max = 1, axis_y_display = F, axis_y_rotate = 0,
+  axis_text_size = 14, axis_title_size = 18, title_label = "",
+  title_size = 18, axis_y_rotate_title = 360,
+  axis_x_rotate_title = 0, grouping = "percentStacked",
   gap_width = 150, overlapping = 100, direction = "horizontal",
   legend_text_size = 10, legend_pos = "t")
 }
@@ -43,15 +44,15 @@ bar_stacked(data = frequencies, x_var = "group_var",
 
 \item{axis_x_text_color}{DEFAULT = 'black'; Set to 'transparent' for no text on single bars}
 
-\item{axis_x_label}{DEFAULT = ''; Title for the x_axis}
-
 \item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
 
 \item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
-\item{axis_y_max}{DEFAULT = 1 to allow percent totals to add to 100%.}
+\item{axis_y_max}{DEFAULT = 1 to allow percent totals to add to 100\%.}
 
 \item{axis_y_display}{DEFAULT = F}
+
+\item{axis_y_rotate}{DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.}
 
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
@@ -59,7 +60,9 @@ bar_stacked(data = frequencies, x_var = "group_var",
 
 \item{title_label}{DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.}
 
-\item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
+\item{title_size}{DEFAULT = 18}
+
+\item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
 
 \item{grouping}{DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 

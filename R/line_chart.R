@@ -12,11 +12,12 @@
 #' @param label_position DEFAULT = 't'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
 #' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
 #' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
-#' @param axis_x_label DEFAULT = ''; Title for the x_axis
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = NULL
 #' @param axis_y_display DEFAULT = T
+#' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
+#' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
@@ -48,14 +49,17 @@ line_chart <- function(
   axis_x_display = T,
   axis_x_label = '',
   axis_y_label = '',
+  axis_x_rotate = 0,
   axis_y_min = 0,
   axis_y_max = NULL,
   axis_y_display = T,
+  axis_y_rotate = 0,
   axis_text_size = 14,
   axis_title_size = 18,
+  axis_y_rotate_title = 360,
+  axis_x_rotate_title = 0,
   title_label = '',
   title_size = 18,
-  rotate = 0,
   legend_text_size = 16,
   legend_pos = 'n'
 ){
@@ -98,13 +102,21 @@ line_chart <- function(
       axis_title_y = fp_text(font.size = axis_title_size),
       legend_text = fp_text(font.size = legend_text_size),
       grid_major_line_x = fp_border(width = 0),
-      grid_major_line_y = fp_border(width = 0)
+      grid_major_line_y = fp_border(width = 0),
+      title_y_rot = axis_y_rotate_title,
+      title_x_rot = axis_x_rotate_title
     ) %>%
     mschart::chart_ax_x(
       display = axis_x_display
     )  %>%
     mschart::chart_ax_y(
       display = axis_y_display
+    ) %>%
+  mschart::chart_ax_x(
+      rotation = axis_x_rotate
+    ) %>%
+    mschart::chart_ax_y(
+      rotation = axis_y_rotate
     )
 }
 

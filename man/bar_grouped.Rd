@@ -9,11 +9,13 @@ bar_grouped(data = frequencies, x_var = "label", y_var = "result",
   label_color = color_settings_grouped, label_show_values = T,
   label_position = "outEnd", label_num_fmt = "0\%",
   axis_num_fmt = "0\%\%", axis_y_label = "", axis_x_label = "",
-  axis_x_display = T, axis_y_min = 0, axis_y_max = NULL,
-  axis_y_display = T, axis_text_size = 14, axis_title_size = 18,
-  title_label = "", title_size = 18, rotate = 0,
-  grouping = "standard", gap_width = 150, overlapping = -50,
-  direction = "vertical", legend_text_size = 16, legend_pos = "t")
+  axis_x_display = T, axis_x_rotate = 0, axis_y_min = 0,
+  axis_y_max = NULL, axis_y_display = T, axis_y_rotate = 0,
+  axis_text_size = 14, axis_title_size = 18,
+  axis_y_rotate_title = 360, axis_x_rotate_title = 0,
+  title_label = "", title_size = 18, grouping = "standard",
+  gap_width = 150, overlapping = -50, direction = "vertical",
+  legend_text_size = 16, legend_pos = "t")
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
@@ -38,25 +40,23 @@ bar_grouped(data = frequencies, x_var = "label", y_var = "result",
 
 \item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
 
-\item{axis_x_label}{DEFAULT = ''; Title for the x_axis}
-
-\item{axis_x_display}{DEFAULT = T}
-
 \item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{axis_y_max}{DEFAULT = NULL}
 
 \item{axis_y_display}{DEFAULT = T}
 
+\item{axis_y_rotate}{DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.}
+
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
+\item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
+
 \item{title_label}{DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.}
 
 \item{title_size}{DEFAULT = 18}
-
-\item{rotate}{DEFAULT = 0; Rotation of x_axis text. Set to -45 for diagonal, giving more space for text.}
 
 \item{grouping}{DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 

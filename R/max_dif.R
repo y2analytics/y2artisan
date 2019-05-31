@@ -56,14 +56,17 @@ max_dif <-  function(
   axis_y_label = '',
   axis_x_label = '',
   axis_x_display = T,
+  axis_x_rotate = 0,
   axis_y_min = NULL,
   axis_y_max = NULL,
   axis_y_display = T,
+  axis_y_rotate = 0,
   axis_text_size = 14,
   axis_title_size = 18,
+  axis_y_rotate_title = 360,
+  axis_x_rotate_title = 0,
   title_label = '',
   title_size = 18,
-  rotate = 0,
   grouping = 'standard',
   gap_width = 150,
   overlapping = 100,
@@ -119,12 +122,20 @@ max_dif <-  function(
       axis_title_y = fp_text(font.size = axis_title_size),
       legend_text = fp_text(font.size = legend_text_size),
       grid_major_line_x = fp_border(width = 0),
-      grid_major_line_y = fp_border(width = 0)
+      grid_major_line_y = fp_border(width = 0),
+      title_y_rot = axis_y_rotate_title,
+      title_x_rot = axis_x_rotate_title
     ) %>%
     mschart::chart_ax_x(
       display = axis_x_display
     )  %>%
     mschart::chart_ax_y(
       display = axis_y_display
+    ) %>%
+    mschart::chart_ax_x(
+      rotation = axis_x_rotate
+    ) %>%
+    mschart::chart_ax_y(
+      rotation = axis_y_rotate
     )
 }
