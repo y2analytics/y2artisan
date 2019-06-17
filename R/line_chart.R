@@ -22,14 +22,14 @@
 #' @param label_text DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
 #' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', 't'.
 #' @param legend_text_size DEFAULT = 14
-#' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
+#' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart
 #' @export
 #' @examples
-#' my_ms_chart <- line()
+#' my_ms_chart <- line_chart()
 #' OR
-#' my_ms_chart <- line(
+#' my_ms_chart <- line_chart(
 #'   x_var = 'month',
 #'   group_var = 'brand,
 #'   title_label  = 'Title of my chart',

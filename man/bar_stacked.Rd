@@ -22,7 +22,7 @@ bar_stacked(data = frequencies, x_var = "group_var",
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
 
-\item{x_var}{DEFAULT = 'group_var'; For a single stacked bar, use}
+\item{x_var}{DEFAULT = 'group_var'; For a single stacked bar, use x_var = 'variable' or 'stat', really anything that will only have 1 level.}
 
 \item{y_var}{DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).}
 
@@ -36,7 +36,7 @@ bar_stacked(data = frequencies, x_var = "group_var",
 
 \item{axis_x_text_color}{DEFAULT = 'black'; Set to 'transparent' for no text on single bars}
 
-\item{axis_y_display}{DEFAULT = F}
+\item{axis_y_display}{DEFAULT = F; set axis_x_display to F when it is a single stacked bar}
 
 \item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
 
@@ -72,7 +72,7 @@ bar_stacked(data = frequencies, x_var = "group_var",
 
 \item{overlapping}{DEFAULT = 100}
 
-\item{title_label}{DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.}
+\item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 
 \item{title_size}{DEFAULT = 18}
 }

@@ -4,14 +4,14 @@
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 #' @param data DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.
-#' @param x_var DEFAULT = 'group_var'; For a single stacked bar, use
+#' @param x_var DEFAULT = 'group_var'; For a single stacked bar, use x_var = 'variable' or 'stat', really anything that will only have 1 level.
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
 #' @param axis_num_fmt DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_text_color DEFAULT = 'black'; Set to 'transparent' for no text on single bars
-#' @param axis_y_display DEFAULT = F
+#' @param axis_y_display DEFAULT = F; set axis_x_display to F when it is a single stacked bar
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
@@ -29,7 +29,7 @@
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
 #' @param legend_text_size DEFAULT = 10
 #' @param overlapping DEFAULT = 100
-#' @param title_label DEFAULT = '; Add the question wording from the survey in "" as the title of the chart.
+#' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart stacked
 #' @export

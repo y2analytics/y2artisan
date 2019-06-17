@@ -27,7 +27,7 @@
 #' @param legend_pos DEFAULT = 'n' for none. Other legend positions are 'b', 'tr', 'l', 'r', 't'.
 #' @param legend_text_size DEFAULT = 16
 #' @param overlapping DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
-#' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
+#' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart bar single
 #' @export

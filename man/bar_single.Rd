@@ -66,7 +66,7 @@ bar_single(data = frequencies, x_var = "label", y_var = "result",
 
 \item{overlapping}{DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.}
 
-\item{title_label}{DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.}
+\item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 
 \item{title_size}{DEFAULT = 18}
 }

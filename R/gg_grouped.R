@@ -1,21 +1,21 @@
-#### gg_single ####
+#### gg_grouped ####
 ### Description
-#' Create an ungrouped ggplot object
+#' Create a grouped ggplot object
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 #' @param data DEFAULT = frequencies;The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = label; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
-#' @param color_var DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color.
+#' @param color_var DEFAULT = group_var
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param fills DEFAULT = rep('#474E7E', count(data)); the hexcode is the bluepurple color from the Qualtrics logo. This short function will give all the bars the same color. If colors are changed here in conjunction with the color_var, you can more easily manipulate colors based on another variable.
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts
-#' @param label_size DEFAULT = 10
-#' @param legend_pos DEFAULT = 'none'
+#' @param label_size DEFAULT = 6
+#' @param legend_pos DEFAULT = 'top'
 #' @param legend_text_size DEFAULT = 6
 #' @param legend_title DEFAULT = element_blank()
 #' @param nudge DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
@@ -28,28 +28,25 @@
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
-#' chart <- gg_single()
-#'
-#' chart <- gg_single(
-#'   direction = 'horizontal',
-#'   color_var = colors,
-#'   fills = c('green', 'red')
+#' chart <- gg_grouped(
+#'   fills = c('red', 'blue'),
+#'   title_label = 'Important results'
 #' )
 
-gg_single <- function(
+gg_grouped <- function(
   data = frequencies,
   x_var = label,
   y_var = result,
   label_var = percent_label,
-  color_var = label,
+  color_var = group_var,
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
   direction = 'vertical',
-  fills = rep('#474E7E', count(data)),
+  fills, #only variable with no default...
   label_length = 45,
-  label_size = 10,
-  legend_pos = 'none',
+  label_size = 6,
+  legend_pos = 'top',
   legend_rev = FALSE,
   legend_text_size = 6,
   legend_title = element_blank(),
@@ -65,7 +62,7 @@ gg_single <- function(
   #Flags
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
-  color_flag <- dplyr::enquo(color_var)
+  color_flag <- dplyr::enquo(color_var) #AKA group_var
   label_flag <- dplyr::enquo(label_var)
   max_y_val <- max(data$result)
   max_str_length <- data %>% select(!!x_flag) %>% as_vector() %>% str_length() %>% max()
@@ -76,10 +73,15 @@ gg_single <- function(
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
     T ~  (max_y_val + max_y_val/10) #direction == 'vertical'
   )
-  nudge <- dplyr::case_when(
+  nudge_y <- dplyr::case_when(
+    direction == 'horizontal' ~ 0.5,
     nudge != 0 ~ nudge,
-    direction == 'horizontal' ~ (max_y_val/20 + str_add),
-    direction == 'vertical' ~ (max_y_val/16)
+    direction == 'vertical' ~ (max_y_val/2) *-1
+  )
+  nudge_x <- dplyr::case_when(
+    direction == 'vertical' ~ 0.5,
+    nudge != 0 ~ nudge,
+    direction == 'horizontal' ~ (max_y_val/2 + str_add) *-1
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
@@ -93,7 +95,8 @@ gg_single <- function(
     data,
     ggplot2::aes(
       x = !!x_flag,
-      y = !!y_flag
+      y = !!y_flag,
+      fill = !!color_flag
     )
   ) +
     ggplot2::geom_bar(
@@ -101,16 +104,20 @@ gg_single <- function(
         fill = !!color_flag
       ),
       stat = 'identity',
+      position = position_dodge(width = 0.9),
       width = bar_width
     ) +
     ggplot2::geom_text(
       ggplot2::aes(
         label = !!label_flag,
         color = !!color_flag
-        ),
+      ),
       family = text_family,
       size = label_size,
-      nudge_y = nudge
+      #nudge_y = nudge, # grr, doesn't work with position argument. Have to do v/hjust instead
+      position = position_dodge(width = 0.9),
+      hjust = nudge_x,
+      vjust = nudge_y
     ) +
     ggplot2::theme_minimal() +
     ggplot2::scale_fill_manual(

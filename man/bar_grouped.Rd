@@ -66,7 +66,7 @@ bar_grouped(data = frequencies, x_var = "label", y_var = "result",
 
 \item{legend_text_size}{DEFAULT = 16}
 
-\item{title_label}{DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.}
+\item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 
 \item{title_size}{DEFAULT = 18}
 }

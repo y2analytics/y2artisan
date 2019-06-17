@@ -66,12 +66,20 @@ max_dif(data = frequencies, x_var = "label", y_var = "result",
 
 \item{overlapping}{DEFAULT = 100 This leaves 0\% extra space between variable group levels}
 
-\item{title_label}{DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.}
+\item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 
 \item{title_size}{DEFAULT = 18}
 }
 \description{
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+}
+\examples{
+my_ms_chart <- max_dif()
+OR
+my_ms_chart <- max_dif(
+  title_label  = 'Important results',
+  group_var = 'district'
+)
 }
 \keyword{chart}
 \keyword{grouped}

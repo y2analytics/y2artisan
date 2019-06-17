@@ -27,18 +27,16 @@
 #' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', and 't' for top
 #' @param legend_text_size DEFAULT = 16
 #' @param overlapping DEFAULT = 100 This leaves 0\% extra space between variable group levels
-#' @param title_label DEFAULT = ''; Add the question wording from the survey in "" as the title of the chart.
+#' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart grouped
 #' @export
 #' @examples
-#' my_ms_chart <- bar_grouped()
+#' my_ms_chart <- max_dif()
 #' OR
-#' my_ms_chart <- bar_grouped(
-#'   rotate = -45,
-#'   title_label  = 'Add the question wording from the survey here?',
-#'   group_var = 'district',
-#'   direction = 'horizontal
+#' my_ms_chart <- max_dif(
+#'   title_label  = 'Important results',
+#'   group_var = 'district'
 #' )
 
 max_dif <-  function(
