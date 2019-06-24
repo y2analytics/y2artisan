@@ -18,7 +18,7 @@
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = 1 to allow percent totals to add to 100\%.
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
-#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
+#' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
 #' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
@@ -35,9 +35,10 @@
 #' @export
 #' @examples
 #' my_ms_chart <- bar_stacked()
-#' OR for single stacked bar:
+#'
+#' OR for a single stacked bar:
 #' my_ms_chart <- bar_stacked(
-#'   title_label  = 'Add the question wording from the survey here?',
+#'   title_label  = 'Add chart title here',
 #'   axis_x_text_color = 'transparent',
 #'   x_var = 'variable'
 #' )
@@ -62,7 +63,7 @@ bar_stacked <- function(
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
   direction = 'horizontal',
-  gap_width = 150,
+  gap_width = 25,
   grouping = 'percentStacked',
   label_color = color_settings_stacked,
   label_num_fmt = '0%',

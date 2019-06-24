@@ -17,7 +17,7 @@
 #' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
-#' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
+#' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = 'color_settings_grouped'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
 #' @param label_num_fmt DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.
@@ -36,7 +36,7 @@
 #' OR
 #' my_ms_chart <- bar_grouped(
 #'   rotate = -45,
-#'   title_label  = 'Add the question wording from the survey here?',
+#'   title_label  = 'Add chart title here',
 #'   group_var = 'district',
 #'   direction = 'horizontal
 #' )
@@ -60,7 +60,7 @@ bar_grouped <-  function(
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
   direction = 'vertical',
-  gap_width = 150,
+  gap_width = 25,
   grouping = 'standard',
   label_color = color_settings_grouped,
   label_num_fmt = '0%',
