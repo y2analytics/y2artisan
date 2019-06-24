@@ -9,7 +9,7 @@ bar_single(data = frequencies, x_var = "label", y_var = "result",
   axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
   axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
   axis_y_min = 0, axis_y_max = NULL, axis_y_rotate = 0,
-  axis_y_rotate_title = 360, direction = "vertical", gap_width = 150,
+  axis_y_rotate_title = 360, direction = "vertical", gap_width = 25,
   grouping = "standard", group_var = NULL,
   label_color = color_settings, label_num_fmt = "0\%",
   label_position = "outEnd", label_show_values = T,
@@ -44,7 +44,7 @@ bar_single(data = frequencies, x_var = "label", y_var = "result",
 
 \item{direction}{DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"}
 
-\item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself}
+\item{gap_width}{DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself}
 
 \item{grouping}{DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 
@@ -78,7 +78,7 @@ my_ms_chart <- bar_single()
 OR
 my_ms_chart <- bar_single(
   rotate = -45,
-  title_label  = 'Add the question wording from the survey here?',
+  title_label  = 'Add chart title here',
   group_var = 'label',
   overlap = 100
 )
