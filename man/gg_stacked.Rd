@@ -6,12 +6,12 @@
 \usage{
 gg_stacked(data = frequencies, x_var = group_var, y_var = result,
   label_var = percent_label, color_var = label, axis_display = T,
-  axis_text_size = 12, axis_title_size = 14, bar_width = 0.75, fills,
-  colors = "0", label_length = 45, label_size = 8,
-  legend_pos = "top", legend_rev = FALSE, legend_text_size = 6,
-  legend_title = element_blank(), text_family = "flama",
-  title_label = "", title_size = 14, x_label = "", y_label = "",
-  y_min = 0)
+  axis_text_size = 12, axis_title_size = 14, bar_width = 0.75,
+  erase_labels = 0.01, fills, colors = "0", label_length = 45,
+  label_size = 8, legend_pos = "top", legend_rev = FALSE,
+  legend_text_size = 6, legend_title = element_blank(),
+  text_family = "flama", title_label = "", title_size = 14,
+  x_label = "", y_label = "", y_min = 0)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies;The name of the data frame that ggplot pulls from.}
@@ -31,6 +31,8 @@ gg_stacked(data = frequencies, x_var = group_var, y_var = result,
 \item{axis_title_size}{DEFAULT = 14; Font size for x_label and y_label.}
 
 \item{bar_width}{DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it}
+
+\item{erase_labels}{DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used}
 
 \item{fills}{NO DEFAULT; requires a vector of colors for all levels of the color_var}
 

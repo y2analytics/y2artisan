@@ -12,6 +12,7 @@
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
+#' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; make custom by inputting a vector of colors for all levels of the color_var
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts
@@ -49,6 +50,7 @@ gg_stacked <- function(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
+  erase_labels = .01,
   fills, #only argument with no default
   colors = '0',
   label_length = 45,
@@ -100,7 +102,13 @@ gg_stacked <- function(
       width = bar_width
     ) +
     ggplot2::geom_text(
-      data = data %>% filter(result > 0),
+      data = data %>% dplyr::mutate(
+        percent_label = !!label_flag,
+        percent_label = dplyr::case_when(
+          result <= erase_labels ~ '',
+          T ~ percent_label
+        )
+        ),
       ggplot2::aes(
         label = !!label_flag,
         color = !!color_flag
