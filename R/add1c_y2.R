@@ -11,12 +11,12 @@
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- add1c(my_ms_chart)
+#' doc <- add1c_y2(my_ms_chart)
 #' OR
-#' add1c(my_ms_chart, slide_name = "1_Blank", master = "Custom Design")
+#' add1c_y2(my_ms_chart, slide_name = "1_Blank", master = "Custom Design")
 
 ### Function
-add1c <- function(
+add1c_y2 <- function(
   name,
   add_slide = T,
   text_boxes = T,
@@ -28,7 +28,7 @@ add1c <- function(
   width = 12
 ) {
   if(add_slide == T) {
-    doc <- add1s(text_boxes, slide_name, master_name)
+    doc <- add1s_y2(text_boxes, slide_name, master_name)
   } else {
     doc <- doc
   }

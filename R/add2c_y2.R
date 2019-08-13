@@ -10,19 +10,19 @@
 #' @export
 #' @examples
 #' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add2c(chart_name, 'left')
-#' doc <- add2c(chart_name, 'right')
+#' doc <- add2c_y2(chart_name, 'left')
+#' doc <- add2c_y2(chart_name, 'right')
 #' OR
 #' #' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add2c(chart_name, 'left', label_first_only = T)
-#' doc <- add2c(chart_name, 'right', T)
+#' doc <- add2c_y2(chart_name, 'left', label_first_only = T)
+#' doc <- add2c_y2(chart_name, 'right', T)
 #' OR
 #' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add2c(chart_name, 'top')
-#' doc <- add2c(chart_name, 'bottom')
+#' doc <- add2c_y2(chart_name, 'top')
+#' doc <- add2c_y2(chart_name, 'bottom')
 
 ### Function
-add2c <- function(
+add2c_y2 <- function(
   name,
   position,
   label_first_only = F

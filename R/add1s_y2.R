@@ -10,10 +10,10 @@
 #' @keywords powerpoint slide
 #' @export
 #' @examples
-#' doc <- add1s()
+#' doc <- add1s_y2()
 
 
-add1s <- function(
+add1s_y2 <- function(
   text_boxes = T,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme"
