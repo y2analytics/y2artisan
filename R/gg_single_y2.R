@@ -3,18 +3,18 @@
 #' Create an ungrouped ggplot object
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
-#' @param data DEFAULT = frequencies;The name of the data frame that ggplot pulls from.
+#' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = label; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
 #' @param color_var DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color. Note: the color variable CANNOT be numeric.
-#' @param axis_text_size DEFAULT = 12; Font size for variable levels and percentages.
+#' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param fills DEFAULT = rep('#474E7E', count(data)); the hexcode is the bluepurple color from the Qualtrics logo. This short function will give all the bars the same color. If colors are changed here in conjunction with the color_var, you can more easily manipulate colors based on another variable.
-#' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts
-#' @param label_size DEFAULT = 10
+#' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
+#' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
 #' @param legend_text_size DEFAULT = 6
 #' @param legend_title_size DEFAULT = 8

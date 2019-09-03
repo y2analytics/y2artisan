@@ -15,7 +15,7 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
   y_max = 0)
 }
 \arguments{
-\item{data}{DEFAULT = frequencies;The name of the data frame that ggplot pulls from.}
+\item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
 
 \item{x_var}{DEFAULT = label; When using the freqs function, will typically be label (is by default).}
 
@@ -25,7 +25,7 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 
 \item{color_var}{DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color. Note: the color variable CANNOT be numeric.}
 
-\item{axis_text_size}{DEFAULT = 12; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 12; Font size for variable levels and axis percentages.}
 
 \item{axis_title_size}{DEFAULT = 14; Font size for x_label and y_label.}
 
@@ -35,9 +35,9 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 
 \item{fills}{DEFAULT = rep('#474E7E', count(data)); the hexcode is the bluepurple color from the Qualtrics logo. This short function will give all the bars the same color. If colors are changed here in conjunction with the color_var, you can more easily manipulate colors based on another variable.}
 
-\item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts}
+\item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 
-\item{label_size}{DEFAULT = 10}
+\item{label_size}{DEFAULT = 10. Adjusts the size of the percent labels over each bar.}
 
 \item{legend_pos}{DEFAULT = 'none'}
 

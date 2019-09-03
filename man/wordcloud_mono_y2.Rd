@@ -4,7 +4,8 @@
 \alias{wordcloud_mono_y2}
 \title{Creates a word cloud from an open end question}
 \usage{
-wordcloud_mono_y2(dataset, variable, colors = "#474E7E")
+wordcloud_mono_y2(dataset, variable, colors = "#474E7E", top_x = 50,
+  min_size = 1, max_size = 12)
 }
 \arguments{
 \item{dataset}{no default. Usually piped in from your main dataset}
@@ -12,6 +13,12 @@ wordcloud_mono_y2(dataset, variable, colors = "#474E7E")
 \item{variable}{The name of the openended variable from your dataset you want to look at}
 
 \item{colors}{DEFAULT = '#474E7E' (bluepurple from Qualtrics template). All words are the same color. Any color may be specified as a hexcode}
+
+\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
+
+\item{min_size}{DEFAULT = 1; the smallest text size for the word with the lowest frequency}
+
+\item{max_size}{DEFAULT = 12; the largest text size for the word with the highest frequency#' @keywords openend open end wordcloud word cloud}
 }
 \description{
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller
@@ -20,9 +27,3 @@ Finds the frequencies of each word in an open end question and creates a word cl
 chart <- wordcloud(QOPEN_END)
 chart <- wordcloud(QOPEN_END, '#FAEFF2')
 }
-\keyword{cloud}
-\keyword{end}
-\keyword{open}
-\keyword{openend}
-\keyword{word}
-\keyword{wordcloud}

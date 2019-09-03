@@ -14,7 +14,7 @@ gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
   x_label = "", y_label = "", y_min = 0)
 }
 \arguments{
-\item{data}{DEFAULT = frequencies;The name of the data frame that ggplot pulls from.}
+\item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
 
 \item{x_var}{DEFAULT = group_var; When doing a single stacked bar, set x_var to variable or any variable that has a only one level}
 
@@ -26,7 +26,7 @@ gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
 
 \item{axis_display}{DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels}
 
-\item{axis_text_size}{DEFAULT = 12; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 12; Font size for variable levels and axis percentages.}
 
 \item{axis_title_size}{DEFAULT = 14; Font size for x_label and y_label.}
 
@@ -38,9 +38,9 @@ gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
 
 \item{colors}{DEFAULT is white ('#ffffff') for the text of all percent labels; make custom by inputting a vector of colors for all levels of the color_var}
 
-\item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts}
+\item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 
-\item{label_size}{DEFAULT = 8}
+\item{label_size}{DEFAULT = 8. Adjusts the size of the percent labels within each bar.}
 
 \item{legend_pos}{DEFAULT = 'top'}
 

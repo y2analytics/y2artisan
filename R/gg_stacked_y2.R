@@ -3,20 +3,20 @@
 #' Create a grouped ggplot object
 #'
 #' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
-#' @param data DEFAULT = frequencies;The name of the data frame that ggplot pulls from.
+#' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = group_var; When doing a single stacked bar, set x_var to variable or any variable that has a only one level
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
 #' @param color_var DEFAULT = label. Note: the color variable CANNOT be numeric.
 #' @param axis_display DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels
-#' @param axis_text_size DEFAULT = 12; Font size for variable levels and percentages.
+#' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; make custom by inputting a vector of colors for all levels of the color_var
-#' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts
-#' @param label_size DEFAULT = 8
+#' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
+#' @param label_size DEFAULT = 8. Adjusts the size of the percent labels within each bar.
 #' @param legend_pos DEFAULT = 'top'
 #' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 6

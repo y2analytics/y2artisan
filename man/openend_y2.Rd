@@ -11,7 +11,7 @@ openend_y2(dataset, variable, top_x = 50)
 
 \item{variable}{The name of the openended variable from your dataset you want to look at}
 
-\item{top_x}{DEFAULT = 50; the top X most commongly mentioned words you want to see from the open-end}
+\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
 }
 \description{
 Breaks down an open ended question on spaces, giving you the frequencies of each word mentioned

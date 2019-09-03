@@ -6,6 +6,9 @@
 #' @param dataset no default. Usually piped in from your main dataset
 #' @param variable The name of the openended variable from your dataset you want to look at
 #' @param colors DEFAULT = 'bluepurple'; 4 qualtrics colors as pre-made options: "bluepurple", "lime", "teal", "brightblue". May also specify a vector of 3 scaled colors ranging from lightest to darkest
+#' @param top_x DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end
+#' @param min_size DEFAULT = 1; the smallest text size for the word with the lowest frequency
+#' @param max_size DEFAULT = 12; the largest text size for the word with the highest frequency
 #' @keywords openend open end wordcloud word cloud
 #' @export
 #' @examples
@@ -44,7 +47,7 @@ wordcloud_y2 <- function(
     T ~ colors[3]
   )
 
-  wordcloud_y2 <- openend_y2(dataset, !!flag, top_x)
+  chart <- openend_y2(dataset, !!flag, top_x)
   ggplot2::ggplot(
     wordcloud_y2,
     ggplot2::aes(

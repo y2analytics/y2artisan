@@ -13,6 +13,12 @@ wordcloud_y2(dataset, variable, colors = "bluepurple", top_x = 50,
 \item{variable}{The name of the openended variable from your dataset you want to look at}
 
 \item{colors}{DEFAULT = 'bluepurple'; 4 qualtrics colors as pre-made options: "bluepurple", "lime", "teal", "brightblue". May also specify a vector of 3 scaled colors ranging from lightest to darkest}
+
+\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
+
+\item{min_size}{DEFAULT = 1; the smallest text size for the word with the lowest frequency}
+
+\item{max_size}{DEFAULT = 12; the largest text size for the word with the highest frequency}
 }
 \description{
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller and lighter in color

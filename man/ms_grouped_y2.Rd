@@ -10,10 +10,10 @@ ms_grouped_y2(data = frequencies, x_var = "label", y_var = "result",
   axis_x_label = "", axis_x_rotate = 0, axis_x_rotate_title = 0,
   axis_y_display = T, axis_y_label = "", axis_y_min = 0,
   axis_y_max = NULL, axis_y_rotate = 0, axis_y_rotate_title = 360,
-  direction = "vertical", gap_width = 25, grouping = "standard",
+  direction = "vertical", gap_width = 75, grouping = "standard",
   label_color = color_settings_grouped, label_num_fmt = "0\%",
   label_position = "outEnd", label_show_values = T,
-  label_text = text_settings_grouped, overlapping = -50,
+  label_text = text_settings_grouped, overlapping = -25,
   legend_pos = "t", legend_text_size = 16, title_label = "",
   title_size = 18)
 }

@@ -5,7 +5,7 @@
 #' Breaks down an open ended question on spaces, giving you the frequencies of each word mentioned
 #' @param dataset no default. Usually piped in from your main dataset
 #' @param variable The name of the openended variable from your dataset you want to look at
-#' @param top_x DEFAULT = 50; the top X most commongly mentioned words you want to see from the open-end
+#' @param top_x DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end
 #' @keywords openend open end frequencies freqs
 #' @export
 #' @examples

@@ -1,9 +1,9 @@
 Package: y2artisan
 Type: Package
-Title: Wrapper for mscharts
-Version: 0.1.1
+Title: Shortcuts for mschart and ggplot2
+Version: 0.1.2
 Authors@R: person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre"))
-Description: Creates mschart objects in one line of code. Also imports these charts and tables into PowerPoint slides. 
+Description: Creates mschart objects in one line of code and imports these charts and tables into PowerPoint slides. Also incorporates shortcuts for ggplot2 functions.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
