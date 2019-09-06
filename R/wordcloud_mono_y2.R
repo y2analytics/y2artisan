@@ -22,10 +22,10 @@ wordcloud_mono_y2 <- function(
   min_size = 1,
   max_size = 12
 ) {
-  flag <- dplyr::enquo(variable)
-  chart <- openend_y2(dataset, !!flag, top_x)
-  ggplot2::ggplot(
-    wordcloud,
+  flag_var <- dplyr::enquo(variable)
+  frequencies <- openend_y2(dataset, !!flag_var, top_x)
+  chart <- ggplot2::ggplot(
+    frequencies,
     ggplot2::aes(
       x = 1,
       y = 1,

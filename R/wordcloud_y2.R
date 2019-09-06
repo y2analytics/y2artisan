@@ -24,7 +24,7 @@ wordcloud_y2 <- function(
   min_size = 1,
   max_size = 12
 ) {
-  flag <- dplyr::enquo(variable)
+  flag_var <- dplyr::enquo(variable)
   lows = dplyr::case_when(
     colors == 'bluepurple' ~ '#EEEEF3',
     colors == 'lime' ~ '#F6FBEB',
@@ -47,9 +47,9 @@ wordcloud_y2 <- function(
     T ~ colors[3]
   )
 
-  chart <- openend_y2(dataset, !!flag, top_x)
-  ggplot2::ggplot(
-    wordcloud_y2,
+  frequencies <- openend_y2(dataset, !!flag_var, top_x)
+  chart <- ggplot2::ggplot(
+    frequencies,
     ggplot2::aes(
       x = 1,
       y = 1,
