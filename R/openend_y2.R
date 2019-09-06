@@ -76,6 +76,8 @@ openend_y2 <- function(
     dplyr::select(
       - total
     )
+
+  return(frequencies)
 }
 
 #### wc_filter ####
