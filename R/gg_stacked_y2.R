@@ -73,9 +73,7 @@ gg_stacked_y2 <- function(
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #probs label
   label_flag <- dplyr::enquo(label_var)
-  max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
   max_lab <- data %>% dplyr::select(!!color_flag) %>% dplyr::distinct() %>% purrr::as_vector() %>% length()
-
   colors = dplyr::case_when(
     colors == '0' ~ c(rep('#ffffff', max_lab)),
     T ~ colors
