@@ -5,19 +5,18 @@
 \title{Create a groupedbar mschart object}
 \usage{
 ms_stacked_y2(data = frequencies, x_var = "group_var",
-  y_var = "result", group_var = "label", axis_num_fmt = "0\%\%",
-  axis_text_size = 14, axis_title_size = 18,
-  axis_x_text_color = "black", axis_x_display = T, axis_x_label = "",
-  axis_x_rotate = 0, axis_x_rotate_title = 0, axis_y_display = F,
-  axis_y_label = "", axis_y_min = 0, axis_y_max = 1,
-  axis_y_rotate = 0, axis_y_rotate_title = 360,
-  direction = "horizontal", gap_width = 25,
-  grouping = "percentStacked", label_color = color_settings_stacked,
-  label_num_fmt = "0\%", label_position = "outEnd",
+  y_var = "result", group_var = "label", axis_text_size = 14,
+  axis_title_size = 18, axis_x_text_color = "black",
+  axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
+  axis_x_rotate_title = 0, axis_y_display = F, axis_y_label = "",
+  axis_y_min = 0, axis_y_max = 1, axis_y_rotate = 0,
+  axis_y_rotate_title = 360, direction = "horizontal",
+  gap_width = 25, grouping = "percentStacked", font_family = "Arial",
+  label_color = color_settings_stacked, label_position = "outEnd",
   label_show_percent = F, label_show_values = T,
   label_text = text_settings_stacked, legend_pos = "t",
-  legend_text_size = 10, overlapping = 100, title_label = "",
-  title_size = 18)
+  legend_text_size = 10, num_fmt = "percent", overlapping = 100,
+  title_label = "", title_size = 18)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
@@ -27,8 +26,6 @@ ms_stacked_y2(data = frequencies, x_var = "group_var",
 \item{y_var}{DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).}
 
 \item{group_var}{DEFAULT = 'label'; When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.}
-
-\item{axis_num_fmt}{DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".}
 
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
@@ -54,9 +51,9 @@ ms_stacked_y2(data = frequencies, x_var = "group_var",
 
 \item{grouping}{DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 
-\item{label_color}{DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
+\item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
 
-\item{label_num_fmt}{DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.}
+\item{label_color}{DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
 
 \item{label_position}{DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
 
@@ -69,6 +66,8 @@ ms_stacked_y2(data = frequencies, x_var = "group_var",
 \item{legend_pos}{DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
 
 \item{legend_text_size}{DEFAULT = 10}
+
+\item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 
 \item{overlapping}{DEFAULT = 100}
 

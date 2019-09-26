@@ -5,15 +5,15 @@
 \title{Create an ugrouped mschart object}
 \usage{
 ms_line_y2(data = frequencies, x_var = "year", y_var = "result",
-  group_var = "label", axis_num_fmt = "0\%\%", axis_text_size = 14,
-  axis_title_size = 18, axis_x_display = T, axis_x_label = "",
-  axis_x_rotate = 0, axis_x_rotate_title = 0, axis_y_display = T,
-  axis_y_label = "", axis_y_min = 0, axis_y_max = NULL,
-  axis_y_rotate = 0, axis_y_rotate_title = 360,
-  label_color = color_settings, label_num_fmt = "0\%",
-  label_position = "t", label_show_values = T,
-  label_text = text_settings, legend_pos = "n",
-  legend_text_size = 16, title_label = "", title_size = 18)
+  group_var = "label", axis_text_size = 14, axis_title_size = 18,
+  axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
+  axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
+  axis_y_min = 0, axis_y_max = NULL, axis_y_rotate = 0,
+  axis_y_rotate_title = 360, font_family = "Arial",
+  label_color = color_settings, label_position = "t",
+  label_show_values = T, label_text = text_settings,
+  legend_pos = "n", legend_text_size = 16, num_fmt = "percent",
+  title_label = "", title_size = 18)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.}
@@ -23,8 +23,6 @@ ms_line_y2(data = frequencies, x_var = "year", y_var = "result",
 \item{y_var}{DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).}
 
 \item{group_var}{DEFAULT = 'label'; Each line will be a distinct value of this variable}
-
-\item{axis_num_fmt}{DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".}
 
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
@@ -42,9 +40,9 @@ ms_line_y2(data = frequencies, x_var = "year", y_var = "result",
 
 \item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
 
-\item{label_color}{DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list('District 1' = lime, 'District 2' = bluepurple)}
+\item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
 
-\item{label_num_fmt}{DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.}
+\item{label_color}{DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list('District 1' = lime, 'District 2' = bluepurple)}
 
 \item{label_position}{DEFAULT = 't'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
 
@@ -55,6 +53,8 @@ ms_line_y2(data = frequencies, x_var = "year", y_var = "result",
 \item{legend_pos}{DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', 't'.}
 
 \item{legend_text_size}{DEFAULT = 14}
+
+\item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 

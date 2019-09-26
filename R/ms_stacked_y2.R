@@ -17,6 +17,7 @@
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = 1 to allow percent totals to add to 100\%.
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
+#' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
@@ -63,6 +64,7 @@ ms_stacked_y2 <- function(
   direction = 'horizontal',
   gap_width = 25,
   grouping = 'percentStacked',
+  font_family = 'Arial',
   label_color = color_settings_stacked,
   label_position = 'outEnd',
   label_show_percent = F,
@@ -128,12 +130,12 @@ ms_stacked_y2 <- function(
     ) %>%
     mschart::chart_theme(
       legend_position = legend_pos,
-      main_title = fp_text(font.size = title_size),
-      axis_text_x = fp_text(font.size = axis_text_size, color = axis_x_text_color),
+      main_title = fp_text(font.size = title_size, font.family = font_family),
+      axis_text_x = fp_text(font.size = axis_text_size, color = axis_x_text_color, font.family = font_family),
       axis_text_y = fp_text(color = 'transparent'),
-      axis_title_x = fp_text(font.size = axis_title_size),
-      axis_title_y = fp_text(font.size = axis_title_size),
-      legend_text = fp_text(font.size = legend_text_size),
+      axis_title_x = fp_text(font.size = axis_title_size, font.family = font_family),
+      axis_title_y = fp_text(font.size = axis_title_size, font.family = font_family),
+      legend_text = fp_text(font.size = legend_text_size, font.family = font_family),
       grid_major_line_x = fp_border(style = 'none'),
       grid_major_line_y = fp_border(style = 'none'),
       title_y_rot = axis_y_rotate_title,

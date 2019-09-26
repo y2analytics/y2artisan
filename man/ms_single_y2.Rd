@@ -5,17 +5,16 @@
 \title{Create an ugrouped mschart object}
 \usage{
 ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
-  axis_num_fmt = "0\%\%", axis_text_size = 14, axis_title_size = 18,
-  axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
-  axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
-  axis_y_min = 0, axis_y_max = NULL, axis_y_rotate = 0,
-  axis_y_rotate_title = 360, direction = "vertical", gap_width = 25,
+  axis_text_size = 14, axis_title_size = 18, axis_x_display = T,
+  axis_x_label = "", axis_x_rotate = 0, axis_x_rotate_title = 0,
+  axis_y_display = T, axis_y_label = "", axis_y_min = 0,
+  axis_y_max = NULL, axis_y_rotate = 0, axis_y_rotate_title = 360,
+  direction = "vertical", font_family = "Arial", gap_width = 25,
   grouping = "standard", group_var = NULL,
-  label_color = color_settings, label_num_fmt = "0\%",
-  label_position = "outEnd", label_show_values = T,
-  label_text = text_settings, legend_pos = "n",
-  legend_text_size = 16, overlapping = -50, title_label = "",
-  title_size = 18)
+  label_color = color_settings, label_position = "outEnd",
+  label_show_values = T, label_text = text_settings,
+  legend_pos = "n", legend_text_size = 16, num_fmt = "percent",
+  overlapping = -50, title_label = "", title_size = 18)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.}
@@ -23,8 +22,6 @@ ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
 \item{x_var}{DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).}
 
 \item{y_var}{DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).}
-
-\item{axis_num_fmt}{DEFAULT = '0\%\%'; Unlike label_num_fmt, the default for percentages is "0\%\%".}
 
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
@@ -44,6 +41,8 @@ ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
 
 \item{direction}{DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"}
 
+\item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
+
 \item{gap_width}{DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself}
 
 \item{grouping}{DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
@@ -52,17 +51,17 @@ ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
 
 \item{label_color}{DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)}
 
-\item{label_num_fmt}{DEFAULT = '0\%'; Number formatting specifies number format properties which indicate how to format and render the numeric values. It can be "General", "0.00", "#,##0", "#,##0.00", "mm-dd-yy", "m/d/yy h:mm", etc.}
-
 \item{label_position}{DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
 
 \item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
 
-\item{label_text}{DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))}
+\item{label_text}{DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list("result" = fp_text(font.size = 10.5, color = bluepurple, font.family = 'Arial'))}
 
 \item{legend_pos}{DEFAULT = 'n' for none. Other legend positions are 'b', 'tr', 'l', 'r', 't'.}
 
 \item{legend_text_size}{DEFAULT = 16}
+
+\item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 
 \item{overlapping}{DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.}
 

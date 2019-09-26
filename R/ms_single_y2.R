@@ -16,9 +16,10 @@
 #' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
+#' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
-#' @param label_text DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
+#' @param label_text DEFAULT = 'text_settings'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list("result" = fp_text(font.size = 10.5, color = bluepurple, font.family = 'Arial'))
 #' @param label_color DEFAULT = 'color_settings'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list(bluepurple)
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
@@ -58,6 +59,7 @@ ms_single_y2 <-  function(
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
   direction = 'vertical',
+  font_family = 'Arial',
   gap_width = 25,
   grouping = 'standard',
   group_var = NULL,
@@ -125,12 +127,12 @@ ms_single_y2 <-  function(
     ) %>%
     mschart::chart_theme(
       legend_position = legend_pos,
-      main_title = fp_text(font.size = title_size),
-      axis_text_x = fp_text(font.size = axis_text_size),
-      axis_text_y = fp_text(font.size = axis_text_size),
-      axis_title_x = fp_text(font.size = axis_title_size),
-      axis_title_y = fp_text(font.size = axis_title_size),
-      legend_text = fp_text(font.size = legend_text_size),
+      main_title = fp_text(font.size = title_size, font.family = font_family),
+      axis_text_x = fp_text(font.size = axis_text_size, font.family = font_family),
+      axis_text_y = fp_text(font.size = axis_text_size, font.family = font_family),
+      axis_title_x = fp_text(font.size = axis_title_size, font.family = font_family),
+      axis_title_y = fp_text(font.size = axis_title_size, font.family = font_family),
+      legend_text = fp_text(font.size = legend_text_size, font.family = font_family),
       grid_major_line_x = fp_border(width = 0),
       grid_major_line_y = fp_border(width = 0),
       title_y_rot = axis_y_rotate_title,
