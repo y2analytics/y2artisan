@@ -8,10 +8,11 @@ gg_grouped_y2(data = frequencies, x_var = label, y_var = result,
   label_var = percent_label, color_var = group_var,
   axis_text_size = 12, axis_title_size = 14, bar_width = 0.75,
   direction = "vertical", fills, label_length = 45, label_size = 6,
-  legend_pos = "top", legend_rev = FALSE, legend_text_size = 6,
-  legend_title_size = 8, legend_title = "", nudge = 0,
-  text_family = "flama", title_label = "", title_size = 14,
-  x_label = "", y_label = "", y_min = 0, y_max = 0)
+  legend_pos = "top", legend_nrow = NULL, legend_rev = FALSE,
+  legend_text_size = 6, legend_title_size = 8, legend_title = "",
+  nudge = 0, text_family = "flama", title_label = "",
+  title_size = 14, x_label = "", y_label = "", y_min = 0,
+  y_max = 0)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
@@ -39,6 +40,8 @@ gg_grouped_y2(data = frequencies, x_var = label, y_var = result,
 \item{label_size}{DEFAULT = 6. Adjusts the size of the percent labels over each bar.}
 
 \item{legend_pos}{DEFAULT = 'top'}
+
+\item{legend_nrow}{DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend}
 
 \item{legend_text_size}{DEFAULT = 6}
 

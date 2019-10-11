@@ -17,6 +17,7 @@
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; make custom by inputting a vector of colors for all levels of the color_var
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 8. Adjusts the size of the percent labels within each bar.
+#' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
 #' @param legend_pos DEFAULT = 'top'
 #' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 6
@@ -56,6 +57,7 @@ gg_stacked_y2 <- function(
   colors = '0',
   label_length = 45,
   label_size = 8,
+  legend_nrow = NULL,
   legend_pos = 'top',
   legend_rev = FALSE,
   legend_text_size = 6,
@@ -118,7 +120,10 @@ gg_stacked_y2 <- function(
     ) +
     ggplot2::theme_minimal() +
     ggplot2::scale_fill_manual(
-      guide = ggplot2::guide_legend(reverse = legend_rev),
+      guide = ggplot2::guide_legend(
+        reverse = legend_rev,
+        nrow = legend_nrow
+        ),
       values = fills
     ) +
     ggplot2::scale_color_manual(

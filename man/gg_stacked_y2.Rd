@@ -8,10 +8,10 @@ gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
   label_var = percent_label, color_var = label, axis_display = T,
   axis_text_size = 12, axis_title_size = 14, bar_width = 0.75,
   erase_labels = 0.01, fills, colors = "0", label_length = 45,
-  label_size = 8, legend_pos = "top", legend_rev = FALSE,
-  legend_text_size = 6, legend_title_size = 8, legend_title = "",
-  text_family = "flama", title_label = "", title_size = 14,
-  x_label = "", y_label = "", y_min = 0)
+  label_size = 8, legend_nrow = NULL, legend_pos = "top",
+  legend_rev = FALSE, legend_text_size = 6, legend_title_size = 8,
+  legend_title = "", text_family = "flama", title_label = "",
+  title_size = 14, x_label = "", y_label = "", y_min = 0)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
@@ -41,6 +41,8 @@ gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
 \item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 
 \item{label_size}{DEFAULT = 8. Adjusts the size of the percent labels within each bar.}
+
+\item{legend_nrow}{DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend}
 
 \item{legend_pos}{DEFAULT = 'top'}
 
