@@ -4,10 +4,10 @@
 \alias{gg_histo_y2}
 \title{Create a ggplot2 histogram}
 \usage{
-gg_histo_y2(data, x_var, fills, axis_text_size = 16,
+gg_histo_y2(data, x_var, fills = "#474E7E", axis_text_size = 16,
   axis_title_size = 18, bins = NULL, binwidth = NULL,
-  color_mean_line = "#474747", x_limits = "no limits", x_label = "",
-  y_label = "Respondents")
+  color_mean_line = "#474747", weight_var = NULL,
+  x_limits = "no limits", x_label = "", y_label = "Respondents")
 }
 \arguments{
 \item{data}{NO DEFAULT; a data frame containing the variable you want to histogram}

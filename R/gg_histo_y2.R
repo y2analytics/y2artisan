@@ -25,21 +25,23 @@
 gg_histo_y2 <- function(
   data,
   x_var,
-  fills,
+  fills = '#474E7E',
   axis_text_size = 16,
   axis_title_size = 18,
   bins = NULL,
   binwidth = NULL,
   color_mean_line = '#474747',
+  weight_var = NULL,
   x_limits = 'no limits',
   x_label = '',
   y_label = 'Respondents'
 ){
 # Variable prep
   var_flag <- enquo(x_var)
+  wt_flag <- enquo(weight_var)
 
   mean_overall <- data %>%
-    freqs(!!var_flag, nas = F, stat = 'mean') %>%
+    freqs(!!var_flag, nas = F, stat = 'mean', wt = !!wt_flag) %>%
     select(result) %>% as.numeric()
 
   var_95 <- data %>% freqs(!!var_flag, nas = F, stat = 'quantile', pr = 95) %>% select(result) %>% as.numeric()
@@ -60,7 +62,10 @@ gg_histo_y2 <- function(
   chart <- ggplot() +
     geom_histogram(
       data = data ,
-      aes(x = !!var_flag),
+      aes(
+        x = !!var_flag,
+        weight = !!wt_flag
+        ),
       fill = fills,
       alpha = 0.8,
       color = NA,
