@@ -11,6 +11,7 @@
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_min DEFAULT = NULL; unlike other graphs, will almost always be a negative number
 #' @param axis_y_max DEFAULT = NULL
+#' @param axis_x_position DEFAULT = 'low'; The 'low' setting puts the axis below negative numbers instead of its typical spot of 0. Ideal for max-diffs. Other options include "high", "nextTo", "none"
 #' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
@@ -32,12 +33,27 @@
 #' @keywords chart grouped
 #' @export
 #' @examples
-#' my_ms_chart <- ms_maxdif_y2()
-#' OR
-#' my_ms_chart <- ms_maxdif_y2(
-#'   title_label  = 'Important results',
-#'   group_var = 'district'
+#' frequencies <- tibble(
+#'   label = rep(c('Attribute 1', 'Attribute 2', 'Attribute 3'), 2),
+#'   group_var = c(rep('Positive', 3), rep('Negative', 3)),
+#'   result = c(.10, .20, .30, -.1, -.05, -.15)
+#' ) %>%
+#'   order_label(
+#'     group_var = group_var,
+#'     group_specific = 'Positive',
+#'     horizontal = T
+#'   )
+#'
+#' color_settings_grouped <- list(
+#'   'Positive' = 'green',
+#'   'Negative' = 'red'
 #' )
+#' text_settings_grouped <- list(
+#'   'Positive' = fp_text(color = 'green', font.size = 16),
+#'   'Negative' = fp_text(color = 'red', font.size = 16)
+#' )
+#' chart <- ms_maxdif_y2()
+#' print(chart, preview = T)
 
 ms_maxdif_y2 <-  function(
   data = frequencies,
@@ -48,6 +64,7 @@ ms_maxdif_y2 <-  function(
   axis_title_size = 18,
   axis_x_display = T,
   axis_x_label = '',
+  axis_x_position = 'low',
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
   axis_y_display = T,
@@ -58,7 +75,7 @@ ms_maxdif_y2 <-  function(
   axis_y_rotate_title = 360,
   direction = 'horizontal',
   font_family = 'Arial',
-  gap_width = 150,
+  gap_width = 75,
   grouping = 'standard',
   label_color = color_settings_grouped,
   label_position = 'outEnd',
@@ -136,7 +153,8 @@ ms_maxdif_y2 <-  function(
       display = axis_y_display
     ) %>%
     mschart::chart_ax_x(
-      rotation = axis_x_rotate
+      rotation = axis_x_rotate,
+      tick_label_pos = axis_x_position
     ) %>%
     mschart::chart_ax_y(
       rotation = axis_y_rotate

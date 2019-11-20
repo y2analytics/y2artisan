@@ -67,9 +67,13 @@ gg_grouped_y2(data = frequencies, x_var = label, y_var = result,
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 }
 \examples{
+frequencies <- ToothGrowth \%>\%
+  group_by(supp) \%>\%
+  freqs(dose) \%>\%
+  order_label(group_var = group_var)
+
 chart <- gg_grouped_y2(
-  fills = c('red', 'blue'),
-  title_label = 'Important results'
+  fills = c('orange', 'gray')
 )
 }
 \keyword{bar}

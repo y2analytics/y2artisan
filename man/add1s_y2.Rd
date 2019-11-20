@@ -4,7 +4,7 @@
 \alias{add1s_y2}
 \title{Add 1 Blank PowerPoint slide}
 \usage{
-add1s_y2(text_boxes = T, slide_name = "Findings / 1 chart",
+add1s_y2(text_boxes = F, slide_name = "Findings / 1 chart",
   master_name = "Office Theme")
 }
 \arguments{
@@ -18,7 +18,12 @@ add1s_y2(text_boxes = T, slide_name = "Findings / 1 chart",
 This function adds a new PowerPoint slide along with a title and commentary box to the current pp object in R
 }
 \examples{
+# Before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
+doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+
 doc <- add1s_y2()
+
+print(doc, '~/Desktop/test.pptx')
 }
 \keyword{powerpoint}
 \keyword{slide}

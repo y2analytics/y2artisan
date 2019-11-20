@@ -13,6 +13,7 @@
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = NULL
+#' @param axis_x_position DEFAULT = 'nextTo'; Other options include "high", "low", "none". Change to "low" if dealing with negative numbers
 #' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
@@ -32,14 +33,22 @@
 #' @keywords chart grouped
 #' @export
 #' @examples
-#' my_ms_chart <- ms_grouped_y2()
-#' OR
-#' my_ms_chart <- ms_grouped_y2(
-#'   rotate = -45,
-#'   title_label  = 'Add chart title here',
-#'   group_var = 'district',
-#'   direction = 'horizontal
+#' frequencies <- ToothGrowth %>%
+#'   group_by(supp) %>%
+#'   freqs(dose) %>%
+#'   order_label(group_var = group_var)
+#'
+#' color_settings_grouped <- list(
+#'   'OJ' = 'orange',
+#'   'VC' = 'gray'
 #' )
+#' text_settings_grouped <- list(
+#'   'OJ' = fp_text(color = 'orange', font.size = 20),
+#'   'VC' = fp_text(color = 'gray', font.size = 20)
+#' )
+#'
+#' chart <- ms_grouped_y2()
+#' print(chart, preview = T)
 
 ms_grouped_y2 <-  function(
   data = frequencies,
@@ -50,6 +59,7 @@ ms_grouped_y2 <-  function(
   axis_title_size = 18,
   axis_x_display = T,
   axis_x_label = '',
+  axis_x_position = 'nextTo',
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
   axis_y_display = T,
@@ -138,7 +148,8 @@ ms_grouped_y2 <-  function(
       title_x_rot = axis_x_rotate_title
     ) %>%
     mschart::chart_ax_x(
-      display = axis_x_display
+      display = axis_x_display,
+      tick_label_pos = axis_x_position
     )  %>%
     mschart::chart_ax_y(
       display = axis_y_display

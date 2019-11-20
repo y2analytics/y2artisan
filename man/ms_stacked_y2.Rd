@@ -79,14 +79,29 @@ ms_stacked_y2(data = frequencies, x_var = "group_var",
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 }
 \examples{
-my_ms_chart <- ms_stacked_y2()
-
-OR for a single stacked bar:
-my_ms_chart <- ms_stacked_y2(
-  title_label  = 'Add chart title here',
-  axis_x_text_color = 'transparent',
-  x_var = 'variable'
+frequencies <- tibble(
+  label = rep(c('Promoter', 'Passive', 'Detractor'), 3),
+  result = c(.33, .33, .34, .20, .30, .50, .25, .50, .25),
+  value = rep(c(1, 2, 3), 3),
+  group_var = c(rep('Group A', 3), rep('Group B', 3), rep('Group C', 3))
+) \%>\% order_label(
+  group_var = group_var,
+  stacked = 'ms'
 )
+
+color_settings_stacked <- list(
+  'Promoter' = 'green',
+  'Passive' = 'yellow',
+  'Detractor' = 'red'
+)
+text_settings_stacked <- list(
+  'Promoter' = fp_text(font.size = 16, font.family = 'Roboto', color = 'white'),
+  'Passive' = fp_text(font.size = 16, font.family = 'Roboto', color = 'black'),
+  'Detractor' = fp_text(font.size = 16, font.family = 'Roboto', color = 'white')
+)
+
+chart <- ms_stacked_y2()
+print(chart, preview = T)
 }
 \keyword{chart}
 \keyword{stacked}

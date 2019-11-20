@@ -11,9 +11,18 @@
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- add1t_y2(my_flextable)
-#' OR
-#' doc <- add1t_y2(my_table, slide_name = "1_Blank", master = "Custom Design")
+#' # First create a table that you can add into a powerpoint object
+#' my_table <- mtcars %>%
+#'   y2clerk::freqs(carb) %>%
+#'   orderlabel::order_label(inherent_order_label = T)
+#'
+#' # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
+#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+#'
+#' # Now start adding in your tables
+#' doc <- add1t_y2(my_table)
+#'
+#' print(doc, '~/Desktop/test.pptx')
 
 
 ### Function

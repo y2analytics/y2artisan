@@ -4,7 +4,7 @@
 \alias{add1c_y2}
 \title{Add PowerPoint slide & 1 chart}
 \usage{
-add1c_y2(name, add_slide = T, text_boxes = T,
+add1c_y2(name, add_slide = T, text_boxes = F,
   slide_name = "Findings / 1 chart", master_name = "Office Theme",
   left_start = 0.5, top_start = 2, height = 5, width = 12)
 }
@@ -23,8 +23,20 @@ add1c_y2(name, add_slide = T, text_boxes = T,
 This function adds a new PowerPoint slide and fits 1 chart onto it. It automatically fits the location to the center of the slide.
 }
 \examples{
-doc <- add1c_y2(my_ms_chart)
-OR
-add1c_y2(my_ms_chart, slide_name = "1_Blank", master = "Custom Design")
+# First create a chart that you can add into a powerpoint object
+frequencies <- mtcars \%>\%
+  y2clerk::freqs(carb) \%>\%
+  orderlabel::order_label(inherent_order_label = T)
+color_settings <- list('blue')
+text_settings<- list('result' = fp_text(font.size = 20))
+my_chart <- ms_single_y2()
+
+# Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
+doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+
+# Now start adding in your charts
+doc <- add1c_y2(my_chart)
+
+print(doc, '~/Desktop/test.pptx')
 }
 \keyword{chart}

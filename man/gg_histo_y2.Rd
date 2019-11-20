@@ -34,10 +34,10 @@ gg_histo_y2(data, x_var, fills = "#474E7E", axis_text_size = 16,
 This function creates a histogram of a given variable with a dotted vertical line at the mean
 }
 \examples{
-chart <- responses \%>\% gg_histo_y2(
-  qrating,
+chart <- iris \%>\% gg_histo_y2(
+  Petal.Width,
   'purple',
-  x_limits = '95 trim'
+  binwidth = .25
 )
 }
 \keyword{bar}

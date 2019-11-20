@@ -65,13 +65,15 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 }
 \examples{
+frequencies <- mtcars \%>\%
+  y2clerk::freqs(carb) \%>\%
+  orderlabel::order_label(inherent_order_label = T)
+
 chart <- gg_single_y2()
 
-chart <- gg_single_y2(
-  direction = 'horizontal',
-  color_var = colors,
-  fills = c('green', 'red')
-)
+# When you change the color, you must specify a level for each bar. Here's an easy way to do so if they're all the same color
+chart <- gg_single_y2(fills = rep('pink', count(frequencies)))
+
 }
 \keyword{bar}
 \keyword{chart}

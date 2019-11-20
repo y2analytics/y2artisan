@@ -6,15 +6,16 @@
 \usage{
 ms_maxdif_y2(data = frequencies, x_var = "label", y_var = "result",
   group_var = "group_var", axis_text_size = 14, axis_title_size = 18,
-  axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
-  axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
-  axis_y_min = NULL, axis_y_max = NULL, axis_y_rotate = 0,
-  axis_y_rotate_title = 360, direction = "horizontal",
-  font_family = "Arial", gap_width = 150, grouping = "standard",
-  label_color = color_settings_grouped, label_position = "outEnd",
-  label_show_values = T, label_text = text_settings_grouped,
-  legend_pos = "n", legend_text_size = 16, overlapping = 100,
-  num_fmt = "percent", title_label = "", title_size = 18)
+  axis_x_display = T, axis_x_label = "", axis_x_position = "low",
+  axis_x_rotate = 0, axis_x_rotate_title = 0, axis_y_display = T,
+  axis_y_label = "", axis_y_min = NULL, axis_y_max = NULL,
+  axis_y_rotate = 0, axis_y_rotate_title = 360,
+  direction = "horizontal", font_family = "Arial", gap_width = 75,
+  grouping = "standard", label_color = color_settings_grouped,
+  label_position = "outEnd", label_show_values = T,
+  label_text = text_settings_grouped, legend_pos = "n",
+  legend_text_size = 16, overlapping = 100, num_fmt = "percent",
+  title_label = "", title_size = 18)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}
@@ -28,6 +29,8 @@ ms_maxdif_y2(data = frequencies, x_var = "label", y_var = "result",
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
+
+\item{axis_x_position}{DEFAULT = 'low'; The 'low' setting puts the axis below negative numbers instead of its typical spot of 0. Ideal for max-diffs. Other options include "high", "nextTo", "none"}
 
 \item{axis_y_display}{DEFAULT = T}
 
@@ -73,12 +76,27 @@ ms_maxdif_y2(data = frequencies, x_var = "label", y_var = "result",
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 }
 \examples{
-my_ms_chart <- ms_maxdif_y2()
-OR
-my_ms_chart <- ms_maxdif_y2(
-  title_label  = 'Important results',
-  group_var = 'district'
+frequencies <- tibble(
+  label = rep(c('Attribute 1', 'Attribute 2', 'Attribute 3'), 2),
+  group_var = c(rep('Positive', 3), rep('Negative', 3)),
+  result = c(.10, .20, .30, -.1, -.05, -.15)
+) \%>\%
+  order_label(
+    group_var = group_var,
+    group_specific = 'Positive',
+    horizontal = T
+  )
+
+color_settings_grouped <- list(
+  'Positive' = 'green',
+  'Negative' = 'red'
 )
+text_settings_grouped <- list(
+  'Positive' = fp_text(color = 'green', font.size = 16),
+  'Negative' = fp_text(color = 'red', font.size = 16)
+)
+chart <- ms_maxdif_y2()
+print(chart, preview = T)
 }
 \keyword{chart}
 \keyword{grouped}

@@ -29,13 +29,15 @@
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
+#' frequencies <- mtcars %>%
+#'   y2clerk::freqs(carb) %>%
+#'   orderlabel::order_label(inherent_order_label = T)
+#'
 #' chart <- gg_single_y2()
 #'
-#' chart <- gg_single_y2(
-#'   direction = 'horizontal',
-#'   color_var = colors,
-#'   fills = c('green', 'red')
-#' )
+#' # When you change the color, you must specify a level for each bar. Here's an easy way to do so if they're all the same color
+#' chart <- gg_single_y2(fills = rep('pink', count(frequencies)))
+#'
 
 gg_single_y2 <- function(
   data = frequencies,

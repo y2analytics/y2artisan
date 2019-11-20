@@ -17,7 +17,17 @@ ggchart_save_y2(chartname, width = 11, height = 5.5)
 Saves a ggplot chart. All you need to add is the file name
 }
 \examples{
-ggchart_save_y2('An easily saved chart')
+# To save your chart, you will need 1) CHART_PATH, a path to your folder destination and 2) y2_type, the font that your chart will use
+
+CHART_PATH <- '~/Desktop/'
+y2_type <- theme(text=element_text(family='Arial'))
+
+frequencies <- mtcars \%>\%
+  y2clerk::freqs(carb) \%>\%
+  orderlabel::order_label(inherent_order_label = T)
+chart <- gg_single_y2()
+
+ggchart_save_y2('test')
 }
 \keyword{chart}
 \keyword{ggplot}

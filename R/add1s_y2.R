@@ -10,11 +10,16 @@
 #' @keywords powerpoint slide
 #' @export
 #' @examples
+#' # Before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
+#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+#'
 #' doc <- add1s_y2()
+#'
+#' print(doc, '~/Desktop/test.pptx')
 
 
 add1s_y2 <- function(
-  text_boxes = T,
+  text_boxes = F,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme"
 ) {

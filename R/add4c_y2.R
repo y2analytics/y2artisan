@@ -9,23 +9,32 @@
 #' @keywords chart
 #' @export
 #' @examples
-#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#' # First create a chart that you can add into a powerpoint object
+#' frequencies <- mtcars %>%
+#'   y2clerk::freqs(carb) %>%
+#'   orderlabel::order_label(inherent_order_label = T)
+#' color_settings <- list('blue')
+#' text_settings<- list('result' = fp_text(font.size = 20))
+#' chart_name <- ms_single_y2()
+#'
+#' # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
+#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+#'
+#' # Now start adding in your charts
+#' doc <- add1s_y2()
 #' doc <- add4c_y2(chart_name, 'topright')
 #' doc <- add4c_y2(chart_name, 'bottomright')
 #' doc <- add4c_y2(chart_name, 'topleft')
 #' doc <- add4c_y2(chart_name, 'bottomleft')
-#' OR
-#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
+#'
+#' doc <- add1s_y2()
 #' doc <- add4c_y2(chart_name, 'left')
 #' doc <- add4c_y2(chart_name, 'centerleft')
 #' doc <- add4c_y2(chart_name, 'centerright')
 #' doc <- add4c_y2(chart_name, 'right')
-#' OR
-#' doc <- officer::add_slide(doc, layout = "Findings / 1 chart", master = "Office Theme")
-#' doc <- add4c_y2(chart_name, 'left', label_first_only = T)
-#' doc <- add4c_y2(chart_name, 'centerleft', label_first_only = T)
-#' doc <- add4c_y2(chart_name, 'centerright', T)
-#' doc <- add4c_y2(chart_name, 'right', T)
+#'
+#' print(doc, '~/Desktop/test.pptx')
+
 
 
 ### Function

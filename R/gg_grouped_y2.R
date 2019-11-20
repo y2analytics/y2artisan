@@ -30,9 +30,13 @@
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
+#' frequencies <- ToothGrowth %>%
+#'   group_by(supp) %>%
+#'   freqs(dose) %>%
+#'   order_label(group_var = group_var)
+#'
 #' chart <- gg_grouped_y2(
-#'   fills = c('red', 'blue'),
-#'   title_label = 'Important results'
+#'   fills = c('orange', 'gray')
 #' )
 
 gg_grouped_y2 <- function(

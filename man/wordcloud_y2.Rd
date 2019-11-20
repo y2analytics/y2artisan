@@ -24,9 +24,24 @@ wordcloud_y2(dataset, variable, colors = "bluepurple", top_x = 50,
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller and lighter in color
 }
 \examples{
-chart <- wordcloud_y2(QOPEN_END)
-chart <- wordcloud_y2(QOPEN_END, lime)
-chart <- wordcloud_y2(QOPEN_END, c('#FAEFF2', '#CC6078', '#6D0018'))
+responses <- tibble(
+  var1 = c(
+    'I like to talk about dogs',
+    'Dogs are cool but cats are aight too',
+    'I prefer dogs over cats',
+    "My dog's collars are always too tight",
+    'One last sentence about dogs',
+    'Cats collars are typically cooler than dogs'
+  )
+)
+
+red_dark <- '#C61616'
+red_mid <- '#E38B8B'
+red_light <- '#F9E6E6'
+
+# If you want to use a specific color, you must specify three scalar shades of that color
+responses \%>\% wordcloud_y2(var1)
+responses \%>\% wordcloud_y2(var1, c(red_light, red_mid, red_dark))
 }
 \keyword{cloud}
 \keyword{end}

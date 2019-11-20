@@ -6,15 +6,16 @@
 \usage{
 ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
   axis_text_size = 14, axis_title_size = 18, axis_x_display = T,
-  axis_x_label = "", axis_x_rotate = 0, axis_x_rotate_title = 0,
-  axis_y_display = T, axis_y_label = "", axis_y_min = 0,
-  axis_y_max = NULL, axis_y_rotate = 0, axis_y_rotate_title = 360,
-  direction = "vertical", font_family = "Arial", gap_width = 25,
-  grouping = "standard", group_var = NULL,
-  label_color = color_settings, label_position = "outEnd",
-  label_show_values = T, label_text = text_settings,
-  legend_pos = "n", legend_text_size = 16, num_fmt = "percent",
-  overlapping = -50, title_label = "", title_size = 18)
+  axis_x_label = "", axis_x_position = "nextTo", axis_x_rotate = 0,
+  axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
+  axis_y_min = 0, axis_y_max = NULL, axis_y_rotate = 0,
+  axis_y_rotate_title = 360, direction = "vertical",
+  font_family = "Arial", gap_width = 25, grouping = "standard",
+  group_var = NULL, label_color = color_settings,
+  label_position = "outEnd", label_show_values = T,
+  label_text = text_settings, legend_pos = "n",
+  legend_text_size = 16, num_fmt = "percent", overlapping = -50,
+  title_label = "", title_size = 18)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.}
@@ -26,6 +27,8 @@ ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
 \item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
+
+\item{axis_x_position}{DEFAULT = 'nextTo'; Other options include "high", "low", "none". Change to "low" if dealing with negative numbers}
 
 \item{axis_y_display}{DEFAULT = T}
 
@@ -73,14 +76,15 @@ ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
 }
 \examples{
-my_ms_chart <- ms_single_y2()
-OR
-my_ms_chart <- ms_single_y2(
-  rotate = -45,
-  title_label  = 'Add chart title here',
-  group_var = 'label',
-  overlap = 100
-)
+frequencies <- mtcars \%>\%
+  y2clerk::freqs(carb) \%>\%
+  orderlabel::order_label(inherent_order_label = T)
+
+color_settings <- list('blue')
+text_settings<- list('result' = fp_text(font.size = 20))
+
+chart <- ms_single_y2()
+print(chart, preview = T)
 }
 \keyword{bar}
 \keyword{chart}

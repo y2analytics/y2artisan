@@ -31,15 +31,33 @@
 #' @keywords chart ggplot bar stacked
 #' @export
 #' @examples
-#' chart <- gg_stacked_y2(
-#'   fills = c('#a9e838', '#7fd000', '#53b700')
+#' frequencies <- tibble(
+#'   label = rep(c('Promoter', 'Passive', 'Detractor'), 3),
+#'   result = c(.33, .33, .34, .20, .30, .50, .25, .50, .25),
+#'   value = rep(c(1, 2, 3), 3),
+#'   group_var = c(rep('Group A', 3), rep('Group B', 3), rep('Group C', 3))
+#' ) %>% order_label(
+#'   group_var = group_var,
+#'   stacked = 'gg'
 #' )
 #'
-#' OR for a single stacked bar:
 #' chart <- gg_stacked_y2(
-#'   fills = c('#red', '#pink', '#gray'),
-#'   x_var = variable,
-#'   axis_display = F
+#'   fills = c('red', 'yellow', 'green')
+#' )
+#'
+#'
+#' # For a single stacked bar:
+#' frequencies <- tibble(
+#'  label = c('Promoter', 'Passive', 'Detractor'),
+#'  result = c(.33, .33, .34),
+#'  value = c(1, 2, 3),
+#'  variable = rep('QNPS', 3)
+#' ) %>% order_label(stacked = 'gg')
+#'
+#' chart <- gg_stacked_y2(
+#'    x_var = variable,
+#'    axis_display = F,
+#'    fills = c('red', 'yellow', 'green')
 #' )
 
 gg_stacked_y2 <- function(
@@ -84,6 +102,7 @@ gg_stacked_y2 <- function(
     label_length != 45 ~ label_length,
     T ~ label_length
   )
+  legend_rev <- ifelse(legend_rev == FALSE, TRUE, FALSE)
 
   #Chart
   chart <- ggplot2::ggplot(

@@ -24,6 +24,17 @@ wordcloud_mono_y2(dataset, variable, colors = "#474E7E", top_x = 50,
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller
 }
 \examples{
-chart <- wordcloud(QOPEN_END)
-chart <- wordcloud(QOPEN_END, '#FAEFF2')
+responses <- tibble(
+  var1 = c(
+    'I like to talk about dogs',
+    'Dogs are cool but cats are aight too',
+    'I prefer dogs over cats',
+    "My dog's collars are always too tight",
+    'One last sentence about dogs',
+    'Cats collars are typically cooler than dogs'
+  )
+)
+
+responses \%>\% wordcloud_y2(var1)
+responses \%>\% wordcloud_y2(var1, 'red')
 }

@@ -4,14 +4,14 @@
 \alias{ms_line_y2}
 \title{Create an ugrouped mschart object}
 \usage{
-ms_line_y2(data = frequencies, x_var = "year", y_var = "result",
-  group_var = "label", axis_text_size = 14, axis_title_size = 18,
+ms_line_y2(data = frequencies, x_var = "label", y_var = "result",
+  group_var = "group_var", axis_text_size = 14, axis_title_size = 18,
   axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
   axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
   axis_y_min = 0, axis_y_max = NULL, axis_y_rotate = 0,
   axis_y_rotate_title = 360, font_family = "Arial",
-  label_color = color_settings, label_position = "t",
-  label_show_values = T, label_text = text_settings,
+  label_color = color_settings_grouped, label_position = "t",
+  label_show_values = T, label_text = text_settings_grouped,
   legend_pos = "n", legend_text_size = 16, num_fmt = "percent",
   title_label = "", title_size = 18)
 }
@@ -62,5 +62,24 @@ ms_line_y2(data = frequencies, x_var = "year", y_var = "result",
 }
 \description{
 This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+}
+\examples{
+frequencies <- tibble(
+  label = rep(c('2000', '2001', '2002'), 2),
+  group_var = rep(c('Brand 1', 'Brand 2'), 3),
+  result = c(.18, .20, .24, .25, .24, .23)
+)
+
+color_settings_grouped <- list(
+  'Brand 1' = 'green',
+  'Brand 2' = 'red'
+)
+text_settings_grouped <- list(
+  'Brand 1' = fp_text(color = 'green'),
+  'Brand 2' = fp_text(color = 'red')
+)
+
+chart <- ms_line_y2()
+print(chart, preview = T)
 }
 \keyword{chart}

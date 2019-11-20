@@ -16,10 +16,10 @@
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
-#' chart <- responses %>% gg_histo_y2(
-#'   qrating,
+#' chart <- iris %>% gg_histo_y2(
+#'   Petal.Width,
 #'   'purple',
-#'   x_limits = '95 trim'
+#'   binwidth = .25
 #' )
 
 gg_histo_y2 <- function(
@@ -92,4 +92,6 @@ gg_histo_y2 <- function(
       axis.text = element_text(size = axis_text_size),
       axis.title = element_text(size = axis_title_size)
     )
+
+  return(chart)
 }

@@ -9,6 +9,7 @@
 #' @param group_var DEFAULT = NULL; If you want the bars to be different colors, set group_var to the same variable as x_var. Then set overlap to 100.
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+#' @param axis_x_position DEFAULT = 'nextTo'; Other options include "high", "low", "none". Change to "low" if dealing with negative numbers
 #' @param axis_y_display DEFAULT = T
 #' @param axis_y_label DEFAULT = ''; Title for the y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
@@ -32,14 +33,16 @@
 #' @keywords chart bar single
 #' @export
 #' @examples
-#' my_ms_chart <- ms_single_y2()
-#' OR
-#' my_ms_chart <- ms_single_y2(
-#'   rotate = -45,
-#'   title_label  = 'Add chart title here',
-#'   group_var = 'label',
-#'   overlap = 100
-#' )
+#' frequencies <- mtcars %>%
+#'   y2clerk::freqs(carb) %>%
+#'   orderlabel::order_label(inherent_order_label = T)
+#'
+#' color_settings <- list('blue')
+#' text_settings<- list('result' = fp_text(font.size = 20))
+#'
+#' chart <- ms_single_y2()
+#' print(chart, preview = T)
+
 
 
 ms_single_y2 <-  function(
@@ -50,6 +53,7 @@ ms_single_y2 <-  function(
   axis_title_size = 18,
   axis_x_display = T,
   axis_x_label = '',
+  axis_x_position = 'nextTo',
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
   axis_y_display = T,
@@ -139,7 +143,8 @@ ms_single_y2 <-  function(
       title_x_rot = axis_x_rotate_title
     ) %>%
     mschart::chart_ax_x(
-      display = axis_x_display
+      display = axis_x_display,
+      tick_label_pos = axis_x_position
     )  %>%
     mschart::chart_ax_y(
       display = axis_y_display
