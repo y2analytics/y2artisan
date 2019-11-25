@@ -11,6 +11,8 @@
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
+#' @param chart_height DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically
+#' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param fills DEFAULT = rep('#474E7E', count(data)); the hexcode is the bluepurple color from the Qualtrics logo. This short function will give all the bars the same color. If colors are changed here in conjunction with the color_var, you can more easily manipulate colors based on another variable.
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
@@ -48,6 +50,8 @@ gg_single_y2 <- function(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
+  chart_height = 5.5,
+  chart_width = 11,
   direction = 'vertical',
   fills = rep('#474E7E', dplyr::count(data)),
   label_length = 45,
@@ -83,12 +87,19 @@ gg_single_y2 <- function(
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
+    chart_width < 11 & direction == 'horizontal' ~  (max_y_val + max_y_val/chart_width),
+    chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + max_y_val/(chart_height*2)),
     T ~  (max_y_val + max_y_val/10) #direction == 'vertical'
   )
   nudge <- dplyr::case_when(
-    nudge != 0 ~ nudge,
+    nudge != 0 ~ nudge, #if user specifies nudge, don't change it
     direction == 'horizontal' ~ (max_y_val/20 + str_add),
     direction == 'vertical' ~ (max_y_val/16)
+  )
+  nudge <- dplyr::case_when(
+    chart_width != 11 & direction == 'horizontal' ~ nudge/(chart_width/12),
+    chart_height != 5.5 & direction == 'vertical' ~ nudge/(chart_height/6),
+    T ~ nudge # If chart width is default of 11, then should be good
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,

@@ -5,7 +5,7 @@
 #' This function adds a new PowerPoint slide and fits 1 table onto it. It automatically fits the location to the center of the slide. Beware that if the object passed to the function is not a pre-formated flextable, it automatically assigns a background color to the table and sets the fontsize to 18.
 #' @param name The name of the dataframe to be added to a new PowerPoint slide.
 #' @param add_slide DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added
-#' @param text_boxes DEFAULT = T; Automatically adds title and commentary boxes to the blank slide. Set to F for no text boxes
+#' @param text_boxes DEFAULT = F; Automatically adds title and commentary boxes to the blank slide. Set to F for no text boxes
 #' @param slide_name The name of the type of the PP slide you want added to the PP. DEFAULT: "Findings / 1 chart"
 #' @param master_name The name of the PP master layout that the slide_name comes from. DEFAULT: "Office Theme"
 #' @keywords chart
@@ -29,7 +29,7 @@
 add1t_y2 <- function(
   name,
   add_slide = T,
-  text_boxes = T,
+  text_boxes = F,
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme",
   left_start = .5,

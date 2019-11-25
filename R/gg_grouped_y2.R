@@ -11,6 +11,8 @@
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
+#' @param chart_height DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically
+#' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var/grouping variable
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
@@ -48,6 +50,8 @@ gg_grouped_y2 <- function(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
+  chart_height = 5.5,
+  chart_width = 11,
   direction = 'vertical',
   fills, #only variable with no default...
   label_length = 45,
@@ -79,17 +83,19 @@ gg_grouped_y2 <- function(
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
+    chart_width < 11 & direction == 'horizontal' ~  (max_y_val + (max_y_val/chart_width) * 2),
+    chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + (max_y_val/(chart_height*2)) * 2),
     T ~  (max_y_val + max_y_val/10) #direction == 'vertical'
   )
   nudge_y <- dplyr::case_when(
-    direction == 'horizontal' ~ 0.5,
+    direction == 'horizontal' ~ 0.5, #places the percent_label in the middle of the bar
     nudge != 0 ~ nudge,
-    direction == 'vertical' ~ (max_y_val/2) *-1
+    direction == 'vertical' ~ (max_y_val/(max_y_val*5)) *-1
   )
   nudge_x <- dplyr::case_when(
     direction == 'vertical' ~ 0.5,
     nudge != 0 ~ nudge,
-    direction == 'horizontal' ~ (max_y_val/2 + str_add) *-1
+    direction == 'horizontal' ~ (max_y_val/(max_y_val*4) + str_add) *-1
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
