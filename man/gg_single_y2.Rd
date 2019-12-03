@@ -6,13 +6,13 @@
 \usage{
 gg_single_y2(data = frequencies, x_var = label, y_var = result,
   label_var = percent_label, color_var = label, axis_text_size = 12,
-  axis_title_size = 14, bar_width = 0.75, direction = "vertical",
-  fills = rep("#474E7E", dplyr::count(data)), label_length = 45,
-  label_size = 10, legend_pos = "none", legend_rev = FALSE,
-  legend_text_size = 6, legend_title_size = 8, legend_title = "",
-  nudge = 0, text_family = "flama", title_label = "",
-  title_size = 14, x_label = "", y_label = "", y_min = 0,
-  y_max = 0)
+  axis_title_size = 14, bar_width = 0.75, chart_height = 5.5,
+  chart_width = 11, direction = "vertical", fills = rep("#474E7E",
+  dplyr::count(data)), label_length = 45, label_size = 10,
+  legend_pos = "none", legend_rev = FALSE, legend_text_size = 6,
+  legend_title_size = 8, legend_title = "", nudge = 0,
+  text_family = "flama", title_label = "", title_size = 14,
+  x_label = "", y_label = "", y_min = 0, y_max = 0)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
@@ -30,6 +30,10 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 \item{axis_title_size}{DEFAULT = 14; Font size for x_label and y_label.}
 
 \item{bar_width}{DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it}
+
+\item{chart_height}{DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically}
+
+\item{chart_width}{DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically}
 
 \item{direction}{DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"}
 

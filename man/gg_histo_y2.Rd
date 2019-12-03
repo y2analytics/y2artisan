@@ -24,11 +24,15 @@ gg_histo_y2(data, x_var, fills = "#474E7E", axis_text_size = 16,
 
 \item{binwidth}{DEFAULT = NULL; The number of units in the x_var that fit in a bin. Overrides the bins argument}
 
+\item{color_mean_line}{DEFAULT = '#474747', a gray/black color}
+
+\item{weight_var}{DEFAULT = NULL; set to your weights variable if working with weighted data}
+
 \item{x_limits}{DEFAULT = 'no limits'; The 'no limits' default allows the histogram to capture all values for the variable. A secondary option is '95 trim' which will set the limits of the histogram to within 2 standard deviations of the mean, or all values between the 5th and 95th percentiles. Alternatively, you can set your own limits using c(my_min, my_max)}
 
 \item{x_label}{DEFAULT = ''; Title for the x_axis}
 
-\item{x_label}{DEFAULT = 'Respondents'; Title for the x_axis (the y axis is set to show the number of respondents in a given bin)}
+\item{y_label}{DEFAULT = 'Respondents'; Title for the x_axis (the y axis is set to show the number of respondents in a given bin)}
 }
 \description{
 This function creates a histogram of a given variable with a dotted vertical line at the mean

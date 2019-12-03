@@ -13,7 +13,7 @@ add1c_y2(name, add_slide = T, text_boxes = F,
 
 \item{add_slide}{DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added}
 
-\item{text_boxes}{DEFAULT = T; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
+\item{text_boxes}{DEFAULT = F; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
 \item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
 

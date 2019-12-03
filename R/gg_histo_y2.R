@@ -10,9 +10,11 @@
 #' @param axis_title_size DEFAULT = 18; Font size for x_label and y_label
 #' @param bins DEFAULT = 30; The number of bins. Same as the ggplot2 function, geom_histogram
 #' @param binwidth DEFAULT = NULL; The number of units in the x_var that fit in a bin. Overrides the bins argument
+#' @param color_mean_line DEFAULT = '#474747', a gray/black color
+#' @param weight_var DEFAULT = NULL; set to your weights variable if working with weighted data
 #' @param x_limits DEFAULT = 'no limits'; The 'no limits' default allows the histogram to capture all values for the variable. A secondary option is '95 trim' which will set the limits of the histogram to within 2 standard deviations of the mean, or all values between the 5th and 95th percentiles. Alternatively, you can set your own limits using c(my_min, my_max)
 #' @param x_label DEFAULT = ''; Title for the x_axis
-#' @param x_label DEFAULT = 'Respondents'; Title for the x_axis (the y axis is set to show the number of respondents in a given bin)
+#' @param y_label DEFAULT = 'Respondents'; Title for the x_axis (the y axis is set to show the number of respondents in a given bin)
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
