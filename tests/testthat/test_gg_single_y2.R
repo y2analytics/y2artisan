@@ -123,7 +123,7 @@ test_that("direction", {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(
-      bar_width = 1
+      direction = 'horizontal'
     )
   expect_error(chart, NA)
 })

@@ -4,14 +4,35 @@
 \alias{gg_stacked_y2}
 \title{Create a grouped ggplot object}
 \usage{
-gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
-  label_var = percent_label, color_var = label, axis_display = T,
-  axis_text_size = 12, axis_title_size = 14, bar_width = 0.75,
-  erase_labels = 0.01, fills, colors = "0", label_length = 45,
-  label_size = 8, legend_nrow = NULL, legend_pos = "top",
-  legend_rev = FALSE, legend_text_size = 6, legend_title_size = 8,
-  legend_title = "", text_family = "flama", title_label = "",
-  title_size = 14, x_label = "", y_label = "", y_min = 0)
+gg_stacked_y2(
+  data = frequencies,
+  x_var = group_var,
+  y_var = result,
+  label_var = percent_label,
+  color_var = label,
+  axis_display = T,
+  axis_text_size = 12,
+  axis_title_size = 14,
+  bar_width = 0.75,
+  direction = "horizontal",
+  erase_labels = 0.01,
+  fills,
+  colors = "0",
+  label_length = 45,
+  label_size = 8,
+  legend_nrow = NULL,
+  legend_pos = "top",
+  legend_rev = FALSE,
+  legend_text_size = 6,
+  legend_title_size = 8,
+  legend_title = "",
+  text_family = "flama",
+  title_label = "",
+  title_size = 14,
+  x_label = "",
+  y_label = "",
+  y_min = 0
+)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
@@ -65,7 +86,7 @@ gg_stacked_y2(data = frequencies, x_var = group_var, y_var = result,
 \item{y_min}{DEFAULT = 0. Change to a negative value such as -.2 to add space for extra text/graphic between the axis text and the stacked bars}
 }
 \description{
-This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+This function creates a ggplot2 object automatically formatted for a stacked variable with inherent ordering.
 }
 \examples{
 frequencies <- tibble(

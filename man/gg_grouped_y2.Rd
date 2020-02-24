@@ -4,15 +4,36 @@
 \alias{gg_grouped_y2}
 \title{Create a grouped ggplot object}
 \usage{
-gg_grouped_y2(data = frequencies, x_var = label, y_var = result,
-  label_var = percent_label, color_var = group_var,
-  axis_text_size = 12, axis_title_size = 14, bar_width = 0.75,
-  chart_height = 5.5, chart_width = 11, direction = "vertical",
-  fills, label_length = 45, label_size = 6, legend_pos = "top",
-  legend_nrow = NULL, legend_rev = FALSE, legend_text_size = 6,
-  legend_title_size = 8, legend_title = "", nudge = 0,
-  text_family = "flama", title_label = "", title_size = 14,
-  x_label = "", y_label = "", y_min = 0, y_max = 0)
+gg_grouped_y2(
+  data = frequencies,
+  x_var = label,
+  y_var = result,
+  label_var = percent_label,
+  color_var = group_var,
+  axis_text_size = 12,
+  axis_title_size = 14,
+  bar_width = 0.75,
+  chart_height = 5.5,
+  chart_width = 11,
+  direction = c("vertical", "horizontal"),
+  fills,
+  label_length = 45,
+  label_size = 6,
+  legend_pos = "top",
+  legend_nrow = NULL,
+  legend_rev = FALSE,
+  legend_text_size = 6,
+  legend_title_size = 8,
+  legend_title = "",
+  nudge = 0,
+  text_family = "flama",
+  title_label = "",
+  title_size = 14,
+  x_label = "",
+  y_label = "",
+  y_min = 0,
+  y_max = 0
+)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
@@ -70,7 +91,7 @@ gg_grouped_y2(data = frequencies, x_var = label, y_var = result,
 \item{y_max}{DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
 }
 \description{
-This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+This function creates a ggplot2 object automatically formatted for a grouped variable."fills" is the only argument with no default.
 }
 \examples{
 frequencies <- ToothGrowth \%>\%

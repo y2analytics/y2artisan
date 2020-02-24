@@ -2,19 +2,19 @@
 ### Description
 #' Create an ungrouped ggplot object
 #'
-#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' This function creates a ggplot2 object automatically formatted for a single variable (including multiple select).
 #' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = label; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
-#' @param color_var DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color. Note: the color variable CANNOT be numeric.
+#' @param color_var DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color if only a single color is specified. Note: the color variable CANNOT be numeric.
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param chart_height DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically
 #' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
-#' @param fills DEFAULT = rep('#474E7E', count(data)); the hexcode is the bluepurple color from the Qualtrics logo. This short function will give all the bars the same color. If colors are changed here in conjunction with the color_var, you can more easily manipulate colors based on another variable.
+#' @param fills DEFAULT = '#474E7E', the purple Qualtrics color. Three options: 1) Give only 1 color, all bars will be that color. 2) Specify the color for every bar using a vector of colors. 3) Set the "color_var" argument to a variable in the data frame and specify a color for each level in the color_var.
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
@@ -53,7 +53,7 @@ gg_single_y2 <- function(
   chart_height = 5.5,
   chart_width = 11,
   direction = 'vertical',
-  fills = rep('#474E7E', dplyr::count(data)),
+  fills = '#474E7E',
   label_length = 45,
   label_size = 10,
   legend_pos = 'none',
@@ -70,16 +70,17 @@ gg_single_y2 <- function(
   y_min = 0,
   y_max = 0 #auto-fills
 ) {
-  #Flags
+
+### Flags
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var)
   label_flag <- dplyr::enquo(label_var)
+
+### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
   max_str_length <- data %>% dplyr::select(!!x_flag) %>% purrr::as_vector() %>% stringr::str_length() %>% max()
   str_add <- max_str_length * max_y_val /1500
-
-
   legend_pos <- dplyr::case_when(
     legend_title != '' & legend_pos == 'none' ~ 'top',
     T ~ legend_pos
@@ -106,9 +107,21 @@ gg_single_y2 <- function(
     direction == 'vertical' ~ 15,
     T ~ label_length
   )
+  fills <- if(length(fills) == 1) { # If user specifies only one color, repeat color for all bars
+    fills <- rep(fills, dplyr::count(data))
+  } else{
+    fills <- fills
+  }
 
 
-  #Chart
+### Conditional chunks
+  cond_direction <- if(direction == 'horizontal'){
+  ggplot2::coord_flip()
+} else{NULL}
+
+
+
+### Chart
   chart <- ggplot2::ggplot(
     data,
     ggplot2::aes(
@@ -175,9 +188,8 @@ gg_single_y2 <- function(
         collapse="\n"
       )
     ) +
-    if(direction == 'horizontal'){
-      ggplot2::coord_flip()
-    }
+    cond_direction
+
 }
 
 

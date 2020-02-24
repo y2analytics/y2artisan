@@ -4,8 +4,11 @@
 \alias{add_section_header_y2}
 \title{Add Blank PowerPoint Section Header}
 \usage{
-add_section_header_y2(title = "xxx", slide_name = "Section Header",
-  master_name = "Office Theme")
+add_section_header_y2(
+  title = "xxx",
+  slide_name = "Section Header",
+  master_name = "Office Theme"
+)
 }
 \arguments{
 \item{title}{DEFAULT: "xxx"; Add a title in quotes here to have your Section Headers put in for you by R}

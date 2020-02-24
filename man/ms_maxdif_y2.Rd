@@ -4,18 +4,39 @@
 \alias{ms_maxdif_y2}
 \title{Create a groupedbar mschart object}
 \usage{
-ms_maxdif_y2(data = frequencies, x_var = "label", y_var = "result",
-  group_var = "group_var", axis_text_size = 14, axis_title_size = 18,
-  axis_x_display = T, axis_x_label = "", axis_x_position = "low",
-  axis_x_rotate = 0, axis_x_rotate_title = 0, axis_y_display = T,
-  axis_y_label = "", axis_y_min = NULL, axis_y_max = NULL,
-  axis_y_rotate = 0, axis_y_rotate_title = 360,
-  direction = "horizontal", font_family = "Arial", gap_width = 75,
-  grouping = "standard", label_color = color_settings_grouped,
-  label_position = "outEnd", label_show_values = T,
-  label_text = text_settings_grouped, legend_pos = "n",
-  legend_text_size = 16, overlapping = 100, num_fmt = "percent",
-  title_label = "", title_size = 18)
+ms_maxdif_y2(
+  data = frequencies,
+  x_var = "label",
+  y_var = "result",
+  group_var = "group_var",
+  axis_text_size = 14,
+  axis_title_size = 18,
+  axis_x_display = T,
+  axis_x_label = "",
+  axis_x_position = "low",
+  axis_x_rotate = 0,
+  axis_x_rotate_title = 0,
+  axis_y_display = T,
+  axis_y_label = "",
+  axis_y_min = NULL,
+  axis_y_max = NULL,
+  axis_y_rotate = 0,
+  axis_y_rotate_title = 360,
+  direction = "horizontal",
+  font_family = "Arial",
+  gap_width = 75,
+  grouping = "standard",
+  label_color = color_settings_grouped,
+  label_position = "outEnd",
+  label_show_values = T,
+  label_text = text_settings_grouped,
+  legend_pos = "n",
+  legend_text_size = 16,
+  overlapping = 100,
+  num_fmt = "percent",
+  title_label = "",
+  title_size = 18
+)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}

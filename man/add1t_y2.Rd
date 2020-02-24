@@ -4,9 +4,17 @@
 \alias{add1t_y2}
 \title{Add PowerPoint slide & 1 table}
 \usage{
-add1t_y2(name, add_slide = T, text_boxes = F,
-  slide_name = "Findings / 1 chart", master_name = "Office Theme",
-  left_start = 0.5, top_start = 2, height = 5, width = 12)
+add1t_y2(
+  name,
+  add_slide = T,
+  text_boxes = F,
+  slide_name = "Findings / 1 chart",
+  master_name = "Office Theme",
+  left_start = 0.5,
+  top_start = 2,
+  height = 5,
+  width = 12
+)
 }
 \arguments{
 \item{name}{The name of the dataframe to be added to a new PowerPoint slide.}

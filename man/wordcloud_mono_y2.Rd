@@ -4,8 +4,14 @@
 \alias{wordcloud_mono_y2}
 \title{Creates a word cloud from an open end question}
 \usage{
-wordcloud_mono_y2(dataset, variable, colors = "#474E7E", top_x = 50,
-  min_size = 1, max_size = 12)
+wordcloud_mono_y2(
+  dataset,
+  variable,
+  colors = "#474E7E",
+  top_x = 50,
+  min_size = 1,
+  max_size = 12
+)
 }
 \arguments{
 \item{dataset}{no default. Usually piped in from your main dataset}

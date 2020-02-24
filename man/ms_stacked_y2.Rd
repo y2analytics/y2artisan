@@ -4,19 +4,40 @@
 \alias{ms_stacked_y2}
 \title{Create a groupedbar mschart object}
 \usage{
-ms_stacked_y2(data = frequencies, x_var = "group_var",
-  y_var = "result", group_var = "label", axis_text_size = 14,
-  axis_title_size = 18, axis_x_text_color = "black",
-  axis_x_display = T, axis_x_label = "", axis_x_rotate = 0,
-  axis_x_rotate_title = 0, axis_y_display = F, axis_y_label = "",
-  axis_y_min = 0, axis_y_max = 1, axis_y_rotate = 0,
-  axis_y_rotate_title = 360, direction = "horizontal",
-  gap_width = 25, grouping = "percentStacked", font_family = "Arial",
-  label_color = color_settings_stacked, label_position = "outEnd",
-  label_show_percent = F, label_show_values = T,
-  label_text = text_settings_stacked, legend_pos = "t",
-  legend_text_size = 10, num_fmt = "percent", overlapping = 100,
-  title_label = "", title_size = 18)
+ms_stacked_y2(
+  data = frequencies,
+  x_var = "group_var",
+  y_var = "result",
+  group_var = "label",
+  axis_text_size = 14,
+  axis_title_size = 18,
+  axis_x_text_color = "black",
+  axis_x_display = T,
+  axis_x_label = "",
+  axis_x_rotate = 0,
+  axis_x_rotate_title = 0,
+  axis_y_display = F,
+  axis_y_label = "",
+  axis_y_min = 0,
+  axis_y_max = 1,
+  axis_y_rotate = 0,
+  axis_y_rotate_title = 360,
+  direction = "horizontal",
+  gap_width = 25,
+  grouping = "percentStacked",
+  font_family = "Arial",
+  label_color = color_settings_stacked,
+  label_position = "outEnd",
+  label_show_percent = F,
+  label_show_values = T,
+  label_text = text_settings_stacked,
+  legend_pos = "t",
+  legend_text_size = 10,
+  num_fmt = "percent",
+  overlapping = 100,
+  title_label = "",
+  title_size = 18
+)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.}

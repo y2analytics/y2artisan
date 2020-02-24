@@ -2,7 +2,7 @@
 ### Description
 #' Create a grouped ggplot object
 #'
-#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' This function creates a ggplot2 object automatically formatted for a grouped variable."fills" is the only argument with no default.
 #' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = label; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
@@ -53,7 +53,7 @@ gg_grouped_y2 <- function(
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
-  direction = 'vertical',
+  direction = c('vertical', 'horizontal'),
   fills, #only variable with no default...
   label_length = 45,
   label_size = 6,
@@ -72,15 +72,20 @@ gg_grouped_y2 <- function(
   y_min = 0,
   y_max = 0 #auto-fills
 ) {
-  #Flags
+
+### Flags
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #AKA group_var
   label_flag <- dplyr::enquo(label_var)
+  direction <- match.arg(direction)
+
+
+
+### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
   max_str_length <- data %>% dplyr::select(!!x_flag) %>% purrr::as_vector() %>% stringr::str_length() %>% max()
   str_add <- max_str_length * max_y_val /1500
-
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
@@ -105,7 +110,15 @@ gg_grouped_y2 <- function(
   )
 
 
-  #Chart
+
+### Conditional chunks
+  cond_direction <- if(direction == 'horizontal'){
+    ggplot2::coord_flip()
+  } else{NULL}
+
+
+
+### Chart
   chart <- ggplot2::ggplot(
     data,
     ggplot2::aes(
@@ -180,9 +193,7 @@ gg_grouped_y2 <- function(
         collapse="\n"
       )
     ) +
-    if(direction == 'horizontal'){
-      ggplot2::coord_flip()
-    }
+    cond_direction
 }
 
 

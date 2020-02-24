@@ -2,7 +2,7 @@
 ### Description
 #' Create a grouped ggplot object
 #'
-#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' This function creates a ggplot2 object automatically formatted for a stacked variable with inherent ordering.
 #' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = group_var; When doing a single stacked bar, set x_var to variable or any variable that has a only one level
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
@@ -70,6 +70,7 @@ gg_stacked_y2 <- function(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
+  direction = "horizontal",
   erase_labels = .01,
   fills, #only argument with no default
   colors = '0',
@@ -88,7 +89,8 @@ gg_stacked_y2 <- function(
   y_label = '',
   y_min = 0
 ) {
-  #Flags
+
+### Flags
   x_flag <- dplyr::enquo(x_var) #probs group_var
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #probs label
@@ -104,7 +106,22 @@ gg_stacked_y2 <- function(
   )
   legend_rev <- ifelse(legend_rev == FALSE, TRUE, FALSE)
 
-  #Chart
+
+
+### Conditional chunks
+cond_axis_display <-  if(axis_display == F){
+    ggplot2::theme(
+      axis.text = element_blank()
+    )
+  } else{NULL}
+
+cond_direction <- if(direction == 'horizontal'){
+  ggplot2::coord_flip()
+} else{NULL}
+
+
+
+### Chart
   chart <- ggplot2::ggplot(
     data,
     ggplot2::aes(
@@ -184,12 +201,8 @@ gg_stacked_y2 <- function(
         collapse="\n"
       )
     ) +
-    ggplot2::coord_flip() +
-    if(axis_display == F){
-      ggplot2::theme(
-        axis.text = element_blank()
-      )
-    }
+    cond_direction +
+    cond_axis_display
 }
 
 

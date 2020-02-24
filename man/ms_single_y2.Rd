@@ -4,18 +4,39 @@
 \alias{ms_single_y2}
 \title{Create an ugrouped mschart object}
 \usage{
-ms_single_y2(data = frequencies, x_var = "label", y_var = "result",
-  axis_text_size = 14, axis_title_size = 18, axis_x_display = T,
-  axis_x_label = "", axis_x_position = "nextTo", axis_x_rotate = 0,
-  axis_x_rotate_title = 0, axis_y_display = T, axis_y_label = "",
-  axis_y_min = 0, axis_y_max = NULL, axis_y_rotate = 0,
-  axis_y_rotate_title = 360, direction = "vertical",
-  font_family = "Arial", gap_width = 25, grouping = "standard",
-  group_var = NULL, label_color = color_settings,
-  label_position = "outEnd", label_show_values = T,
-  label_text = text_settings, legend_pos = "n",
-  legend_text_size = 16, num_fmt = "percent", overlapping = -50,
-  title_label = "", title_size = 18)
+ms_single_y2(
+  data = frequencies,
+  x_var = "label",
+  y_var = "result",
+  axis_text_size = 14,
+  axis_title_size = 18,
+  axis_x_display = T,
+  axis_x_label = "",
+  axis_x_position = "nextTo",
+  axis_x_rotate = 0,
+  axis_x_rotate_title = 0,
+  axis_y_display = T,
+  axis_y_label = "",
+  axis_y_min = 0,
+  axis_y_max = NULL,
+  axis_y_rotate = 0,
+  axis_y_rotate_title = 360,
+  direction = "vertical",
+  font_family = "Arial",
+  gap_width = 25,
+  grouping = "standard",
+  group_var = NULL,
+  label_color = color_settings,
+  label_position = "outEnd",
+  label_show_values = T,
+  label_text = text_settings,
+  legend_pos = "n",
+  legend_text_size = 16,
+  num_fmt = "percent",
+  overlapping = -50,
+  title_label = "",
+  title_size = 18
+)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.}

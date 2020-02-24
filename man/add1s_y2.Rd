@@ -4,8 +4,11 @@
 \alias{add1s_y2}
 \title{Add 1 Blank PowerPoint slide}
 \usage{
-add1s_y2(text_boxes = F, slide_name = "Findings / 1 chart",
-  master_name = "Office Theme")
+add1s_y2(
+  text_boxes = F,
+  slide_name = "Findings / 1 chart",
+  master_name = "Office Theme"
+)
 }
 \arguments{
 \item{text_boxes}{DEFAULT = F; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}

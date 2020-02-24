@@ -4,15 +4,35 @@
 \alias{gg_single_y2}
 \title{Create an ungrouped ggplot object}
 \usage{
-gg_single_y2(data = frequencies, x_var = label, y_var = result,
-  label_var = percent_label, color_var = label, axis_text_size = 12,
-  axis_title_size = 14, bar_width = 0.75, chart_height = 5.5,
-  chart_width = 11, direction = "vertical", fills = rep("#474E7E",
-  dplyr::count(data)), label_length = 45, label_size = 10,
-  legend_pos = "none", legend_rev = FALSE, legend_text_size = 6,
-  legend_title_size = 8, legend_title = "", nudge = 0,
-  text_family = "flama", title_label = "", title_size = 14,
-  x_label = "", y_label = "", y_min = 0, y_max = 0)
+gg_single_y2(
+  data = frequencies,
+  x_var = label,
+  y_var = result,
+  label_var = percent_label,
+  color_var = label,
+  axis_text_size = 12,
+  axis_title_size = 14,
+  bar_width = 0.75,
+  chart_height = 5.5,
+  chart_width = 11,
+  direction = "vertical",
+  fills = "#474E7E",
+  label_length = 45,
+  label_size = 10,
+  legend_pos = "none",
+  legend_rev = FALSE,
+  legend_text_size = 6,
+  legend_title_size = 8,
+  legend_title = "",
+  nudge = 0,
+  text_family = "flama",
+  title_label = "",
+  title_size = 14,
+  x_label = "",
+  y_label = "",
+  y_min = 0,
+  y_max = 0
+)
 }
 \arguments{
 \item{data}{DEFAULT = frequencies; The name of the data frame that ggplot pulls from.}
@@ -23,7 +43,7 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 
 \item{label_var}{DEFAULT = percent_label; When using the order_label function, this variable will be created for you.}
 
-\item{color_var}{DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color. Note: the color variable CANNOT be numeric.}
+\item{color_var}{DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color if only a single color is specified. Note: the color variable CANNOT be numeric.}
 
 \item{axis_text_size}{DEFAULT = 12; Font size for variable levels and axis percentages.}
 
@@ -37,7 +57,7 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 
 \item{direction}{DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"}
 
-\item{fills}{DEFAULT = rep('#474E7E', count(data)); the hexcode is the bluepurple color from the Qualtrics logo. This short function will give all the bars the same color. If colors are changed here in conjunction with the color_var, you can more easily manipulate colors based on another variable.}
+\item{fills}{DEFAULT = '#474E7E', the purple Qualtrics color. Three options: 1) Give only 1 color, all bars will be that color. 2) Specify the color for every bar using a vector of colors. 3) Set the "color_var" argument to a variable in the data frame and specify a color for each level in the color_var.}
 
 \item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 
@@ -66,7 +86,7 @@ gg_single_y2(data = frequencies, x_var = label, y_var = result,
 \item{y_max}{DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
 }
 \description{
-This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+This function creates a ggplot2 object automatically formatted for a single variable (including multiple select).
 }
 \examples{
 frequencies <- mtcars \%>\%

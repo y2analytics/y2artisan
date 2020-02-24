@@ -4,8 +4,14 @@
 \alias{wordcloud_y2}
 \title{Creates a word cloud from an open end question}
 \usage{
-wordcloud_y2(dataset, variable, colors = "bluepurple", top_x = 50,
-  min_size = 1, max_size = 12)
+wordcloud_y2(
+  dataset,
+  variable,
+  colors = "bluepurple",
+  top_x = 50,
+  min_size = 1,
+  max_size = 12
+)
 }
 \arguments{
 \item{dataset}{no default. Usually piped in from your main dataset}
