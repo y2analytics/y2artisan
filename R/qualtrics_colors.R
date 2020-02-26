@@ -4,10 +4,7 @@
 #'
 #' Pre saved hex codes for the 4 base colors typically used in Qualtrics projects
 #'
-#' @docType data
-
-
-
+#' @export
 purple <- '#474E7E'
 purple_lightest <- '#D1D3DF'
 purple_light <- '#8C90AE'
