@@ -2,7 +2,7 @@
 ### Description
 #' Create a groupedbar mschart object
 #'
-#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' This function creates a mschart object automatically formatted for a grouped variable. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 #' @param data DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.
 #' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
@@ -21,7 +21,7 @@
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = 'color_settings_grouped'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
-#' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
+#' @param label_position DEFAULT = 'outEnd'; Other options include c('outEnd', 'inEnd', 'ctr', 'inBase')
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = 'text_settings_grouped'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
@@ -59,7 +59,7 @@ ms_grouped_y2 <-  function(
   axis_title_size = 18,
   axis_x_display = T,
   axis_x_label = '',
-  axis_x_position = 'nextTo',
+  axis_x_position = c('nextTo', 'high', 'low', 'none'),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
   axis_y_display = T,
@@ -68,23 +68,23 @@ ms_grouped_y2 <-  function(
   axis_y_max = NULL,
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
-  direction = 'vertical',
+  direction = c('vertical', 'horizontal'),
   font_family = 'Arial',
   gap_width = 75,
   grouping = 'standard',
   label_color = color_settings_grouped,
-  label_position = 'outEnd',
+  label_position = c('outEnd', 'inEnd', 'ctr', 'inBase'),
   label_show_values = T,
   label_text = text_settings_grouped,
   overlapping = -25,
-  legend_pos = 't',
+  legend_pos = c('t', 'n', 'b', 'tr', 'l', 'r'),
   legend_text_size = 16,
-  num_fmt = 'percent',
+  num_fmt = c('percent', 'general'),
   title_label = '',
   title_size = 18
 ) {
 
-  ### Check for special symbols
+### Check for special symbols
   freqs_list <- split(frequencies, seq(nrow(frequencies))) # turn data frame into a list
   symbols_sum <- map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
     mutate_all(~as.numeric(.)) %>% # convert table into numerics
@@ -93,7 +93,14 @@ ms_grouped_y2 <-  function(
     stop('mschart objects cannot contain the special symbols "&" or "<". Please remove those symbols from your data frame')
   }
 
-  ### Flags
+
+
+### Flags
+  axis_x_position <- rlang::arg_match(axis_x_position)
+  direction <- rlang::arg_match(direction)
+  label_position <- rlang::arg_match(label_position)
+  legend_pos <- rlang::arg_match(legend_pos)
+  num_fmt <- rlang::arg_match(num_fmt)
   axis_num_fmt <- dplyr::case_when(
     num_fmt == 'percent' ~ '0%%',
     num_fmt == 'general' ~ 'general'
@@ -103,7 +110,9 @@ ms_grouped_y2 <-  function(
     num_fmt == 'general' ~ 'general'
   )
 
-  ### Chart
+
+
+### Chart
   mschart::ms_barchart(
     data,
     x = x_var,

@@ -1,11 +1,11 @@
 #### Line chart ####
 #' Create an ugrouped mschart object
 #'
-#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' This function creates a mschart object automatically formatted for a line chart. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 #' @param data DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.
-#' @param x_var DEFAULT = 'year'; The name of your time variable
+#' @param x_var DEFAULT = 'label'; The name of your time variable
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
-#' @param group_var DEFAULT = 'label'; Each line will be a distinct value of this variable
+#' @param group_var DEFAULT = 'group_var'; Each line will be a distinct value of this variable
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_y_display DEFAULT = T
@@ -68,9 +68,9 @@ ms_line_y2 <- function(
   label_position = 't',
   label_show_values = T,
   label_text = text_settings_grouped,
-  legend_pos = 'n',
+  legend_pos = c('n', 't', 'b', 'tr', 'l', 'r'),
   legend_text_size = 16,
-  num_fmt = 'percent',
+  num_fmt = c('percent', 'general'),
   title_label = '',
   title_size = 18
 ){
@@ -85,6 +85,8 @@ ms_line_y2 <- function(
   }
 
   ### Flags
+  legend_pos <- rlang::arg_match(legend_pos)
+  num_fmt <- rlang::arg_match(num_fmt)
   axis_num_fmt <- dplyr::case_when(
     num_fmt == 'percent' ~ '0%%',
     num_fmt == 'general' ~ 'general'

@@ -17,7 +17,7 @@ gg_bullet_y2(
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
-  direction = "vertical",
+  direction = c("vertical", "horizontal"),
   fills,
   label_length = 45,
   label_size = 6,

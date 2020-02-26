@@ -2,7 +2,7 @@
 ### Description
 #' Create a groupedbar mschart object
 #'
-#' This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+#' This function creates a mschart object automatically formatted for a stacked variable with an inherent order. It requires two lists called "text_settings_stacked" and "color_settings_stacked" by default that specify the colors desired for the chart.
 #' @param data DEFAULT = frequencies; The name of the data frame that the mscharts pulls from.
 #' @param x_var DEFAULT = 'group_var'; For a single stacked bar, use x_var = 'variable' or 'stat', really anything that will only have 1 level.
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
@@ -19,9 +19,8 @@
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
 #' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
-#' @param grouping DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
+#' @param grouping DEFAULT = 'percentStacked'; grouping for a stacked bar chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
-#' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
 #' @param label_show_percent DEFAULT = F
 #' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = 'text_settings_stacked'; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
@@ -76,18 +75,17 @@ ms_stacked_y2 <- function(
   axis_y_max = 1,
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
-  direction = 'horizontal',
+  direction = c('horizontal', 'vertical'),
   gap_width = 25,
   grouping = 'percentStacked',
   font_family = 'Arial',
   label_color = color_settings_stacked,
-  label_position = 'outEnd',
   label_show_percent = F,
   label_show_values = T,
   label_text = text_settings_stacked,
-  legend_pos = 't',
+  legend_pos = c('t', 'n', 'b', 'tr', 'l', 'r'),
   legend_text_size = 10,
-  num_fmt = 'percent',
+  num_fmt = c('percent', 'general'),
   overlapping = 100,
   title_label = '',
   title_size = 18
@@ -103,6 +101,9 @@ ms_stacked_y2 <- function(
   }
 
   ### Flags
+  direction <- rlang::arg_match(direction)
+  legend_pos <- rlang::arg_match(legend_pos)
+  num_fmt <- rlang::arg_match(num_fmt)
   axis_num_fmt <- dplyr::case_when(
     num_fmt == 'percent' ~ '0%%',
     num_fmt == 'general' ~ 'general'

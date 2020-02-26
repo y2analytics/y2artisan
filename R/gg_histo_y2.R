@@ -46,7 +46,7 @@ gg_histo_y2 <- function(
 ### Flags
   var_flag <- dplyr::enquo(x_var)
   wt_flag <- dplyr::enquo(weight_var)
-  mean_line <- match.arg(mean_line)
+  mean_line <- rlang::arg_match(mean_line)
 
 
 

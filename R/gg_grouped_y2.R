@@ -78,7 +78,7 @@ gg_grouped_y2 <- function(
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #AKA group_var
   label_flag <- dplyr::enquo(label_var)
-  direction <- match.arg(direction)
+  direction <- rlang::arg_match(direction)
 
 
 

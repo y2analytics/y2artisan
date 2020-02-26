@@ -14,7 +14,7 @@ gg_stacked_y2(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
-  direction = "horizontal",
+  direction = c("horizontal", "vertical"),
   erase_labels = 0.01,
   fills,
   colors = "0",
@@ -57,7 +57,7 @@ gg_stacked_y2(
 
 \item{fills}{NO DEFAULT; requires a vector of colors for all levels of the color_var}
 
-\item{colors}{DEFAULT is white ('#ffffff') for the text of all percent labels; make custom by inputting a vector of colors for all levels of the color_var}
+\item{colors}{DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var}
 
 \item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 

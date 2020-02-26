@@ -22,18 +22,18 @@ ms_maxdif_y2(
   axis_y_max = NULL,
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
-  direction = "horizontal",
+  direction = c("horizontal", "vertical"),
   font_family = "Arial",
   gap_width = 75,
   grouping = "standard",
   label_color = color_settings_grouped,
-  label_position = "outEnd",
+  label_position = c("outEnd", "inEnd", "ctr", "inBase"),
   label_show_values = T,
   label_text = text_settings_grouped,
-  legend_pos = "n",
+  legend_pos = c("n", "t", "b", "tr", "l", "r"),
   legend_text_size = 16,
   overlapping = 100,
-  num_fmt = "percent",
+  num_fmt = c("percent", "general"),
   title_label = "",
   title_size = 18
 )
@@ -94,7 +94,7 @@ ms_maxdif_y2(
 \item{title_size}{DEFAULT = 18}
 }
 \description{
-This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+This function creates a mschart object automatically formatted for a maxdiff question. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 }
 \examples{
 frequencies <- tibble(

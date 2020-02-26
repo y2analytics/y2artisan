@@ -15,7 +15,7 @@ gg_single_y2(
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
-  direction = "vertical",
+  direction = c("vertical", "horizontal"),
   fills = "#474E7E",
   label_length = 45,
   label_size = 10,

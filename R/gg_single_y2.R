@@ -52,7 +52,7 @@ gg_single_y2 <- function(
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
-  direction = 'vertical',
+  direction = c('vertical', 'horizontal'),
   fills = '#474E7E',
   label_length = 45,
   label_size = 10,
@@ -76,6 +76,9 @@ gg_single_y2 <- function(
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var)
   label_flag <- dplyr::enquo(label_var)
+  direction <- rlang::arg_match(direction)
+
+
 
 ### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
@@ -112,6 +115,7 @@ gg_single_y2 <- function(
   } else{
     fills <- fills
   }
+
 
 
 ### Conditional chunks

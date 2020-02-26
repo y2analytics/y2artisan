@@ -55,7 +55,7 @@ gg_bullet_y2 <- function(
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
-  direction = 'vertical',
+  direction = c('vertical', 'horizontal'),
   fills, #only variable with no default...
   label_length = 45,
   label_size = 6,
@@ -80,6 +80,7 @@ gg_bullet_y2 <- function(
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #AKA group_var
   label_flag <- dplyr::enquo(label_var)
+  direction <- rlang::arg_match(direction)
 
 
 
@@ -109,6 +110,13 @@ gg_bullet_y2 <- function(
     direction == 'vertical' ~ 15,
     T ~ label_length
   )
+
+
+
+### Conditional chunks
+  cond_direction <- if(direction == 'horizontal'){
+    ggplot2::coord_flip()
+  } else{NULL}
 
 
 
@@ -191,9 +199,7 @@ gg_bullet_y2 <- function(
         collapse="\n"
       )
     ) +
-    if(direction == 'horizontal'){
-      ggplot2::coord_flip()
-    }
+    cond_direction
 }
 
 

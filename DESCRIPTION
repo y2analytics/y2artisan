@@ -1,9 +1,9 @@
 Package: y2artisan
 Type: Package
 Title: Shortcuts for mschart and ggplot2
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre"))
-Description: Creates mschart objects in one line of code and imports these charts and tables into PowerPoint slides. Also incorporates shortcuts for ggplot2 functions.
+Description: Create mschart objects in one line of code and import these charts and tables into PowerPoint slides. Use shortcuts for ggplot2 functions. Explore string variables with tables and word clouds.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -15,5 +15,6 @@ Imports:
   stringr,
   ggplot2,
   flextable,
+  rlang,
   ggrepel
 RoxygenNote: 7.0.2

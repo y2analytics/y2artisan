@@ -12,6 +12,6 @@ purple
 Default Qualtrics Colors
 }
 \details{
-Pre saved hex codes for the 4 base colros typically used in Qualtrics projects
+Pre saved hex codes for the 4 base colors typically used in Qualtrics projects
 }
 \keyword{datasets}

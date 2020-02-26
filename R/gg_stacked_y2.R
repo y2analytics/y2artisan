@@ -14,7 +14,7 @@
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
-#' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; make custom by inputting a vector of colors for all levels of the color_var
+#' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 8. Adjusts the size of the percent labels within each bar.
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
@@ -70,7 +70,7 @@ gg_stacked_y2 <- function(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
-  direction = "horizontal",
+  direction = c("horizontal", 'vertical'),
   erase_labels = .01,
   fills, #only argument with no default
   colors = '0',
@@ -95,9 +95,15 @@ gg_stacked_y2 <- function(
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #probs label
   label_flag <- dplyr::enquo(label_var)
+  direction <- rlang::arg_match(direction)
+
+
+
+### Set defaults
   max_lab <- data %>% dplyr::select(!!color_flag) %>% dplyr::distinct() %>% purrr::as_vector() %>% length()
   colors = dplyr::case_when(
     colors == '0' ~ c(rep('#ffffff', max_lab)),
+    length(colors) == 1 ~ c(rep('#ffffff', max_lab)),
     T ~ colors
   )
   label_length <- dplyr::case_when(

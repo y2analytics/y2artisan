@@ -13,7 +13,7 @@ ms_grouped_y2(
   axis_title_size = 18,
   axis_x_display = T,
   axis_x_label = "",
-  axis_x_position = "nextTo",
+  axis_x_position = c("nextTo", "high", "low", "none"),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
   axis_y_display = T,
@@ -22,18 +22,18 @@ ms_grouped_y2(
   axis_y_max = NULL,
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
-  direction = "vertical",
+  direction = c("vertical", "horizontal"),
   font_family = "Arial",
   gap_width = 75,
   grouping = "standard",
   label_color = color_settings_grouped,
-  label_position = "outEnd",
+  label_position = c("outEnd", "inEnd", "ctr", "inBase"),
   label_show_values = T,
   label_text = text_settings_grouped,
   overlapping = -25,
-  legend_pos = "t",
+  legend_pos = c("t", "n", "b", "tr", "l", "r"),
   legend_text_size = 16,
-  num_fmt = "percent",
+  num_fmt = c("percent", "general"),
   title_label = "",
   title_size = 18
 )
@@ -75,7 +75,7 @@ ms_grouped_y2(
 
 \item{label_color}{DEFAULT = 'color_settings_grouped'; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
 
-\item{label_position}{DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
+\item{label_position}{DEFAULT = 'outEnd'; Other options include c('outEnd', 'inEnd', 'ctr', 'inBase')}
 
 \item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
 
@@ -94,7 +94,7 @@ ms_grouped_y2(
 \item{title_size}{DEFAULT = 18}
 }
 \description{
-This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+This function creates a mschart object automatically formatted for a grouped variable. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 }
 \examples{
 frequencies <- ToothGrowth \%>\%

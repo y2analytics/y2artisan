@@ -22,18 +22,17 @@ ms_stacked_y2(
   axis_y_max = 1,
   axis_y_rotate = 0,
   axis_y_rotate_title = 360,
-  direction = "horizontal",
+  direction = c("horizontal", "vertical"),
   gap_width = 25,
   grouping = "percentStacked",
   font_family = "Arial",
   label_color = color_settings_stacked,
-  label_position = "outEnd",
   label_show_percent = F,
   label_show_values = T,
   label_text = text_settings_stacked,
-  legend_pos = "t",
+  legend_pos = c("t", "n", "b", "tr", "l", "r"),
   legend_text_size = 10,
-  num_fmt = "percent",
+  num_fmt = c("percent", "general"),
   overlapping = 100,
   title_label = "",
   title_size = 18
@@ -70,13 +69,11 @@ ms_stacked_y2(
 
 \item{gap_width}{DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself}
 
-\item{grouping}{DEFAULT = 'percentStacked'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
+\item{grouping}{DEFAULT = 'percentStacked'; grouping for a stacked bar chart. must be one of "percentStacked", "clustered", "standard" or "stacked".}
 
 \item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
 
 \item{label_color}{DEFAULT = 'color_settings_stacked'; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
-
-\item{label_position}{DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
 
 \item{label_show_percent}{DEFAULT = F}
 
@@ -97,7 +94,7 @@ ms_stacked_y2(
 \item{title_size}{DEFAULT = 18}
 }
 \description{
-This function creates a mschart object automatically formatted for a single variable (including multiple select). It requires two lists called "text_settings" and "color_settings" by default that specify the colors desired for the chart.
+This function creates a mschart object automatically formatted for a stacked variable with an inherent order. It requires two lists called "text_settings_stacked" and "color_settings_stacked" by default that specify the colors desired for the chart.
 }
 \examples{
 frequencies <- tibble(
