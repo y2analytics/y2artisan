@@ -4,6 +4,7 @@
 #'
 #' Pre saved hex codes for the 4 base colors typically used in Qualtrics projects
 #'
+#' @docType data
 
 
 
