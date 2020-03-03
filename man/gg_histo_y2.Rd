@@ -18,7 +18,8 @@ gg_histo_y2(
   weight_var = NULL,
   x_limits = "no limits",
   x_label = "",
-  y_label = "Respondents"
+  y_label = "Respondents",
+  text_family = "flama"
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ gg_histo_y2(
 \item{x_label}{DEFAULT = ''; Title for the x_axis}
 
 \item{y_label}{DEFAULT = 'Respondents'; Title for the x_axis (the y axis is set to show the number of respondents in a given bin)}
+
+\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 }
 \description{
 This function creates a ggplot2 histogram object of a given variable with a dotted vertical line at the mean

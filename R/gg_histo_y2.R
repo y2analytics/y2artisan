@@ -13,6 +13,7 @@
 #' @param color_mean_line DEFAULT = '#474747', a gray/black color
 #' @param mean_line DEFAULT = "mean", must be one of c("mean", "median", "none")
 #' @param quadrant_lines DEFAULT = FALSE. Set to TRUE to display dotted lines on the 25th and 75th percentiles
+#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param weight_var DEFAULT = NULL; set to your weights variable if working with weighted data
 #' @param x_limits DEFAULT = 'no limits'; The 'no limits' default allows the histogram to capture all values for the variable. A secondary option is '95 trim' which will set the limits of the histogram to within 2 standard deviations of the mean, or all values between the 5th and 95th percentiles. Alternatively, you can set your own limits using c(my_min, my_max)
 #' @param x_label DEFAULT = ''; Title for the x_axis
@@ -40,7 +41,8 @@ gg_histo_y2 <- function(
   weight_var = NULL,
   x_limits = 'no limits',
   x_label = '',
-  y_label = 'Respondents'
+  y_label = 'Respondents',
+  text_family = 'flama'
 ){
 
 ### Flags
@@ -129,7 +131,8 @@ gg_histo_y2 <- function(
     ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
       axis.text = ggplot2::element_text(size = axis_text_size),
-      axis.title = ggplot2::element_text(size = axis_title_size)
+      axis.title = ggplot2::element_text(size = axis_title_size),
+      text = element_text(family = text_family)
     )
 
   return(chart)

@@ -23,7 +23,7 @@
 #' @param legend_text_size DEFAULT = 6
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
-#' @param text_family DEFAULT = 'flama'; all fonts used need to be loaded in using the theme() and showtext_auto() functions
+#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @param y_label DEFAULT = ''; Title for the y_axis
@@ -190,7 +190,8 @@ cond_direction <- if(direction == 'horizontal'){
       legend.title = ggplot2::element_text(size = legend_title_size),
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
-      plot.title = ggplot2::element_text(size = title_size)
+      plot.title = ggplot2::element_text(size = title_size),
+      text = element_text(family = text_family)
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, 1),

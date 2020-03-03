@@ -75,7 +75,7 @@ gg_stacked_y2(
 
 \item{legend_title}{DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified}
 
-\item{text_family}{DEFAULT = 'flama'; all fonts used need to be loaded in using the theme() and showtext_auto() functions}
+\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 

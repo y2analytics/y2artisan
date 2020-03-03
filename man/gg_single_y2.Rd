@@ -73,7 +73,7 @@ gg_single_y2(
 
 \item{nudge}{DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
 
-\item{text_family}{DEFAULT = 'flama'; all fonts used need to be loaded in using the theme() and showtext_auto() functions}
+\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 
