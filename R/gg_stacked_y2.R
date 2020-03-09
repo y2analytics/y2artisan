@@ -20,7 +20,7 @@
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
 #' @param legend_pos DEFAULT = 'top'
 #' @param legend_rev DEFAULT = FALSE
-#' @param legend_text_size DEFAULT = 6
+#' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
 #' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
@@ -79,7 +79,7 @@ gg_stacked_y2 <- function(
   legend_nrow = NULL,
   legend_pos = 'top',
   legend_rev = FALSE,
-  legend_text_size = 6,
+  legend_text_size = 8,
   legend_title_size = 8,
   legend_title = '',
   text_family = 'flama',

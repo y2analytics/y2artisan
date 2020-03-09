@@ -20,7 +20,7 @@
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
 #' @param legend_pos DEFAULT = 'top'
 #' @param legend_rev DEFAULY = FALSE
-#' @param legend_text_size DEFAULT = 6
+#' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
 #' @param nudge DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
@@ -62,7 +62,7 @@ gg_bullet_y2 <- function(
   legend_pos = 'top',
   legend_nrow = NULL,
   legend_rev = FALSE,
-  legend_text_size = 6,
+  legend_text_size = 8,
   legend_title_size = 8,
   legend_title = '',
   nudge = 0, #auto-fills

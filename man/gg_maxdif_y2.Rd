@@ -21,7 +21,7 @@ gg_maxdif_y2(
   legend_pos = "top",
   legend_nrow = NULL,
   legend_rev = FALSE,
-  legend_text_size = 6,
+  legend_text_size = 8,
   legend_title_size = 8,
   legend_title = "",
   nudge = 0,
@@ -67,7 +67,7 @@ gg_maxdif_y2(
 
 \item{legend_rev}{DEFAULY = FALSE}
 
-\item{legend_text_size}{DEFAULT = 6}
+\item{legend_text_size}{DEFAULT = 8}
 
 \item{legend_title_size}{DEFAULT = 8}
 

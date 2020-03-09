@@ -21,7 +21,7 @@ gg_single_y2(
   label_size = 10,
   legend_pos = "none",
   legend_rev = FALSE,
-  legend_text_size = 6,
+  legend_text_size = 8,
   legend_title_size = 8,
   legend_title = "",
   nudge = 0,
@@ -65,7 +65,7 @@ gg_single_y2(
 
 \item{legend_pos}{DEFAULT = 'none'}
 
-\item{legend_text_size}{DEFAULT = 6}
+\item{legend_text_size}{DEFAULT = 8}
 
 \item{legend_title_size}{DEFAULT = 8}
 
