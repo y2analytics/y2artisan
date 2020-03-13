@@ -12,6 +12,8 @@ gg_single_y2(
   color_var = label,
   axis_text_size = 12,
   axis_title_size = 14,
+  axis_y_display = T,
+  axis_x_display = T,
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
@@ -84,6 +86,8 @@ gg_single_y2(
 \item{y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{y_max}{DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
+
+\item{axis_*_display}{DEFAULT = TRUE; Set to FALSE to remove axis labels.}
 }
 \description{
 This function creates a ggplot2 object automatically formatted for a single variable (including multiple select).

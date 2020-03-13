@@ -10,6 +10,7 @@
 #' @param color_var DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color if only a single color is specified. Note: the color variable CANNOT be numeric.
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
+#' @param axis_*_display DEFAULT = TRUE; Set to FALSE to remove axis labels.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param chart_height DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically
 #' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
@@ -49,6 +50,8 @@ gg_single_y2 <- function(
   color_var = label,
   axis_text_size = 12,
   axis_title_size = 14,
+  axis_y_display = T,
+  axis_x_display = T,
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
@@ -121,8 +124,19 @@ gg_single_y2 <- function(
 ### Conditional chunks
   cond_direction <- if(direction == 'horizontal'){
   ggplot2::coord_flip()
-} else{NULL}
+  } else{NULL}
 
+  cond_x_display <-  if(axis_x_display == F){
+    ggplot2::theme(
+      axis.text.x = element_blank()
+    )
+  } else{NULL}
+
+  cond_y_display <-  if(axis_y_display == F){
+    ggplot2::theme(
+      axis.text.y = element_blank()
+    )
+  } else{NULL}
 
 
 ### Chart
@@ -193,6 +207,8 @@ gg_single_y2 <- function(
         collapse="\n"
       )
     ) +
+    cond_x_display +
+    cond_y_display +
     cond_direction
 
 }
