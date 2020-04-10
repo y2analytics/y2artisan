@@ -22,16 +22,17 @@
 #'   )
 #' )
 #'
-#' responses %>% wordcloud_y2(var1)
-#' responses %>% wordcloud_y2(var1, 'red')
+#' responses %>% wordcloud_mono_y2(var1, text_family = "Arial")
+#' responses %>% wordcloud_mono_y2(var1, 'red', text_family = "Arial")
 
 wordcloud_mono_y2 <- function(
   dataset,
   variable,
   colors = '#474E7E',
-  top_x = 50,
+  max_size = 12,
   min_size = 1,
-  max_size = 12
+  text_family = 'flama',
+  top_x = 50
 ) {
   flag_var <- dplyr::enquo(variable)
   frequencies <- openend_y2(dataset, !!flag_var, top_x)
@@ -48,7 +49,8 @@ wordcloud_mono_y2 <- function(
         label = label,
         color = variable
       ),
-      segment.size = 0
+      segment.size = 0,
+      family = text_family
     ) +
     ggplot2::scale_color_manual(values = colors, guide = F) +
     ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
@@ -57,6 +59,8 @@ wordcloud_mono_y2 <- function(
     ggplot2::theme_minimal()+
     ggplot2::theme(
       axis.text = element_blank(),
-      axis.title = element_blank()
+      axis.title = element_blank(),
+      text = element_text(family = text_family)
     )
+  return(chart)
 }

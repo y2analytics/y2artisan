@@ -28,16 +28,17 @@
 #' red_light <- '#F9E6E6'
 #'
 #' # If you want to use a specific color, you must specify three scalar shades of that color
-#' responses %>% wordcloud_y2(var1)
-#' responses %>% wordcloud_y2(var1, c(red_light, red_mid, red_dark))
+#' responses %>% wordcloud_y2(var1, text_family = "Arial")
+#' responses %>% wordcloud_y2(var1, c(red_light, red_mid, red_dark), text_family = "Arial",)
 
 wordcloud_y2 <- function(
   dataset,
   variable,
   colors = 'bluepurple',
-  top_x = 50,
+  max_size = 12,
   min_size = 1,
-  max_size = 12
+  text_family = 'flama',
+  top_x = 50
 ) {
   flag_var <- dplyr::enquo(variable)
   lows = dplyr::case_when(
@@ -76,7 +77,8 @@ wordcloud_y2 <- function(
         label = label,
         color = n
       ),
-      segment.size = 0
+      segment.size = 0,
+      family = text_family
     ) +
     ggplot2::scale_color_gradient2(low = lows, mid = mids, high = highs, midpoint = 0.5, guide = F) +
     ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
@@ -85,7 +87,8 @@ wordcloud_y2 <- function(
     ggplot2::theme_minimal()+
     ggplot2::theme(
       axis.text = element_blank(),
-      axis.title = element_blank()
+      axis.title = element_blank(),
+      text = element_text(family = text_family)
     )
   return(chart)
 }
