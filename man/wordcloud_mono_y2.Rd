@@ -8,9 +8,10 @@ wordcloud_mono_y2(
   dataset,
   variable,
   colors = "#474E7E",
-  top_x = 50,
+  max_size = 12,
   min_size = 1,
-  max_size = 12
+  text_family = "flama",
+  top_x = 50
 )
 }
 \arguments{
@@ -20,11 +21,13 @@ wordcloud_mono_y2(
 
 \item{colors}{DEFAULT = '#474E7E' (bluepurple from Qualtrics template). All words are the same color. Any color may be specified as a hexcode}
 
-\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
+\item{max_size}{DEFAULT = 12; the largest text size for the word with the highest frequency#' @keywords openend open end wordcloud word cloud}
 
 \item{min_size}{DEFAULT = 1; the smallest text size for the word with the lowest frequency}
 
-\item{max_size}{DEFAULT = 12; the largest text size for the word with the highest frequency#' @keywords openend open end wordcloud word cloud}
+\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+
+\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
 }
 \description{
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller
@@ -41,6 +44,6 @@ responses <- tibble(
   )
 )
 
-responses \%>\% wordcloud_y2(var1)
-responses \%>\% wordcloud_y2(var1, 'red')
+responses \%>\% wordcloud_mono_y2(var1, text_family = "Arial")
+responses \%>\% wordcloud_mono_y2(var1, 'red', text_family = "Arial")
 }

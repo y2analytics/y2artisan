@@ -98,10 +98,6 @@ frequencies <- mtcars \%>\%
   orderlabel::order_label(inherent_order_label = T)
 
 chart <- gg_single_y2()
-
-# When you change the color, you must specify a level for each bar. Here's an easy way to do so if they're all the same color
-chart <- gg_single_y2(fills = rep('pink', count(frequencies)))
-
 }
 \keyword{bar}
 \keyword{chart}

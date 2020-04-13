@@ -8,9 +8,10 @@ wordcloud_y2(
   dataset,
   variable,
   colors = "bluepurple",
-  top_x = 50,
+  max_size = 12,
   min_size = 1,
-  max_size = 12
+  text_family = "flama",
+  top_x = 50
 )
 }
 \arguments{
@@ -20,11 +21,13 @@ wordcloud_y2(
 
 \item{colors}{DEFAULT = 'bluepurple'; 4 qualtrics colors as pre-made options: "bluepurple", "lime", "teal", "brightblue". May also specify a vector of 3 scaled colors ranging from lightest to darkest}
 
-\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
+\item{max_size}{DEFAULT = 12; the largest text size for the word with the highest frequency}
 
 \item{min_size}{DEFAULT = 1; the smallest text size for the word with the lowest frequency}
 
-\item{max_size}{DEFAULT = 12; the largest text size for the word with the highest frequency}
+\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+
+\item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
 }
 \description{
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller and lighter in color
@@ -46,8 +49,8 @@ red_mid <- '#E38B8B'
 red_light <- '#F9E6E6'
 
 # If you want to use a specific color, you must specify three scalar shades of that color
-responses \%>\% wordcloud_y2(var1)
-responses \%>\% wordcloud_y2(var1, c(red_light, red_mid, red_dark))
+responses \%>\% wordcloud_y2(var1, text_family = "Arial")
+responses \%>\% wordcloud_y2(var1, c(red_light, red_mid, red_dark), text_family = "Arial",)
 }
 \keyword{cloud}
 \keyword{end}

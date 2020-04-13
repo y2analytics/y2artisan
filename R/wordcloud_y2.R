@@ -6,9 +6,10 @@
 #' @param dataset no default. Usually piped in from your main dataset
 #' @param variable The name of the openended variable from your dataset you want to look at
 #' @param colors DEFAULT = 'bluepurple'; 4 qualtrics colors as pre-made options: "bluepurple", "lime", "teal", "brightblue". May also specify a vector of 3 scaled colors ranging from lightest to darkest
-#' @param top_x DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end
-#' @param min_size DEFAULT = 1; the smallest text size for the word with the lowest frequency
 #' @param max_size DEFAULT = 12; the largest text size for the word with the highest frequency
+#' @param min_size DEFAULT = 1; the smallest text size for the word with the lowest frequency
+#' @param top_x DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end
+#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @keywords openend open end wordcloud word cloud
 #' @export
 #' @examples
