@@ -1,8 +1,8 @@
 #### Add 5 Charts ####
 #' Add 5 charts to PowerPoint slide
 #'
-#' This function adds 5 vertical charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
-#' @param name The name of the ms_chart object to be added to a new PowerPoint slide.
+#' This function adds 5 vertical charts/tables/other objects to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R. For this function to work, you need a powerpoint object saved into R called "doc"
+#' @param name The name of the chart/table/other object to be added to a new PowerPoint slide.
 #' @param position Position options: "left"; "centerleft"; "center"; centerright"; "right". The chart layout is always 5 tall charts
 #' @param label_first_only DEFAULT = F; Set to T if only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart
@@ -14,7 +14,7 @@
 #'   orderlabel::order_label(inherent_order_label = T)
 #' color_settings <- list('blue')
 #' text_settings<- list('result' = fp_text(font.size = 20))
-#' chart_name <- ms_single_y2()
+#' chart_name <- y2artisan::ms_single_y2()
 #'
 #' # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
 #' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
@@ -38,41 +38,45 @@ add5c_y2 <- function(
   label_first_only = F
 ) {
   if(label_first_only == F){
-    mschart::ph_with_chart_at(
+    officer::ph_with(
       doc,
-      chart = name,
-      left = dplyr::case_when(
-        position == 'left' ~ -.125,
-        position == 'centerleft' ~ 2.5,
-        position == 'center' ~ 5.125,
-        position == 'centerright' ~ 7.75,
-        position == 'right' ~ 10.375
-      ),
-      top = dplyr::case_when(
-        position == 'left' ~ 2,
-        position == 'centerleft' ~ 2,
-        position == 'center' ~ 2,
-        position == 'centerright' ~ 2,
-        position == 'right' ~ 2
-      ),
-      height = dplyr::case_when(
-        position == 'left' ~ 5,
-        position == 'centerleft' ~ 5,
-        position == 'center' ~ 5,
-        position == 'centerright' ~ 5,
-        position == 'right' ~ 5
-      ),
-      width = dplyr::case_when(
-        position == 'left' ~ 2.875,
-        position == 'centerleft' ~ 2.875,
-        position == 'center' ~ 2.875,
-        position == 'centerright' ~ 2.875,
-        position == 'right' ~ 2.875
+      value = name,
+      location = officer::ph_location(
+        left = dplyr::case_when(
+          position == 'left' ~ -.125,
+          position == 'centerleft' ~ 2.5,
+          position == 'center' ~ 5.125,
+          position == 'centerright' ~ 7.75,
+          position == 'right' ~ 10.375
+        ),
+        top = dplyr::case_when(
+          position == 'left' ~ 2,
+          position == 'centerleft' ~ 2,
+          position == 'center' ~ 2,
+          position == 'centerright' ~ 2,
+          position == 'right' ~ 2
+        ),
+        height = dplyr::case_when(
+          position == 'left' ~ 5,
+          position == 'centerleft' ~ 5,
+          position == 'center' ~ 5,
+          position == 'centerright' ~ 5,
+          position == 'right' ~ 5
+        ),
+        width = dplyr::case_when(
+          position == 'left' ~ 2.875,
+          position == 'centerleft' ~ 2.875,
+          position == 'center' ~ 2.875,
+          position == 'centerright' ~ 2.875,
+          position == 'right' ~ 2.875
+        )
       )
-    ) } else{ #label_first == T
-      mschart::ph_with_chart_at(
-        doc,
-        chart = name,
+    )
+  } else{ #label_first == T
+    officer::ph_with(
+      doc,
+      value = name,
+      location = officer::ph_location(
         left = dplyr::case_when(
           position == 'left' ~ .0,
           position == 'centerleft' ~ 4.4375,
@@ -102,6 +106,7 @@ add5c_y2 <- function(
           position == 'right' ~ 2.25
         )
       )
-    }
+    )
+  }
 }
 

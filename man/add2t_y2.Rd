@@ -2,20 +2,22 @@
 % Please edit documentation in R/add2t_y2.R
 \name{add2t_y2}
 \alias{add2t_y2}
-\title{Add 2 tables to PowerPoint slide}
+\title{Add 2 charts to PowerPoint slide}
 \usage{
-add2t_y2(name, position)
+add2t_y2(name, position, label_first_only = F)
 }
 \arguments{
-\item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
+\item{name}{The name of the chart/table/other object to be added to a new PowerPoint slide.}
 
 \item{position}{Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.}
+
+\item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
-This function adds 2 tables to a PowerPoint slide. The tables are automatically added to the last slide of the PP object in R. Beware that if the object passed to the function is not a pre-formated flextable, it automatically assigns a background color to the table and sets the fontsize to 18.
+This function adds 2 charts/tables/other objects to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R. For this function to work, you need a powerpoint object saved into R called "doc"
 }
 \examples{
-# First create a table that you can add into a powerpoint object
+# First create a chart that you can add into a powerpoint object
 my_table <- mtcars \%>\%
   y2clerk::freqs(carb) \%>\%
   orderlabel::order_label(inherent_order_label = T)
@@ -23,7 +25,7 @@ my_table <- mtcars \%>\%
 # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
 doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
 
-# Now start adding in your tables
+# Now start adding in your charts
 doc <- add1s_y2()
 doc <- add2t_y2(my_table, 'left')
 doc <- add2t_y2(my_table, 'right')
@@ -35,3 +37,4 @@ doc <- add2t_y2(my_table, 'bottom')
 print(doc, '~/Desktop/test.pptx')
 }
 \keyword{chart}
+\keyword{table}

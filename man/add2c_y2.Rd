@@ -7,14 +7,14 @@
 add2c_y2(name, position, label_first_only = F)
 }
 \arguments{
-\item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
+\item{name}{The name of the chart/table/other object to be added to a new PowerPoint slide.}
 
 \item{position}{Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.}
 
 \item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
-This function adds 2 charts to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R.
+This function adds 2 charts/tables/other objects to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R. For this function to work, you need a powerpoint object saved into R called "doc"
 }
 \examples{
 # First create a chart that you can add into a powerpoint object
@@ -23,7 +23,7 @@ frequencies <- mtcars \%>\%
   orderlabel::order_label(inherent_order_label = T)
 color_settings <- list('blue')
 text_settings<- list('result' = fp_text(font.size = 20))
-chart_name <- ms_single_y2()
+chart_name <- y2artisan::ms_single_y2()
 
 # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
 doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
@@ -40,3 +40,4 @@ doc <- add2c_y2(chart_name, 'bottom')
 print(doc, '~/Desktop/test.pptx')
 }
 \keyword{chart}
+\keyword{table}

@@ -17,9 +17,9 @@ add1c_y2(
 )
 }
 \arguments{
-\item{name}{The name of the ms_chart object to be added to a new PowerPoint slide.}
+\item{name}{The name of the chart/table/other object to be added to a new PowerPoint slide.}
 
-\item{add_slide}{DEFAULT = T; Automatically adds a blank slide for the chart to be added onto. If F, no new slide is added}
+\item{add_slide}{DEFAULT = T; Automatically adds a blank slide for the chart/table/other object to be added onto. If F, no new slide is added}
 
 \item{text_boxes}{DEFAULT = F; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
@@ -28,7 +28,7 @@ add1c_y2(
 \item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}
 }
 \description{
-This function adds a new PowerPoint slide and fits 1 chart onto it. It automatically fits the location to the center of the slide.
+This function adds a new PowerPoint slide and fits 1 chart/table/other object onto it. For this function to work, you need a powerpoint object saved into R called "doc"
 }
 \examples{
 # First create a chart that you can add into a powerpoint object
@@ -37,7 +37,7 @@ frequencies <- mtcars \%>\%
   orderlabel::order_label(inherent_order_label = T)
 color_settings <- list('blue')
 text_settings<- list('result' = fp_text(font.size = 20))
-my_chart <- ms_single_y2()
+my_chart <- y2artisan::ms_single_y2()
 
 # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
 doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
@@ -48,3 +48,4 @@ doc <- add1c_y2(my_chart)
 print(doc, '~/Desktop/test.pptx')
 }
 \keyword{chart}
+\keyword{table}

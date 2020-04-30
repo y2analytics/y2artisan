@@ -3,7 +3,7 @@
 ### Description
 #' Add 1 Blank PowerPoint slide
 #'
-#' This function adds a new PowerPoint slide along with a title and commentary box to the current pp object in R
+#' This function adds a new PowerPoint slide. For this function to work, you need a powerpoint object saved into R called "doc"
 #' @param text_boxes DEFAULT = F; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes
 #' @param slide_name DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
 #' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from

@@ -18,7 +18,7 @@ add1s_y2(
 \item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}
 }
 \description{
-This function adds a new PowerPoint slide along with a title and commentary box to the current pp object in R
+This function adds a new PowerPoint slide. For this function to work, you need a powerpoint object saved into R called "doc"
 }
 \examples{
 # Before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
