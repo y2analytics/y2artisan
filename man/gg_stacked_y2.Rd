@@ -14,10 +14,11 @@ gg_stacked_y2(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
+  colors = "0",
   direction = c("horizontal", "vertical"),
   erase_labels = 0.01,
   fills,
-  colors = "0",
+  font_family = "flama",
   label_length = 45,
   label_size = 8,
   legend_nrow = NULL,
@@ -26,7 +27,6 @@ gg_stacked_y2(
   legend_text_size = 8,
   legend_title_size = 8,
   legend_title = "",
-  text_family = "flama",
   title_label = "",
   title_size = 14,
   x_label = "",
@@ -53,11 +53,13 @@ gg_stacked_y2(
 
 \item{bar_width}{DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it}
 
+\item{colors}{DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var}
+
 \item{erase_labels}{DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used}
 
 \item{fills}{NO DEFAULT; requires a vector of colors for all levels of the color_var}
 
-\item{colors}{DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var}
+\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 
@@ -74,8 +76,6 @@ gg_stacked_y2(
 \item{legend_title_size}{DEFAULT = 8}
 
 \item{legend_title}{DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified}
-
-\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 

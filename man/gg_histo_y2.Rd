@@ -13,13 +13,13 @@ gg_histo_y2(
   bins = NULL,
   binwidth = NULL,
   color_mean_line = "#474747",
+  font_family = "flama",
   mean_line = c("mean", "median", "none"),
   quadrant_lines = FALSE,
   weight_var = NULL,
   x_limits = "no limits",
   x_label = "",
-  y_label = "Respondents",
-  text_family = "flama"
+  y_label = "Respondents"
 )
 }
 \arguments{
@@ -39,6 +39,8 @@ gg_histo_y2(
 
 \item{color_mean_line}{DEFAULT = '#474747', a gray/black color}
 
+\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+
 \item{mean_line}{DEFAULT = "mean", must be one of c("mean", "median", "none")}
 
 \item{quadrant_lines}{DEFAULT = FALSE. Set to TRUE to display dotted lines on the 25th and 75th percentiles}
@@ -50,8 +52,6 @@ gg_histo_y2(
 \item{x_label}{DEFAULT = ''; Title for the x_axis}
 
 \item{y_label}{DEFAULT = 'Respondents'; Title for the x_axis (the y axis is set to show the number of respondents in a given bin)}
-
-\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 }
 \description{
 This function creates a ggplot2 histogram object of a given variable with a dotted vertical line at the mean

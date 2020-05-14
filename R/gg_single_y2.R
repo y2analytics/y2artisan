@@ -16,6 +16,7 @@
 #' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param fills DEFAULT = '#474E7E', the purple Qualtrics color. Three options: 1) Give only 1 color, all bars will be that color. 2) Specify the color for every bar using a vector of colors. 3) Set the "color_var" argument to a variable in the data frame and specify a color for each level in the color_var.
+#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
@@ -23,7 +24,6 @@
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
 #' @param nudge DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
-#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @param y_label DEFAULT = ''; Title for the y_axis
@@ -54,6 +54,7 @@ gg_single_y2 <- function(
   chart_width = 11,
   direction = c('vertical', 'horizontal'),
   fills = '#474E7E',
+  font_family = 'flama',
   label_length = 45,
   label_size = 10,
   legend_pos = 'none',
@@ -62,7 +63,6 @@ gg_single_y2 <- function(
   legend_title_size = 8,
   legend_title = '',
   nudge = 0, #auto-fills
-  text_family = 'flama',
   title_label = '',
   title_size = 14,
   x_label = '',
@@ -70,6 +70,16 @@ gg_single_y2 <- function(
   y_min = 0,
   y_max = 0 #auto-fills
 ) {
+
+### Check fonts
+if(
+  font_family == 'flama' &
+  (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+  ){
+  stop("The font you specified in the 'font_family' argument does not exist in your R session")
+}
+
+
 
 ### Flags
   x_flag <- dplyr::enquo(x_var)
@@ -156,7 +166,7 @@ gg_single_y2 <- function(
         label = !!label_flag,
         color = !!color_flag
         ),
-      family = text_family,
+      family = font_family,
       size = label_size,
       nudge_y = nudge
     ) +
@@ -187,7 +197,7 @@ gg_single_y2 <- function(
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
       plot.title = ggplot2::element_text(size = title_size),
-      text = element_text(family = text_family)
+      text = ggplot2::element_text(family = font_family)
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, y_max),

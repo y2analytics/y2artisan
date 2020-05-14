@@ -14,6 +14,7 @@
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
+#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 8. Adjusts the size of the percent labels within each bar.
@@ -23,7 +24,6 @@
 #' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
-#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @param y_label DEFAULT = ''; Title for the y_axis
@@ -70,10 +70,11 @@ gg_stacked_y2 <- function(
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
+  colors = '0',
   direction = c("horizontal", 'vertical'),
   erase_labels = .01,
   fills, #only argument with no default
-  colors = '0',
+  font_family = 'flama',
   label_length = 45,
   label_size = 8,
   legend_nrow = NULL,
@@ -82,13 +83,22 @@ gg_stacked_y2 <- function(
   legend_text_size = 8,
   legend_title_size = 8,
   legend_title = '',
-  text_family = 'flama',
   title_label = '',
   title_size = 14,
   x_label = '',
   y_label = '',
   y_min = 0
 ) {
+
+### Check fonts
+if(
+  font_family == 'flama' &
+  (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+){
+  stop("The font you specified in the 'font_family' argument does not exist in your R session")
+}
+
+
 
 ### Flags
   x_flag <- dplyr::enquo(x_var) #probs group_var
@@ -156,7 +166,7 @@ cond_direction <- if(direction == 'horizontal'){
         label = !!label_flag,
         color = !!color_flag
       ),
-      family = text_family,
+      family = font_family,
       size = label_size,
       position = ggplot2::position_fill(vjust = 0.5)
     ) +
@@ -191,7 +201,7 @@ cond_direction <- if(direction == 'horizontal'){
       panel.grid.major = ggplot2::element_blank(),
       panel.grid.minor = ggplot2::element_blank(),
       plot.title = ggplot2::element_text(size = title_size),
-      text = element_text(family = text_family)
+      text = ggplot2::element_text(family = font_family)
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, 1),

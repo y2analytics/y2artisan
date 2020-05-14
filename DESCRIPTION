@@ -14,7 +14,7 @@ Imports:
   officer,
   stringr,
   ggplot2,
-  flextable,
   rlang,
-  ggrepel
+  ggrepel,
+  sysfonts
 RoxygenNote: 7.1.0

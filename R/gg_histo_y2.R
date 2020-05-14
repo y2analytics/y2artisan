@@ -11,9 +11,9 @@
 #' @param bins DEFAULT = 30; The number of bins. Same as the ggplot2 function, geom_histogram
 #' @param binwidth DEFAULT = NULL; The number of units in the x_var that fit in a bin. Overrides the bins argument
 #' @param color_mean_line DEFAULT = '#474747', a gray/black color
+#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param mean_line DEFAULT = "mean", must be one of c("mean", "median", "none")
 #' @param quadrant_lines DEFAULT = FALSE. Set to TRUE to display dotted lines on the 25th and 75th percentiles
-#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param weight_var DEFAULT = NULL; set to your weights variable if working with weighted data
 #' @param x_limits DEFAULT = 'no limits'; The 'no limits' default allows the histogram to capture all values for the variable. A secondary option is '95 trim' which will set the limits of the histogram to within 2 standard deviations of the mean, or all values between the 5th and 95th percentiles. Alternatively, you can set your own limits using c(my_min, my_max)
 #' @param x_label DEFAULT = ''; Title for the x_axis
@@ -36,14 +36,24 @@ gg_histo_y2 <- function(
   bins = NULL,
   binwidth = NULL,
   color_mean_line = '#474747',
+  font_family = 'flama',
   mean_line = c("mean", "median", "none"),
   quadrant_lines = FALSE,
   weight_var = NULL,
   x_limits = 'no limits',
   x_label = '',
-  y_label = 'Respondents',
-  text_family = 'flama'
+  y_label = 'Respondents'
 ){
+
+### Check fonts
+if(
+  font_family == 'flama' &
+  (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+){
+  stop("The font you specified in the 'font_family' argument does not exist in your R session")
+}
+
+
 
 ### Flags
   var_flag <- dplyr::enquo(x_var)
@@ -132,7 +142,7 @@ gg_histo_y2 <- function(
       panel.grid = ggplot2::element_blank(),
       axis.text = ggplot2::element_text(size = axis_text_size),
       axis.title = ggplot2::element_text(size = axis_title_size),
-      text = element_text(family = text_family)
+      text = ggplot2::element_text(family = font_family)
     )
 
   return(chart)

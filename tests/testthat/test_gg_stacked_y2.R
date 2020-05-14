@@ -11,7 +11,7 @@ test_that("all defaults", {
     group_var = c(rep('One', 5), rep('Two', 5)),
     percent_label = stringr::str_c(result * 100, '%')
   ) %>%
-    gg_stacked_y2(fills = fills)
+    gg_stacked_y2(fills = fills, font_family = "sans")
   chart
   expect_error(chart, NA)
 })
@@ -28,7 +28,8 @@ test_that("x_var", {
   ) %>%
   gg_stacked_y2(
     fills = fills,
-    direction = "vertical"
+    direction = "vertical",
+    font_family = "sans"
     )
   chart
 expect_error(chart, NA)

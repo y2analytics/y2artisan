@@ -10,7 +10,7 @@ test_that("all defaults", {
     result = rep(.2, 5),
     percent_label = stringr::str_c(result * 100, '%')
   ) %>%
-    gg_single_y2()
+    gg_single_y2(font_family = "sans")
   expect_error(chart, NA)
 })
 
@@ -23,7 +23,7 @@ test_that("x_var", {
     result = rep(.2, 5),
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
-    gg_single_y2(x_var = value)
+    gg_single_y2(x_var = value, font_family = "sans")
   expect_error(chart, NA)
 })
 # y_var
@@ -33,7 +33,7 @@ test_that("y_var", {
     test = rep(.2, 5),
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
-    gg_single_y2(y_var = test)
+    gg_single_y2(y_var = test, font_family = "sans")
   expect_error(chart, NA)
 })
 # label_var
@@ -43,7 +43,7 @@ test_that("label_var", {
     result = rep(.2, 5),
     test = stringr::str_c(c(1:5), '%')
   ) %>%
-    gg_single_y2(label_var = test)
+    gg_single_y2(label_var = test, font_family = "sans")
   expect_error(chart, NA)
 })
 # color_var
@@ -56,7 +56,8 @@ test_that("color_var", {
   ) %>%
     gg_single_y2(
       color_var = colors,
-      fills = c('#474E7E', '#A3A7BF')
+      fills = c('#474E7E', '#A3A7BF'),
+      font_family = "sans"
       )
   expect_error(chart, NA)
 })
@@ -71,7 +72,8 @@ test_that("axis text", {
   ) %>%
     gg_single_y2(
       axis_text_size = 20,
-      axis_title_size = 20
+      axis_title_size = 20,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -84,7 +86,8 @@ test_that("mins and maxes", {
   ) %>%
     gg_single_y2(
       y_min = -.1,
-      y_max = 2
+      y_max = 2,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -97,7 +100,8 @@ test_that("axis labels", {
   ) %>%
     gg_single_y2(
       x_label = 'X axis label',
-      y_label = 'Y axis label'
+      y_label = 'Y axis label',
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -111,7 +115,8 @@ test_that("bar width", {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(
-      bar_width = 1
+      bar_width = 1,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -123,7 +128,8 @@ test_that("direction", {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(
-      direction = 'horizontal'
+      direction = 'horizontal',
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -135,7 +141,8 @@ test_that("nudge", {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(
-      nudge = .1
+      nudge = .1,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -150,7 +157,8 @@ test_that("legend_pos & legend_rev", {
   ) %>%
     gg_single_y2(
       legend_pos = 'top',
-      legend_rev = T
+      legend_rev = T,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -163,7 +171,8 @@ test_that("legend size", {
   ) %>%
     gg_single_y2(
       legend_text_size = 8,
-      legend_title_size = 10
+      legend_title_size = 10,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -175,7 +184,8 @@ test_that("legend_title", {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(
-      legend_title = 'Legend title'
+      legend_title = 'Legend title',
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -190,7 +200,8 @@ test_that("label_length & label_size", {
   ) %>%
     gg_single_y2(
       label_length = 10,
-      label_size = 5
+      label_size = 5,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
@@ -205,7 +216,8 @@ test_that("title_label & title_size", {
   ) %>%
     gg_single_y2(
       title_label = 'My title',
-      title_size = 20
+      title_size = 20,
+      font_family = "sans"
     )
   expect_error(chart, NA)
 })
