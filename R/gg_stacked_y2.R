@@ -8,7 +8,7 @@
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
 #' @param color_var DEFAULT = label. Note: the color variable CANNOT be numeric.
-#' @param axis_display DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels
+#' @param axis_y_display DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
@@ -56,7 +56,7 @@
 #'
 #' chart <- gg_stacked_y2(
 #'    x_var = variable,
-#'    axis_display = F,
+#'    axis_y_display = F,
 #'    fills = c('red', 'yellow', 'green')
 #' )
 
@@ -66,7 +66,8 @@ gg_stacked_y2 <- function(
   y_var = result,
   label_var = percent_label,
   color_var = label,
-  axis_display = T,
+  axis_y_display = T,
+  axis_x_display = F,
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
@@ -125,11 +126,17 @@ if(
 
 
 ### Conditional chunks
-cond_axis_display <-  if(axis_display == F){
-    ggplot2::theme(
-      axis.text = element_blank()
-    )
-  } else{NULL}
+cond_x_display <-  if(axis_x_display == F){
+  ggplot2::theme(
+    axis.text.x = element_blank()
+  )
+} else{NULL}
+
+cond_y_display <-  if(axis_y_display == F){
+  ggplot2::theme(
+    axis.text.y = element_blank()
+  )
+} else{NULL}
 
 cond_direction <- if(direction == 'horizontal'){
   ggplot2::coord_flip()
@@ -219,7 +226,8 @@ cond_direction <- if(direction == 'horizontal'){
       )
     ) +
     cond_direction +
-    cond_axis_display
+    cond_x_display +
+    cond_y_display
 }
 
 
