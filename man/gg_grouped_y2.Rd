@@ -70,7 +70,7 @@ gg_grouped_y2(
 
 \item{legend_nrow}{DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend}
 
-\item{legend_rev}{DEFAULY = FALSE}
+\item{legend_rev}{DEFAULT = FALSE}
 
 \item{legend_text_size}{DEFAULT = 8}
 

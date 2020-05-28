@@ -20,7 +20,7 @@
 #' @param label_size DEFAULT = 6. Adjusts the size of the percent labels over each bar.
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
 #' @param legend_pos DEFAULT = 'top'
-#' @param legend_rev DEFAULY = FALSE
+#' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified

@@ -10,7 +10,8 @@ gg_stacked_y2(
   y_var = result,
   label_var = percent_label,
   color_var = label,
-  axis_display = T,
+  axis_y_display = T,
+  axis_x_display = F,
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
@@ -45,7 +46,7 @@ gg_stacked_y2(
 
 \item{color_var}{DEFAULT = label. Note: the color variable CANNOT be numeric.}
 
-\item{axis_display}{DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels}
+\item{axis_y_display}{DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels}
 
 \item{axis_text_size}{DEFAULT = 12; Font size for variable levels and axis percentages.}
 
@@ -114,7 +115,7 @@ frequencies <- tibble(
 
 chart <- gg_stacked_y2(
    x_var = variable,
-   axis_display = F,
+   axis_y_display = F,
    fills = c('red', 'yellow', 'green')
 )
 }

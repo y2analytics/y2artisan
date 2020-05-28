@@ -8,6 +8,7 @@
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
 #' @param color_var DEFAULT = label. Note: the color variable CANNOT be numeric.
+#' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param axis_y_display DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
@@ -15,7 +16,6 @@
 #' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
 #' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
-#' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 8. Adjusts the size of the percent labels within each bar.
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend

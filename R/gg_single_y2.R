@@ -20,6 +20,7 @@
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
+#' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified

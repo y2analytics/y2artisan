@@ -69,6 +69,8 @@ gg_single_y2(
 
 \item{legend_pos}{DEFAULT = 'none'}
 
+\item{legend_rev}{DEFAULT = FALSE}
+
 \item{legend_text_size}{DEFAULT = 8}
 
 \item{legend_title_size}{DEFAULT = 8}
