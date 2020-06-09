@@ -10,6 +10,10 @@
 #' @param master_name DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from
 #' @keywords chart table
 #' @export
+#' @importFrom officer fp_text
+#' @export
+#' @importFrom officer read_pptx
+#' @export
 #' @examples
 #' # First create a chart that you can add into a powerpoint object
 #' frequencies <- mtcars %>%
