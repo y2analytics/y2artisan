@@ -9,7 +9,7 @@
 #' @param max_size DEFAULT = 12; the largest text size for the word with the highest frequency
 #' @param min_size DEFAULT = 1; the smallest text size for the word with the lowest frequency
 #' @param top_x DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end
-#' @param text_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @keywords openend open end wordcloud word cloud
 #' @export
 #' @examples
@@ -29,8 +29,8 @@
 #' red_light <- '#F9E6E6'
 #'
 #' # If you want to use a specific color, you must specify three scalar shades of that color
-#' responses %>% wordcloud_y2(var1, text_family = "Arial")
-#' responses %>% wordcloud_y2(var1, c(red_light, red_mid, red_dark), text_family = "Arial",)
+#' responses %>% wordcloud_y2(var1, font_family = "Arial")
+#' responses %>% wordcloud_y2(var1, c(red_light, red_mid, red_dark), font_family = "Arial",)
 
 wordcloud_y2 <- function(
   dataset,
@@ -38,7 +38,7 @@ wordcloud_y2 <- function(
   colors = 'bluepurple',
   max_size = 12,
   min_size = 1,
-  text_family = 'flama',
+  font_family = 'flama',
   top_x = 50
 ) {
   flag_var <- dplyr::enquo(variable)
@@ -79,7 +79,7 @@ wordcloud_y2 <- function(
         color = n
       ),
       segment.size = 0,
-      family = text_family
+      family = font_family
     ) +
     ggplot2::scale_color_gradient2(low = lows, mid = mids, high = highs, midpoint = 0.5, guide = F) +
     ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
@@ -87,9 +87,9 @@ wordcloud_y2 <- function(
     ggplot2::scale_x_continuous(breaks = NULL) +
     ggplot2::theme_minimal()+
     ggplot2::theme(
-      axis.text = element_blank(),
-      axis.title = element_blank(),
-      text = element_text(family = text_family)
+      axis.text = ggplot2::element_blank(),
+      axis.title = ggplot2::element_blank(),
+      text = ggplot2::element_text(family = font_family)
     )
   return(chart)
 }

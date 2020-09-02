@@ -10,7 +10,7 @@ wordcloud_mono_y2(
   colors = "#474E7E",
   max_size = 12,
   min_size = 1,
-  text_family = "flama",
+  font_family = "flama",
   top_x = 50
 )
 }
@@ -25,7 +25,7 @@ wordcloud_mono_y2(
 
 \item{min_size}{DEFAULT = 1; the smallest text size for the word with the lowest frequency}
 
-\item{text_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
 }
@@ -44,6 +44,6 @@ responses <- tibble(
   )
 )
 
-responses \%>\% wordcloud_mono_y2(var1, text_family = "Arial")
-responses \%>\% wordcloud_mono_y2(var1, 'red', text_family = "Arial")
+responses \%>\% wordcloud_mono_y2(var1, font_family = "Arial")
+responses \%>\% wordcloud_mono_y2(var1, 'red', font_family = "Arial")
 }
