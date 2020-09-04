@@ -10,12 +10,12 @@
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_position DEFAULT = 'nextTo'; Other options include "high", "low", "none". Change to "low" if dealing with negative numbers
-#' @param axis_y_display DEFAULT = T
-#' @param axis_y_label DEFAULT = ''; Title for the y_axis
+#' @param axis_x_display,axis_y_display DEFAULT = T
+#' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = NULL
-#' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
-#' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
+#' @param axis_x_rotate,axis_y_rotate DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.
+#' @param axis_x_rotate_title,axis_y_rotate_title DEFAULT = 0, set y_axis rotation to 360 for horizontal text
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
@@ -30,6 +30,7 @@
 #' @param overlapping DEFAULT = -50; This leaves 50\% extra space between variable levels. Set to 100 when coloring bars different colors.
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
+#' @importFrom officer fp_text fp_border
 #' @keywords chart bar single
 #' @export
 #' @examples
@@ -61,7 +62,7 @@ ms_single_y2 <-  function(
   axis_y_min = 0,
   axis_y_max = NULL,
   axis_y_rotate = 0,
-  axis_y_rotate_title = 360,
+  axis_y_rotate_title = 0,
   direction = c('vertical', 'horizontal'),
   font_family = 'Arial',
   gap_width = 25,
@@ -81,8 +82,8 @@ ms_single_y2 <-  function(
 
 ### Check for special symbols
   freqs_list <- split(frequencies, seq(nrow(frequencies))) # turn data frame into a list
-  symbols_sum <- map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
-    mutate_all(~as.numeric(.)) %>% # convert table into numerics
+  symbols_sum <- purrr::map_df(freqs_list, ~stringr::str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
+    dplyr::mutate_all(~as.numeric(.)) %>% # convert table into numerics
     sum() # sum all cells to count the number of special symbols
   if(symbols_sum > 0){
     stop('mschart objects cannot contain the special symbols "&" or "<". Please remove those symbols from your data frame')

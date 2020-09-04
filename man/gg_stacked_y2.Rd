@@ -10,8 +10,8 @@ gg_stacked_y2(
   y_var = result,
   label_var = percent_label,
   color_var = label,
-  axis_y_display = T,
-  axis_x_display = F,
+  axis_y_display = TRUE,
+  axis_x_display = FALSE,
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
@@ -48,6 +48,8 @@ gg_stacked_y2(
 
 \item{axis_y_display}{DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels}
 
+\item{axis_x_display}{DEFAULT = FALSE}
+
 \item{axis_text_size}{DEFAULT = 12; Font size for variable levels and axis percentages.}
 
 \item{axis_title_size}{DEFAULT = 14; Font size for x_label and y_label.}
@@ -55,6 +57,8 @@ gg_stacked_y2(
 \item{bar_width}{DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it}
 
 \item{colors}{DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var}
+
+\item{direction}{DEFAULT = 'horizontal'; Two options: "vertical" OR "horizontal" (default)}
 
 \item{erase_labels}{DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used}
 
@@ -82,7 +86,7 @@ gg_stacked_y2(
 
 \item{title_size}{DEFAULT = 18}
 
-\item{y_label}{DEFAULT = ''; Title for the y_axis}
+\item{x_label, y_label}{DEFAULT = ''; Title for the x_axis or y_axis}
 
 \item{y_min}{DEFAULT = 0. Change to a negative value such as -.2 to add space for extra text/graphic between the axis text and the stacked bars}
 }
@@ -90,12 +94,12 @@ gg_stacked_y2(
 This function creates a ggplot2 object automatically formatted for a stacked variable with inherent ordering.
 }
 \examples{
-frequencies <- tibble(
+frequencies <- tibble::tibble(
   label = rep(c('Promoter', 'Passive', 'Detractor'), 3),
   result = c(.33, .33, .34, .20, .30, .50, .25, .50, .25),
   value = rep(c(1, 2, 3), 3),
   group_var = c(rep('Group A', 3), rep('Group B', 3), rep('Group C', 3))
-) \%>\% order_label(
+) \%>\% orderlabel::order_label(
   group_var = group_var,
   stacked = 'gg'
 )

@@ -33,6 +33,8 @@ gg_pie_y2(
 
 \item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
+\item{label_length}{DEFAULT = 15; This determines how many characters a label on a pie slice can be before R inserts a line break.}
+
 \item{label_size}{DEFAULT = 10. Adjusts the size of the percent labels over each bar.}
 
 \item{legend_pos}{DEFAULT = 'none'}
@@ -49,7 +51,7 @@ gg_pie_y2(
 This function creates a ggplot2 object automatically formatted for a pie chart.
 }
 \examples{
-frequencies <- iris \%>\% freqs(Species)
+frequencies <- iris \%>\% y2clerk::freqs(Species)
 
 chart <- gg_pie_y2(fills = c('red', 'blue', 'pink'))
 }

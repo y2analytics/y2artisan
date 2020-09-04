@@ -4,29 +4,32 @@
 \alias{add4c_y2}
 \title{Add 4 charts to PowerPoint slide}
 \usage{
-add4c_y2(name, position, label_first_only = F)
+add4c_y2(name, position, label_first_only = FALSE)
 }
 \arguments{
 \item{name}{The name of the chart/table/other object to be added to a new PowerPoint slide.}
 
 \item{position}{Position options: "topright"; "bottomright"; "topleft"; "bottomleft"; "left"; "centerleft"; "centerright"; "right". The chart layout can either be left-centerleft-centerright-right OR topleft-bottomleft-topright-bottomright.}
 
-\item{label_first_only}{DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
+\item{label_first_only}{DEFAULT = FALSE; Set to TRUE if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs}
 }
 \description{
 This function adds 4 charts/tables/other objects to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R. For this function to work, you need a powerpoint object saved into R called "doc"
 }
 \examples{
+\dontrun{
 # First create a chart that you can add into a powerpoint object
 frequencies <- mtcars \%>\%
   y2clerk::freqs(carb) \%>\%
-  orderlabel::order_label(inherent_order_label = T)
+  orderlabel::order_label(inherent_order_label = TRUE)
 color_settings <- list('blue')
-text_settings<- list('result' = fp_text(font.size = 20))
+text_settings<- list('result' = officer::fp_text(font.size = 20))
 chart_name <- y2artisan::ms_single_y2()
 
-# Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
-doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+# Then before adding additional slides, charts, or tables onto a powerpoint,
+# you must first read a powerpoint into R
+doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
+Resources/Qualtrics Template New.pptx')
 
 # Now start adding in your charts
 doc <- add1s_y2()
@@ -42,5 +45,6 @@ doc <- add4c_y2(chart_name, 'centerright')
 doc <- add4c_y2(chart_name, 'right')
 
 print(doc, '~/Desktop/test.pptx')
+}
 }
 \keyword{chart}

@@ -9,6 +9,7 @@
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the x_var
 #' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param label_length DEFAULT = 15; This determines how many characters a label on a pie slice can be before R inserts a line break.
 #' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
 #' @param legend_rev DEFAULT = FALSE
@@ -18,7 +19,7 @@
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
-#' frequencies <- iris %>% freqs(Species)
+#' frequencies <- iris %>% y2clerk::freqs(Species)
 #'
 #' chart <- gg_pie_y2(fills = c('red', 'blue', 'pink'))
 
@@ -62,8 +63,8 @@ gg_pie_y2 <- function(
   }
 
   data <- data %>%
-    mutate(
-      percent_label = str_c(
+    dplyr::mutate(
+      percent_label = stringr::str_c(
         !!x_flag,
         '\n',
         !!y_flag * 100,
@@ -75,8 +76,8 @@ gg_pie_y2 <- function(
   ### Conditional chunks
 if(legend_pos != 'none'){
   data <- data %>%
-    mutate(
-      percent_label = str_c(
+    dplyr::mutate(
+      percent_label = stringr::str_c(
         !!y_flag * 100,
         '%'
       )

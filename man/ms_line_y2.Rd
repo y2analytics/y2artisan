@@ -20,7 +20,7 @@ ms_line_y2(
   axis_y_min = 0,
   axis_y_max = NULL,
   axis_y_rotate = 0,
-  axis_y_rotate_title = 360,
+  axis_y_rotate_title = 0,
   font_family = "Arial",
   label_color = color_settings_grouped,
   label_position = "t",
@@ -46,17 +46,17 @@ ms_line_y2(
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{axis_y_display}{DEFAULT = T}
+\item{axis_x_display, axis_y_display}{DEFAULT = T}
 
-\item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
+\item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
+
+\item{axis_x_rotate, axis_y_rotate}{DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.}
+
+\item{axis_x_rotate_title, axis_y_rotate_title}{DEFAULT = 0, set y_axis rotation to 360 for horizontal text}
 
 \item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{axis_y_max}{DEFAULT = NULL}
-
-\item{axis_y_rotate}{DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.}
-
-\item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
 
 \item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
 

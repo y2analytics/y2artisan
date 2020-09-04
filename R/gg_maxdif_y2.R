@@ -1,6 +1,6 @@
 #### gg_maxdif_y2 ####
 ### Description
-#' Create a grouped ggplot object
+#' Create a grouped ggplot object: UNDER CONSTRUCTION
 #'
 #' This function creates a ggplot2 object automatically formatted for a maxdiff type variable with a positive and negative side.
 #' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
@@ -26,12 +26,13 @@
 #' @param nudge DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
-#' @param y_label DEFAULT = ''; Title for the y_axis
+#' @param x_label,y_label DEFAULT = ''; Title for the x_axis or y_axis
 #' @param y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param y_max DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
+#' Function still in development
 
 
 gg_maxdif_y2 <- function(
@@ -90,20 +91,20 @@ if(
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     chart_width < 11 ~  (max_y_val + (max_y_val/chart_width) * 2),
-    T ~  (max_y_val + max_y_val/5)
+    TRUE ~  (max_y_val + max_y_val/5)
   )
   y_min <- dplyr::case_when(
     y_min != 0 ~ y_min,
     chart_width < 11 ~  (min_y_val - (min_y_val/chart_width) * 2),
-    T ~  (min_y_val + min_y_val/5)
+    TRUE ~  (min_y_val + min_y_val/5)
   )
   nudge_x <- dplyr::case_when(
     nudge != 0 ~ nudge,
-    T ~ (max_y_val/(max_y_val*4) + str_add) *-1
+    TRUE ~ (max_y_val/(max_y_val*4) + str_add) *-1
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
-    T ~ label_length
+    TRUE ~ label_length
   )
 
 

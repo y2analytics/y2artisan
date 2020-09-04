@@ -10,10 +10,11 @@
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_text_color DEFAULT = 'black'; Set to 'transparent' for no text on single bars
+#' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
+#' @param axis_x_display DEFAULT = T
 #' @param axis_y_display DEFAULT = F; set axis_x_display to F when it is a single stacked bar
-#' @param axis_y_label DEFAULT = ''; Title for the y_axis
-#' @param axis_y_rotate DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.
-#' @param axis_y_rotate_title DEFAULT = 360, default for x_axis is 0
+#' @param axis_x_rotate,axis_y_rotate DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.
+#' @param axis_x_rotate_title,axis_y_rotate_title DEFAULT = 0, set y_axis rotation to 360 for horizontal text
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = 1 to allow percent totals to add to 100\%.
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
@@ -74,7 +75,7 @@ ms_stacked_y2 <- function(
   axis_y_min = 0,
   axis_y_max = 1,
   axis_y_rotate = 0,
-  axis_y_rotate_title = 360,
+  axis_y_rotate_title = 0,
   direction = c('horizontal', 'vertical'),
   gap_width = 25,
   grouping = 'percentStacked',
@@ -93,8 +94,8 @@ ms_stacked_y2 <- function(
 
   ### Check for special symbols
   freqs_list <- split(frequencies, seq(nrow(frequencies))) # turn data frame into a list
-  symbols_sum <- map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
-    mutate_all(~as.numeric(.)) %>% # convert table into numerics
+  symbols_sum <- purrr::map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
+    dplyr::mutate_all(~as.numeric(.)) %>% # convert table into numerics
     sum() # sum all cells to count the number of special symbols
   if(symbols_sum > 0){
     stop('mschart objects cannot contain the special symbols "&" or "<". Please remove those symbols from your data frame')

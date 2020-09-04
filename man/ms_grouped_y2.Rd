@@ -21,7 +21,7 @@ ms_grouped_y2(
   axis_y_min = 0,
   axis_y_max = NULL,
   axis_y_rotate = 0,
-  axis_y_rotate_title = 360,
+  axis_y_rotate_title = 0,
   direction = c("vertical", "horizontal"),
   font_family = "Arial",
   gap_width = 75,
@@ -51,19 +51,19 @@ ms_grouped_y2(
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
+\item{axis_x_display, axis_y_display}{DEFAULT = T}
+
+\item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
+
 \item{axis_x_position}{DEFAULT = 'nextTo'; Other options include "high", "low", "none". Change to "low" if dealing with negative numbers}
 
-\item{axis_y_display}{DEFAULT = T}
+\item{axis_x_rotate, axis_y_rotate}{DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.}
 
-\item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
+\item{axis_x_rotate_title, axis_y_rotate_title}{DEFAULT = 0, set y_axis rotation to 360 for horizontal text}
 
 \item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{axis_y_max}{DEFAULT = NULL}
-
-\item{axis_y_rotate}{DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.}
-
-\item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
 
 \item{direction}{DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"}
 
@@ -107,8 +107,8 @@ color_settings_grouped <- list(
   'VC' = 'gray'
 )
 text_settings_grouped <- list(
-  'OJ' = fp_text(color = 'orange', font.size = 20),
-  'VC' = fp_text(color = 'gray', font.size = 20)
+  'OJ' = officer::fp_text(color = 'orange', font.size = 20),
+  'VC' = officer::fp_text(color = 'gray', font.size = 20)
 )
 
 chart <- ms_grouped_y2()

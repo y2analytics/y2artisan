@@ -21,7 +21,7 @@ ms_maxdif_y2(
   axis_y_min = NULL,
   axis_y_max = NULL,
   axis_y_rotate = 0,
-  axis_y_rotate_title = 360,
+  axis_y_rotate_title = 0,
   direction = c("horizontal", "vertical"),
   font_family = "Arial",
   gap_width = 75,
@@ -51,19 +51,19 @@ ms_maxdif_y2(
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
+\item{axis_x_display, axis_y_display}{DEFAULT = T}
+
+\item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
+
 \item{axis_x_position}{DEFAULT = 'low'; The 'low' setting puts the axis below negative numbers instead of its typical spot of 0. Ideal for max-diffs. Other options include "high", "nextTo", "none"}
 
-\item{axis_y_display}{DEFAULT = T}
+\item{axis_x_rotate, axis_y_rotate}{DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.}
 
-\item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
+\item{axis_x_rotate_title, axis_y_rotate_title}{DEFAULT = 0, set y_axis rotation to 360 for horizontal text}
 
 \item{axis_y_min}{DEFAULT = NULL; unlike other graphs, will almost always be a negative number}
 
 \item{axis_y_max}{DEFAULT = NULL}
-
-\item{axis_y_rotate}{DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.}
-
-\item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
 
 \item{direction}{DEFAULT = 'horizontal'; Two options: "vertical" (default) OR "horizontal"}
 

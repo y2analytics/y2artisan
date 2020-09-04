@@ -63,15 +63,15 @@ if(
 
 
 ### Set defaults
-  mean_overall <- data %>% freqs(!!var_flag, nas = F, stat = 'mean', wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
-  median_overall <- data %>% freqs(!!var_flag, nas = F, stat = 'median', wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
-  line25 <- data %>% freqs(!!var_flag, nas = F, stat = 'quantile', pr = 25, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
-  line75 <- data %>% freqs(!!var_flag, nas = F, stat = 'quantile', pr = 75, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
+  mean_overall <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'mean', wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
+  median_overall <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'median', wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
+  line25 <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'quantile', pr = 25, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
+  line75 <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'quantile', pr = 75, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
   quadrants <- c(line25, line75)
-  var_95 <- data %>% freqs(!!var_flag, nas = F, stat = 'quantile', pr = 95, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
-  var_05 <- data %>% freqs(!!var_flag, nas = F, stat = 'quantile', pr = 5, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
-  var_min <- data %>% freqs(!!var_flag, nas = F, stat = 'min') %>% dplyr::select(result) %>% as.numeric()
-  var_max <- data %>% freqs(!!var_flag, nas = F, stat = 'max') %>% dplyr::select(result) %>% as.numeric()
+  var_95 <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'quantile', pr = 95, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
+  var_05 <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'quantile', pr = 5, wt = !!wt_flag) %>% dplyr::select(result) %>% as.numeric()
+  var_min <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'min') %>% dplyr::select(result) %>% as.numeric()
+  var_max <- data %>% y2clerk::freqs(!!var_flag, nas = FALSE, stat = 'max') %>% dplyr::select(result) %>% as.numeric()
   x_limits = if(x_limits == 'no limits'){
     c(var_min, var_max)
   } else if(x_limits == '95 trim'){
@@ -100,7 +100,7 @@ if(
     NULL
   }
   # quadrants
-  cond_quadrants <- if(quadrant_lines == T){
+  cond_quadrants <- if(quadrant_lines == TRUE){
     ggplot2::geom_vline(
       xintercept = c(quadrants),
       linetype = 'dashed',

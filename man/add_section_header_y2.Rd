@@ -21,12 +21,16 @@ add_section_header_y2(
 This function adds a new PowerPoint section header along with a title box
 }
 \examples{
-# Before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
-doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+# Before adding additional slides, charts, or tables onto a powerpoint,
+# you must first read a powerpoint into R
+\dontrun{
+doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
+Resources/Qualtrics Template New.pptx')
 
 doc <- add_section_header_y2()
 
 print(doc, '~/Desktop/test.pptx')
+}
 }
 \keyword{powerpoint}
 \keyword{slide}

@@ -44,6 +44,10 @@ gg_bullet_y2(
 
 \item{y_var}{DEFAULT = result; When using the freqs function, will typically be result (is by default).}
 
+\item{base_color}{NO DEFAULT; must specify a color for the base bar}
+
+\item{base_level}{NO DEFAULT; specify in quotes the character string for the base lebel}
+
 \item{label_var}{DEFAULT = percent_label; When using the order_label function, this variable will be created for you.}
 
 \item{color_var}{DEFAULT = group_var. Note: the color variable CANNOT be numeric.}
@@ -86,7 +90,7 @@ gg_bullet_y2(
 
 \item{title_size}{DEFAULT = 18}
 
-\item{y_label}{DEFAULT = ''; Title for the y_axis}
+\item{x_label, y_label}{DEFAULT = ''; Title for the x_axis or y_axis}
 
 \item{y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
@@ -97,9 +101,9 @@ This function creates a ggplot2 object automatically formatted for an overlappin
 }
 \examples{
 frequencies <- ToothGrowth \%>\%
-  group_by(supp) \%>\%
-  freqs(dose) \%>\%
-  order_label(group_var = group_var)
+  dplyr::group_by(supp) \%>\%
+  y2clerk::freqs(dose) \%>\%
+  orderlabel::order_label(group_var = group_var)
 
 chart <- gg_grouped_y2(
   fills = c('orange', 'gray')

@@ -27,16 +27,16 @@
 #' @param nudge DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
-#' @param y_label DEFAULT = ''; Title for the y_axis
+#' @param x_label,y_label DEFAULT = ''; Title for the x_axis or y_axis
 #' @param y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param y_max DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
 #' frequencies <- ToothGrowth %>%
-#'   group_by(supp) %>%
-#'   freqs(dose) %>%
-#'   order_label(group_var = group_var)
+#'   dplyr::group_by(supp) %>%
+#'   y2clerk::freqs(dose) %>%
+#'   orderlabel::order_label(group_var = group_var)
 #'
 #' chart <- gg_grouped_y2(
 #'   fills = c('orange', 'gray')
@@ -101,7 +101,7 @@ if(
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
     chart_width < 11 & direction == 'horizontal' ~  (max_y_val + (max_y_val/chart_width) * 2),
     chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + (max_y_val/(chart_height*2)) * 2),
-    T ~  (max_y_val + max_y_val/10) #direction == 'vertical'
+    TRUE ~  (max_y_val + max_y_val/10) #direction == 'vertical'
   )
   nudge_y <- dplyr::case_when(
     direction == 'horizontal' ~ 0.5, #places the percent_label in the middle of the bar
@@ -116,7 +116,7 @@ if(
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
     direction == 'vertical' ~ 15,
-    T ~ label_length
+    TRUE ~ label_length
   )
 
 

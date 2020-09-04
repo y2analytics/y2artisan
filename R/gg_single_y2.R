@@ -10,7 +10,7 @@
 #' @param color_var DEFAULT = label; Although the color_var is set to label, the default for the "fills" argument sets all bars to be the same color if only a single color is specified. Note: the color variable CANNOT be numeric.
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
-#' @param axis_*_display DEFAULT = TRUE; Set to FALSE to remove axis labels.
+#' @param axis_x_display,axis_y_display DEFAULT = TRUE; Set to FALSE to remove axis labels.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
 #' @param chart_height DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically
 #' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
@@ -27,10 +27,11 @@
 #' @param nudge DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
-#' @param y_label DEFAULT = ''; Title for the y_axis
+#' @param x_label,y_label DEFAULT = ''; Title for the x_axis or y_axis
 #' @param y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param y_max DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @keywords chart ggplot bar single
+#' @importFrom dplyr "%>%"
 #' @export
 #' @examples
 #' frequencies <- mtcars %>%
@@ -48,8 +49,8 @@ gg_single_y2 <- function(
   color_var = label,
   axis_text_size = 12,
   axis_title_size = 14,
-  axis_y_display = T,
-  axis_x_display = T,
+  axis_y_display = TRUE,
+  axis_x_display = TRUE,
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
@@ -97,14 +98,14 @@ if(
   str_add <- max_str_length * max_y_val /1500
   legend_pos <- dplyr::case_when(
     legend_title != '' & legend_pos == 'none' ~ 'top',
-    T ~ legend_pos
+    TRUE ~ legend_pos
   )
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
     chart_width < 11 & direction == 'horizontal' ~  (max_y_val + max_y_val/chart_width),
     chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + max_y_val/(chart_height*2)),
-    T ~  (max_y_val + max_y_val/10) #direction == 'vertical'
+    TRUE ~  (max_y_val + max_y_val/10) #direction == 'vertical'
   )
   nudge <- dplyr::case_when(
     nudge != 0 ~ nudge, #if user specifies nudge, don't change it
@@ -114,12 +115,12 @@ if(
   nudge <- dplyr::case_when(
     chart_width != 11 & direction == 'horizontal' ~ nudge/(chart_width/12),
     chart_height != 5.5 & direction == 'vertical' ~ nudge/(chart_height/6),
-    T ~ nudge # If chart width is default of 11, then should be good
+    TRUE ~ nudge # If chart width is default of 11, then should be good
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
     direction == 'vertical' ~ 15,
-    T ~ label_length
+    TRUE ~ label_length
   )
   fills <- if(length(fills) == 1) { # If user specifies only one color, repeat color for all bars
     fills <- rep(fills, dplyr::count(data))
@@ -134,15 +135,15 @@ if(
   ggplot2::coord_flip()
   } else{NULL}
 
-  cond_x_display <-  if(axis_x_display == F){
+  cond_x_display <-  if(axis_x_display == FALSE){
     ggplot2::theme(
-      axis.text.x = element_blank()
+      axis.text.x = ggplot2::element_blank()
     )
   } else{NULL}
 
-  cond_y_display <-  if(axis_y_display == F){
+  cond_y_display <-  if(axis_y_display == FALSE){
     ggplot2::theme(
-      axis.text.y = element_blank()
+      axis.text.y = ggplot2::element_blank()
     )
   } else{NULL}
 

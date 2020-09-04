@@ -37,7 +37,10 @@ add_colors_y2 <- function(){
     teal_light = '#8EE4E7',
     teal_mid = '#4AD4D9',
     teal_dark = '#389FA3',
-    teal_darkest = '#256A6D'
+    teal_darkest = '#256A6D',
+
+    white = '#ffffff',
+    black = '#000000'
   )
   invisible(list2env(qualtrics_colors, envir = .GlobalEnv))
 }

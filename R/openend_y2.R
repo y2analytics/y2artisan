@@ -29,7 +29,7 @@ openend_y2 <- function(
 ) {
   flag <- dplyr::enquo(variable)
   frequencies <- dataset %>%
-    select(
+    dplyr::select(
       !!flag
     ) %>%
     dplyr::mutate(
@@ -54,11 +54,11 @@ openend_y2 <- function(
       -Names
     ) %>%
     dplyr::mutate(
-      Words = str_replace_all(Words, '\\.COM', ''),
-      Words = str_replace_all(Words, "[^[:alnum:]]", ""),
-      Words = str_replace_all(Words, 'DO NOT', 'DONT'),
-      Words = str_replace_all(Words, 'CAN NOT', 'CANT'),
-      Words = str_replace_all(Words, 'CANNOT', 'CANT')
+      Words = stringr::str_replace_all(Words, '\\.COM', ''),
+      Words = stringr::str_replace_all(Words, "[^[:alnum:]]", ""),
+      Words = stringr::str_replace_all(Words, 'DO NOT', 'DONT'),
+      Words = stringr::str_replace_all(Words, 'CAN NOT', 'CANT'),
+      Words = stringr::str_replace_all(Words, 'CANNOT', 'CANT')
     ) %>%
     y2clerk::freqs(
       Words
@@ -94,7 +94,7 @@ openend_y2 <- function(
 #### wc_filter ####
 wc_filter <- function(dataset){
   dataset %>%
-    filter(
+    dplyr::filter(
       !label %in% c(
         'AND',
         'THE',

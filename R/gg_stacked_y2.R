@@ -9,10 +9,12 @@
 #' @param label_var DEFAULT = percent_label; When using the order_label function, this variable will be created for you.
 #' @param color_var DEFAULT = label. Note: the color variable CANNOT be numeric.
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
+#' @param axis_x_display DEFAULT = FALSE
 #' @param axis_y_display DEFAULT = TRUE; for a single stacked bar, set to FALSE to remove axis labels
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param bar_width DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it
+#' @param direction DEFAULT = 'horizontal'; Two options: "vertical" OR "horizontal" (default)
 #' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
 #' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
@@ -26,17 +28,17 @@
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
-#' @param y_label DEFAULT = ''; Title for the y_axis
+#' @param x_label,y_label DEFAULT = ''; Title for the x_axis or y_axis
 #' @param y_min DEFAULT = 0. Change to a negative value such as -.2 to add space for extra text/graphic between the axis text and the stacked bars
 #' @keywords chart ggplot bar stacked
 #' @export
 #' @examples
-#' frequencies <- tibble(
+#' frequencies <- tibble::tibble(
 #'   label = rep(c('Promoter', 'Passive', 'Detractor'), 3),
 #'   result = c(.33, .33, .34, .20, .30, .50, .25, .50, .25),
 #'   value = rep(c(1, 2, 3), 3),
 #'   group_var = c(rep('Group A', 3), rep('Group B', 3), rep('Group C', 3))
-#' ) %>% order_label(
+#' ) %>% orderlabel::order_label(
 #'   group_var = group_var,
 #'   stacked = 'gg'
 #' )
@@ -66,8 +68,8 @@ gg_stacked_y2 <- function(
   y_var = result,
   label_var = percent_label,
   color_var = label,
-  axis_y_display = T,
-  axis_x_display = F,
+  axis_y_display = TRUE,
+  axis_x_display = FALSE,
   axis_text_size = 12,
   axis_title_size = 14,
   bar_width = 0.75,
@@ -115,26 +117,26 @@ if(
   colors = dplyr::case_when(
     colors == '0' ~ c(rep('#ffffff', max_lab)),
     length(colors) == 1 ~ c(rep('#ffffff', max_lab)),
-    T ~ colors
+    TRUE ~ colors
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
-    T ~ label_length
+    TRUE ~ label_length
   )
   legend_rev <- ifelse(legend_rev == FALSE, TRUE, FALSE)
 
 
 
 ### Conditional chunks
-cond_x_display <-  if(axis_x_display == F){
+cond_x_display <-  if(axis_x_display == FALSE){
   ggplot2::theme(
-    axis.text.x = element_blank()
+    axis.text.x = ggplot2::element_blank()
   )
 } else{NULL}
 
-cond_y_display <-  if(axis_y_display == F){
+cond_y_display <-  if(axis_y_display == FALSE){
   ggplot2::theme(
-    axis.text.y = element_blank()
+    axis.text.y = ggplot2::element_blank()
   )
 } else{NULL}
 
@@ -166,7 +168,7 @@ cond_direction <- if(direction == 'horizontal'){
         percent_label = !!label_flag,
         percent_label = dplyr::case_when(
           result <= erase_labels ~ '',
-          T ~ percent_label
+          TRUE ~ percent_label
         )
         ),
       ggplot2::aes(

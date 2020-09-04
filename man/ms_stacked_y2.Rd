@@ -21,7 +21,7 @@ ms_stacked_y2(
   axis_y_min = 0,
   axis_y_max = 1,
   axis_y_rotate = 0,
-  axis_y_rotate_title = 360,
+  axis_y_rotate_title = 0,
   direction = c("horizontal", "vertical"),
   gap_width = 25,
   grouping = "percentStacked",
@@ -53,17 +53,19 @@ ms_stacked_y2(
 
 \item{axis_x_text_color}{DEFAULT = 'black'; Set to 'transparent' for no text on single bars}
 
-\item{axis_y_display}{DEFAULT = F; set axis_x_display to F when it is a single stacked bar}
+\item{axis_x_display}{DEFAULT = T}
 
-\item{axis_y_label}{DEFAULT = ''; Title for the y_axis}
+\item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
+
+\item{axis_x_rotate, axis_y_rotate}{DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.}
+
+\item{axis_x_rotate_title, axis_y_rotate_title}{DEFAULT = 0, set y_axis rotation to 360 for horizontal text}
+
+\item{axis_y_display}{DEFAULT = F; set axis_x_display to F when it is a single stacked bar}
 
 \item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{axis_y_max}{DEFAULT = 1 to allow percent totals to add to 100\%.}
-
-\item{axis_y_rotate}{DEFAULT = 0; Rotation of y_axis text. Set to -45 for diagonal, giving more space for text.}
-
-\item{axis_y_rotate_title}{DEFAULT = 360, default for x_axis is 0}
 
 \item{direction}{DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"}
 

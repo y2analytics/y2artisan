@@ -12,8 +12,8 @@ gg_single_y2(
   color_var = label,
   axis_text_size = 12,
   axis_title_size = 14,
-  axis_y_display = T,
-  axis_x_display = T,
+  axis_y_display = TRUE,
+  axis_x_display = TRUE,
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
@@ -51,6 +51,8 @@ gg_single_y2(
 
 \item{axis_title_size}{DEFAULT = 14; Font size for x_label and y_label.}
 
+\item{axis_x_display, axis_y_display}{DEFAULT = TRUE; Set to FALSE to remove axis labels.}
+
 \item{bar_width}{DEFAULT = .75, with a bar_width of 1 meaning each bars touches the ones next to it}
 
 \item{chart_height}{DEFAULT = 5.5, If saving out a vertical bar chart with a different height, set the height here to have the nudge argument adjust itself automatically}
@@ -83,13 +85,11 @@ gg_single_y2(
 
 \item{title_size}{DEFAULT = 18}
 
-\item{y_label}{DEFAULT = ''; Title for the y_axis}
+\item{x_label, y_label}{DEFAULT = ''; Title for the x_axis or y_axis}
 
 \item{y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{y_max}{DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
-
-\item{axis_*_display}{DEFAULT = TRUE; Set to FALSE to remove axis labels.}
 }
 \description{
 This function creates a ggplot2 object automatically formatted for a single variable (including multiple select).

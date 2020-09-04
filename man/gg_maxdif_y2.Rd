@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_maxdif_y2.R
 \name{gg_maxdif_y2}
 \alias{gg_maxdif_y2}
-\title{Create a grouped ggplot object}
+\title{Create a grouped ggplot object: UNDER CONSTRUCTION}
 \usage{
 gg_maxdif_y2(
   data = frequencies,
@@ -81,7 +81,7 @@ gg_maxdif_y2(
 
 \item{title_size}{DEFAULT = 18}
 
-\item{y_label}{DEFAULT = ''; Title for the y_axis}
+\item{x_label, y_label}{DEFAULT = ''; Title for the x_axis or y_axis}
 
 \item{y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
@@ -89,6 +89,9 @@ gg_maxdif_y2(
 }
 \description{
 This function creates a ggplot2 object automatically formatted for a maxdiff type variable with a positive and negative side.
+}
+\examples{
+Function still in development
 }
 \keyword{bar}
 \keyword{chart}

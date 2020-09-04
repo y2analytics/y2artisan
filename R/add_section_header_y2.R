@@ -9,12 +9,16 @@
 #' @keywords powerpoint slide
 #' @export
 #' @examples
-#' # Before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
-#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+#' # Before adding additional slides, charts, or tables onto a powerpoint,
+#' # you must first read a powerpoint into R
+#' \dontrun{
+#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
+#' Resources/Qualtrics Template New.pptx')
 #'
 #' doc <- add_section_header_y2()
 #'
 #' print(doc, '~/Desktop/test.pptx')
+#' }
 
 add_section_header_y2 <- function(
   title = 'xxx',

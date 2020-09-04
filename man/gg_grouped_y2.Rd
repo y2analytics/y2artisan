@@ -84,7 +84,7 @@ gg_grouped_y2(
 
 \item{title_size}{DEFAULT = 18}
 
-\item{y_label}{DEFAULT = ''; Title for the y_axis}
+\item{x_label, y_label}{DEFAULT = ''; Title for the x_axis or y_axis}
 
 \item{y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
@@ -95,9 +95,9 @@ This function creates a ggplot2 object automatically formatted for a grouped var
 }
 \examples{
 frequencies <- ToothGrowth \%>\%
-  group_by(supp) \%>\%
-  freqs(dose) \%>\%
-  order_label(group_var = group_var)
+  dplyr::group_by(supp) \%>\%
+  y2clerk::freqs(dose) \%>\%
+  orderlabel::order_label(group_var = group_var)
 
 chart <- gg_grouped_y2(
   fills = c('orange', 'gray')

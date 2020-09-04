@@ -5,17 +5,20 @@
 #' This function adds 2 charts/tables/other objects to a PowerPoint slide. The charts are automatically added to the last slide of the PP object in R. For this function to work, you need a powerpoint object saved into R called "doc"
 #' @param name The name of the chart/table/other object to be added to a new PowerPoint slide.
 #' @param position Position options: "top"; "bottom"; "left"; "right". The chart layout can either be top-bottom OR left-right.
-#' @param label_first_only DEFAULT = F; Set to T if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
+#' @param label_first_only DEFAULT = FALSE; Set to TRUE if for a series of left-to-right charts where only the first chart has axis labels. Changing this setting to T in this case will slightly adjut positioning for equally sized graphs
 #' @keywords chart table
 #' @export
 #' @examples
+#' \dontrun{
 #' # First create a chart that you can add into a powerpoint object
 #' my_table <- mtcars %>%
 #'   y2clerk::freqs(carb) %>%
-#'   orderlabel::order_label(inherent_order_label = T)
+#'   orderlabel::order_label(inherent_order_label = TRUE)
 #'
-#' # Then before adding additional slides, charts, or tables onto a powerpoint, you must first read a powerpoint into R
-#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/Resources/Qualtrics Template New.pptx')
+#' # Then before adding additional slides, charts, or tables onto a powerpoint,
+#' # you must first read a powerpoint into R
+#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
+#' Resources/Qualtrics Template New.pptx')
 #'
 #' # Now start adding in your charts
 #' doc <- add1s_y2()
@@ -27,15 +30,16 @@
 #' doc <- add2t_y2(my_table, 'bottom')
 #'
 #' print(doc, '~/Desktop/test.pptx')
+#' }
 
 
 ### Function
 add2t_y2 <- function(
   name,
   position,
-  label_first_only = F
+  label_first_only = FALSE
 ) {
-  if(label_first_only == F) {
+  if(label_first_only == FALSE) {
     officer::ph_with(
       doc,
       value = name,
