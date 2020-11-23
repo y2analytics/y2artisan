@@ -90,7 +90,7 @@ ms_maxdif_y2 <-  function(
 ) {
 
   ### Check for special symbols
-  freqs_list <- split(frequencies, seq(nrow(frequencies))) # turn data frame into a list
+  freqs_list <- split(data, seq(nrow(data))) # turn data frame into a list
   symbols_sum <- purrr::map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
     dplyr::mutate_all(~as.numeric(.)) %>% # convert table into numerics
     sum() # sum all cells to count the number of special symbols
