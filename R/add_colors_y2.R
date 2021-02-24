@@ -19,6 +19,8 @@
 add_colors_y2 <- function(
   case = c('upper', 'lower')
   ) {
+  case <- rlang::arg_match(case)
+
   if (case[1] == 'upper') {
     add_upper()
   } else {
