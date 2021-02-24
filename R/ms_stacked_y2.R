@@ -11,8 +11,8 @@
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_text_color DEFAULT = 'black'; Set to 'transparent' for no text on single bars
 #' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
-#' @param axis_x_display DEFAULT = T
-#' @param axis_y_display DEFAULT = F; set axis_x_display to F when it is a single stacked bar
+#' @param axis_x_display DEFAULT = TRUE
+#' @param axis_y_display DEFAULT = FALSE; set axis_x_display to FALSE when it is a single stacked bar
 #' @param axis_x_rotate,axis_y_rotate DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_x_rotate_title,axis_y_rotate_title DEFAULT = 0, set y_axis rotation to 360 for horizontal text
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
@@ -22,8 +22,8 @@
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a stacked bar chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = color_settings_stacked; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
-#' @param label_show_percent DEFAULT = F
-#' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
+#' @param label_show_percent DEFAULT = FALSE
+#' @param label_show_values DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = text_settings_stacked; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
 #' @param legend_text_size DEFAULT = 10
@@ -56,7 +56,7 @@
 #' )
 #'
 #' chart <- ms_stacked_y2()
-#' print(chart, preview = T)
+#' print(chart, preview = TRUE)
 
 ms_stacked_y2 <- function(
   data = frequencies,
@@ -66,11 +66,11 @@ ms_stacked_y2 <- function(
   axis_text_size = 14,
   axis_title_size = 18,
   axis_x_text_color = 'black',
-  axis_x_display = T,
+  axis_x_display = TRUE,
   axis_x_label = '',
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = F,
+  axis_y_display = FALSE,
   axis_y_label = '',
   axis_y_min = 0,
   axis_y_max = 1,
@@ -81,8 +81,8 @@ ms_stacked_y2 <- function(
   grouping = 'percentStacked',
   font_family = 'Arial',
   label_color = color_settings_stacked,
-  label_show_percent = F,
-  label_show_values = T,
+  label_show_percent = FALSE,
+  label_show_values = TRUE,
   label_text = text_settings_stacked,
   legend_pos = c('t', 'n', 'b', 'tr', 'l', 'r'),
   legend_text_size = 10,
@@ -94,7 +94,7 @@ ms_stacked_y2 <- function(
 
   ### Check for special symbols
   freqs_list <- split(data, seq(nrow(data))) # turn data frame into a list
-  symbols_sum <- purrr::map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
+  symbols_sum <- purrr::map_df(freqs_list, ~stringr::str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
     dplyr::mutate_all(~as.numeric(.)) %>% # convert table into numerics
     sum() # sum all cells to count the number of special symbols
   if(symbols_sum > 0){

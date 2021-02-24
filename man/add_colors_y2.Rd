@@ -4,16 +4,22 @@
 \alias{add_colors_y2}
 \title{Add base Qulatrics colors}
 \usage{
-add_colors_y2()
+add_colors_y2(case = c("upper", "lower"))
+}
+\arguments{
+\item{case}{DEFAULT = 'upper'. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)}
 }
 \description{
-4 Qualtrics colors: purple, green, blue, and teal
+4 Qualtrics colors: PURPLE, GREEN, BLUE, and TEAL
 }
 \details{
-Adds to your environment pre-set hex codes for the 4 base colors typically used in Qualtrics projects. Each of the 4 colors also has 5 shades. There are no arguments to this function.
+Adds to your environment pre-set hex codes for the 4 base colors typically used
+in Qualtrics projects. Each of the 4 colors has 5 shades.
+Also adds grays, black, and white.
 }
 \examples{
 add_colors_y2()
+add_colors_y2('lower')
 }
 \keyword{Qualtrics}
 \keyword{color}

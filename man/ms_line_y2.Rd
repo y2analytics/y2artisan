@@ -11,11 +11,11 @@ ms_line_y2(
   group_var = "group_var",
   axis_text_size = 14,
   axis_title_size = 18,
-  axis_x_display = T,
+  axis_x_display = TRUE,
   axis_x_label = "",
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = T,
+  axis_y_display = TRUE,
   axis_y_label = "",
   axis_y_min = 0,
   axis_y_max = NULL,
@@ -24,7 +24,7 @@ ms_line_y2(
   font_family = "Arial",
   label_color = color_settings_grouped,
   label_position = "t",
-  label_show_values = T,
+  label_show_values = TRUE,
   label_text = text_settings_grouped,
   legend_pos = c("n", "t", "b", "tr", "l", "r"),
   legend_text_size = 16,
@@ -46,7 +46,7 @@ ms_line_y2(
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{axis_x_display, axis_y_display}{DEFAULT = T}
+\item{axis_x_display, axis_y_display}{DEFAULT = TRUE}
 
 \item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
 
@@ -64,7 +64,7 @@ ms_line_y2(
 
 \item{label_position}{DEFAULT = 't'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.}
 
-\item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
+\item{label_show_values}{DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.}
 
 \item{label_text}{DEFAULT = text_settings_grouped; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))}
 
@@ -98,6 +98,6 @@ text_settings_grouped <- list(
 )
 
 chart <- ms_line_y2()
-print(chart, preview = T)
+print(chart, preview = TRUE)
 }
 \keyword{chart}

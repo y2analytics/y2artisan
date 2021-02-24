@@ -12,11 +12,11 @@ ms_stacked_y2(
   axis_text_size = 14,
   axis_title_size = 18,
   axis_x_text_color = "black",
-  axis_x_display = T,
+  axis_x_display = TRUE,
   axis_x_label = "",
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = F,
+  axis_y_display = FALSE,
   axis_y_label = "",
   axis_y_min = 0,
   axis_y_max = 1,
@@ -27,8 +27,8 @@ ms_stacked_y2(
   grouping = "percentStacked",
   font_family = "Arial",
   label_color = color_settings_stacked,
-  label_show_percent = F,
-  label_show_values = T,
+  label_show_percent = FALSE,
+  label_show_values = TRUE,
   label_text = text_settings_stacked,
   legend_pos = c("t", "n", "b", "tr", "l", "r"),
   legend_text_size = 10,
@@ -53,7 +53,7 @@ ms_stacked_y2(
 
 \item{axis_x_text_color}{DEFAULT = 'black'; Set to 'transparent' for no text on single bars}
 
-\item{axis_x_display}{DEFAULT = T}
+\item{axis_x_display}{DEFAULT = TRUE}
 
 \item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
 
@@ -61,7 +61,7 @@ ms_stacked_y2(
 
 \item{axis_x_rotate_title, axis_y_rotate_title}{DEFAULT = 0, set y_axis rotation to 360 for horizontal text}
 
-\item{axis_y_display}{DEFAULT = F; set axis_x_display to F when it is a single stacked bar}
+\item{axis_y_display}{DEFAULT = FALSE; set axis_x_display to FALSE when it is a single stacked bar}
 
 \item{axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
@@ -77,9 +77,9 @@ ms_stacked_y2(
 
 \item{label_color}{DEFAULT = color_settings_stacked; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)}
 
-\item{label_show_percent}{DEFAULT = F}
+\item{label_show_percent}{DEFAULT = FALSE}
 
-\item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
+\item{label_show_values}{DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.}
 
 \item{label_text}{DEFAULT = text_settings_stacked; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))}
 
@@ -121,7 +121,7 @@ text_settings_stacked <- list(
 )
 
 chart <- ms_stacked_y2()
-print(chart, preview = T)
+print(chart, preview = TRUE)
 }
 \keyword{chart}
 \keyword{stacked}

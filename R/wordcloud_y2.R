@@ -47,21 +47,21 @@ wordcloud_y2 <- function(
     colors == 'lime' ~ '#F6FBEB',
     colors == 'teal' ~ '#F1FCFC',
     colors == 'brightblue' ~ '#EDF4FB',
-    T ~ colors[1]
+    TRUE ~ colors[1]
   )
   mids = dplyr::case_when(
     colors == 'bluepurple' ~ '#BABDCF',
     colors == 'lime' ~ '#C6E881',
     colors == 'teal' ~ '#A5EAEC',
     colors == 'brightblue' ~ '#89B7E5',
-    T ~ colors[2]
+    TRUE ~ colors[2]
   )
   highs = dplyr::case_when(
     colors == 'bluepurple' ~ '#464E7E',
     colors == 'lime' ~ '#6A9D02',
     colors == 'teal' ~ '#389FA3',
     colors == 'brightblue' ~ '#0E5498',
-    T ~ colors[3]
+    TRUE ~ colors[3]
   )
 
   frequencies <- openend_y2(dataset, !!flag_var, top_x)
@@ -81,8 +81,17 @@ wordcloud_y2 <- function(
       segment.size = 0,
       family = font_family
     ) +
-    ggplot2::scale_color_gradient2(low = lows, mid = mids, high = highs, midpoint = 0.5, guide = F) +
-    ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
+    ggplot2::scale_color_gradient2(
+      low = lows,
+      mid = mids,
+      high = highs,
+      midpoint = 0.5,
+      guide = FALSE
+      ) +
+    ggplot2::scale_size(
+      range = c(min_size, max_size),
+      guide = FALSE
+      ) +
     ggplot2::scale_y_continuous(breaks = NULL) +
     ggplot2::scale_x_continuous(breaks = NULL) +
     ggplot2::theme_minimal()+

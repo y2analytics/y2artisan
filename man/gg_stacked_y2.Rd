@@ -119,7 +119,7 @@ frequencies <- tibble(
 
 chart <- gg_stacked_y2(
    x_var = variable,
-   axis_y_display = F,
+   axis_y_display = FALSE,
    fills = c('red', 'yellow', 'green')
 )
 }

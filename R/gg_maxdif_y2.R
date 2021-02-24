@@ -46,7 +46,7 @@ gg_maxdif_y2 <- function(
   bar_width = 0.75,
   chart_height = 5.5,
   chart_width = 11,
-  fills, #only variable with no default...
+  fills, # only variable with no default...
   font_family = 'flama',
   label_length = 45,
   label_size = 6,
@@ -56,13 +56,13 @@ gg_maxdif_y2 <- function(
   legend_text_size = 8,
   legend_title_size = 8,
   legend_title = '',
-  nudge = 0, #auto-fills
+  nudge = 0, # auto-fills
   title_label = '',
   title_size = 14,
   x_label = '',
   y_label = '',
-  y_min = 0, #auto-fills
-  y_max = 0 #auto-fills
+  y_min = 0, # auto-fills
+  y_max = 0 # auto-fills
 ) {
 
 ### Check fonts
@@ -78,7 +78,7 @@ if(
 ### Flags
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
-  color_flag <- dplyr::enquo(color_var) #AKA group_var
+  color_flag <- dplyr::enquo(color_var) # AKA group_var
   label_flag <- dplyr::enquo(label_var)
 
 
@@ -86,21 +86,25 @@ if(
 ### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
   min_y_val <- data %>% dplyr::summarise(min(!!y_flag)) %>% as.numeric()
-  max_str_length <- data %>% dplyr::select(!!x_flag) %>% purrr::as_vector() %>% stringr::str_length() %>% max()
-  str_add <- max_str_length * max_y_val /1500
+  max_str_length <- data %>%
+    dplyr::select(!!x_flag) %>%
+    purrr::as_vector() %>%
+    stringr::str_length() %>%
+    max()
+  str_add <- max_str_length * max_y_val / 1500
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
-    chart_width < 11 ~  (max_y_val + (max_y_val/chart_width) * 2),
-    TRUE ~  (max_y_val + max_y_val/5)
+    chart_width < 11 ~  (max_y_val + (max_y_val / chart_width) * 2),
+    TRUE ~  (max_y_val + max_y_val / 5)
   )
   y_min <- dplyr::case_when(
     y_min != 0 ~ y_min,
-    chart_width < 11 ~  (min_y_val - (min_y_val/chart_width) * 2),
-    TRUE ~  (min_y_val + min_y_val/5)
+    chart_width < 11 ~  (min_y_val - (min_y_val / chart_width) * 2),
+    TRUE ~  (min_y_val + min_y_val / 5)
   )
   nudge_x <- dplyr::case_when(
     nudge != 0 ~ nudge,
-    TRUE ~ (max_y_val/(max_y_val*4) + str_add) *-1
+    TRUE ~ (max_y_val / (max_y_val * 4) + str_add) * -1
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
@@ -168,7 +172,7 @@ if(
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, y_max),
-      labels = function(x) stringr::str_c((round(x,2)) * 100, '%')
+      labels = function(x) stringr::str_c((round(x, 2)) * 100, '%')
     ) +
     ggplot2::scale_x_discrete(
       labels = function(x) lapply(
@@ -181,5 +185,4 @@ if(
         collapse="\n"
       )
     ) + ggplot2::coord_flip()
-
 }

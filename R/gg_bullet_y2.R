@@ -58,7 +58,7 @@ gg_bullet_y2 <- function(
   chart_height = 5.5,
   chart_width = 11,
   direction = c('vertical', 'horizontal'),
-  fills, #only variable with no default...
+  fills, # only variable with no default...
   font_family = 'flama',
   label_length = 45,
   label_size = 6,
@@ -68,13 +68,13 @@ gg_bullet_y2 <- function(
   legend_text_size = 8,
   legend_title_size = 8,
   legend_title = '',
-  nudge = 0, #auto-fills
+  nudge = 0, # auto-fills
   title_label = '',
   title_size = 14,
   x_label = '',
   y_label = '',
   y_min = 0,
-  y_max = 0 #auto-fills
+  y_max = 0 # auto-fills
 ) {
 
 ### Check fonts
@@ -99,23 +99,23 @@ if(
 ### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
   max_str_length <- data %>% dplyr::select(!!x_flag) %>% purrr::as_vector() %>% stringr::str_length() %>% max()
-  str_add <- max_str_length * max_y_val /1500
+  str_add <- max_str_length * max_y_val / 1500
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
-    chart_width < 11 & direction == 'horizontal' ~  (max_y_val + (max_y_val/chart_width) * 2),
-    chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + (max_y_val/(chart_height*2)) * 2),
-    TRUE ~  (max_y_val + max_y_val/10) #direction == 'vertical'
+    chart_width < 11 & direction == 'horizontal' ~  (max_y_val + (max_y_val / chart_width) * 2),
+    chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + (max_y_val / (chart_height * 2)) * 2),
+    TRUE ~  (max_y_val + max_y_val / 10) # direction == 'vertical'
   )
   nudge_y <- dplyr::case_when(
-    direction == 'horizontal' ~ 0.5, #places the percent_label in the middle of the bar
+    direction == 'horizontal' ~ 0.5, # places the percent_label in the middle of the bar
     nudge != 0 ~ nudge,
-    direction == 'vertical' ~ (max_y_val/(max_y_val*5)) *-1
+    direction == 'vertical' ~ (max_y_val / (max_y_val * 5)) * -1
   )
   nudge_x <- dplyr::case_when(
     direction == 'vertical' ~ 0.5,
     nudge != 0 ~ nudge,
-    direction == 'horizontal' ~ (max_y_val/(max_y_val*4) + str_add) *-1
+    direction == 'horizontal' ~ (max_y_val / (max_y_val * 4) + str_add) *-1
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
@@ -150,7 +150,7 @@ if(
     ggplot2::geom_bar(
       data = frequencies %>% dplyr::filter(!!color_flag != base_level),
       stat = 'identity',
-      width = bar_width*(2/3),
+      width = bar_width * (2 / 3),
       position = ggplot2::position_dodge(width = .5)
     ) +
     ggplot2::geom_text(
@@ -160,7 +160,7 @@ if(
       ),
       family = font_family,
       size = label_size,
-      #nudge_y = nudge, # grr, doesn't work with position argument. Have to do v/hjust instead
+      # nudge_y = nudge, # grr, doesn't work with position argument. Have to do v/hjust instead
       position = ggplot2::position_dodge(width = 1),
       vjust = ifelse(frequencies$group_var == 'Mean', 0.85, 0.1),
       vjust = ifelse(direction == 'horizontal', 0, nudge_y)
@@ -199,7 +199,7 @@ if(
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, y_max),
-      labels = function(x) stringr::str_c((round(x,2)) * 100, '%')
+      labels = function(x) stringr::str_c((round(x, 2)) * 100, '%')
     ) +
     ggplot2::scale_x_discrete(
       labels = function(x) lapply(

@@ -1,3 +1,10 @@
+# Setup -------------------------------------------------------------------
+library(dplyr)
+library(y2clerk)
+library(testthat)
+library(y2artisan)
+
+
 #### gg_grouped_y2 ####
 context("gg_grouped_y2")
 
@@ -26,3 +33,4 @@ test_that("x_var", {
     gg_grouped_y2(x_var = value, font_family = "sans")
   expect_error(chart, NA)
 })
+

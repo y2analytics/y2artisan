@@ -11,12 +11,12 @@ ms_grouped_y2(
   group_var = "group_var",
   axis_text_size = 14,
   axis_title_size = 18,
-  axis_x_display = T,
+  axis_x_display = TRUE,
   axis_x_label = "",
   axis_x_position = c("nextTo", "high", "low", "none"),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = T,
+  axis_y_display = TRUE,
   axis_y_label = "",
   axis_y_min = 0,
   axis_y_max = NULL,
@@ -28,7 +28,7 @@ ms_grouped_y2(
   grouping = "standard",
   label_color = color_settings_grouped,
   label_position = c("outEnd", "inEnd", "ctr", "inBase"),
-  label_show_values = T,
+  label_show_values = TRUE,
   label_text = text_settings_grouped,
   overlapping = -25,
   legend_pos = c("t", "n", "b", "tr", "l", "r"),
@@ -51,7 +51,7 @@ ms_grouped_y2(
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{axis_x_display, axis_y_display}{DEFAULT = T}
+\item{axis_x_display, axis_y_display}{DEFAULT = TRUE}
 
 \item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
 
@@ -77,7 +77,7 @@ ms_grouped_y2(
 
 \item{label_position}{DEFAULT = 'outEnd'; Other options include c('outEnd', 'inEnd', 'ctr', 'inBase')}
 
-\item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
+\item{label_show_values}{DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.}
 
 \item{label_text}{DEFAULT = text_settings_grouped; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))}
 
@@ -112,7 +112,7 @@ text_settings_grouped <- list(
 )
 
 chart <- ms_grouped_y2()
-print(chart, preview = T)
+print(chart, preview = TRUE)
 }
 \keyword{chart}
 \keyword{grouped}

@@ -53,7 +53,7 @@ wordcloud_mono_y2 <- function(
       segment.size = 0,
       family = font_family
     ) +
-    ggplot2::scale_color_manual(values = colors, guide = F) +
+    ggplot2::scale_color_manual(values = colors, guide = FALSE) +
     ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
     ggplot2::scale_y_continuous(breaks = NULL) +
     ggplot2::scale_x_continuous(breaks = NULL) +

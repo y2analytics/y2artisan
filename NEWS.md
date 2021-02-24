@@ -1,3 +1,19 @@
+# y2artisan 0.4.0
+## Breaking changes
+* `add_colors_y2`
+1. By default, color vectors are now in UPPER CASE (e.g. green is now GREEN)
+2. Added set of GRAY colors
+3. When working with old code, you can still use this function, just use the `case = 'lower'` argument to revert color vectors to lowercase 
+
+* `ggchart_save_y2`
+1. The function is now tidy, meaning the first argument is now chart (a ggplot2 chart object) instead of chartname (the file name you wish you save your chart as). Essentially the only change is that you should now pipe your chart object into the function first. 
+
+## Bugs
+* Fixed a bug in horizontal grouped charts where the chart legend was backwards from the order of the bars in the actual chart space
+* Fixed internal package calls to avoid warnings/notes
+
+
+
 # y2artisan pre 0.3.0
 ## New functions
 * `gg_histo_y2`

@@ -3,6 +3,7 @@
 #' Quickly save out a chart from ggplot
 #'
 #' Saves a ggplot chart. All you need to add is the file name and a CHART_PATH.
+#' @param chart The ggplot object you want to use.
 #' @param chartname The name you want to give your file, ex: "brands by age". Do not specify the whole file path. However, you do need to have an object that is the path to your chart folder saved in R as CHART_PATH
 #' @param chart_path DEFAULT = CHART_PATH. If you set a CHART_PATH at the beginning of your code, you won't have to worry about this again
 #' @param width DEFAULT = 11
@@ -24,6 +25,7 @@
 
 
 ggchart_save_y2 <- function(
+  chart,
   chartname,
   chart_path = CHART_PATH,
   width = 11,

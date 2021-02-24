@@ -4,9 +4,17 @@
 \alias{ggchart_save_y2}
 \title{Quickly save out a chart from ggplot}
 \usage{
-ggchart_save_y2(chartname, chart_path = CHART_PATH, width = 11, height = 5.5)
+ggchart_save_y2(
+  chart,
+  chartname,
+  chart_path = CHART_PATH,
+  width = 11,
+  height = 5.5
+)
 }
 \arguments{
+\item{chart}{The ggplot object you want to use.}
+
 \item{chartname}{The name you want to give your file, ex: "brands by age". Do not specify the whole file path. However, you do need to have an object that is the path to your chart folder saved in R as CHART_PATH}
 
 \item{chart_path}{DEFAULT = CHART_PATH. If you set a CHART_PATH at the beginning of your code, you won't have to worry about this again}

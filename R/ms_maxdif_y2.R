@@ -7,7 +7,7 @@
 #' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = 'group_var'; All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
-#' @param axis_x_display,axis_y_display DEFAULT = T
+#' @param axis_x_display,axis_y_display DEFAULT = TRUE
 #' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
 #' @param axis_y_min DEFAULT = NULL; unlike other graphs, will almost always be a negative number
 #' @param axis_y_max DEFAULT = NULL
@@ -22,7 +22,7 @@
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = color_settings_grouped; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
 #' @param label_position DEFAULT = 'outEnd'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
-#' @param label_show_values DEFAULT = T; TRUE or FALSE. Show percent labels for each value.
+#' @param label_show_values DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = text_settings_grouped; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
 #' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', and 't' for top
 #' @param legend_text_size DEFAULT = 16
@@ -41,7 +41,7 @@
 #'   order_label(
 #'     group_var = group_var,
 #'     group_specific = 'Positive',
-#'     horizontal = T
+#'     horizontal = TRUE
 #'   )
 #'
 #' color_settings_grouped <- list(
@@ -53,7 +53,7 @@
 #'   'Negative' = fp_text(color = 'red', font.size = 16)
 #' )
 #' chart <- ms_maxdif_y2()
-#' print(chart, preview = T)
+#' print(chart, preview = TRUE)
 
 ms_maxdif_y2 <-  function(
   data = frequencies,
@@ -62,12 +62,12 @@ ms_maxdif_y2 <-  function(
   group_var = 'group_var',
   axis_text_size = 14,
   axis_title_size = 18,
-  axis_x_display = T,
+  axis_x_display = TRUE,
   axis_x_label = '',
   axis_x_position = 'low',
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = T,
+  axis_y_display = TRUE,
   axis_y_label = '',
   axis_y_min = NULL,
   axis_y_max = NULL,
@@ -79,7 +79,7 @@ ms_maxdif_y2 <-  function(
   grouping = 'standard',
   label_color = color_settings_grouped,
   label_position = c('outEnd', 'inEnd', 'ctr', 'inBase'),
-  label_show_values = T,
+  label_show_values = TRUE,
   label_text = text_settings_grouped,
   legend_pos = c('n', 't', 'b', 'tr', 'l', 'r'),
   legend_text_size = 16,
@@ -91,7 +91,7 @@ ms_maxdif_y2 <-  function(
 
   ### Check for special symbols
   freqs_list <- split(data, seq(nrow(data))) # turn data frame into a list
-  symbols_sum <- purrr::map_df(freqs_list, ~str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
+  symbols_sum <- purrr::map_df(freqs_list, ~stringr::str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
     dplyr::mutate_all(~as.numeric(.)) %>% # convert table into numerics
     sum() # sum all cells to count the number of special symbols
   if(symbols_sum > 0){

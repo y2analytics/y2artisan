@@ -58,7 +58,7 @@
 #'
 #' chart <- gg_stacked_y2(
 #'    x_var = variable,
-#'    axis_y_display = F,
+#'    axis_y_display = FALSE,
 #'    fills = c('red', 'yellow', 'green')
 #' )
 
@@ -113,7 +113,11 @@ if(
 
 
 ### Set defaults
-  max_lab <- data %>% dplyr::select(!!color_flag) %>% dplyr::distinct() %>% purrr::as_vector() %>% length()
+  max_lab <- data %>%
+    dplyr::select(!!color_flag) %>%
+    dplyr::distinct() %>%
+    purrr::as_vector() %>%
+    length()
   colors = dplyr::case_when(
     colors == '0' ~ c(rep('#ffffff', max_lab)),
     length(colors) == 1 ~ c(rep('#ffffff', max_lab)),
@@ -214,7 +218,7 @@ cond_direction <- if(direction == 'horizontal'){
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, 1),
-      labels = function(x) stringr::str_c((round(x,2)) * 100, '%')
+      labels = function(x) stringr::str_c((round(x, 2)) * 100, '%')
     ) +
     ggplot2::scale_x_discrete(
       labels = function(x) lapply(

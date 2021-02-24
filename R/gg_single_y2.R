@@ -94,8 +94,12 @@ if(
 
 ### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()
-  max_str_length <- data %>% dplyr::select(!!x_flag) %>% purrr::as_vector() %>% stringr::str_length() %>% max()
-  str_add <- max_str_length * max_y_val /1500
+  max_str_length <- data %>%
+    dplyr::select(!!x_flag) %>%
+    purrr::as_vector() %>%
+    stringr::str_length() %>%
+    max()
+  str_add <- max_str_length * max_y_val / 1500
   legend_pos <- dplyr::case_when(
     legend_title != '' & legend_pos == 'none' ~ 'top',
     TRUE ~ legend_pos
@@ -103,18 +107,18 @@ if(
   y_max <- dplyr::case_when(
     y_max != 0 ~ y_max,
     # y_max == 0 & direction == 'horizontal' ~ (max_y_val + max_y_val/10 + str_add),
-    chart_width < 11 & direction == 'horizontal' ~  (max_y_val + max_y_val/chart_width),
-    chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + max_y_val/(chart_height*2)),
-    TRUE ~  (max_y_val + max_y_val/10) #direction == 'vertical'
+    chart_width < 11 & direction == 'horizontal' ~  (max_y_val + max_y_val / chart_width),
+    chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + max_y_val / (chart_height * 2)),
+    TRUE ~  (max_y_val + max_y_val / 10) #direction == 'vertical'
   )
   nudge <- dplyr::case_when(
     nudge != 0 ~ nudge, #if user specifies nudge, don't change it
-    direction == 'horizontal' ~ (max_y_val/20 + str_add),
-    direction == 'vertical' ~ (max_y_val/16)
+    direction == 'horizontal' ~ (max_y_val / 20 + str_add),
+    direction == 'vertical' ~ (max_y_val / 16)
   )
   nudge <- dplyr::case_when(
-    chart_width != 11 & direction == 'horizontal' ~ nudge/(chart_width/12),
-    chart_height != 5.5 & direction == 'vertical' ~ nudge/(chart_height/6),
+    chart_width != 11 & direction == 'horizontal' ~ nudge / (chart_width / 12),
+    chart_height != 5.5 & direction == 'vertical' ~ nudge / (chart_height / 6),
     TRUE ~ nudge # If chart width is default of 11, then should be good
   )
   label_length <- dplyr::case_when(
@@ -203,7 +207,7 @@ if(
     ) +
     ggplot2::scale_y_continuous(
       limits = c(y_min, y_max),
-      labels = function(x) stringr::str_c((round(x,2)) * 100, '%')
+      labels = function(x) stringr::str_c((round(x, 2)) * 100, '%')
     ) +
     ggplot2::scale_x_discrete(
       labels = function(x) lapply(
@@ -219,7 +223,6 @@ if(
     cond_x_display +
     cond_y_display +
     cond_direction
-
 }
 
 

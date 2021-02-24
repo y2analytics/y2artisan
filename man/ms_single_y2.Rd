@@ -10,12 +10,12 @@ ms_single_y2(
   y_var = "result",
   axis_text_size = 14,
   axis_title_size = 18,
-  axis_x_display = T,
+  axis_x_display = TRUE,
   axis_x_label = "",
   axis_x_position = c("nextTo", "high", "low", "none"),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = T,
+  axis_y_display = TRUE,
   axis_y_label = "",
   axis_y_min = 0,
   axis_y_max = NULL,
@@ -28,7 +28,7 @@ ms_single_y2(
   group_var = NULL,
   label_color = color_settings,
   label_position = c("outEnd", "inEnd", "ctr", "inBase"),
-  label_show_values = T,
+  label_show_values = TRUE,
   label_text = text_settings,
   legend_pos = c("n", "t", "b", "tr", "l", "r"),
   legend_text_size = 16,
@@ -49,7 +49,7 @@ ms_single_y2(
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{axis_x_display, axis_y_display}{DEFAULT = T}
+\item{axis_x_display, axis_y_display}{DEFAULT = TRUE}
 
 \item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
 
@@ -77,7 +77,7 @@ ms_single_y2(
 
 \item{label_position}{DEFAULT = 'outEnd'; Other options include c('outEnd', 'inEnd', 'ctr', 'inBase')}
 
-\item{label_show_values}{DEFAULT = T; TRUE or FALSE. Show percent labels for each value.}
+\item{label_show_values}{DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.}
 
 \item{label_text}{DEFAULT = text_settings; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list("result" = fp_text(font.size = 10.5, color = bluepurple, font.family = 'Arial'))}
 
@@ -99,13 +99,13 @@ This function creates a mschart object automatically formatted for a single vari
 \examples{
 frequencies <- mtcars \%>\%
   y2clerk::freqs(carb) \%>\%
-  orderlabel::order_label(inherent_order_label = T)
+  orderlabel::order_label(inherent_order_label = TRUE)
 
 color_settings <- list('blue')
 text_settings<- list('result' = fp_text(font.size = 20))
 
 chart <- ms_single_y2()
-print(chart, preview = T)
+print(chart, preview = TRUE)
 }
 \keyword{bar}
 \keyword{chart}
