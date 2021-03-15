@@ -21,7 +21,10 @@
 #' @examples
 #' frequencies <- iris %>% y2clerk::freqs(Species)
 #'
-#' chart <- gg_pie_y2(fills = c('red', 'blue', 'pink'))
+#' chart <- gg_pie_y2(
+#'   fills = c('red', 'blue', 'pink'),
+#'   font_family = 'sans'
+#' )
 
 
 gg_pie_y2 <- function(
@@ -50,6 +53,7 @@ gg_pie_y2 <- function(
 
 
   ### Flags
+  label <- result <- percent_label <- NULL
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(x_var)

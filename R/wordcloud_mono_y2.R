@@ -12,7 +12,7 @@
 #' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @export
 #' @examples
-#' responses <- tibble(
+#' responses <- tibble::tibble(
 #'   var1 = c(
 #'     'I like to talk about dogs',
 #'     'Dogs are cool but cats are aight too',
@@ -42,12 +42,12 @@ wordcloud_mono_y2 <- function(
     ggplot2::aes(
       x = 1,
       y = 1,
-      size = n
+      size = .data$n
     )
   ) +
     ggrepel::geom_text_repel(
       ggplot2::aes(
-        label = label,
+        label = .data$label,
         color = variable
       ),
       segment.size = 0,
@@ -57,11 +57,11 @@ wordcloud_mono_y2 <- function(
     ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
     ggplot2::scale_y_continuous(breaks = NULL) +
     ggplot2::scale_x_continuous(breaks = NULL) +
-    ggplot2::theme_minimal()+
-    ggplot2::theme(
-      axis.text = ggplot2::element_blank(),
-      axis.title = ggplot2::element_blank(),
-      text = ggplot2::element_text(family = font_family)
-    )
+  ggplot2::theme_minimal()+
+  ggplot2::theme(
+    axis.text = ggplot2::element_blank(),
+    axis.title = ggplot2::element_blank(),
+    text = ggplot2::element_text(family = font_family)
+  )
   return(chart)
 }

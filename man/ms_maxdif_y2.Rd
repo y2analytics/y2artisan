@@ -97,14 +97,14 @@ ms_maxdif_y2(
 This function creates a mschart object automatically formatted for a maxdiff question. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 }
 \examples{
-frequencies <- tibble(
+frequencies <- tibble::tibble(
   label = rep(c('Attribute 1', 'Attribute 2', 'Attribute 3'), 2),
   group_var = c(rep('Positive', 3), rep('Negative', 3)),
   result = c(.10, .20, .30, -.1, -.05, -.15)
 ) \%>\%
-  order_label(
+  orderlabel::order_label(
     group_var = group_var,
-    group_specific = 'Positive',
+    group_first = 'Positive',
     horizontal = TRUE
   )
 
@@ -113,8 +113,8 @@ color_settings_grouped <- list(
   'Negative' = 'red'
 )
 text_settings_grouped <- list(
-  'Positive' = fp_text(color = 'green', font.size = 16),
-  'Negative' = fp_text(color = 'red', font.size = 16)
+  'Positive' = officer::fp_text(color = 'green', font.size = 16),
+  'Negative' = officer::fp_text(color = 'red', font.size = 16)
 )
 chart <- ms_maxdif_y2()
 print(chart, preview = TRUE)

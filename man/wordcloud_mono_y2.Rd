@@ -33,7 +33,7 @@ wordcloud_mono_y2(
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller
 }
 \examples{
-responses <- tibble(
+responses <- tibble::tibble(
   var1 = c(
     'I like to talk about dogs',
     'Dogs are cool but cats are aight too',

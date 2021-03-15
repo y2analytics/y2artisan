@@ -31,15 +31,14 @@
 #' @param y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param y_max DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
 #' @keywords chart ggplot bar single
-#' @importFrom dplyr "%>%"
+#' @importFrom rlang .data
 #' @export
 #' @examples
 #' frequencies <- mtcars %>%
 #'   y2clerk::freqs(carb) %>%
-#'   orderlabel::order_label(inherent_order_label = T)
+#'   orderlabel::order_label(inherent_order_label = TRUE)
 #'
-#' chart <- gg_single_y2()
-
+#' chart <- gg_single_y2(font_family = 'sans')
 
 gg_single_y2 <- function(
   data = frequencies,
@@ -84,6 +83,7 @@ if(
 
 
 ### Flags
+  label <- result <- percent_label <- NULL
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var)
@@ -224,5 +224,4 @@ if(
     cond_y_display +
     cond_direction
 }
-
 

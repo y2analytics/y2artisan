@@ -17,7 +17,7 @@ openend_y2(dataset, variable, top_x = 50)
 Breaks down an open ended question on spaces, giving you the frequencies of each word mentioned
 }
 \examples{
-responses <- tibble(
+responses <- tibble::tibble(
   var1 = c(
     'I like to talk about dogs',
     'Dogs are cool but cats are aight too',

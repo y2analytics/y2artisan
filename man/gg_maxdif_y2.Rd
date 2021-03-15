@@ -91,7 +91,7 @@ gg_maxdif_y2(
 This function creates a ggplot2 object automatically formatted for a maxdiff type variable with a positive and negative side.
 }
 \examples{
-Function still in development
+# Function still in development
 }
 \keyword{bar}
 \keyword{chart}

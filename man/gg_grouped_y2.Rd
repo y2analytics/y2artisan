@@ -100,7 +100,8 @@ frequencies <- ToothGrowth \%>\%
   orderlabel::order_label(group_var = group_var)
 
 chart <- gg_grouped_y2(
-  fills = c('orange', 'gray')
+  fills = c('orange', 'gray'),
+  font_family = 'sans'
 )
 }
 \keyword{bar}

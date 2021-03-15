@@ -44,22 +44,24 @@
 #' )
 #'
 #' chart <- gg_stacked_y2(
-#'   fills = c('red', 'yellow', 'green')
+#'   fills = c('red', 'yellow', 'green'),
+#'   font_family = 'sans'
 #' )
 #'
 #'
 #' # For a single stacked bar:
-#' frequencies <- tibble(
+#' frequencies <- tibble::tibble(
 #'  label = c('Promoter', 'Passive', 'Detractor'),
 #'  result = c(.33, .33, .34),
 #'  value = c(1, 2, 3),
 #'  variable = rep('QNPS', 3)
-#' ) %>% order_label(stacked = 'gg')
+#' ) %>% orderlabel::order_label(stacked = 'gg')
 #'
 #' chart <- gg_stacked_y2(
 #'    x_var = variable,
 #'    axis_y_display = FALSE,
-#'    fills = c('red', 'yellow', 'green')
+#'    fills = c('red', 'yellow', 'green'),
+#'    font_family = 'sans'
 #' )
 
 gg_stacked_y2 <- function(
@@ -104,6 +106,7 @@ if(
 
 
 ### Flags
+  label <- result <- percent_label <- group_var <- NULL
   x_flag <- dplyr::enquo(x_var) #probs group_var
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #probs label

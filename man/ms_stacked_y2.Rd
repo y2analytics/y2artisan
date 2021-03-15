@@ -99,12 +99,12 @@ ms_stacked_y2(
 This function creates a mschart object automatically formatted for a stacked variable with an inherent order. It requires two lists called "text_settings_stacked" and "color_settings_stacked" by default that specify the colors desired for the chart.
 }
 \examples{
-frequencies <- tibble(
+frequencies <- tibble::tibble(
   label = rep(c('Promoter', 'Passive', 'Detractor'), 3),
   result = c(.33, .33, .34, .20, .30, .50, .25, .50, .25),
   value = rep(c(1, 2, 3), 3),
   group_var = c(rep('Group A', 3), rep('Group B', 3), rep('Group C', 3))
-) \%>\% order_label(
+) \%>\% orderlabel::order_label(
   group_var = group_var,
   stacked = 'ms'
 )
@@ -115,9 +115,9 @@ color_settings_stacked <- list(
   'Detractor' = 'red'
 )
 text_settings_stacked <- list(
-  'Promoter' = fp_text(font.size = 16, font.family = 'Roboto', color = 'white'),
-  'Passive' = fp_text(font.size = 16, font.family = 'Roboto', color = 'black'),
-  'Detractor' = fp_text(font.size = 16, font.family = 'Roboto', color = 'white')
+  'Promoter' = officer::fp_text(font.size = 16, font.family = 'Roboto', color = 'white'),
+  'Passive' = officer::fp_text(font.size = 16, font.family = 'Roboto', color = 'black'),
+  'Detractor' = officer::fp_text(font.size = 16, font.family = 'Roboto', color = 'white')
 )
 
 chart <- ms_stacked_y2()

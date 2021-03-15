@@ -60,7 +60,8 @@ This function creates a ggplot2 histogram object of a given variable with a dott
 chart <- iris \%>\% gg_histo_y2(
   Petal.Width,
   'purple',
-  binwidth = .25
+  binwidth = .25,
+  font_family = 'sans'
 )
 }
 \keyword{bar}

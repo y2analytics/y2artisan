@@ -33,7 +33,7 @@ wordcloud_y2(
 Finds the frequencies of each word in an open end question and creates a word cloud based on the frequencies. Words mentioned less are smaller and lighter in color
 }
 \examples{
-responses <- tibble(
+responses <- tibble::tibble(
   var1 = c(
     'I like to talk about dogs',
     'Dogs are cool but cats are aight too',
@@ -44,13 +44,13 @@ responses <- tibble(
   )
 )
 
-red_dark <- '#C61616'
-red_mid <- '#E38B8B'
-red_light <- '#F9E6E6'
+RED_DARK <- '#C61616'
+RED_MID <- '#E38B8B'
+RED_LIGHT <- '#F9E6E6'
 
 # If you want to use a specific color, you must specify three scalar shades of that color
 responses \%>\% wordcloud_y2(var1, font_family = "Arial")
-responses \%>\% wordcloud_y2(var1, c(red_light, red_mid, red_dark), font_family = "Arial",)
+responses \%>\% wordcloud_y2(var1, c(RED_LIGHT, RED_MID, RED_DARK), font_family = "Arial",)
 }
 \keyword{cloud}
 \keyword{end}

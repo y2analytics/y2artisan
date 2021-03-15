@@ -82,7 +82,7 @@ ms_line_y2(
 This function creates a mschart object automatically formatted for a line chart. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 }
 \examples{
-frequencies <- tibble(
+frequencies <- tibble::tibble(
   label = rep(c('2000', '2001', '2002'), 2),
   group_var = rep(c('Brand 1', 'Brand 2'), 3),
   result = c(.18, .20, .24, .25, .24, .23)
@@ -93,8 +93,8 @@ color_settings_grouped <- list(
   'Brand 2' = 'red'
 )
 text_settings_grouped <- list(
-  'Brand 1' = fp_text(color = 'green'),
-  'Brand 2' = fp_text(color = 'red')
+  'Brand 1' = officer::fp_text(color = 'green'),
+  'Brand 2' = officer::fp_text(color = 'red')
 )
 
 chart <- ms_line_y2()

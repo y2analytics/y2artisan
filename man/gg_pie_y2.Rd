@@ -53,7 +53,10 @@ This function creates a ggplot2 object automatically formatted for a pie chart.
 \examples{
 frequencies <- iris \%>\% y2clerk::freqs(Species)
 
-chart <- gg_pie_y2(fills = c('red', 'blue', 'pink'))
+chart <- gg_pie_y2(
+  fills = c('red', 'blue', 'pink'),
+  font_family = 'sans'
+)
 }
 \keyword{bar}
 \keyword{chart}

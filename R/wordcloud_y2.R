@@ -13,7 +13,7 @@
 #' @keywords openend open end wordcloud word cloud
 #' @export
 #' @examples
-#' responses <- tibble(
+#' responses <- tibble::tibble(
 #'   var1 = c(
 #'     'I like to talk about dogs',
 #'     'Dogs are cool but cats are aight too',
@@ -24,13 +24,13 @@
 #'   )
 #' )
 #'
-#' red_dark <- '#C61616'
-#' red_mid <- '#E38B8B'
-#' red_light <- '#F9E6E6'
+#' RED_DARK <- '#C61616'
+#' RED_MID <- '#E38B8B'
+#' RED_LIGHT <- '#F9E6E6'
 #'
 #' # If you want to use a specific color, you must specify three scalar shades of that color
 #' responses %>% wordcloud_y2(var1, font_family = "Arial")
-#' responses %>% wordcloud_y2(var1, c(red_light, red_mid, red_dark), font_family = "Arial",)
+#' responses %>% wordcloud_y2(var1, c(RED_LIGHT, RED_MID, RED_DARK), font_family = "Arial",)
 
 wordcloud_y2 <- function(
   dataset,
@@ -70,13 +70,13 @@ wordcloud_y2 <- function(
     ggplot2::aes(
       x = 1,
       y = 1,
-      size = n
+      size = .data$n
     )
   ) +
     ggrepel::geom_text_repel(
       ggplot2::aes(
-        label = label,
-        color = n
+        label = .data$label,
+        color = .data$n
       ),
       segment.size = 0,
       family = font_family

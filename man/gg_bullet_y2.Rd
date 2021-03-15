@@ -105,8 +105,10 @@ frequencies <- ToothGrowth \%>\%
   y2clerk::freqs(dose) \%>\%
   orderlabel::order_label(group_var = group_var)
 
-chart <- gg_grouped_y2(
-  fills = c('orange', 'gray')
+chart <- gg_bullet_y2(
+  base_level = 'VC',
+  fills = c('orange', 'gray'),
+  font_family = 'sans'
 )
 }
 \keyword{bar}

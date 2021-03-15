@@ -97,9 +97,9 @@ This function creates a ggplot2 object automatically formatted for a single vari
 \examples{
 frequencies <- mtcars \%>\%
   y2clerk::freqs(carb) \%>\%
-  orderlabel::order_label(inherent_order_label = T)
+  orderlabel::order_label(inherent_order_label = TRUE)
 
-chart <- gg_single_y2()
+chart <- gg_single_y2(font_family = 'sans')
 }
 \keyword{bar}
 \keyword{chart}

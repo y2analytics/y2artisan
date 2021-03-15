@@ -29,7 +29,7 @@ add1s_y2 <- function(
   slide_name = "Findings / 1 chart",
   master_name = "Office Theme"
 ) {
-doc <- officer::add_slide(
+  doc <- officer::add_slide(
     doc,
     layout = slide_name,
     master = master_name

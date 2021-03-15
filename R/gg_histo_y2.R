@@ -24,7 +24,8 @@
 #' chart <- iris %>% gg_histo_y2(
 #'   Petal.Width,
 #'   'purple',
-#'   binwidth = .25
+#'   binwidth = .25,
+#'   font_family = 'sans'
 #' )
 
 gg_histo_y2 <- function(
@@ -70,7 +71,7 @@ if(
       stat = 'mean',
       wt = !!wt_flag
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   median_overall <- data %>%
@@ -80,7 +81,7 @@ if(
       stat = 'median',
       wt = !!wt_flag
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   line25 <- data %>%
@@ -91,7 +92,7 @@ if(
       pr = 25,
       wt = !!wt_flag
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   line75 <- data %>%
@@ -102,7 +103,7 @@ if(
       pr = 75,
       wt = !!wt_flag
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
   quadrants <- c(line25, line75)
 
@@ -114,7 +115,7 @@ if(
       pr = 95,
       wt = !!wt_flag
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   var_05 <- data %>%
@@ -125,7 +126,7 @@ if(
       pr = 5,
       wt = !!wt_flag
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   var_min <- data %>%
@@ -134,7 +135,7 @@ if(
       nas = FALSE,
       stat = 'min'
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   var_max <- data %>%
@@ -143,7 +144,7 @@ if(
       nas = FALSE,
       stat = 'max'
       ) %>%
-    dplyr::select(result) %>%
+    dplyr::select(.data$result) %>%
     as.numeric()
 
   x_limits = if(x_limits == 'no limits'){

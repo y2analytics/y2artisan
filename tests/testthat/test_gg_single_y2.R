@@ -10,6 +10,13 @@ context("gg_single_y2")
 
 #### Errors when changing the defaults? ####
 ### Overall
+test_that("frequencies", {
+  frequencies <- mtcars %>% y2clerk::freqs(gear)
+    chart <- gg_single_y2(frequencies, font_family = "sans")
+  expect_error(chart, NA)
+})
+
+### Overall
 test_that("all defaults", {
   chart <- tibble::tibble(
     label = c(1:5) %>% as.character(),

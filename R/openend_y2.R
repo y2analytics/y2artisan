@@ -9,7 +9,7 @@
 #' @keywords openend open end frequencies freqs
 #' @export
 #' @examples
-#' responses <- tibble(
+#' responses <- tibble::tibble(
 #'   var1 = c(
 #'     'I like to talk about dogs',
 #'     'Dogs are cool but cats are aight too',
@@ -27,19 +27,20 @@ openend_y2 <- function(
   variable,
   top_x = 50
 ) {
-  flag <- dplyr::enquo(variable)
+  Names <- Words <- NULL
+  var_flag <- dplyr::enquo(variable)
   frequencies <- dataset %>%
     dplyr::select(
-      !!flag
+      !!var_flag
     ) %>%
     dplyr::mutate(
-      variable = toupper(!!flag)
+      variable = toupper(!!var_flag)
     ) %>%
     dplyr::select(
-      variable
+      .data$variable
     ) %>%
     tidyr::separate(
-      variable,
+      .data$variable,
       into = paste("V", 1:100, sep = "_"),
       sep = ' '
     ) %>%
@@ -65,10 +66,10 @@ openend_y2 <- function(
     ) %>%
     wc_filter() %>%
     dplyr::filter(
-      label != ''
+      .data$label != ''
     ) %>%
     dplyr::arrange(
-      n %>% desc
+      dplyr::desc(.data$n)
     ) %>%
     dplyr::slice(
       1:top_x
@@ -76,16 +77,16 @@ openend_y2 <- function(
     dplyr::mutate(
       total =  dataset %>%
         dplyr::filter(
-          !is.na(!!flag),
-          !!flag != ''
+          !is.na(!!var_flag),
+          !!var_flag != ''
         ) %>%
         dplyr::count() %>%
         as.numeric(),
-      result = n / total,
-      result = round(result, 2)
+      result = .data$n / .data$total,
+      result = round(.data$result, 2)
     ) %>%
     dplyr::select(
-      - total
+      - .data$total
     )
 
   return(frequencies)
@@ -95,7 +96,7 @@ openend_y2 <- function(
 wc_filter <- function(dataset){
   dataset %>%
     dplyr::filter(
-      !label %in% c(
+      !.data$label %in% c(
         'AND',
         'THE',
         'I',

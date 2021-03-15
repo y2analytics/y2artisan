@@ -32,7 +32,7 @@
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
-#' Function still in development
+#' # Function still in development
 
 
 gg_maxdif_y2 <- function(
@@ -76,6 +76,7 @@ if(
 
 
 ### Flags
+  label <- result <- percent_label <- group_var <- NULL
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) # AKA group_var

@@ -27,7 +27,7 @@
 #' @keywords chart
 #' @export
 #' @examples
-#' frequencies <- tibble(
+#' frequencies <- tibble::tibble(
 #'   label = rep(c('2000', '2001', '2002'), 2),
 #'   group_var = rep(c('Brand 1', 'Brand 2'), 3),
 #'   result = c(.18, .20, .24, .25, .24, .23)
@@ -38,8 +38,8 @@
 #'   'Brand 2' = 'red'
 #' )
 #' text_settings_grouped <- list(
-#'   'Brand 1' = fp_text(color = 'green'),
-#'   'Brand 2' = fp_text(color = 'red')
+#'   'Brand 1' = officer::fp_text(color = 'green'),
+#'   'Brand 2' = officer::fp_text(color = 'red')
 #' )
 #'
 #' chart <- ms_line_y2()

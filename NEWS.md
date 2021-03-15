@@ -1,3 +1,9 @@
+# y2artisan 0.4.1
+## Bugs
+* All examples now working
+* Eliminated notes about missing global variables and functions
+
+
 # y2artisan 0.4.0
 ## Breaking changes
 * `add_colors_y2`

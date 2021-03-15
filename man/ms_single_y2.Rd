@@ -102,7 +102,7 @@ frequencies <- mtcars \%>\%
   orderlabel::order_label(inherent_order_label = TRUE)
 
 color_settings <- list('blue')
-text_settings<- list('result' = fp_text(font.size = 20))
+text_settings<- list('result' = officer::fp_text(font.size = 20))
 
 chart <- ms_single_y2()
 print(chart, preview = TRUE)

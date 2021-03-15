@@ -34,9 +34,9 @@
 #' @export
 #' @examples
 #' frequencies <- ToothGrowth %>%
-#'   group_by(supp) %>%
-#'   freqs(dose) %>%
-#'   order_label(group_var = group_var)
+#'   dplyr::group_by(supp) %>%
+#'   y2clerk::freqs(dose) %>%
+#'   orderlabel::order_label(group_var = group_var)
 #'
 #' color_settings_grouped <- list(
 #'   'OJ' = 'orange',

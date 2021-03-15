@@ -40,9 +40,12 @@
 #'   y2clerk::freqs(dose) %>%
 #'   orderlabel::order_label(group_var = group_var)
 #'
-#' chart <- gg_grouped_y2(
-#'   fills = c('orange', 'gray')
+#' chart <- gg_bullet_y2(
+#'   base_level = 'VC',
+#'   fills = c('orange', 'gray'),
+#'   font_family = 'sans'
 #' )
+
 
 gg_bullet_y2 <- function(
   data = frequencies,
@@ -88,6 +91,7 @@ if(
 
 
 ### Flags
+  label <- result <- percent_label <- group_var <- NULL
   x_flag <- dplyr::enquo(x_var)
   y_flag <- dplyr::enquo(y_var)
   color_flag <- dplyr::enquo(color_var) #AKA group_var
