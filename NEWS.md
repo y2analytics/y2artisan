@@ -1,7 +1,20 @@
+# y2artisan 0.4.2
+## New functions
+* `add_color_pallette_y2`: Give a list of color names (e.g. blue) and the associated hex codes (e.g. #41536F). For each color given, add_color_pallette_y2 will add a 5 color, monochromatic scale.
+
+## Breaking changes
+* Old function `add_colors_y2` name changed to `add_colors_qualtrics_y2`
+
+## Improvements
+* percent labels on gg_single_y2 and gg_grouped_y2 charts are now left justified instead of centered. Visually cleaner because %'s and single vs multiple digit #s were previously different distances from the bar
+
+
+
 # y2artisan 0.4.1
 ## Bugs
 * All examples now working
 * Eliminated notes about missing global variables and functions
+
 
 
 # y2artisan 0.4.0

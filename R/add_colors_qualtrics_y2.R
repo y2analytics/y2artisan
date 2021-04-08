@@ -1,5 +1,5 @@
 # Public function ---------------------------------------------------------
-### add_colors_y2
+### add_colors_qualtrics_y2
 
 #' Add base Qulatrics colors
 #'
@@ -13,10 +13,10 @@
 #' @param case DEFAULT = 'upper'. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)
 #' @export
 #' @examples
-#' add_colors_y2()
-#' add_colors_y2('lower')
+#' add_colors_qualtrics_y2()
+#' add_colors_qualtrics_y2('lower')
 
-add_colors_y2 <- function(
+add_colors_qualtrics_y2 <- function(
   case = c('upper', 'lower')
   ) {
   case <- rlang::arg_match(case)

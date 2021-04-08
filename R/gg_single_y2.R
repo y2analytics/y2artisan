@@ -113,7 +113,7 @@ if(
   )
   nudge <- dplyr::case_when(
     nudge != 0 ~ nudge, #if user specifies nudge, don't change it
-    direction == 'horizontal' ~ (max_y_val / 20 + str_add),
+    direction == 'horizontal' ~ (max_y_val / 50 + str_add),
     direction == 'vertical' ~ (max_y_val / 16)
   )
   nudge <- dplyr::case_when(
@@ -131,6 +131,10 @@ if(
   } else{
     fills <- fills
   }
+  horizontal_label_adjust = dplyr::case_when(
+    direction == 'horizontal' ~ 0,
+    TRUE ~ .5
+  )
 
 
 
@@ -174,7 +178,8 @@ if(
         ),
       family = font_family,
       size = label_size,
-      nudge_y = nudge
+      nudge_y = nudge,
+      hjust = horizontal_label_adjust
     ) +
     ggplot2::theme_minimal() +
     ggplot2::scale_fill_manual(

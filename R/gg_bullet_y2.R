@@ -111,15 +111,17 @@ if(
     chart_height < 5.5 & direction == 'vertical' ~  (max_y_val + (max_y_val / (chart_height * 2)) * 2),
     TRUE ~  (max_y_val + max_y_val / 10) # direction == 'vertical'
   )
-  nudge_y <- dplyr::case_when(
-    direction == 'horizontal' ~ 0.5, # places the percent_label in the middle of the bar
+  nudge <- dplyr::case_when(
     nudge != 0 ~ nudge,
-    direction == 'vertical' ~ (max_y_val / (max_y_val * 5)) * -1
+    TRUE ~ max_y_val/100
+  )
+  nudge_y <- dplyr::case_when(
+    direction == 'horizontal' ~ 0.5,
+    direction == 'vertical' ~ (max_y_val/(max_y_val * 5)) * -1
   )
   nudge_x <- dplyr::case_when(
-    direction == 'vertical' ~ 0.5,
-    nudge != 0 ~ nudge,
-    direction == 'horizontal' ~ (max_y_val / (max_y_val * 4) + str_add) *-1
+    direction == 'vertical' ~ 0.5, # places the percent_label in the middle of the bar for
+    direction == 'horizontal' ~ 0 # Left justifies for horizontal
   )
   label_length <- dplyr::case_when(
     label_length != 45 ~ label_length,
@@ -160,11 +162,11 @@ if(
     ggplot2::geom_text(
       ggplot2::aes(
         label = !!label_flag,
-        color = !!color_flag
+        color = !!color_flag,
+        y = !!y_flag + nudge
       ),
       family = font_family,
       size = label_size,
-      # nudge_y = nudge, # grr, doesn't work with position argument. Have to do v/hjust instead
       position = ggplot2::position_dodge(width = 1),
       vjust = ifelse(frequencies$group_var == 'Mean', 0.85, 0.1),
       vjust = ifelse(direction == 'horizontal', 0, nudge_y)
