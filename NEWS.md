@@ -1,6 +1,6 @@
 # y2artisan 0.4.2
 ## New functions
-* `add_color_pallette_y2`: Give a list of color names (e.g. blue) and the associated hex codes (e.g. #41536F). For each color given, add_color_pallette_y2 will add a 5 color, monochromatic scale.
+* `add_color_palette_y2`: Give a list of color labels (e.g. blue) and the associated hex codes (e.g. #41536F). For each color given, add_color_pallette_y2 will add a 5 color, monochromatic scale.
 
 ## Breaking changes
 * Old function `add_colors_y2` name changed to `add_colors_qualtrics_y2`
