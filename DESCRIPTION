@@ -3,7 +3,7 @@ Type: Package
 Title: Shortcuts for mschart and ggplot2
 Version: 0.4.2
 Authors@R: c(
-    person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre"))
+    person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre")),
     person('Pearce', 'Solomon', email = 'pearce@y2analytics.com', role = 'aut'))
 Description: Create mschart objects in one line of code and import these charts and tables into PowerPoint slides. Use shortcuts for ggplot2 functions. Explore string variables with tables and word clouds.
 License: GPL-3
