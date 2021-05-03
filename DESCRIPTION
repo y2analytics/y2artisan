@@ -1,7 +1,7 @@
 Package: y2artisan
 Type: Package
 Title: Shortcuts for mschart and ggplot2
-Version: 0.4.3
+Version: 0.4.4
 Authors@R: c(
     person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre")),
     person('Pearce', 'Solomon', email = 'pearce@y2analytics.com', role = 'aut'))

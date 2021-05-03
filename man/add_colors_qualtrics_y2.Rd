@@ -2,12 +2,16 @@
 % Please edit documentation in R/add_colors_qualtrics_y2.R
 \name{add_colors_qualtrics_y2}
 \alias{add_colors_qualtrics_y2}
-\title{Add base Qulatrics colors}
+\title{Add base Qualtrics colors}
 \usage{
-add_colors_qualtrics_y2(case = c("upper", "lower"))
+add_colors_qualtrics_y2(palette = 2, case = "upper", show_colors = TRUE)
 }
 \arguments{
-\item{case}{DEFAULT = 'upper'. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)}
+\item{palette}{DEFAULT = 2. Defaults to the newest Qualtrics color palette. Switch between the latest color palette and older color palettes.}
+
+\item{case}{DEFAULT = 'upper'. Arg available only for palette 1. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)}
+
+\item{show_colors}{DEFAULT = TRUE Show the color palettes loaded into your environment}
 }
 \description{
 4 Qualtrics colors: PURPLE, GREEN, BLUE, and TEAL

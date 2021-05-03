@@ -1,7 +1,7 @@
 # Public function ---------------------------------------------------------
 ### add_colors_qualtrics_y2
 
-#' Add base Qulatrics colors
+#' Add base Qualtrics colors
 #'
 #' 4 Qualtrics colors: PURPLE, GREEN, BLUE, and TEAL
 #'
@@ -10,112 +10,217 @@
 #' Also adds grays, black, and white.
 #'
 #' @keywords color Qualtrics graph
-#' @param case DEFAULT = 'upper'. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)
+#' @param palette DEFAULT = 2. Defaults to the newest Qualtrics color palette. Switch between the latest color palette and older color palettes.
+#' @param case DEFAULT = 'upper'. Arg available only for palette 1. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)
+#' @param show_colors DEFAULT = TRUE Show the color palettes loaded into your environment
 #' @export
 #' @examples
 #' add_colors_qualtrics_y2()
 #' add_colors_qualtrics_y2('lower')
 
 add_colors_qualtrics_y2 <- function(
-  case = c('upper', 'lower')
-  ) {
+  palette = 2,
+  case = 'upper',
+  show_colors = TRUE
+) {
   case <- rlang::arg_match(case)
 
-  if (case[1] == 'upper') {
-    add_upper()
+  if (palette == 2) {
+    add_new_colors(
+      show_colors = show_colors
+    )
   } else {
-    add_lower()
+    if (case == 'upper') {
+      add_upper(
+        show_colors = show_colors
+      )
+    } else {
+      add_lower(
+        show_colors = show_colors
+      )
+    }
   }
 }
 
 
-
 # Private functions -------------------------------------------------------
-### add_upper
-add_upper <- function(){
+### add_new_colors
+add_new_colors <- function(
+  show_colors = show_colors
+){
   qualtrics_colors <-  list(
-    PURPLE = '#474E7E',
-    PURPLE_LIGHTEST = '#D1D3DF',
-    PURPLE_LIGHT = '#8C90AE',
-    PURPLE_MID = '#474E7E',
-    PURPLE_DARK = '#2C314F',
-    PURPLE_DARKEST = '#090A10',
+    PURPLE_DARKER = '#300D72',
+    PURPLE_DARK = '#4713AB',
+    PURPLE = '#5F19E4',
+    PURPLE_LIGHT = '#9F74F0',
+    PURPLE_LIGHTER = '#BFA2F5',
 
-    GREEN = '#97D700',
-    GREEN_LIGHTEST = '#E5F5BF',
-    GREEN_LIGHT = '#BEE660',
-    GREEN_MID = '#97D700',
-    GREEN_DARK = '#5E8600',
-    GREEN_DARKEST = '#395100',
+    GREEN_DARKER = '#106D55',
+    GREEN_DARK = '#18A47F',
+    GREEN = '#20DBA9',
+    GREEN_LIGHT = '#77EBCC',
+    GREEN_LIGHTER = '#A5F2DD',
 
-    BLUE = '#147BD1',
-    BLUE_LIGHTEST = '#C4DEF4',
-    BLUE_LIGHT = '#6CADE2',
-    BLUE_MID = '#147BD1',
-    BLUE_DARK = '#0F5C9D',
-    BLUE_DARKEST = '#0A3D69',
+    BLUE_DARKER = '#03346E',
+    BLUE_DARK = '#054DA5',
+    BLUE = '#0767DC',
+    BLUE_LIGHT = '#5AA2FA',
+    BLUE_LIGHTER = '#91C1FC',
 
-    TEAL = '#4AD4D9',
-    TEAL_LIGHTEST = '#D2F4F6',
-    TEAL_LIGHT = '#8EE4E7',
-    TEAL_MID = '#4AD4D9',
-    TEAL_DARK = '#389FA3',
-    TEAL_DARKEST = '#256A6D',
+    SKY_BLUE_DARKER = '#015A78',
+    SKY_BLUE_DARK = '#0286B4',
+    SKY_BLUE = '#03B3F0',
+    SKY_BLUE_LIGHT = '#61D5FD',
+    SKY_BLUE_LIGHTER = '#96E3FE',
 
-    GRAY = '#7A7A7A',
-    GRAY_LIGHTEST = '#F4F4F4',
-    GRAY_LIGHT = '#D6D6D6',
-    GRAY_MID = '#B7B7B7',
+    GRAY_DARKER = '#3D3D3D',
     GRAY_DARK = '#7A7A7A',
-    GRAY_DARKEST = '#3D3D3D',
+    GRAY = '#B7B7B7',
+    GRAY_LIGHT = '#D6D6D6',
+    GRAY_LIGHTER = '#F4F4F4',
 
     WHITE = '#FFFFFF',
     BLACK = '#000000'
   )
+
+  if (show_colors == TRUE) {
+
+    y2_colors_show <-
+      qualtrics_colors %>%
+      unlist() %>%
+      as.vector()
+
+    y2_colors_show[1:25] %>%
+      scales::show_col(
+        ncol = 5
+      )
+  }
+
+  invisible(list2env(qualtrics_colors, envir = .GlobalEnv))
+}
+
+
+
+
+### add_upper
+add_upper <- function(
+  show_colors = show_colors
+){
+  qualtrics_colors <-  list(
+    PURPLE_DARKEST = '#090A10',
+    PURPLE_DARK = '#2C314F',
+    PURPLE = '#474E7E',
+    PURPLE_MID = '#474E7E',
+    PURPLE_LIGHT = '#8C90AE',
+    PURPLE_LIGHTEST = '#D1D3DF',
+
+    GREEN_DARKEST = '#395100',
+    GREEN_DARK = '#5E8600',
+    GREEN = '#97D700',
+    GREEN_MID = '#97D700',
+    GREEN_LIGHT = '#BEE660',
+    GREEN_LIGHTEST = '#E5F5BF',
+
+    BLUE_DARKEST = '#0A3D69',
+    BLUE_DARK = '#0F5C9D',
+    BLUE = '#147BD1',
+    BLUE_MID = '#147BD1',
+    BLUE_LIGHT = '#6CADE2',
+    BLUE_LIGHTEST = '#C4DEF4',
+
+    TEAL_DARKEST = '#256A6D',
+    TEAL_DARK = '#389FA3',
+    TEAL = '#4AD4D9',
+    TEAL_MID = '#4AD4D9',
+    TEAL_LIGHT = '#8EE4E7',
+    TEAL_LIGHTEST = '#D2F4F6',
+
+    GRAY_DARKEST = '#3D3D3D',
+    GRAY_DARK = '#7A7A7A',
+    GRAY = '#7A7A7A',
+    GRAY_MID = '#B7B7B7',
+    GRAY_LIGHT = '#D6D6D6',
+    GRAY_LIGHTEST = '#F4F4F4',
+
+    WHITE = '#FFFFFF',
+    BLACK = '#000000'
+  )
+
+  if (show_colors == TRUE) {
+
+    y2_colors_show <-
+      qualtrics_colors %>%
+      unlist() %>%
+      as.vector()
+
+    y2_colors_show[1:30] %>%
+      scales::show_col(
+        ncol = 6
+      )
+  }
+
+
   invisible(list2env(qualtrics_colors, envir = .GlobalEnv))
 }
 
 ### add_lower
-add_lower <- function(){
+add_lower <- function(
+  show_colors = show_colors
+){
   qualtrics_colors <-  list(
-    purple = '#474E7E',
-    purple_lightest = '#D1D3DF',
-    purple_light = '#8C90AE',
-    purple_mid = '#474E7E',
-    purple_dark = '#2C314F',
     purple_darkest = '#090A10',
+    purple_dark = '#2C314F',
+    purple = '#474E7E',
+    purple_mid = '#474E7E',
+    purple_light = '#8C90AE',
+    purple_lightest = '#D1D3DF',
 
-    green = '#97D700',
-    green_lightest = '#E5F5BF',
-    green_light = '#BEE660',
-    green_mid = '#97D700',
-    green_dark = '#5E8600',
     green_darkest = '#395100',
+    green_dark = '#5E8600',
+    green = '#97D700',
+    green_mid = '#97D700',
+    green_light = '#BEE660',
+    green_lightest = '#E5F5BF',
 
-    blue = '#147BD1',
-    blue_lightest = '#C4DEF4',
-    blue_light = '#6CADE2',
-    blue_mid = '#147BD1',
-    blue_dark = '#0F5C9D',
     blue_darkest = '#0A3D69',
+    blue_dark = '#0F5C9D',
+    blue = '#147BD1',
+    blue_mid = '#147BD1',
+    blue_light = '#6CADE2',
+    blue_lightest = '#C4DEF4',
 
-    teal = '#4AD4D9',
-    teal_lightest = '#D2F4F6',
-    teal_light = '#8EE4E7',
-    teal_mid = '#4AD4D9',
-    teal_dark = '#389FA3',
     teal_darkest = '#256A6D',
+    teal_dark = '#389FA3',
+    teal = '#4AD4D9',
+    teal_mid = '#4AD4D9',
+    teal_light = '#8EE4E7',
+    teal_lightest = '#D2F4F6',
 
-    gray = '#7A7A7A',
-    gray_lightest = '#F4F4F4',
-    gray_light = '#D6D6D6',
-    gray_mid = '#B7B7B7',
-    gray_dark = '#7A7A7A',
     gray_darkest = '#3D3D3D',
+    gray_dark = '#7A7A7A',
+    gray = '#7A7A7A',
+    gray_mid = '#B7B7B7',
+    gray_light = '#D6D6D6',
+    gray_lightest = '#F4F4F4',
 
     white = '#FFFFFF',
     black = '#000000'
   )
+
+  if (show_colors == TRUE) {
+
+    y2_colors_show <-
+      qualtrics_colors %>%
+      unlist() %>%
+      as.vector()
+
+    y2_colors_show[1:30] %>%
+      scales::show_col(
+        ncol = 6
+      )
+  }
+
   invisible(list2env(qualtrics_colors, envir = .GlobalEnv))
 }
+
 
