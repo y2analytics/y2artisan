@@ -54,18 +54,18 @@ add5c_y2 <- function(
           position == 'right' ~ 10.375
         ),
         top = dplyr::case_when(
-          position == 'left' ~ 2,
-          position == 'centerleft' ~ 2,
-          position == 'center' ~ 2,
-          position == 'centerright' ~ 2,
-          position == 'right' ~ 2
+          position == 'left' ~ 1.8,
+          position == 'centerleft' ~ 1.8,
+          position == 'center' ~ 1.8,
+          position == 'centerright' ~ 1.8,
+          position == 'right' ~ 1.8
         ),
         height = dplyr::case_when(
-          position == 'left' ~ 5,
-          position == 'centerleft' ~ 5,
-          position == 'center' ~ 5,
-          position == 'centerright' ~ 5,
-          position == 'right' ~ 5
+          position == 'left' ~ 5.6,
+          position == 'centerleft' ~ 5.6,
+          position == 'center' ~ 5.6,
+          position == 'centerright' ~ 5.6,
+          position == 'right' ~ 5.6
         ),
         width = dplyr::case_when(
           position == 'left' ~ 2.875,
@@ -89,25 +89,25 @@ add5c_y2 <- function(
           position == 'right' ~ 11
         ),
         top = dplyr::case_when(
-          position == 'left' ~ 2,
-          position == 'centerleft' ~ 2,
-          position == 'center' ~ 2,
-          position == 'centerright' ~ 2,
-          position == 'right' ~ 2
+          position == 'left' ~ 1.8,
+          position == 'centerleft' ~ 1.8,
+          position == 'center' ~ 1.8,
+          position == 'centerright' ~ 1.8,
+          position == 'right' ~ 1.8
         ),
         height = dplyr::case_when(
-          position == 'left' ~ 5,
-          position == 'centerleft' ~ 5,
-          position == 'center' ~ 5,
-          position == 'centerright' ~ 5,
-          position == 'right' ~ 5
+          position == 'left' ~ 5.6,
+          position == 'centerleft' ~ 5.6,
+          position == 'center' ~ 5.6,
+          position == 'centerright' ~ 5.6,
+          position == 'right' ~ 5.6
         ),
         width = dplyr::case_when(
           position == 'left' ~ 4.5,
-          position == 'centerleft' ~ 2.25,
-          position == 'center' ~ 2.25,
-          position == 'centerright' ~ 2.25,
-          position == 'right' ~ 2.25
+          position == 'centerleft' ~ 2.375,
+          position == 'center' ~ 2.375,
+          position == 'centerright' ~ 2.375,
+          position == 'right' ~ 2.375
         )
       )
     )

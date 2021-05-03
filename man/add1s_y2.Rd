@@ -5,12 +5,21 @@
 \title{Add 1 Blank PowerPoint slide}
 \usage{
 add1s_y2(
-  text_boxes = FALSE,
-  slide_name = "Findings / 1 chart",
-  master_name = "Office Theme"
+  title = "Title",
+  commentary = "Commentary",
+  footer = "Footer",
+  text_boxes = TRUE,
+  slide_name = "Blank",
+  master_name = "1_Office Theme"
 )
 }
 \arguments{
+\item{title}{DEFAULT: "Title"; Add a slide title in quotes, automatically formatted to the Default Qualtrics template}
+
+\item{commentary}{DEFAULT: "Commentary"; Add commentary/desctiption in quotes, automatically formatted to the Default Qualtrics template}
+
+\item{footer}{DEFAULT: "Footer"; Add a footer in quotes}
+
 \item{text_boxes}{DEFAULT = FALSE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
 \item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
@@ -26,7 +35,7 @@ This function adds a new PowerPoint slide. For this function to work, you need a
 # you must first read a powerpoint into R
 \dontrun{
 doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
-Resources/Qualtrics Template New.pptx')
+Projects/Qualtrics/2021 Qualtrics Template Condensed.pptx')
 
 # Now start adding in your charts
 doc <- add1s_y2()

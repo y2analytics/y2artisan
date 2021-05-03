@@ -4,6 +4,9 @@
 #'
 #' This function adds a new PowerPoint slide and fits 1 chart/table/other object onto it. For this function to work, you need a powerpoint object saved into R called "doc"
 #' @param name The name of the chart/table/other object to be added to a new PowerPoint slide.
+#' @param title DEFAULT: "Title"; Add a slide title in quotes, automatically formatted to the Default Qualtrics template
+#' @param commentary DEFAULT: "Commentary"; Add commentary/desctiption in quotes, automatically formatted to the Default Qualtrics template
+#' @param footer DEFAULT: "Footer"; Add a footer in quotes
 #' @param add_slide DEFAULT = TRUE; Automatically adds a blank slide for the chart/table/other object to be added onto. If F, no new slide is added
 #' @param text_boxes DEFAULT = FALSE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes
 #' @param slide_name DEFAULT = "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
@@ -38,17 +41,20 @@
 ### Function
 add1c_y2 <- function(
   name,
+  title = 'Title',
+  commentary = 'Commentary',
+  footer = 'Footer',
   add_slide = TRUE,
-  text_boxes = FALSE,
-  slide_name = "Findings / 1 chart",
-  master_name = "Office Theme",
+  text_boxes = TRUE,
+  slide_name = "Blank",
+  master_name = "1_Office Theme",
   left_start = .5,
-  top_start = 2,
-  height = 5,
-  width = 12
+  top_start = 1.8,
+  height = 5.6,
+  width = 12.25
 ) {
-  if(add_slide == TRUE) {
-    doc <- add1s_y2(text_boxes, slide_name, master_name)
+  if (add_slide == TRUE) {
+    doc <- add1s_y2(title, commentary, footer, text_boxes, slide_name, master_name)
   } else {
     doc <- doc
   }

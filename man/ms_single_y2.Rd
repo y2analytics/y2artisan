@@ -22,7 +22,7 @@ ms_single_y2(
   axis_y_rotate = 0,
   axis_y_rotate_title = 0,
   direction = c("vertical", "horizontal"),
-  font_family = "Arial",
+  font_family = "BentonSans Regular",
   gap_width = 25,
   grouping = "standard",
   group_var = NULL,
@@ -65,7 +65,7 @@ ms_single_y2(
 
 \item{direction}{DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"}
 
-\item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
+\item{font_family}{DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
 
 \item{gap_width}{DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself}
 

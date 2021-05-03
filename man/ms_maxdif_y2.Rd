@@ -23,7 +23,7 @@ ms_maxdif_y2(
   axis_y_rotate = 0,
   axis_y_rotate_title = 0,
   direction = c("horizontal", "vertical"),
-  font_family = "Arial",
+  font_family = "BentonSans Regular",
   gap_width = 75,
   grouping = "standard",
   label_color = color_settings_grouped,
@@ -67,7 +67,7 @@ ms_maxdif_y2(
 
 \item{direction}{DEFAULT = 'horizontal'; Two options: "vertical" (default) OR "horizontal"}
 
-\item{font_family}{DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
+\item{font_family}{DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"}
 
 \item{gap_width}{DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself}
 

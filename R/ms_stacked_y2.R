@@ -18,7 +18,7 @@
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = 1 to allow percent totals to add to 100\%.
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
-#' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+#' @param font_family DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'percentStacked'; grouping for a stacked bar chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = color_settings_stacked; A list of color settings for the levels within each stacked bar. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
@@ -77,9 +77,9 @@ ms_stacked_y2 <- function(
   axis_y_rotate = 0,
   axis_y_rotate_title = 0,
   direction = c('horizontal', 'vertical'),
+  font_family = 'BentonSans Regular',
   gap_width = 25,
   grouping = 'percentStacked',
-  font_family = 'Arial',
   label_color = color_settings_stacked,
   label_show_percent = FALSE,
   label_show_values = TRUE,

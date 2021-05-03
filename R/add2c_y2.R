@@ -41,7 +41,7 @@ add2c_y2 <- function(
   position,
   label_first_only = FALSE
 ) {
-  if(label_first_only == FALSE) {
+  if (label_first_only == FALSE) {
     officer::ph_with(
       doc,
       value = name,
@@ -50,29 +50,29 @@ add2c_y2 <- function(
           position == 'top' ~ .5,
           position == 'bottom' ~ .5,
           position == 'left' ~ .5,
-          position == 'right' ~ 6.5
+          position == 'right' ~ 6.625
         ),
         top = dplyr::case_when(
-          position == 'top' ~ 2,
-          position == 'bottom' ~ 4.25,
-          position == 'left' ~ 2,
-          position == 'right' ~ 2
+          position == 'top' ~ 1.8,
+          position == 'bottom' ~ 4.375,
+          position == 'left' ~ 1.8,
+          position == 'right' ~ 1.8
         ),
         height = dplyr::case_when(
-          position == 'top' ~ 2.75,
-          position == 'bottom' ~ 2.75,
-          position == 'left' ~ 5,
-          position == 'right' ~ 5
+          position == 'top' ~ 3,
+          position == 'bottom' ~ 3,
+          position == 'left' ~ 5.6,
+          position == 'right' ~ 5.6
         ),
         width = dplyr::case_when(
-          position == 'top' ~ 12,
-          position == 'bottom' ~ 12,
-          position == 'left' ~ 6,
-          position == 'right' ~ 6
+          position == 'top' ~ 12.25,
+          position == 'bottom' ~ 12.25,
+          position == 'left' ~ 6.125,
+          position == 'right' ~ 6.125
         )
       )
     )
-  } else{ #label_first_only == T
+  } else { #label_first_only == TRUE
     officer::ph_with(
       doc,
       value = name,
@@ -80,25 +80,25 @@ add2c_y2 <- function(
         left = dplyr::case_when(
           position == 'top' ~ .5,
           position == 'bottom' ~ .5,
-          position == 'left' ~ 0,
-          position == 'right' ~ 8.25
+          position == 'left' ~ .5,
+          position == 'right' ~ 7.875
         ),
         top = dplyr::case_when(
-          position == 'top' ~ 2,
-          position == 'bottom' ~ 4.25,
-          position == 'left' ~ 2,
-          position == 'right' ~ 2
+          position == 'top' ~ 1.8,
+          position == 'bottom' ~ 4.375,
+          position == 'left' ~ 1.8,
+          position == 'right' ~ 1.8
         ),
         height = dplyr::case_when(
-          position == 'top' ~ 2.75,
-          position == 'bottom' ~ 2.75,
-          position == 'left' ~ 5,
-          position == 'right' ~ 5
+          position == 'top' ~ 3,
+          position == 'bottom' ~ 3,
+          position == 'left' ~ 5.6,
+          position == 'right' ~ 5.6
         ),
         width = dplyr::case_when(
-          position == 'top' ~ 12,
-          position == 'bottom' ~ 12,
-          position == 'left' ~ 8.25,
+          position == 'top' ~ 12.25,
+          position == 'bottom' ~ 12.25,
+          position == 'left' ~ 7.25,
           position == 'right' ~ 4.75
         )
       )
