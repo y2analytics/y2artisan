@@ -14,7 +14,7 @@
 #' @param axis_y_max DEFAULT = NULL
 #' @param axis_x_rotate,axis_y_rotate DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_x_rotate_title,axis_y_rotate_title DEFAULT = 0, set y_axis rotation to 360 for horizontal text
-#' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+#' @param font_family DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param label_color DEFAULT = color_settings_grouped; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings <- list('District 1' = lime, 'District 2' = bluepurple)
 #' @param label_position DEFAULT = 't'; Specifies the position of the data label. It should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When grouping is 'clustered', it should be one of 'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it should be one of 'b','ctr','l','r','t'.
 #' @param label_show_values DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
@@ -63,7 +63,7 @@ ms_line_y2 <- function(
   axis_y_max = NULL,
   axis_y_rotate = 0,
   axis_y_rotate_title = 0,
-  font_family = 'Arial',
+  font_family = 'BentonSans Regular',
   label_color = color_settings_grouped,
   label_position = 't',
   label_show_values = TRUE,

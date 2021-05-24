@@ -17,7 +17,7 @@
 #' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param direction DEFAULT = 'horizontal'; Two options: "vertical" (default) OR "horizontal"
-#' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+#' @param font_family DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 150, meaning the size of the space between bars is 150\% the size of the bar itself
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_color DEFAULT = color_settings_grouped; A list of color settings for the bars. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: color_settings_grouped <- list('Name of Group 1' = lime,'Name of Group 2' = brightblue)
@@ -74,7 +74,7 @@ ms_maxdif_y2 <-  function(
   axis_y_rotate = 0,
   axis_y_rotate_title = 0,
   direction = c('horizontal', 'vertical'),
-  font_family = 'Arial',
+  font_family = 'BentonSans Regular',
   gap_width = 75,
   grouping = 'standard',
   label_color = color_settings_grouped,

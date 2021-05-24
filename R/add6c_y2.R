@@ -57,20 +57,20 @@ add6c_y2 <- function(
           position == 'bottomcenter' ~ 4.25
         ),
         top = dplyr::case_when(
-          position == 'topright' ~ 2,
-          position == 'bottomright' ~ 4.25,
-          position == 'topleft' ~ 2,
-          position == 'bottomleft' ~ 4.25,
-          position == 'topcenter' ~ 2,
-          position == 'bottomcenter' ~ 4.25
+          position == 'topright' ~ 1.8,
+          position == 'bottomright' ~ 4.375,
+          position == 'topleft' ~ 1.8,
+          position == 'bottomleft' ~ 4.375,
+          position == 'topcenter' ~ 1.8,
+          position == 'bottomcenter' ~ 4.375
         ),
         height = dplyr::case_when(
-          position == 'topright' ~ 2.75,
-          position == 'bottomright' ~ 2.75,
-          position == 'topleft' ~ 2.75,
-          position == 'bottomleft' ~ 2.75,
-          position == 'topcenter' ~ 2.75,
-          position == 'bottomcenter' ~ 2.75
+          position == 'topright' ~ 3,
+          position == 'bottomright' ~ 3,
+          position == 'topleft' ~ 3,
+          position == 'bottomleft' ~ 3,
+          position == 'topcenter' ~ 3,
+          position == 'bottomcenter' ~ 3
         ),
         width = dplyr::case_when(
           position == 'topright' ~ 4.5,
@@ -88,36 +88,36 @@ add6c_y2 <- function(
       value = name,
       location = officer::ph_location(
         left = dplyr::case_when(
-          position == 'topright' ~ 9.5,
-          position == 'bottomright' ~ 9.5,
+          position == 'topright' ~ 9.75,
+          position == 'bottomright' ~ 9.75,
           position == 'topleft' ~ 0,
           position == 'bottomleft' ~ 0,
-          position == 'topcenter' ~ 5.875,
-          position == 'bottomcenter' ~ 5.875
+          position == 'topcenter' ~ 6.25,
+          position == 'bottomcenter' ~ 6.25
         ),
         top = dplyr::case_when(
-          position == 'topright' ~ 2,
-          position == 'bottomright' ~ 4.25,
-          position == 'topleft' ~ 2,
-          position == 'bottomleft' ~ 4.25,
-          position == 'topcenter' ~ 2,
+          position == 'topright' ~ 1.8,
+          position == 'bottomright' ~ 4.375,
+          position == 'topleft' ~ 1.8,
+          position == 'bottomleft' ~ 4.375,
+          position == 'topcenter' ~ 1.8,
           position == 'bottomcenter' ~ 4.25
         ),
         height = dplyr::case_when(
-          position == 'topright' ~ 2.75,
-          position == 'bottomright' ~ 2.75,
-          position == 'topleft' ~ 2.75,
-          position == 'bottomleft' ~ 2.75,
-          position == 'topcenter' ~ 2.75,
-          position == 'bottomcenter' ~ 2.75
+          position == 'topright' ~ 3,
+          position == 'bottomright' ~ 3,
+          position == 'topleft' ~ 3,
+          position == 'bottomleft' ~ 3,
+          position == 'topcenter' ~ 3,
+          position == 'bottomcenter' ~ 3
         ),
         width = dplyr::case_when(
-          position == 'topright' ~ 3.75,
-          position == 'bottomright' ~ 3.75,
-          position == 'topleft' ~ 6,
-          position == 'bottomleft' ~ 6,
-          position == 'topcenter' ~ 3.75,
-          position == 'bottomcenter' ~ 3.75
+          position == 'topright' ~ 3.625,
+          position == 'bottomright' ~ 3.625,
+          position == 'topleft' ~ 6.25,
+          position == 'bottomleft' ~ 6.25,
+          position == 'topcenter' ~ 3.625,
+          position == 'bottomcenter' ~ 3.625
         )
       )
     )

@@ -6,18 +6,27 @@
 \usage{
 add1c_y2(
   name,
+  title = "Title",
+  commentary = "Commentary",
+  footer = "Footer",
   add_slide = TRUE,
-  text_boxes = FALSE,
-  slide_name = "Findings / 1 chart",
-  master_name = "Office Theme",
+  text_boxes = TRUE,
+  slide_name = "Blank",
+  master_name = "1_Office Theme",
   left_start = 0.5,
-  top_start = 2,
-  height = 5,
-  width = 12
+  top_start = 1.8,
+  height = 5.6,
+  width = 12.25
 )
 }
 \arguments{
 \item{name}{The name of the chart/table/other object to be added to a new PowerPoint slide.}
+
+\item{title}{DEFAULT: "Title"; Add a slide title in quotes, automatically formatted to the Default Qualtrics template}
+
+\item{commentary}{DEFAULT: "Commentary"; Add commentary/desctiption in quotes, automatically formatted to the Default Qualtrics template}
+
+\item{footer}{DEFAULT: "Footer"; Add a footer in quotes}
 
 \item{add_slide}{DEFAULT = TRUE; Automatically adds a blank slide for the chart/table/other object to be added onto. If F, no new slide is added}
 

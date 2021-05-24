@@ -17,7 +17,7 @@
 #' @param axis_x_rotate,axis_y_rotate DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_x_rotate_title,axis_y_rotate_title DEFAULT = 0, set y_axis rotation to 360 for horizontal text
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
-#' @param font_family DEFAULT = 'Arial'. Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+#' @param font_family DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
 #' @param gap_width DEFAULT = 25, meaning the size of the space between bars is 25\% the size of the bar itself
 #' @param grouping DEFAULT = 'standard'; grouping for a barchart, a linechart or an area chart. must be one of "percentStacked", "clustered", "standard" or "stacked".
 #' @param label_text DEFAULT = text_settings; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list("result" = fp_text(font.size = 10.5, color = bluepurple, font.family = 'Arial'))
@@ -64,7 +64,7 @@ ms_single_y2 <-  function(
   axis_y_rotate = 0,
   axis_y_rotate_title = 0,
   direction = c('vertical', 'horizontal'),
-  font_family = 'Arial',
+  font_family = 'BentonSans Regular',
   gap_width = 25,
   grouping = 'standard',
   group_var = NULL,

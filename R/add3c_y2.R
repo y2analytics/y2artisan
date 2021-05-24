@@ -44,7 +44,7 @@ add3c_y2 <- function(
   position,
   label_first_only = FALSE
 ) {
-  if(label_first_only == FALSE) {
+  if (label_first_only == FALSE) {
     officer::ph_with(
       doc,
       value = name,
@@ -54,27 +54,27 @@ add3c_y2 <- function(
           position == 'righttop' ~ 4.375,
           position == 'bottomright' ~ 4.375,
           position == 'rightbottom' ~ 4.375,
-          position == 'left' ~ .0,
+          position == 'left' ~ 0,
           position == 'center' ~ 4.25,
           position == 'right' ~ 8.5
         ),
         top = dplyr::case_when(
-          position == 'topright' ~ 2,
-          position == 'righttop' ~ 2,
-          position == 'bottomright' ~ 4.25,
-          position == 'rightbottom' ~ 4.25,
-          position == 'left' ~ 2,
-          position == 'center' ~ 2,
-          position == 'right' ~ 2
+          position == 'topright' ~ 1.8,
+          position == 'righttop' ~ 1.8,
+          position == 'bottomright' ~ 4.375,
+          position == 'rightbottom' ~ 4.375,
+          position == 'left' ~ 1.8,
+          position == 'center' ~ 1.8,
+          position == 'right' ~ 1.8
         ),
         height = dplyr::case_when(
-          position == 'topright' ~ 2.75,
-          position == 'righttop' ~ 2.75,
-          position == 'bottomright' ~ 2.75,
-          position == 'rightbottom' ~ 2.75,
-          position == 'left' ~ 5,
-          position == 'center' ~ 5,
-          position == 'right' ~ 5
+          position == 'topright' ~ 3,
+          position == 'righttop' ~ 3,
+          position == 'bottomright' ~ 3,
+          position == 'rightbottom' ~ 3,
+          position == 'left' ~ 5.6,
+          position == 'center' ~ 5.6,
+          position == 'right' ~ 5.6
         ),
         width = dplyr::case_when(
           position == 'topright' ~ 8.615,
@@ -87,7 +87,7 @@ add3c_y2 <- function(
         )
       )
     )
-  } else{ #label_first_only == T
+  } else { #label_first_only == TRUE
     officer::ph_with(
       doc,
       value = name,
@@ -102,22 +102,22 @@ add3c_y2 <- function(
           position == 'right' ~ 9.75
         ),
         top = dplyr::case_when(
-          position == 'topright' ~ 2,
-          position == 'righttop' ~ 2,
-          position == 'bottomright' ~ 4.25,
-          position == 'rightbottom' ~ 4.25,
-          position == 'left' ~ 2,
-          position == 'center' ~ 2,
-          position == 'right' ~ 2
+          position == 'topright' ~ 1.8,
+          position == 'righttop' ~ 1.8,
+          position == 'bottomright' ~ 4.375,
+          position == 'rightbottom' ~ 4.375,
+          position == 'left' ~ 1.8,
+          position == 'center' ~ 1.8,
+          position == 'right' ~ 1.8
         ),
         height = dplyr::case_when(
-          position == 'topright' ~ 2.75,
-          position == 'righttop' ~ 2.75,
-          position == 'bottomright' ~ 2.75,
-          position == 'rightbottom' ~ 2.75,
-          position == 'left' ~ 5,
-          position == 'center' ~ 5,
-          position == 'right' ~ 5
+          position == 'topright' ~ 3,
+          position == 'righttop' ~ 3,
+          position == 'bottomright' ~ 3,
+          position == 'rightbottom' ~ 3,
+          position == 'left' ~ 5.6,
+          position == 'center' ~ 5.6,
+          position == 'right' ~ 5.6
         ),
         width = dplyr::case_when(
           position == 'topright' ~ 8.615,

@@ -1,10 +1,8 @@
-# y2artisan 0.4.5
-## Update
-* Updated `add_colors_qualtrics_y2` to better reflect new company template. 
-
-## Bugs
-* Fixed bug when that caused any color palette with a position of 1 to take on the 1st color.
-
+# y2artisan 0.5.0
+## Breaking changes
+* All defaults for `add*_y2` functions updated to match new Qualtrics template, as of March 2021 (new slide name defaults and positioning for new template)
+* Default fonts for all `ms*_y2` functions updated to "BentonSans Regular" from Arial,  to match new Qualtrics template
+* `add1t_y2` and `add2t_y2` functions deleted. Instead, use `add1c_y2` and `add2c_y2`  because they now also add tables to PowerPoint, not just charts
 
 
 
@@ -14,7 +12,6 @@
 
 ## Update
 * Updated `add_colors_qualtrics_y2` to reflect new company template. Old colors still available. Also added argument "show_colors" to allow seeing colors loaded or not. 
-
 
 
 

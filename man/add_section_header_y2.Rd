@@ -5,17 +5,23 @@
 \title{Add Blank PowerPoint Section Header}
 \usage{
 add_section_header_y2(
-  title = "xxx",
-  slide_name = "Section Header",
-  master_name = "Office Theme"
+  title = "Title",
+  n = "1",
+  slide_name = "XM Sidebar (1)",
+  master_name = "1_Office Theme",
+  text_boxes = TRUE
 )
 }
 \arguments{
-\item{title}{DEFAULT: "xxx"; Add a title in quotes here to have your Section Headers put in for you by R}
+\item{title}{DEFAULT: "Title"; Add a title in quotes here to have your Section Headers put in for you by R}
+
+\item{n}{DEFAULT: "1"; The number added to your section header. If section 2, put "2", etc.}
 
 \item{slide_name}{DEFAULT: "Section Header"; The name of the type of the PP slide you want added to the PP}
 
 \item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}
+
+\item{text_boxes}{DEFAULT = TRUE; Automatically adds a title and section number. Set to FALSE for no text boxes}
 }
 \description{
 This function adds a new PowerPoint section header along with a title box
@@ -25,7 +31,7 @@ This function adds a new PowerPoint section header along with a title box
 # you must first read a powerpoint into R
 \dontrun{
 doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
-Resources/Qualtrics Template New.pptx')
+Projects/Qualtrics/2021 Qualtrics Template Condensed.pptx')
 
 doc <- add_section_header_y2()
 
