@@ -1,3 +1,13 @@
+# y2artisan 0.4.5
+## Update
+* Updated `add_colors_qualtrics_y2` to better reflect new company template. 
+
+## Bugs
+* Fixed bug when that caused any color palette with a position of 1 to take on the 1st color.
+
+
+
+
 # y2artisan 0.4.4
 ## New function
 * `add_colors_internal_y2`: Add the Y2 color palettes to your environment.

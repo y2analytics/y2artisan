@@ -48,55 +48,22 @@ add_colors_qualtrics_y2 <- function(
 add_new_colors <- function(
   show_colors = show_colors
 ){
-  qualtrics_colors <-  list(
-    PURPLE_DARKER = '#300D72',
-    PURPLE_DARK = '#4713AB',
-    PURPLE = '#5F19E4',
-    PURPLE_LIGHT = '#9F74F0',
-    PURPLE_LIGHTER = '#BFA2F5',
 
-    GREEN_DARKER = '#106D55',
-    GREEN_DARK = '#18A47F',
-    GREEN = '#20DBA9',
-    GREEN_LIGHT = '#77EBCC',
-    GREEN_LIGHTER = '#A5F2DD',
+    add_color_palette_y2(
+      c('#5F19E4', '#20DBA9', '#0767DC', '#03B3F0', '#B7B7B7'),
+      c('Purple','Green','Blue','Sky_Blue','Gray'),
+      c(1,1,1,1,1),
+      show_colors = show_colors
+    )
 
-    BLUE_DARKER = '#03346E',
-    BLUE_DARK = '#054DA5',
-    BLUE = '#0767DC',
-    BLUE_LIGHT = '#5AA2FA',
-    BLUE_LIGHTER = '#91C1FC',
-
-    SKY_BLUE_DARKER = '#015A78',
-    SKY_BLUE_DARK = '#0286B4',
-    SKY_BLUE = '#03B3F0',
-    SKY_BLUE_LIGHT = '#61D5FD',
-    SKY_BLUE_LIGHTER = '#96E3FE',
-
-    GRAY_DARKER = '#3D3D3D',
-    GRAY_DARK = '#7A7A7A',
-    GRAY = '#B7B7B7',
-    GRAY_LIGHT = '#D6D6D6',
-    GRAY_LIGHTER = '#F4F4F4',
-
-    WHITE = '#FFFFFF',
-    BLACK = '#000000'
-  )
-
-  if (show_colors == TRUE) {
-
-    y2_colors_show <-
-      qualtrics_colors %>%
-      unlist() %>%
-      as.vector()
-
-    y2_colors_show[1:25] %>%
-      scales::show_col(
-        ncol = 5
-      )
-  }
+  qualtrics_colors <-
+    list(
+      WHITE = '#FFFFFF',
+      BLACK = '#000000'
+    )
 
   invisible(list2env(qualtrics_colors, envir = .GlobalEnv))
+
 }
 
 

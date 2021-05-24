@@ -106,7 +106,7 @@ add_color_palette_y2 <-
       if(position[i] == 1){
 
         color_set <-c(
-          rev(scales::seq_gradient_pal("white", hex_codes[1])(seq(0, 1, length.out = 6)))
+          rev(scales::seq_gradient_pal("white", hex_codes[i])(seq(0, 1, length.out = 6)))
         ) %>%
           unique()
 
