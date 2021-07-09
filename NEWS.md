@@ -1,3 +1,8 @@
+# y2artisan 0.5.2
+## New function
+* `add_colors_microsoft_y2`: Add the standard Microsoft color palette to your environment.
+
+
 # y2artisan 0.5.0
 ## Breaking changes
 * All defaults for `add*_y2` functions updated to match new Qualtrics template, as of March 2021 (new slide name defaults and positioning for new template)
