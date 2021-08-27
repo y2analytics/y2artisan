@@ -1,3 +1,9 @@
+# y2artisan 0.5.3
+## New function arguments
+* `add1s_y2`: 1) title_color, commentary_color, and footer_color - can now specify font colors, 2) font_family - can now specify font for title, commentary, and footer on slide
+* `add1c_y2`: same updates as add1s_y2
+
+
 # y2artisan 0.5.2
 ## New function
 * `add_colors_microsoft_y2`: Add the standard Microsoft color palette to your environment.

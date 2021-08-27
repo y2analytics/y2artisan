@@ -10,24 +10,36 @@ add1s_y2(
   footer = "Footer",
   text_boxes = TRUE,
   slide_name = "Blank",
-  master_name = "1_Office Theme"
+  master_name = "1_Office Theme",
+  title_color = "Black",
+  commentary_color = "Black",
+  footer_color = "Black",
+  font_family = "BentonSans Regular"
 )
 }
 \arguments{
-\item{title}{DEFAULT: "Title"; Add a slide title in quotes, automatically formatted to the Default Qualtrics template}
+\item{title}{DEFAULT: 'Title'; Add a slide title in quotes, automatically formatted to the Default Qualtrics template}
 
-\item{commentary}{DEFAULT: "Commentary"; Add commentary/desctiption in quotes, automatically formatted to the Default Qualtrics template}
+\item{commentary}{DEFAULT: 'Commentary'; Add commentary/desctiption in quotes, automatically formatted to the Default Qualtrics template}
 
-\item{footer}{DEFAULT: "Footer"; Add a footer in quotes}
+\item{footer}{DEFAULT: 'Footer'; Add a footer in quotes}
 
 \item{text_boxes}{DEFAULT = FALSE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
-\item{slide_name}{DEFAULT: "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP}
+\item{slide_name}{DEFAULT: 'Findings / 1 chart'; The name of the type of the PP slide you want added to the PP}
 
-\item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}
+\item{master_name}{DEFAULT: 'Office Theme'; The name of the PP master layout that the slide_name comes from}
+
+\item{title_color}{DEFAULT: 'Black'; Color or hexcode for slide title}
+
+\item{commentary_color}{DEFAULT: 'Black'; Color or hexcode for slide commentary}
+
+\item{footer_color}{DEFAULT: 'Black'; Color or hexcode for slide footer}
+
+\item{font_family}{DEFAULT: 'BentonSans Regular'; font for slide title, commentary, and footer}
 }
 \description{
-This function adds a new PowerPoint slide. For this function to work, you need a powerpoint object saved into R called "doc"
+This function adds a new PowerPoint slide. For this function to work, you need a powerpoint object saved into R called 'doc'
 }
 \examples{
 

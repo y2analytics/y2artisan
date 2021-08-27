@@ -11,6 +11,10 @@
 #' @param text_boxes DEFAULT = FALSE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes
 #' @param slide_name DEFAULT = "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
 #' @param master_name DEFAULT = "Office Theme"; The name of the PP master layout that the slide_name comes from
+#' @param title_color DEFAULT: 'Black'; Color or hexcode for slide title
+#' @param commentary_color DEFAULT: 'Black'; Color or hexcode for slide commentary
+#' @param footer_color DEFAULT: 'Black'; Color or hexcode for slide footer
+#' @param font_family DEFAULT: 'BentonSans Regular'; font for slide title, commentary, and footer
 #' @param left_start DEFAULT = .5; how far chart will start from left of slide
 #' @param top_start DEFAULT = 2; how far chart will start from top of slide
 #' @param height DEFAULT = 5; height of chart on slide
@@ -48,13 +52,28 @@ add1c_y2 <- function(
   text_boxes = TRUE,
   slide_name = "Blank",
   master_name = "1_Office Theme",
+  title_color = 'Black',
+  commentary_color = 'Black',
+  footer_color = 'Black',
+  font_family = 'BentonSans Regular',
   left_start = .5,
   top_start = 1.8,
   height = 5.6,
   width = 12.25
 ) {
   if (add_slide == TRUE) {
-    doc <- add1s_y2(title, commentary, footer, text_boxes, slide_name, master_name)
+    doc <- add1s_y2(
+      title,
+      commentary,
+      footer,
+      text_boxes,
+      slide_name,
+      master_name,
+      title_color,
+      commentary_color,
+      footer_color,
+      font_family
+      )
   } else {
     doc <- doc
   }
