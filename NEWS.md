@@ -1,3 +1,8 @@
+# y2artisan 0.5.4
+## New function
+* `theme_y2` Add the classic y2 theme to any ggplot2 chart: All y2artisan charts already have the y2 theme built in, but if you're creating a more custom ggplot2 chart and want to add the classic y2 theme, use theme_y2()
+
+
 # y2artisan 0.5.3
 ## New function arguments
 * `add1s_y2`: 1) title_color, commentary_color, and footer_color - can now specify font colors, 2) font_family - can now specify font for title, commentary, and footer on slide
