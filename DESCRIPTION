@@ -14,6 +14,7 @@ Imports:
     ggplot2,
     ggrepel,
     htmltools (>= 0.5.1.1),
+    labelled,
     magrittr,
     mschart (>= 0.3.0),
     officer,
@@ -27,4 +28,4 @@ Imports:
     tibble,
     tidyr,
     y2clerk
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

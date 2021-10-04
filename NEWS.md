@@ -1,3 +1,10 @@
+# y2artisan 0.5.5
+## New functions and bug fixes
+* `set_text_settings_y2` No longer do you need suffer the needless of pains of specifying every label text setting only to have your heart despair at another error (hint: it's probably a typo). This function not only reduces your typed amount, it reduces your human error. Save a frequencies object using freqs(). The text settings will be automatically matched to the "label" column of the frequencies.
+* `set_color_settings_y2` Serving alongside it brother in arms, set_color_settings will free you from the chains of endless color naming vectors of death. Save a frequencies object using freqs(). Provide colors to the set_color_settings function. The colors will be automatically matched to the "label" column of the frequencies.
+* `ms_footer_y2` Tired of copying and pasting question wording and n-size to your slides? This is the function for you! Pipe in the dataset (responses), specify the variable, and set the question type. Save out the nicely formatted string to an object to pass to the footer of an ms chart.
+
+
 # y2artisan 0.5.4
 ## New function
 * `theme_y2` Add the classic y2 theme to any ggplot2 chart: All y2artisan charts already have the y2 theme built in, but if you're creating a more custom ggplot2 chart and want to add the classic y2 theme, use theme_y2()

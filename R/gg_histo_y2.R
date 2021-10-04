@@ -89,7 +89,7 @@ if(
       !!var_flag,
       nas = FALSE,
       stat = 'quantile',
-      pr = 25,
+      percentile = 25,
       wt = !!wt_flag
       ) %>%
     dplyr::select(.data$result) %>%
@@ -100,7 +100,7 @@ if(
       !!var_flag,
       nas = FALSE,
       stat = 'quantile',
-      pr = 75,
+      percentile = 75,
       wt = !!wt_flag
       ) %>%
     dplyr::select(.data$result) %>%
@@ -112,7 +112,7 @@ if(
       !!var_flag,
       nas = FALSE,
       stat = 'quantile',
-      pr = 95,
+      percentile = 95,
       wt = !!wt_flag
       ) %>%
     dplyr::select(.data$result) %>%
@@ -123,7 +123,7 @@ if(
       !!var_flag,
       nas = FALSE,
       stat = 'quantile',
-      pr = 5,
+      percentile = 5,
       wt = !!wt_flag
       ) %>%
     dplyr::select(.data$result) %>%
