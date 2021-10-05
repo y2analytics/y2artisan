@@ -85,7 +85,8 @@ ms_footer_y2 <- function(
 
     n <-
       dataset %>%
-      dplyr::count()
+      dplyr::count() %>%
+      dplyr::pull(n)
 
     message('NOTE: Be sure your dataset is filtered the same way as your original chart')
 

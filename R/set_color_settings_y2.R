@@ -19,7 +19,7 @@
 #'     cyl
 #'   )
 #'
-#' set_color_settings(
+#' set_color_settings_y2(
 #'   BLUE_DARKER,
 #'   BLUE,
 #'   BLUE_LIGHTER
