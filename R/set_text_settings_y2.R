@@ -10,6 +10,8 @@
 #' @param font_size DEFAULT = 14; Font size applied to all text in chart labels
 #' @param font_color DEFAULT = 'white'; Color applied to all text in chart labels
 #' @param font_family DEFAULT = 'BentonSans'; Font family applied to all text in chart labels
+#' @param text_column DEFAULT = label; Column from which labels are pulled
+#' @param single DEFAULT = FALSE; Set to TRUE for use with a single bar chart
 #' @export
 #' @examples
 #'
@@ -31,41 +33,64 @@ set_text_settings_y2 <- function(
   dataset = frequencies,
   font_size = 14,
   font_color = 'white',
-  font_family = 'BentonSans'
+  font_family = 'BentonSans',
+  text_column = label,
+  single = FALSE
 ){
+
+  label <- NULL
 
   set_text <-
     purrr::partial(
-      fp_text,
+      officer::fp_text,
       font.size = font_size,
       color = font_color,
       font.family = font_family
     )
 
-  if( !any(dataset %>% names() %>% stringr::str_detect('^label$')) ){
+  variable_quoed <- dplyr::enquo(text_column)
+  variable_char <- dplyr::quo_name(variable_quoed)
 
-    stop('Missing column "label" in dataset')
+  label_char <- stringr::str_c('^', variable_char, '$')
+
+
+  if( !any(dataset %>% names() %>% stringr::str_detect(label_char)) ){
+
+    stop_message <- stringr::str_c('Missing column "', variable_char, '" in dataset')
+
+    stop(stop_message)
 
   }
 
-  labels <-
-    dataset %>%
-    dplyr::distinct(
-      .data$label,
-      .keep_all = TRUE
-    ) %>%
-    dplyr::pull(.data$label) %>%
-    as.character()
+  if(single == FALSE){
 
-  text_settings <-
-    replicate(
-      length(labels),
-      set_text(),
-      simplify = FALSE
-    )
+    labels <-
+      dataset %>%
+      dplyr::distinct(
+        {{ text_column }},
+        .keep_all = TRUE
+      ) %>%
+      dplyr::pull({{ text_column }}) %>%
+      as.character()
 
-  names(text_settings) <-
-    labels
+    text_settings <-
+      replicate(
+        length(labels),
+        set_text(),
+        simplify = FALSE
+      )
+
+    names(text_settings) <-
+      labels
+
+  } else {
+
+    text_settings <-
+      list(
+        "result" = set_text()
+      )
+
+  }
 
   text_settings
 

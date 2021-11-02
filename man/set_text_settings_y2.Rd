@@ -8,7 +8,9 @@ set_text_settings_y2(
   dataset = frequencies,
   font_size = 14,
   font_color = "white",
-  font_family = "BentonSans"
+  font_family = "BentonSans",
+  text_column = label,
+  single = FALSE
 )
 }
 \arguments{
@@ -19,6 +21,10 @@ set_text_settings_y2(
 \item{font_color}{DEFAULT = 'white'; Color applied to all text in chart labels}
 
 \item{font_family}{DEFAULT = 'BentonSans'; Font family applied to all text in chart labels}
+
+\item{text_column}{DEFAULT = label; Column from which labels are pulled}
+
+\item{single}{DEFAULT = FALSE; Set to TRUE for use with a single bar chart}
 }
 \description{
 Save a frequencies object using freqs(). The text settings will be automatically matched to the "label" column of the frequencies.

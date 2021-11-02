@@ -1,3 +1,8 @@
+# y2artisan 0.5.6
+## New arguments
+* `set_text_settings_y2` New arguments added. "text_column" allows you to select which column in the dataframe you wish to use to make your text settings. When you "single" to TRUE it will make text settings usable for a single bar chart
+
+
 # y2artisan 0.5.5
 ## New functions and bug fixes
 * `set_text_settings_y2` No longer do you need suffer the needless of pains of specifying every label text setting only to have your heart despair at another error (hint: it's probably a typo). This function not only reduces your typed amount, it reduces your human error. Save a frequencies object using freqs(). The text settings will be automatically matched to the "label" column of the frequencies.
