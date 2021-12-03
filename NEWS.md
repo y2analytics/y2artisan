@@ -1,3 +1,8 @@
+# y2artisan 0.5.7
+## Bug fixes
+* All ms_* chart functions had a bug where they would throw an error if any NAs were present in the data. They will now run fine regardless if it has NAs.
+
+
 # y2artisan 0.5.6
 ## New arguments
 * `set_text_settings_y2` New arguments added. "text_column" allows you to select which column in the dataframe you wish to use to make your text settings. When you "single" to TRUE it will make text settings usable for a single bar chart

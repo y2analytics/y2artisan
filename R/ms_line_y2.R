@@ -79,7 +79,7 @@ ms_line_y2 <- function(
   freqs_list <- split(data, seq(nrow(data))) # turn data frame into a list
   symbols_sum <- purrr::map_df(freqs_list, ~stringr::str_detect(.x, "<|&")) %>% # test if any cells contain special symbols
     dplyr::mutate_all(~as.numeric(.)) %>% # convert table into numerics
-    sum() # sum all cells to count the number of special symbols
+    sum(na.rm = TRUE) # sum all cells to count the number of special symbols
   if(symbols_sum > 0){
     stop('mschart objects cannot contain the special symbols "&" or "<". Please remove those symbols from your data frame')
   }
