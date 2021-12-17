@@ -10,6 +10,7 @@ utils::globalVariables(
     'color_settings',
     'color_settings_grouped',
     'color_settings_stacked',
+    'size_settings',
     'text_settings',
     'text_settings_grouped',
     'text_settings_stacked'

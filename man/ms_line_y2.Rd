@@ -2,7 +2,7 @@
 % Please edit documentation in R/ms_line_y2.R
 \name{ms_line_y2}
 \alias{ms_line_y2}
-\title{Create an ugrouped mschart object}
+\title{Create a line chart mschart object}
 \usage{
 ms_line_y2(
   data = frequencies,

@@ -1,3 +1,10 @@
+# y2artisan 0.5.8
+## New functions
+* gg_dotplot_y2 - Creates a ggplot2 object automatically formatted for a dot plot with a grouping variable.
+## New arguments
+* theme_y2 - added font_family argument.
+
+
 # y2artisan 0.5.7
 ## Bug fixes
 * All ms_* chart functions had a bug where they would throw an error if any NAs were present in the data. They will now run fine regardless if it has NAs.

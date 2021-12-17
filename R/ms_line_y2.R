@@ -1,5 +1,5 @@
 #### Line chart ####
-#' Create an ugrouped mschart object
+#' Create a line chart mschart object
 #'
 #' This function creates a mschart object automatically formatted for a line chart. It requires two lists called "text_settings_grouped" and "color_settings_grouped" by default that specify the colors desired for the chart.
 #' @param data DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.

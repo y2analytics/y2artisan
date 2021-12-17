@@ -3,6 +3,7 @@
 #' Add the classic y2 theme to any ggplot2 chart
 #'
 #' All y2artisan charts already have the y2 theme built in, but if you're creating a more custom ggplot2 chart and want to add the classic y2 theme, use theme_y2()
+#' @param font_family DEFAULT = 'flama'
 #' @keywords chart ggplot theme
 #' @export
 #' @examples
@@ -19,12 +20,15 @@
 #'   theme_y2()
 #'   }
 
-theme_y2 <- function() {
+theme_y2 <- function(
+  font_family = 'flama'
+) {
+  error_message <- stringr::str_c('The font "', font_family, '" - required for the y2 theme - does not exist in your R session')
   ### Check fonts
   if(
-    (stringr::str_detect(sysfonts::font_families(), 'flama') %>% sum == 0)
+    (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
   ){
-    stop("The font 'flama' - required for the y2 theme - does not exist in your R session")
+    stop(error_message)
   }
 
   ### Theme function
@@ -38,7 +42,7 @@ theme_y2 <- function() {
     panel.grid.major = ggplot2::element_blank(),
     panel.grid.minor = ggplot2::element_blank(),
     plot.title = ggplot2::element_text(size = 14),
-    text = ggplot2::element_text(family = 'flama')
+    text = ggplot2::element_text(family = font_family)
   )
 }
 
