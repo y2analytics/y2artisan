@@ -9,6 +9,7 @@ gg_dotplot_y2(
   x_var = result,
   y_var = label,
   color_var = group_var,
+  alpha = 1,
   axis_text_size = 12,
   axis_title_size = 14,
   direction = c("horizontal", "vertical"),
@@ -37,7 +38,9 @@ gg_dotplot_y2(
 
 \item{y_var}{DEFAULT = label; When using the freqs function, will typically be label (is by default).}
 
-\item{color_var}{DEFAULT = group_var. Note: the color variable CANNOT be numeric.}
+\item{color_var}{DEFAULT = group_var; Note: the color variable CANNOT be numeric.}
+
+\item{alpha}{DEFAULT = 1; Range of 1-0 with 1 being completely opaque}
 
 \item{axis_text_size}{DEFAULT = 12; Font size for variable levels and axis percentages.}
 

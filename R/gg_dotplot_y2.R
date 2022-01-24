@@ -6,7 +6,8 @@
 #' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
 #' @param x_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param y_var DEFAULT = label; When using the freqs function, will typically be label (is by default).
-#' @param color_var DEFAULT = group_var. Note: the color variable CANNOT be numeric.
+#' @param color_var DEFAULT = group_var; Note: the color variable CANNOT be numeric.
+#' @param alpha DEFAULT = 1; Range of 1-0 with 1 being completely opaque
 #' @param axis_text_size DEFAULT = 12; Font size for variable levels and axis percentages.
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
@@ -52,6 +53,7 @@ gg_dotplot_y2 <- function(
   x_var = result,
   y_var = label,
   color_var = group_var,
+  alpha = 1,
   axis_text_size = 12,
   axis_title_size = 14,
   direction = c('horizontal', 'vertical'),
@@ -77,8 +79,6 @@ gg_dotplot_y2 <- function(
   direction <- rlang::arg_match(direction)
 
   max_x_value <- data %>% dplyr::summarise(max({{x_var}})) %>% as.numeric()
-  max_str_length <- data %>% dplyr::select({{y_var}}) %>% purrr::as_vector() %>% stringr::str_length() %>% max()
-  str_add <- max_str_length * max_x_value / 1500
   x_max <- dplyr::case_when(
     x_max != 0 ~ x_max,
     TRUE ~  (max_x_value + max_x_value / 10) #direction == 'vertical'
@@ -106,7 +106,8 @@ gg_dotplot_y2 <- function(
         y = {{ y_var }},
         color = {{ color_var }}
       ),
-      size = point_size
+      size = point_size,
+      alpha = alpha
     ) +
     ggplot2::scale_y_discrete(
       labels = function(x) lapply(
