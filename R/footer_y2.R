@@ -1,5 +1,5 @@
 # Public function ---------------------------------------------------------
-### ms_footer_y2
+### footer_y2
 
 #' Create a string with question wording and n-size
 #'
@@ -14,22 +14,22 @@
 #' @examples
 #' \dontrun{
 #' responses %>%
-#'   ms_footer_y2(
+#'   footer_y2(
 #'    s_income
 #'   )
 #'
 #' mtcars %>%
-#'   ms_footer_y2(
+#'   footer_y2(
 #'    m_aware,
 #'    q_type = 'm',
 #'    prompt_rm = TRUE
 #'   )
 #'   }
 
-ms_footer_y2 <- function(
+footer_y2 <- function(
   dataset,
   variable,
-  q_type = c('s', 'm'),
+  q_type = c('s', 'm', 'n'),
   prompt_rm = FALSE
 ){
 
@@ -74,7 +74,7 @@ ms_footer_y2 <- function(
   }
 
 
-  if( q_type == 's'){
+  if( q_type %in% c('s', 'n', 'sl')){
 
     n <-
       dataset %>%

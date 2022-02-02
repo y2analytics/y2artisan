@@ -1,5 +1,12 @@
 # y2artisan 0.5.9
 ## New functions
+* `footer_y2` - Wrapper around ms_footer. Pipe in the dataset (responses), specify the variable, and set the question type. Save out the nicely formatted string to an object to pass to the footer of an ms chart
+* `ms_print` - Easily preview ms_chart objects. By default prints "chart" in environment
+## New arguments
+* `set_color_settings_y2` - added option to select different column for colors. Increases ease of use for grouped type charts
+
+# y2artisan 0.5.9
+## New functions
 * ms_scatter_y2 - Creates an mschart object automatically formatted for a scatter plot. This function requires two lists called "text_settings" and "color_settings" and a named vector called "size_settings".
 ## New arguments
 * gg_dotplot_y2 - added alpha argument.
