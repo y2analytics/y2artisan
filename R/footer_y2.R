@@ -106,7 +106,13 @@ footer_y2 <- function(
       )
   } else {
     footer <-
-      footer %>%
+      stringr::str_c(
+        'Q: ',
+        question,
+        ' (n = ',
+        n,
+        ')'
+      ) %>%
       stringr::str_replace_all('\n', ' ') %>%
       stringr::str_remove('- [^(]*') %>%
       stringr::str_replace_all('\\.\\(', '. (')
