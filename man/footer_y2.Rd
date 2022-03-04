@@ -4,19 +4,30 @@
 \alias{footer_y2}
 \title{Create a string with question wording and n-size}
 \usage{
-footer_y2(dataset, variable, q_type = c("s", "m", "n"), prompt_rm = FALSE)
+footer_y2(
+  dataset,
+  ...,
+  q_type = "NULL",
+  label_length = 15,
+  prompt_rm = TRUE,
+  after_symbol = "Select all that apply"
+)
 }
 \arguments{
 \item{dataset}{Haven labelled dataset from which to pull the variable}
 
-\item{variable}{Unquoted variable}
+\item{...}{Unquoted variables}
 
-\item{q_type}{DEFAULT = 's'; Can be any of c('s', 'm') used to specify question type. s = single select, m = multiple select, etc. Meant to match Y2 question naming conventions.}
+\item{q_type}{DEFAULT = 'NULL'; When 'NULL', footer_y2() will automatically choose the variable type when standard Y2 naming conventions are used. When variables have non-standard names, accepts list of any of c('s', 'm', 'oe', 'r', 'sl', 'md', 'n') used to specify question type. s = single select, m = multiple select, etc.}
 
-\item{prompt_rm}{DEFAULT FALSE; Attempts to better format the question by removing hard returns and removing the prompt for multi-select type questions.}
+\item{label_length}{DEFAULT = 15; Truncates labels to length 15 for groups and matrix questions and adds a '...' where truncation has occurred.}
+
+\item{prompt_rm}{DEFAULT TRUE; Attempts to better format the question by removing hard returns and removing the prompt for multi-select type questions. TRUE is needed in order to identify common stems.}
+
+\item{after_symbol}{DEFAULT = 'Select all that apply'; Removes all question text after and including the provided symbol.}
 }
 \description{
-Pipe in the dataset (responses), specify the variable, and set the question type. Save out the nicely formatted string to an object to pass to the footer of an ms chart.
+Pipe in the dataset (responses) and specify variables. Save out the nicely formatted string to an object to pass to the footer of an ms chart.
 }
 \examples{
 \dontrun{
@@ -28,7 +39,6 @@ responses \%>\%
 mtcars \%>\%
   footer_y2(
    m_aware,
-   q_type = 'm',
    prompt_rm = TRUE
   )
   }
