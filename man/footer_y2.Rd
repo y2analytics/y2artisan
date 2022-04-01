@@ -2,9 +2,19 @@
 % Please edit documentation in R/footer_y2.R
 \name{footer_y2}
 \alias{footer_y2}
+\alias{ms_footer_y2}
 \title{Create a string with question wording and n-size}
 \usage{
 footer_y2(
+  dataset,
+  ...,
+  q_type = "NULL",
+  label_length = 15,
+  prompt_rm = TRUE,
+  after_symbol = "Select all that apply"
+)
+
+ms_footer_y2(
   dataset,
   ...,
   q_type = "NULL",

@@ -1,3 +1,11 @@
+# y2artisan 0.6.1
+## Function Updates
+* `ms_scatter_y2` - automatically sets axis titles to variable names unless otherwise specified
+## Bug Fixes
+* `footer_y2` - Fixed various notes that may cause edge-case errors
+* `gg_dotplot_y2` - Fixed bug where legend and axis titles not updating properly
+
+
 # y2artisan 0.6.0
 ## New functions
 * `footer_y2` - Total function overhaul including breaking changes. Several added arguments and functionalities.

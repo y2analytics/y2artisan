@@ -2,7 +2,7 @@
 % Please edit documentation in R/ms_scatter_y2.R
 \name{ms_scatter_y2}
 \alias{ms_scatter_y2}
-\title{Create a sactterplot mschart object}
+\title{Create a scatter plot mschart object}
 \usage{
 ms_scatter_y2(
   data = frequencies,
@@ -13,13 +13,13 @@ ms_scatter_y2(
   axis_text_size = 14,
   axis_title_size = 18,
   axis_x_display = TRUE,
-  axis_x_label = "",
+  axis_x_label = "x_var",
   axis_x_min = 0,
   axis_x_max = NULL,
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
   axis_y_display = TRUE,
-  axis_y_label = "",
+  axis_y_label = "y_var",
   axis_y_min = 0,
   axis_y_max = NULL,
   axis_y_rotate = 0,
@@ -38,7 +38,7 @@ ms_scatter_y2(
 )
 }
 \arguments{
-\item{data}{DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.}
+\item{data}{DEFAULT = frequencies;The name of the data frame that the mschart pulls from.}
 
 \item{x_var}{NO DEFAULT}
 
@@ -54,7 +54,7 @@ ms_scatter_y2(
 
 \item{axis_x_display, axis_y_display}{DEFAULT = TRUE}
 
-\item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
+\item{axis_x_label, axis_y_label}{DEFAULT is automatically set to variable names for x_var and y_var; Title for the x_axis and y_axis}
 
 \item{axis_x_min, axis_y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 

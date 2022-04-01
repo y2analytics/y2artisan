@@ -161,23 +161,23 @@ footer_y2 <- function(
 
   variable_list <-
     stems %>%
-    dplyr::pull(q_name)
+    dplyr::pull(.data$q_name)
 
   question <-
     stems %>%
-    dplyr::pull(q_text)
+    dplyr::pull(.data$q_text)
 
   q_type <-
     stems %>%
-    dplyr::pull(q_type)
+    dplyr::pull(.data$q_type)
 
   q_multi_stem <-
     stems %>%
-    dplyr::pull(q_multi_stem)
+    dplyr::pull(.data$q_multi_stem)
 
   q_stem <-
     stems %>%
-    dplyr::pull(q_stem)
+    dplyr::pull(.data$q_stem)
 
 
 
@@ -310,14 +310,16 @@ footer_y2 <- function(
 
 }
 
-
+#' @rdname footer_y2
+#' @export
+ms_footer_y2 <- footer_y2
 
 # Private Functions -------------------------------------------------------
 
 
 ### Singles not grouped
 singles_not_grouped <- function(
-  data = dataset,
+  data,
   variable,
   label.length,
   multi_stem,
@@ -344,7 +346,7 @@ singles_not_grouped <- function(
         )
       ) %>%
       dplyr::count() %>%
-      dplyr::pull(n) %>%
+      dplyr::pull(.data$n) %>%
       stringr::str_c(
         ' (n = ',
         .,
@@ -367,19 +369,19 @@ singles_not_grouped <- function(
       ) %>%
       orderlabel::preamble_rm() %>%
       dplyr::group_by(
-        prompt
+        .data$prompt
       ) %>%
       dplyr::add_tally(
-        n,
+        .data$n,
         name = 'new_n'
       ) %>%
       dplyr::distinct(
-        prompt,
+        .data$prompt,
         .keep_all = TRUE
       ) %>%
       dplyr::mutate(
         new_n = stringr::str_c(
-          prompt %>%
+          .data$prompt %>%
             stringr::str_trunc(
               width = label.length,
               side = 'right',
@@ -387,10 +389,10 @@ singles_not_grouped <- function(
             ) %>%
             stringr::str_trim(),
           ': ',
-          new_n
+          .data$new_n
         )
       ) %>%
-      dplyr::pull(new_n) %>%
+      dplyr::pull(.data$new_n) %>%
       stringr::str_flatten(', ') %>%
       stringr::str_c(
         ' n = (',
@@ -437,10 +439,10 @@ multi_not_grouped <- function(
       )
     ) %>%
     dplyr::filter(
-      ns > 0
+      .data$ns > 0
     ) %>%
     dplyr::count() %>%
-    dplyr::pull(n) %>%
+    dplyr::pull(.data$n) %>%
     stringr::str_c(
       ' (n = ',
       .,
@@ -508,7 +510,7 @@ singles_grouped <- function(
             ')'
           )
       ) %>%
-      dplyr::pull(new_n)  %>%
+      dplyr::pull(.data$new_n)  %>%
       stringr::str_flatten() %>%
       stringr::str_replace_all(
         '\\)\\(',
@@ -560,19 +562,19 @@ singles_grouped <- function(
           ) %>%
           orderlabel::preamble_rm() %>%
           dplyr::group_by(
-            prompt
+            .data$prompt
           ) %>%
           dplyr::add_tally(
-            n,
+            .data$n,
             name = 'new_n'
           ) %>%
           dplyr::distinct(
-            prompt,
+            .data$prompt,
             .keep_all = TRUE
           ) %>%
           dplyr::mutate(
             new_n = stringr::str_c(
-              prompt %>%
+              .data$prompt %>%
                 stringr::str_trunc(
                   width = label.length,
                   side = 'right',
@@ -580,10 +582,10 @@ singles_grouped <- function(
                 ) %>%
                 stringr::str_trim(),
               ': ',
-              new_n
+              .data$new_n
             )
           ) %>%
-          dplyr::pull(new_n) %>%
+          dplyr::pull(.data$new_n) %>%
           stringr::str_flatten(', ') %>%
           stringr::str_c(
             ' n = (\n',
@@ -623,19 +625,19 @@ singles_grouped <- function(
           ) %>%
           orderlabel::preamble_rm() %>%
           dplyr::group_by(
-            prompt
+            .data$prompt
           ) %>%
           dplyr::add_tally(
-            n,
+            .data$n,
             name = 'new_n'
           ) %>%
           dplyr::distinct(
-            prompt,
+            .data$prompt,
             .keep_all = TRUE
           ) %>%
           dplyr::mutate(
             new_n = stringr::str_c(
-              prompt %>%
+              .data$prompt %>%
                 stringr::str_trunc(
                   width = label.length,
                   side = 'right',
@@ -643,10 +645,10 @@ singles_grouped <- function(
                 ) %>%
                 stringr::str_trim(),
               ': ',
-              new_n
+              .data$new_n
             )
           ) %>%
-          dplyr::pull(new_n) %>%
+          dplyr::pull(.data$new_n) %>%
           stringr::str_flatten(', ') %>%
           stringr::str_c(
             n,
@@ -719,7 +721,7 @@ multi_grouped <- function(
       )
     ) %>%
     dplyr::filter(
-      ns > 0
+      .data$ns > 0
     ) %>%
     dplyr::count(
       .data[[dplyr::group_vars(data)]]
@@ -739,7 +741,7 @@ multi_grouped <- function(
         n
       )
     ) %>%
-    dplyr::pull(new_n) %>%
+    dplyr::pull(.data$new_n) %>%
     stringr::str_c(
       .,
       collapse = ', '
@@ -866,14 +868,14 @@ get_stems <- function(
     dplyr::full_join(
       possible_stems %>%
         dplyr::filter(
-          !is.na(q_num)
+          !is.na(.data$q_num)
         ) %>%
         dplyr::distinct(
-          q_stem,
-          q_text,
+          .data$q_stem,
+          .data$q_text,
           .keep_all = TRUE
         ) %>%
-        dplyr::group_by(q_stem) %>%
+        dplyr::group_by(.data$q_stem) %>%
         dplyr::add_count(
           name = 'false_stems'
         ) %>%
@@ -885,7 +887,7 @@ get_stems <- function(
         ),
       possible_stems %>%
         dplyr::filter(
-          is.na(q_num)
+          is.na(.data$q_num)
         ) %>%
         dplyr::mutate(
           q_multi_stem = FALSE
@@ -893,15 +895,15 @@ get_stems <- function(
       by = c("q_stem", "q_num", "q_text", 'q_type', 'q_multi_stem')
     ) %>%
     dplyr::mutate(
-      q_type = q_type %>% as.character(),
+      q_type = .data$q_type %>% as.character(),
       q_name = dplyr::case_when(
-        !is.na(q_num) ~ stringr::str_c(q_stem, q_num),
-        TRUE ~ q_stem
+        !is.na(.data$q_num) ~ stringr::str_c(.data$q_stem, .data$q_num),
+        TRUE ~ .data$q_stem
       ),
       q_type = dplyr::if_else(
-        stringr::str_detect(q_stem, '_TEXT$'),
+        stringr::str_detect(.data$q_stem, '_TEXT$'),
         'oe',
-        q_type
+        .data$q_type
       )
     )
 

@@ -95,7 +95,15 @@ gg_dotplot_y2 <- function(
       ),
       values = fills
     )
-  } else {NULL}
+  } else {
+    ggplot2::scale_color_discrete(
+      guide = ggplot2::guide_legend(
+        reverse = legend_rev,
+        nrow = legend_nrow,
+        title = legend_title
+      )
+    )
+  }
 
   ### Main function
   ggplot2::ggplot() +
@@ -131,7 +139,7 @@ gg_dotplot_y2 <- function(
     ggplot2::theme_minimal() +
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = axis_text_size),
-      axis.title = ggplot2::element_blank(),
+      axis.title = ggplot2::element_text(size = axis_title_size),
       legend.position = 'top',
       legend.spacing.x = ggplot2::unit(2, 'mm'),
       legend.text = ggplot2::element_text(size = legend_text_size),

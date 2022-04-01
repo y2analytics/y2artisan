@@ -1,8 +1,8 @@
 #### Final ms_scatter_y2 Function ####
-#' Create a sactterplot mschart object
+#' Create a scatter plot mschart object
 #'
 #' This function creates an mschart object automatically formatted for a scatter plot. It requires two lists called "text_settings" and "color_settings" and a named vector called "size_settings".
-#' @param data DEFAULT = frequencies;The name of the data frame that the mscharts pulls from.
+#' @param data DEFAULT = frequencies;The name of the data frame that the mschart pulls from.
 #' @param x_var NO DEFAULT
 #' @param y_var NO DEFAULT
 #' @param group_var DEFAULT = NULL; Can be set to a variable to color code points by that variable.
