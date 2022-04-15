@@ -9,6 +9,7 @@
 #' @param ... Colors to use in your ms_chart
 #' @param dataset DEFAULT = frequencies; A frequency table named frequencies
 #' @param color_column DEFAULT = label; Column from which labels are pulled
+#' @param single DEFAULT = FALSE; Set to TRUE when making a single bar chart or when you need just one color.
 #' @export
 #' @examples
 #'
@@ -45,60 +46,71 @@
 set_color_settings_y2 <- function(
     ...,
   dataset = frequencies,
-  color_column = label
+  color_column = label,
+  single = FALSE
   ){
 
-  label <- NULL
+  if(single == FALSE){
 
-  variable_quoed <- dplyr::enquo(color_column)
-  variable_char <- dplyr::quo_name(variable_quoed)
+    label <- NULL
 
-  label_char <- stringr::str_c('^', variable_char, '$')
+    variable_quoed <- dplyr::enquo(color_column)
+    variable_char <- dplyr::quo_name(variable_quoed)
+
+    label_char <- stringr::str_c('^', variable_char, '$')
 
 
-  if( !any(dataset %>% names() %>% stringr::str_detect(label_char)) ){
+    if( !any(dataset %>% names() %>% stringr::str_detect(label_char)) ){
 
-    stop('Missing column "', variable_char, '" in dataset')
+      stop('Missing column "', variable_char, '" in dataset')
+
+    }
+
+    colors <- list(...) %>% purrr::as_vector()
+
+    labels <-
+      dataset %>%
+      dplyr::ungroup() %>%
+      dplyr::distinct(
+        {{ color_column }},
+        .keep_all = TRUE
+      ) %>%
+      dplyr::pull({{ color_column }}) %>%
+      as.character()
+
+    if( length(colors) < length(labels) ){
+
+      stop(
+        stringr::str_c(
+          'Not enough colors provided. Please provide ',
+          length(labels) - length(colors),
+          ' more color(s) OR check the "label" column in the data.'
+        )
+      )
+
+    } else if( length(colors) > length(labels) ){
+
+      stop(
+
+        stringr::str_c(
+          'Too many colors provided. Please provide ',
+          length(colors) - length(labels),
+          ' less color(s) OR check the "label" column in the data.'
+        )
+      )
+
+    }
+
+    names(colors) <-
+      labels
+
+    colors
+
+  } else {
+
+    colors <- list(...) %>% purrr::as_vector()
 
   }
-
-  colors <- list(...) %>% purrr::as_vector()
-
-  labels <-
-    dataset %>%
-    dplyr::ungroup() %>%
-    dplyr::distinct(
-      {{ color_column }},
-      .keep_all = TRUE
-    ) %>%
-    dplyr::pull({{ color_column }}) %>%
-    as.character()
-
-  if( length(colors) < length(labels) ){
-
-    stop(
-      stringr::str_c(
-        'Not enough colors provided. Please provide ',
-        length(labels) - length(colors),
-        ' more color(s) OR check the "label" column in the data.'
-      )
-    )
-
-  } else if( length(colors) > length(labels) ){
-
-    stop(
-
-      stringr::str_c(
-        'Too many colors provided. Please provide ',
-        length(colors) - length(labels),
-        ' less color(s) OR check the "label" column in the data.'
-      )
-    )
-
-  }
-
-  names(colors) <-
-    labels
 
   colors
 

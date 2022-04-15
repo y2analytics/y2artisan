@@ -1,3 +1,10 @@
+# y2artisan 0.6.2
+## Function Updates
+* `set_color_settings` - added argument "single" to allow function use for single bar charts. While not needed, this add matches syntax of `set_text_settings()`.
+## Bug Fixes
+* `footer_y2` - Fixed bug that treated single selects with a numeric ending as part of a matrix even if it wasn't.
+
+
 # y2artisan 0.6.1
 ## Function Updates
 * `ms_scatter_y2` - automatically sets axis titles to variable names unless otherwise specified

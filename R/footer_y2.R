@@ -870,6 +870,11 @@ get_stems <- function(
         dplyr::filter(
           !is.na(.data$q_num)
         ) %>%
+        dplyr::add_count(
+          .data$q_stem,
+          .data$q_text,
+          name = 'stem_count'
+        ) %>%
         dplyr::distinct(
           .data$q_stem,
           .data$q_text,
@@ -881,8 +886,8 @@ get_stems <- function(
         ) %>%
         dplyr::mutate(
           q_multi_stem = dplyr::case_when(
-            false_stems == 1 ~ TRUE,
-            false_stems > 1 ~ FALSE
+            false_stems == 1 & stem_count > 1~ TRUE,
+            TRUE ~ FALSE
           )
         ),
       possible_stems %>%
