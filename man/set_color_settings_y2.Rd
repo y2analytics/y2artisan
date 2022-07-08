@@ -4,7 +4,12 @@
 \alias{set_color_settings_y2}
 \title{Setup the color setting for ms charts}
 \usage{
-set_color_settings_y2(..., dataset = frequencies, color_column = label)
+set_color_settings_y2(
+  ...,
+  dataset = frequencies,
+  color_column = label,
+  single = FALSE
+)
 }
 \arguments{
 \item{...}{Colors to use in your ms_chart}
@@ -12,6 +17,8 @@ set_color_settings_y2(..., dataset = frequencies, color_column = label)
 \item{dataset}{DEFAULT = frequencies; A frequency table named frequencies}
 
 \item{color_column}{DEFAULT = label; Column from which labels are pulled}
+
+\item{single}{DEFAULT = FALSE; Set to TRUE when making a single bar chart or when you need just one color.}
 }
 \description{
 Save a frequencies object using freqs(). Provide colors to the set_color_settings function. The colors will be automatically matched to the "label" column of the frequencies or you can manually choose a different column .

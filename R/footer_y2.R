@@ -916,7 +916,3 @@ get_stems <- function(
   known_stems
 
 }
-
-
-
-

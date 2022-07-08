@@ -1,3 +1,10 @@
+# y2artisan 0.6.3
+## Function Updates
+* `add1s_y2` - corrected footer to allow it to be editable without zooming in on the powerpoint.
+## New Functions
+* `add_fonts_y2` - Use add_fonts_y2() to add the most commonly used fonts at Y2 to your Rsession. This will make them easily available for charting in ggplot and other instances where fonts may be needed. Use list_fonts_y2() to see which fonts will be loaded to your session.
+* `list_fonts_y2` - Use list_fonts_y2() to see the available fonts loaded in by add_fonts_y2().
+
 # y2artisan 0.6.2
 ## Function Updates
 * `set_color_settings` - added argument "single" to allow function use for single bar charts. While not needed, this add matches syntax of `set_text_settings()`.

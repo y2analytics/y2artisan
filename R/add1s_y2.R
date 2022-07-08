@@ -137,9 +137,9 @@ add_footer_findings <- function(
   font_family,
   font_size = 10,
   left = 0.5,
-  top = 7.13,
+  top = 7,
   width = 10.5,
-  height = .25
+  height = .5
 ){
   properties <- officer::fp_text(
     color = footer_color,
