@@ -1,13 +1,3 @@
-# Setup -------------------------------------------------------------------
-library(dplyr)
-library(y2clerk)
-library(testthat)
-library(y2artisan)
-
-
-#### gg_grouped_y2 ####
-context('gg_grouped_y2')
-
 
 #### Errors when changing the defaults? ####
 test_that('all defaults', {

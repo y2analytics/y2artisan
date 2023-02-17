@@ -10,7 +10,7 @@
 #' Also adds grays, black, and white.
 #'
 #' @keywords color Qualtrics graph
-#' @param palette DEFAULT = 2. Defaults to the newest Qualtrics color palette. Switch between the latest color palette and older color palettes.
+#' @param palette DEFAULT = 2. Defaults to the newest Qualtrics color palette (2). Switch between the latest color palette and older color palettes, with 1 being the oldest.
 #' @param case DEFAULT = 'upper'. Arg available only for palette 1. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)
 #' @param show_colors DEFAULT = TRUE Show the color palettes loaded into your environment
 #' @export
@@ -20,7 +20,7 @@
 
 add_colors_qualtrics_y2 <- function(
   palette = 2,
-  case = 'upper',
+  case = c('upper', 'lower'),
   show_colors = TRUE
 ) {
   case <- rlang::arg_match(case)
@@ -29,17 +29,15 @@ add_colors_qualtrics_y2 <- function(
     add_new_colors(
       show_colors = show_colors
     )
-  } else {
-    if (case == 'upper') {
+  } else if (case == 'upper' & palette == 1) {
       add_upper(
         show_colors = show_colors
       )
-    } else {
+    } else if (case == 'lower' & palette == 1) {
       add_lower(
         show_colors = show_colors
       )
     }
-  }
 }
 
 
@@ -47,7 +45,7 @@ add_colors_qualtrics_y2 <- function(
 ### add_new_colors
 add_new_colors <- function(
   show_colors = show_colors
-){
+) {
 
     add_color_palette_y2(
       c('#5F19E4', '#20DBA9', '#0767DC', '#03B3F0', '#B7B7B7'),
@@ -72,7 +70,7 @@ add_new_colors <- function(
 ### add_upper
 add_upper <- function(
   show_colors = show_colors
-){
+) {
   qualtrics_colors <-  list(
     PURPLE_DARKEST = '#090A10',
     PURPLE_DARK = '#2C314F',
@@ -133,7 +131,7 @@ add_upper <- function(
 ### add_lower
 add_lower <- function(
   show_colors = show_colors
-){
+) {
   qualtrics_colors <-  list(
     purple_darkest = '#090A10',
     purple_dark = '#2C314F',

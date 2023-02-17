@@ -48,9 +48,9 @@ set_color_settings_y2 <- function(
   dataset = frequencies,
   color_column = label,
   single = FALSE
-  ){
+  ) {
 
-  if(single == FALSE){
+  if (single == FALSE) {
 
     label <- NULL
 
@@ -60,7 +60,7 @@ set_color_settings_y2 <- function(
     label_char <- stringr::str_c('^', variable_char, '$')
 
 
-    if( !any(dataset %>% names() %>% stringr::str_detect(label_char)) ){
+    if (!any(dataset %>% names() %>% stringr::str_detect(label_char))) {
 
       stop('Missing column "', variable_char, '" in dataset')
 
@@ -78,24 +78,27 @@ set_color_settings_y2 <- function(
       dplyr::pull({{ color_column }}) %>%
       as.character()
 
-    if( length(colors) < length(labels) ){
+    if (length(colors) < length(labels)) {
 
       stop(
         stringr::str_c(
           'Not enough colors provided. Please provide ',
-          length(labels) - length(colors),
-          ' more color(s) OR check the "label" column in the data.'
+          as.character(length(labels) - length(colors)),
+          ' more color(s) OR check the "',
+          variable_char,
+          '" column in the data.'
         )
       )
 
-    } else if( length(colors) > length(labels) ){
+    } else if  (length(colors) > length(labels)) {
 
       stop(
-
         stringr::str_c(
           'Too many colors provided. Please provide ',
-          length(colors) - length(labels),
-          ' less color(s) OR check the "label" column in the data.'
+          as.character(length(colors) - length(labels)),
+          ' less color(s) OR check the "',
+          variable_char,
+          '" column in the data.'
         )
       )
 

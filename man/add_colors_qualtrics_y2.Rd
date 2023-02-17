@@ -4,10 +4,14 @@
 \alias{add_colors_qualtrics_y2}
 \title{Add base Qualtrics colors}
 \usage{
-add_colors_qualtrics_y2(palette = 2, case = "upper", show_colors = TRUE)
+add_colors_qualtrics_y2(
+  palette = 2,
+  case = c("upper", "lower"),
+  show_colors = TRUE
+)
 }
 \arguments{
-\item{palette}{DEFAULT = 2. Defaults to the newest Qualtrics color palette. Switch between the latest color palette and older color palettes.}
+\item{palette}{DEFAULT = 2. Defaults to the newest Qualtrics color palette (2). Switch between the latest color palette and older color palettes, with 1 being the oldest.}
 
 \item{case}{DEFAULT = 'upper'. Arg available only for palette 1. Will set color vectors to uppercase (e.g. BLUE_DARK) Can switch to 'lower' to revert to lowercase (e.g. blue_dark; older package versions were lowercase)}
 

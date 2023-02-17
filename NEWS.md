@@ -1,9 +1,18 @@
+# y2artisan 0.6.4
+## New Functions
+*`add_colors_facebook_y2` - Add the standard Facebook color palette to your environment.
+## New Features
+* `ms_line_y2` - New argument _smooth_: DEFAULT = 0. If 0, the lines will be straight between points. If 1, the lines will be smoothed.
+* `add_fonts_y2` - New argument *show_fonts_added*: DEFAULT = FALSE. If TRUE, shows the available fonts loaded in by add_fonts_y2().
+
+
 # y2artisan 0.6.3
 ## Function Updates
 * `add1s_y2` - corrected footer to allow it to be editable without zooming in on the powerpoint.
 ## New Functions
 * `add_fonts_y2` - Use add_fonts_y2() to add the most commonly used fonts at Y2 to your Rsession. This will make them easily available for charting in ggplot and other instances where fonts may be needed. Use list_fonts_y2() to see which fonts will be loaded to your session.
 * `list_fonts_y2` - Use list_fonts_y2() to see the available fonts loaded in by add_fonts_y2().
+
 
 # y2artisan 0.6.2
 ## Function Updates

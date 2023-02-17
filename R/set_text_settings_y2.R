@@ -36,7 +36,7 @@ set_text_settings_y2 <- function(
   font_family = 'BentonSans',
   text_column = label,
   single = FALSE
-){
+) {
 
   label <- NULL
 
@@ -54,7 +54,7 @@ set_text_settings_y2 <- function(
   label_char <- stringr::str_c('^', variable_char, '$')
 
 
-  if( !any(dataset %>% names() %>% stringr::str_detect(label_char)) ){
+  if (!any(dataset %>% names() %>% stringr::str_detect(label_char))) {
 
     stop_message <- stringr::str_c('Missing column "', variable_char, '" in dataset')
 
@@ -62,7 +62,7 @@ set_text_settings_y2 <- function(
 
   }
 
-  if(single == FALSE){
+  if (single == FALSE) {
 
     labels <-
       dataset %>%

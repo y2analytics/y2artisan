@@ -22,6 +22,7 @@
 #' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', 't'.
 #' @param legend_text_size DEFAULT = 14
 #' @param num_fmt DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis
+#' @param smooth DEFAULT = 0. If 0, the lines will be straight between points. If 1, lines will be smoothed
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart
@@ -47,32 +48,33 @@
 
 
 ms_line_y2 <- function(
-  data = frequencies,
-  x_var = 'label',
-  y_var = 'result',
-  group_var = 'group_var',
-  axis_text_size = 14,
-  axis_title_size = 18,
-  axis_x_display = TRUE,
-  axis_x_label = '',
-  axis_x_rotate = 0,
-  axis_x_rotate_title = 0,
-  axis_y_display = TRUE,
-  axis_y_label = '',
-  axis_y_min = 0,
-  axis_y_max = NULL,
-  axis_y_rotate = 0,
-  axis_y_rotate_title = 0,
-  font_family = 'BentonSans Regular',
-  label_color = color_settings_grouped,
-  label_position = 't',
-  label_show_values = TRUE,
-  label_text = text_settings_grouped,
-  legend_pos = c('n', 't', 'b', 'tr', 'l', 'r'),
-  legend_text_size = 16,
-  num_fmt = c('percent', 'general'),
-  title_label = '',
-  title_size = 18
+    data = frequencies,
+    x_var = 'label',
+    y_var = 'result',
+    group_var = 'group_var',
+    axis_text_size = 14,
+    axis_title_size = 18,
+    axis_x_display = TRUE,
+    axis_x_label = '',
+    axis_x_rotate = 0,
+    axis_x_rotate_title = 0,
+    axis_y_display = TRUE,
+    axis_y_label = '',
+    axis_y_min = 0,
+    axis_y_max = NULL,
+    axis_y_rotate = 0,
+    axis_y_rotate_title = 0,
+    font_family = 'BentonSans Regular',
+    label_color = color_settings_grouped,
+    label_position = 't',
+    label_show_values = TRUE,
+    label_text = text_settings_grouped,
+    legend_pos = c('n', 't', 'b', 'tr', 'l', 'r'),
+    legend_text_size = 16,
+    num_fmt = c('percent', 'general'),
+    smooth = 0,
+    title_label = '',
+    title_size = 18
 ){
 
   ### Check for special symbols
@@ -146,11 +148,14 @@ ms_line_y2 <- function(
     mschart::chart_ax_y(
       display = axis_y_display
     ) %>%
-  mschart::chart_ax_x(
+    mschart::chart_ax_x(
       rotation = axis_x_rotate
     ) %>%
     mschart::chart_ax_y(
       rotation = axis_y_rotate
+    ) %>%
+    mschart::chart_data_smooth(
+      values = smooth
     )
 }
 

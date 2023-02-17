@@ -4,7 +4,10 @@
 \alias{add_fonts_y2}
 \title{Adds fonts and font families to your R session}
 \usage{
-add_fonts_y2()
+add_fonts_y2(show_fonts_added = FALSE)
+}
+\arguments{
+\item{show_fonts_added}{DEFAULT = FALSE. If TRUE, shows the available fonts loaded in by add_fonts_y2().}
 }
 \value{
 A message

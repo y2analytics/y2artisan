@@ -7,7 +7,7 @@
 add_colors_internal_y2(palette = 1, compliments = FALSE, show_colors = TRUE)
 }
 \arguments{
-\item{palette}{DEFAULT = 1. Defaults to the newest Y2 color palette. Switch between the latest color palette and older color palettes.}
+\item{palette}{DEFAULT = 1. Defaults to the newest Y2 color palette (1). Switch between the latest color palette and older color palettes, with 1 being the oldest. Currently only 1 available.}
 
 \item{compliments}{DEFAULT = FALSE. Add complimentary colors chosen by the Y2 team (Red, Pink, Yellow, Green, Turquoise)}
 

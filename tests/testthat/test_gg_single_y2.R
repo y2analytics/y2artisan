@@ -1,12 +1,3 @@
-# Setup -------------------------------------------------------------------
-library(dplyr)
-library(y2clerk)
-library(testthat)
-library(y2artisan)
-
-#### gg_single_y2 ####
-context('gg_single_y2')
-
 
 #### Errors when changing the defaults? ####
 ### Overall
@@ -15,6 +6,7 @@ test_that('frequencies', {
     chart <- gg_single_y2(frequencies, font_family = 'sans')
   expect_error(chart, NA)
 })
+
 
 ### Overall
 test_that('all defaults', {
@@ -26,6 +18,7 @@ test_that('all defaults', {
     gg_single_y2(font_family = 'sans')
   expect_error(chart, NA)
 })
+
 
 ### Variables
 # x_var
@@ -75,6 +68,7 @@ test_that('color_var', {
   expect_error(chart, NA)
 })
 
+
 ### Axis
 # axis_title_size & axis_text_size
 test_that('axis text', {
@@ -119,6 +113,7 @@ test_that('axis labels', {
   expect_error(chart, NA)
 })
 
+
 ### Bars
 # bar_width
 test_that('bar width', {
@@ -159,6 +154,7 @@ test_that('nudge', {
     )
   expect_error(chart, NA)
 })
+
 
 ### Legend
 # legend_pos & legend_rev
@@ -203,6 +199,7 @@ test_that('legend_title', {
   expect_error(chart, NA)
 })
 
+
 ### Labels
 # label_length & label_size
 test_that('label_length & label_size', {
@@ -218,6 +215,7 @@ test_that('label_length & label_size', {
     )
   expect_error(chart, NA)
 })
+
 
 ### Title
 # title_label & title_size

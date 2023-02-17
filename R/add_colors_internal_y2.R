@@ -10,7 +10,7 @@
 #' Also adds black and white.
 #'
 #' @keywords color y2 graph
-#' @param palette DEFAULT = 1. Defaults to the newest Y2 color palette. Switch between the latest color palette and older color palettes.
+#' @param palette DEFAULT = 1. Defaults to the newest Y2 color palette (1). Switch between the latest color palette and older color palettes, with 1 being the oldest. Currently only 1 available.
 #' @param compliments DEFAULT = FALSE. Add complimentary colors chosen by the Y2 team (Red, Pink, Yellow, Green, Turquoise)
 #' @param show_colors DEFAULT = TRUE Show the color palettes loaded into your environment
 #' @export
@@ -38,7 +38,7 @@ add_colors_internal_y2 <- function(
 set_y2_palettes <- function(
   compliments = compliments,
   show_colors
-){
+) {
   y2_colors <-  list(
 
     BLUE_DARKER = '#041B32',

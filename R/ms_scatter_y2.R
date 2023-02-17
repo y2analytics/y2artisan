@@ -232,7 +232,7 @@ find_xy_means <- function(
       nas = FALSE,
       stat = 'mean'
     ) %>%
-    dplyr::select(.data$result) %>%
+    dplyr::select('result') %>%
     as.character()
   x_statement <- stringr::str_c('x_var mean (', x_var, '): ', mean_x)
 
@@ -242,7 +242,7 @@ find_xy_means <- function(
       nas = FALSE,
       stat = 'mean'
     ) %>%
-    dplyr::select(.data$result) %>%
+    dplyr::select('result') %>%
     as.character()
   y_statement <- stringr::str_c('y_var mean (', y_var, '): ', mean_y)
 

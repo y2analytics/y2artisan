@@ -6,12 +6,15 @@
 #' Use add_fonts_y2() to add the most commonly used fonts at Y2 to your Rsession. This will make them easily available for charting in ggplot and other instances where fonts may be needed. Use list_fonts_y2() to see which fonts will be loaded to your session.
 #'
 #' @keywords showtext font
+#' @param show_fonts_added DEFAULT = FALSE. If TRUE, shows the available fonts loaded in by add_fonts_y2().
 #' @export
 #' @return A message
 #' @examples
 #' add_fonts_y2()
 
-add_fonts_y2 <- function(){
+add_fonts_y2 <- function(
+    show_fonts_added = FALSE
+  ) {
 
   fonts <- list_fonts_y2()
 
@@ -41,6 +44,10 @@ add_fonts_y2 <- function(){
   }
 
   showtext::showtext_auto()
+
+  if (show_fonts_added == TRUE) {
+    print(fonts)
+  }
 
   print('All available fonts loaded into Rsession')
 

@@ -34,10 +34,13 @@ openend_y2 <- function(
       !!var_flag
     ) %>%
     dplyr::mutate(
-      variable = toupper(!!var_flag)
-    ) %>%
+      variable = toupper(!!var_flag),
+      variable = stringr::str_split(variable, " ") # split
+      ) %>%
+    dplyr::mutate(variable = purrr::map(.$variable, ~unique(.x))) %>% # drop duplicates
+    dplyr::mutate(variable = purrr::map_chr(.$variable, ~paste(.x, collapse = " "))) %>% # recombine
     dplyr::select(
-      .data$variable
+      'variable'
     ) %>%
     tidyr::separate(
       .data$variable,
@@ -52,7 +55,7 @@ openend_y2 <- function(
       Words != ''
     ) %>%
     dplyr::select(
-      -Names
+      -tidyr::all_of(Names)
     ) %>%
     dplyr::mutate(
       Words = stringr::str_replace_all(Words, '\\.COM', ''),
@@ -86,14 +89,14 @@ openend_y2 <- function(
       result = round(.data$result, 2)
     ) %>%
     dplyr::select(
-      - .data$total
+      -'total'
     )
 
   return(frequencies)
 }
 
 #### wc_filter ####
-wc_filter <- function(dataset){
+wc_filter <- function(dataset) {
   dataset %>%
     dplyr::filter(
       !.data$label %in% c(

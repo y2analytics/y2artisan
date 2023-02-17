@@ -1,10 +1,11 @@
 Package: y2artisan
 Type: Package
 Title: Shortcuts for mschart and ggplot2
-Version: 0.6.3
+Version: 0.6.4
 Authors@R: c(
     person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre")),
-    person('Pearce', 'Solomon', email = 'pearce@y2analytics.com', role = 'aut'))
+    person('Pearce', 'Solomon', email = 'pearce@y2analytics.com', role = 'aut'),
+    person('Y2 Analytics', role = c('cph', 'fnd')))
 Description: Create mschart objects in one line of code and import these charts and tables into PowerPoint slides. Use shortcuts for ggplot2 functions. Explore string variables with tables and word clouds.
 License: GPL-3
 Encoding: UTF-8
@@ -14,7 +15,6 @@ Imports:
     forcats,
     ggplot2,
     ggrepel,
-    htmltools (>= 0.5.1.1),
     labelled,
     magrittr,
     mschart (>= 0.3.0),
@@ -26,9 +26,11 @@ Imports:
     showtext,
     stringr,
     sysfonts,
-    testthat,
     tibble,
     tidyselect,
     tidyr,
     y2clerk
-RoxygenNote: 7.1.2
+Suggests:
+    htmltools (>= 0.5.1.1),
+    testthat (>= 3.0.0)
+RoxygenNote: 7.2.3

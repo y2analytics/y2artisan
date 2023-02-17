@@ -10,7 +10,7 @@
 #' Also adds black and white.
 #'
 #' @keywords color microsoft graph
-#' @param palette DEFAULT = 1. Defaults to the newest microsoft color palette. Switch between the latest color palette and older color palettes.
+#' @param palette DEFAULT = 1. Defaults to the newest microsoft color palette (1). Switch between the latest color palette and older color palettes, with 1 being the oldest. Currently only 1 available.
 #' @param show_colors DEFAULT = TRUE Show the color palettes loaded into your environment
 #' @export
 #' @examples
@@ -34,7 +34,7 @@ add_colors_microsoft_y2 <- function(
 ### add_new_colors
 set_res_palettes <- function(
   show_colors
-){
+) {
   msoft_colors <-  list(
 
     BLUE_DARK = '#243A5E',

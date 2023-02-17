@@ -29,6 +29,7 @@ ms_line_y2(
   legend_pos = c("n", "t", "b", "tr", "l", "r"),
   legend_text_size = 16,
   num_fmt = c("percent", "general"),
+  smooth = 0,
   title_label = "",
   title_size = 18
 )
@@ -73,6 +74,8 @@ ms_line_y2(
 \item{legend_text_size}{DEFAULT = 14}
 
 \item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
+
+\item{smooth}{DEFAULT = 0. If 0, the lines will be straight between points. If 1, lines will be smoothed}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 

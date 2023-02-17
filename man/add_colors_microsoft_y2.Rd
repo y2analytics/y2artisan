@@ -7,7 +7,7 @@
 add_colors_microsoft_y2(palette = c("RE&S")[1], show_colors = TRUE)
 }
 \arguments{
-\item{palette}{DEFAULT = 1. Defaults to the newest microsoft color palette. Switch between the latest color palette and older color palettes.}
+\item{palette}{DEFAULT = 1. Defaults to the newest microsoft color palette (1). Switch between the latest color palette and older color palettes, with 1 being the oldest. Currently only 1 available.}
 
 \item{show_colors}{DEFAULT = TRUE Show the color palettes loaded into your environment}
 }
