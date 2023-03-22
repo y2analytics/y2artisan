@@ -98,7 +98,7 @@ ms_single_y2 <-  function(
   label_position <- rlang::arg_match(label_position)
   num_fmt <- rlang::arg_match(num_fmt)
   axis_num_fmt <- dplyr::case_when(
-    num_fmt == 'percent' ~ '0%%',
+    num_fmt == 'percent' ~ '0%',
     num_fmt == 'general' ~ 'general'
   )
   label_num_fmt <- dplyr::case_when(
