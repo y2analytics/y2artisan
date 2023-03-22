@@ -102,7 +102,7 @@ ms_grouped_y2 <-  function(
   legend_pos <- rlang::arg_match(legend_pos)
   num_fmt <- rlang::arg_match(num_fmt)
   axis_num_fmt <- dplyr::case_when(
-    num_fmt == 'percent' ~ '0%%',
+    num_fmt == 'percent' ~ '0%',
     num_fmt == 'general' ~ 'general'
   )
   label_num_fmt <- dplyr::case_when(
