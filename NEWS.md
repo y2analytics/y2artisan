@@ -1,3 +1,16 @@
+# y2artisan 0.7.0
+## New Functions
+* `gg_donut_y2` - Creates a donut chart ggplot object
+## Breaking changes
+* `footer_y2` has slightly new behavior for the *label_length*, which now truncates after 100 characters instead of 15, and it works on all question types, not just matrix-style questions. Additionally, the "n" that is counted for each question now excludes "NA" answers from open-ended questions and does not count them as responses that have not answered the question.
+* Dropping `ms_footer_y2` now that we've had its newer version `footer_y2` for several versions. 
+## Bug fixes 
+* footer_y2: Updates to documentation. Fixes to removal of white space and hard returns. Updated coding practices to reflect new version of tidyselect. Lots of tests added that led to finding these bugs and making these updates.
+* add_* functions: updated documentation 
+* openend_y2: filled in required arguments in internal separate function
+
+
+
 # y2artisan 0.6.4
 ## New Functions
 *`add_colors_facebook_y2` - Add the standard Facebook color palette to your environment.

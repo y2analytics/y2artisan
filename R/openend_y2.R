@@ -45,7 +45,8 @@ openend_y2 <- function(
     tidyr::separate(
       .data$variable,
       into = paste("V", 1:100, sep = "_"),
-      sep = ' '
+      sep = ' ',
+      fill = 'right'
     ) %>%
     tidyr::gather(
       Names,
