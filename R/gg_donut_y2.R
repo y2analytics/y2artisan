@@ -1,49 +1,49 @@
-#### gg_pie_y2 ####
+#### gg_donut_y2 ####
 ### Description
-#' Create a pie chart ggplot object
+#' Create a donut chart ggplot object
 #'
-#' This function creates a ggplot2 object automatically formatted for a pie chart.
-#' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from.
-#' @param x_var DEFAULT = label; When using the freqs function, will typically be label (is by default).
-#' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
+#' This function creates a ggplot2 object automatically formatted for a donut chart
+#' @param data DEFAULT = frequencies; The name of the data frame that ggplot pulls from
+#' @param color_var DEFAULT = label; Note: the color variable CANNOT be numeric
+#' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default)
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the x_var
 #' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
-#' @param label_length DEFAULT = 15; This determines how many characters a label on a pie slice can be before R inserts a line break.
-#' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
+#' @param hole_size DEFAULT = 3. The larger the size, the larger the donut hole
+#' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar
 #' @param legend_pos DEFAULT = 'none'
 #' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 8
-#' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
+#' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart
 #' @param title_size DEFAULT = 18
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
 #' frequencies <- iris %>% y2clerk::freqs(Species)
 #'
-#' chart <- gg_pie_y2(
+#' chart <- gg_donut_y2(
 #'   fills = c('red', 'blue', 'pink'),
 #'   font_family = 'sans'
 #' )
 
 
-gg_pie_y2 <- function(
-  data = frequencies,
-  x_var = label,
-  y_var = result,
-  colors = '#ffffff',
-  fills, #only variable with no default...
-  font_family = 'flama',
-  label_length = 15,
-  label_size = 10,
-  legend_pos = 'none',
-  legend_rev = FALSE,
-  legend_text_size = 8,
-  title_label = '',
-  title_size = 14
+gg_donut_y2 <- function(
+    data = frequencies,
+    color_var = label,
+    y_var = result,
+    colors = '#ffffff',
+    fills, #only variable with no default...
+    font_family = 'flama',
+    hole_size = 2,
+    label_size = 5,
+    legend_pos = 'none',
+    legend_rev = FALSE,
+    legend_text_size = 8,
+    title_label = '',
+    title_size = 14
 ) {
 
-  ### Check fonts
+  ### Pre-chart
   if (
     font_family == 'flama' &
     (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
@@ -51,15 +51,8 @@ gg_pie_y2 <- function(
     stop("The font you specified in the 'font_family' argument does not exist in your R session")
   }
 
-
-  ### Flags
   label <- result <- percent_label <- NULL
-  x_flag <- dplyr::enquo(x_var)
-  y_flag <- dplyr::enquo(y_var)
-  color_flag <- dplyr::enquo(x_var)
 
-
-  ### Set defaults
   colors <- if (length(colors) == 1) { # If user specifies only one color, repeat color for all bars
     colors <- rep(colors, dplyr::count(data))
   } else {
@@ -69,51 +62,43 @@ gg_pie_y2 <- function(
   data <- data %>%
     dplyr::mutate(
       percent_label = stringr::str_c(
-        !!x_flag,
+        {{ color_var }},
         '\n',
-        !!y_flag * 100,
+        {{ y_var }} * 100,
         '%'
       )
     )
 
-
-  ### Conditional chunks
-if (legend_pos != 'none') {
-  data <- data %>%
-    dplyr::mutate(
-      percent_label = stringr::str_c(
-        !!y_flag * 100,
-        '%'
+  if (legend_pos != 'none') {
+    data <- data %>%
+      dplyr::mutate(
+        percent_label = stringr::str_c(
+          {{ y_var }} * 100,
+          '%'
+        )
       )
-    )
-} else (data <- data)
+  } else {
+    data <- data
+    }
 
 
   ### Chart
   chart <- ggplot2::ggplot(
     data,
     ggplot2::aes(
-      x = "",
-      y = !!y_flag,
-      fill = !!x_flag
+      x = hole_size,
+      y = {{ y_var }},
+      fill = {{ color_var }}
     )
   ) +
-    ggplot2::geom_bar(
-      ggplot2::aes(
-        fill = !!color_flag
-      ),
-      width = 1,
-      stat = 'identity',
-      position = "fill"
-    ) +
-    ggplot2::coord_polar(theta = "y", start = 0) +
+    ggplot2::geom_col(position = 'fill') +
+    ggplot2::coord_polar(theta = "y") +
+    ggplot2::xlim(c(.2, hole_size + .5)) +
     ggplot2::geom_text(
-      ggplot2::aes(
-        label = percent_label,
-        color = !!color_flag
-      ),
+      ggplot2::aes(label = percent_label),
       family = font_family,
       size = label_size,
+      color = colors,
       position = ggplot2::position_fill(vjust = 0.5)
     ) +
     ggplot2::theme_minimal() +
@@ -145,18 +130,6 @@ if (legend_pos != 'none') {
       panel.grid.minor = ggplot2::element_blank(),
       plot.title = ggplot2::element_text(size = title_size),
       text = ggplot2::element_text(family = font_family)
-    ) +
-    ggplot2::scale_x_discrete(
-      labels = function(x) lapply(
-        strwrap(
-          x,
-          width = label_length,
-          simplify = FALSE
-        ),
-        paste,
-        collapse="\n"
-      )
     )
 }
-
 

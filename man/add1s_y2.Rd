@@ -44,10 +44,10 @@ This function adds a new PowerPoint slide. For this function to work, you need a
 \examples{
 
 # Before adding slides, charts, or tables onto a powerpoint,
-# you must first read a powerpoint into R
+# you must first read a PowerPoint into R
 \dontrun{
-doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
-Projects/Qualtrics/2021 Qualtrics Template Condensed.pptx')
+doc <- read_pptx('~/Y2 Analytics Dropbox/Y2 Analytics Team Folder/Projects/
+Qualtrics/2021 Template and Resources/Template for mscharts.pptx')
 
 # Now start adding in your charts
 doc <- add1s_y2()

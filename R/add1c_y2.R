@@ -32,9 +32,9 @@
 #' my_chart <- y2artisan::ms_single_y2()
 #'
 #' # Then before adding additional slides, charts, or tables onto a powerpoint,
-#' # you must first read a powerpoint into R
-#' doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
-#' Resources/Qualtrics Template New.pptx')
+#' # you must first read a PowerPoint into R
+#' doc <- read_pptx('~/Y2 Analytics Dropbox/Y2 Analytics Team Folder/Projects/
+#' Qualtrics/2021 Template and Resources/Template for mscharts.pptx')
 #'
 #' # Now start adding in your charts
 #' doc <- add1c_y2(my_chart)
