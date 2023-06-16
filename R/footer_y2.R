@@ -6,12 +6,12 @@
 #' Pipe in the dataset (responses) and specify variables. Save out the nicely formatted string to an object to pass to the footer of an ms chart.
 #'
 #' @keywords n question n-size footer
-#' @param dataset Haven labelled dataset from which to pull the variable
+#' @param dataset Haven labelled dataset from which to pull the variable(s)
 #' @param ... Unquoted variables
 #' @param q_type DEFAULT = 'NULL'; When 'NULL', footer_y2() will automatically choose the variable type when standard Y2 naming conventions are used. When variables have non-standard names, accepts list of any of c('s', 'm', 'oe', 'r', 'sl', 'md', 'n') used to specify question type. s = single select, m = multiple select, etc.
-#' @param label_length DEFAULT = 15; Truncates labels to length 15 for groups and matrix questions and adds a '...' where truncation has occurred.
-#' @param after_symbol DEFAULT = 'Select all that apply'; Removes all question text after and including the provided symbol.
-#' @param prompt_rm DEFAULT TRUE; Attempts to better format the question by removing hard returns and removing the prompt for multi-select type questions. TRUE is needed in order to identify common stems.
+#' @param label_length DEFAULT = 100; Truncates question labels to specified length and adds a '...' where truncation has occurred.
+#' @param after_symbol DEFAULT = 'Select all that apply'; Removes all question text after and including the provided symbol. Must match upper/lower case of question wording.
+#' @param prompt_rm DEFAULT TRUE; Attempts to better format the question by removing hard returns, white space, and anything after " - " or the input of the "after_symbol" argument. TRUE is needed in order to identify common stems.
 #' @export
 #' @examples
 #' \dontrun{
@@ -31,17 +31,16 @@ footer_y2 <- function(
   dataset,
   ...,
   q_type = 'NULL',
-  label_length = 15,
+  label_length = 100,
   prompt_rm = TRUE,
   after_symbol = 'Select all that apply'
-){
-
+) {
 
   # Error: Allow only once grouped data ------------------------------------
 
-  if(
+  if (
     dplyr::group_vars(dataset) %>% length() > 1
-  ){
+  ) {
 
     stop('footer_y2 can currently only handle one grouping. Your data has multiple groups')
 
@@ -50,15 +49,17 @@ footer_y2 <- function(
 
   # Error: Grouping data has missing data -----------------------------------
 
-  if(dplyr::is_grouped_df(dataset)){
+  if (dplyr::is_grouped_df(dataset)) {
 
-    if(
+    if (
       dataset %>%
       dplyr::select(
-        .data[[dplyr::group_vars(dataset)]]
+        tidyselect::all_of(
+          dplyr::group_vars(dataset)
+          )
       ) %>%
       anyNA()
-    ){
+    ) {
 
       stop('Grouping variable has missingness (NA\'s). Please manually filter out NA\'s or replace NA\'s with an explicit variable level.')
 
@@ -79,7 +80,7 @@ footer_y2 <- function(
     ) %>%
     names()
 
-  if(length(variable_list) == 0){
+  if (length(variable_list) == 0) {
 
     variable_list <-
       dataset %>%
@@ -104,7 +105,7 @@ footer_y2 <- function(
   # Error: non standard naming ----------------------------------------------
 
 
-  if(!all(q_type %in% c('s', 'm', 'r', 'n', 'sl', 'md', 'oe'))){
+  if (!all(q_type %in% c('s', 'm', 'r', 'n', 'sl', 'md', 'oe'))) {
 
     stop(
       "Variable names do not match standardized format. Please specify q_types for all questions."
@@ -112,7 +113,7 @@ footer_y2 <- function(
 
   } else {
 
-    if('NULL' %in% q_type_original_specification){
+    if ('NULL' %in% q_type_original_specification) {
 
       message(
         'Note: Variable names match standardized format. Assuming question types.'
@@ -138,11 +139,11 @@ footer_y2 <- function(
 
 
 
-  for(i in 1:length(question)){
+  for (i in 1:length(question)) {
 
-    if( question[i] == 'NULL' ){
+    if ( question[i] == 'NULL' ) {
 
-      stop('variable "', variable_list[i],'is not haven labelled, please use labelled data with this function.')
+      stop('variable "', variable_list[i], '" is not haven labelled, please use labelled data with this function.')
 
     }
 
@@ -156,7 +157,8 @@ footer_y2 <- function(
     get_stems(
       variables = variable_list,
       q.text = question,
-      q.type = q_type
+      q.type = q_type,
+      label_length
     )
 
   variable_list <-
@@ -165,6 +167,17 @@ footer_y2 <- function(
 
   question <-
     stems %>%
+    dplyr::mutate(
+      q_text = stringr::str_c(
+        .data$q_text %>%
+          stringr::str_trunc(
+            width = label_length,
+            side = 'right',
+            ellipsis = '...'
+          ) %>%
+          stringr::str_trim()
+      )
+    ) %>%
     dplyr::pull(.data$q_text)
 
   q_type <-
@@ -188,22 +201,21 @@ footer_y2 <- function(
   # First loop --------------------------------------------------------------
 
 
-  for(i in 1:length(variable_list)){
+  for (i in 1:length(variable_list)) {
 
-    if(i == 1){
+    if (i == 1) {
 
-      if( q_type[i] %in% c('s','n','oe','sl') & !dplyr::is_grouped_df(dataset) ){
+      if ( q_type[i] %in% c('s','n','oe','sl') & !dplyr::is_grouped_df(dataset)) {
 
         n <-
           singles_not_grouped(
             data = dataset,
             variable = variable_list[i],
             label.length = label_length,
-            multi_stem = q_multi_stem[i],
             q.stem = q_stem[i]
           )
 
-      } else if( q_type[i] %in% c('m', 'r', 'md') & !dplyr::is_grouped_df(dataset) ){
+      } else if ( q_type[i] %in% c('m', 'r', 'md') & !dplyr::is_grouped_df(dataset)) {
 
         n <-
           multi_not_grouped(
@@ -212,18 +224,17 @@ footer_y2 <- function(
             q.stem = q_stem[i]
           )
 
-      } else if( q_type[i] %in% c('s','n','oe','sl') & dplyr::is_grouped_df(dataset) ){
+      } else if ( q_type[i] %in% c('s','n','oe','sl') & dplyr::is_grouped_df(dataset)) {
 
         n <-
           singles_grouped(
             data = dataset,
             variable = variable_list[i],
             label.length = label_length,
-            multi_stem = q_multi_stem[i],
             q.stem = q_stem[i]
           )
 
-      } else if( q_type[i] %in% c('m', 'r', 'md') & dplyr::is_grouped_df(dataset) ){
+      } else if ( q_type[i] %in% c('m', 'r', 'md') & dplyr::is_grouped_df(dataset)) {
 
         n <-
           multi_grouped(
@@ -251,18 +262,17 @@ footer_y2 <- function(
 
     } else {
 
-      if( q_type[i] %in% c('s','n','oe','sl') & !dplyr::is_grouped_df(dataset) ){
+      if ( q_type[i] %in% c('s','n','oe','sl') & !dplyr::is_grouped_df(dataset)) {
 
         n <-
           singles_not_grouped(
             data = dataset,
             variable = variable_list[i],
             label.length = label_length,
-            multi_stem = q_multi_stem[i],
             q.stem = q_stem[i]
           )
 
-      } else if( q_type[i] %in% c('m', 'r', 'md') & !dplyr::is_grouped_df(dataset) ){
+      } else if ( q_type[i] %in% c('m', 'r', 'md') & !dplyr::is_grouped_df(dataset)) {
 
         n <-
           multi_not_grouped(
@@ -271,18 +281,17 @@ footer_y2 <- function(
             q.stem = q_stem[i]
           )
 
-      } else if( q_type[i] %in% c('s','n','oe','sl') & dplyr::is_grouped_df(dataset) ){
+      } else if ( q_type[i] %in% c('s','n','oe','sl') & dplyr::is_grouped_df(dataset)) {
 
         n <-
           singles_grouped(
             data = dataset,
             variable = variable_list[i],
             label.length = label_length,
-            multi_stem = q_multi_stem[i],
             q.stem = q_stem[i]
           )
 
-      } else if( q_type[i] %in% c('m', 'r', 'md') & dplyr::is_grouped_df(dataset) ){
+      } else if ( q_type[i] %in% c('m', 'r', 'md') & dplyr::is_grouped_df(dataset)) {
 
         n <-
           multi_grouped(
@@ -310,9 +319,6 @@ footer_y2 <- function(
 
 }
 
-#' @rdname footer_y2
-#' @export
-ms_footer_y2 <- footer_y2
 
 # Private Functions -------------------------------------------------------
 
@@ -322,21 +328,19 @@ singles_not_grouped <- function(
   data,
   variable,
   label.length,
-  multi_stem,
   q.stem
 ){
 
-  if(stringr::str_detect(variable, '^oe_|_TEXT$')){
+  if (stringr::str_detect(variable, '^oe_|_TEXT$')) {
 
     data <-
       data %>%
       dplyr::filter(
-        .data[[variable]] != ''
+        .data[[variable]] != '',
+        .data[[variable]] != 'NA'
       )
 
   }
-
-  if(multi_stem == FALSE){
 
     n <-
       data %>%
@@ -353,63 +357,6 @@ singles_not_grouped <- function(
         ')'
       )
 
-  } else {
-
-    n <-
-      data %>%
-      dplyr::select(
-        tidyselect::starts_with(
-          q.stem
-        ),
-        -tidyselect::ends_with('_TEXT')
-      ) %>%
-      y2clerk::freq(
-        prompt = TRUE,
-        nas = FALSE
-      ) %>%
-      orderlabel::preamble_rm() %>%
-      dplyr::group_by(
-        .data$prompt
-      ) %>%
-      dplyr::add_tally(
-        .data$n,
-        name = 'new_n'
-      ) %>%
-      dplyr::distinct(
-        .data$prompt,
-        .keep_all = TRUE
-      ) %>%
-      dplyr::mutate(
-        new_n = stringr::str_c(
-          .data$prompt %>%
-            stringr::str_trunc(
-              width = label.length,
-              side = 'right',
-              ellipsis = '...'
-            ) %>%
-            stringr::str_trim(),
-          ': ',
-          .data$new_n
-        )
-      ) %>%
-      dplyr::pull(.data$new_n) %>%
-      stringr::str_flatten(', ') %>%
-      stringr::str_c(
-        ' n = (',
-        .,
-        ')'
-      )
-
-    message(
-      stringr::str_c(
-        'Note: Stem "',
-        q.stem,
-        '" was used to find n sizes.'
-      )
-    )
-
-  }
-
   n
 
 }
@@ -420,7 +367,7 @@ multi_not_grouped <- function(
   data,
   variable,
   q.stem
-){
+) {
 
   n <-
     data %>%
@@ -468,21 +415,19 @@ singles_grouped <- function(
   data,
   variable,
   label.length,
-  multi_stem,
   q.stem
-){
+) {
 
-  if(stringr::str_detect(variable, '^oe_|_TEXT$')){
+  if (stringr::str_detect(variable, '^oe_|_TEXT$')) {
 
     data <-
       data %>%
       dplyr::filter(
-        .data[[variable]] != ''
+        .data[[variable]] != '',
+        .data[[variable]] != 'NA'
       )
 
   }
-
-  if(multi_stem == FALSE){
 
     n <-
       data %>%
@@ -521,173 +466,6 @@ singles_grouped <- function(
         .
       )
 
-  } else {
-
-    group_var_chars <-
-      data %>%
-      dplyr::count(
-        dplyr::group_vars(data)
-      ) %>%
-      forcats::as_factor() %>%
-      dplyr::pull(
-        .data[[dplyr::group_vars(data)]]
-      ) %>%
-      as.character()
-
-
-    for(i in 1:length(group_var_chars)){
-
-
-      if(i == 1){
-
-        n <-
-          data %>%
-          dplyr::ungroup() %>%
-          dplyr::filter(
-            as.character(
-              forcats::as_factor(
-                .data[[dplyr::group_vars(data)]]
-              )
-            ) == group_var_chars[i]
-          ) %>%
-          dplyr::select(
-            tidyselect::starts_with(
-              q.stem
-            ),
-            -tidyselect::ends_with('_TEXT')
-          ) %>%
-          y2clerk::freq(
-            prompt = TRUE,
-            nas = FALSE
-          ) %>%
-          orderlabel::preamble_rm() %>%
-          dplyr::group_by(
-            .data$prompt
-          ) %>%
-          dplyr::add_tally(
-            .data$n,
-            name = 'new_n'
-          ) %>%
-          dplyr::distinct(
-            .data$prompt,
-            .keep_all = TRUE
-          ) %>%
-          dplyr::mutate(
-            new_n = stringr::str_c(
-              .data$prompt %>%
-                stringr::str_trunc(
-                  width = label.length,
-                  side = 'right',
-                  ellipsis = '...'
-                ) %>%
-                stringr::str_trim(),
-              ': ',
-              .data$new_n
-            )
-          ) %>%
-          dplyr::pull(.data$new_n) %>%
-          stringr::str_flatten(', ') %>%
-          stringr::str_c(
-            ' n = (\n',
-            group_var_chars[i] %>%
-              stringr::str_trunc(
-                width = label.length,
-                side = 'right',
-                ellipsis = '...'
-              ) %>%
-              stringr::str_trim(),
-            ' = [',
-            .,
-            ']'
-          )
-
-      } else {
-
-        n <-
-          data %>%
-          dplyr::ungroup() %>%
-          dplyr::filter(
-            as.character(
-              forcats::as_factor(
-                .data[[dplyr::group_vars(data)]]
-              )
-            ) == group_var_chars[i]
-          ) %>%
-          dplyr::select(
-            tidyselect::starts_with(
-              q.stem
-            ),
-            -tidyselect::ends_with('_TEXT')
-          ) %>%
-          y2clerk::freq(
-            prompt = TRUE,
-            nas = FALSE
-          ) %>%
-          orderlabel::preamble_rm() %>%
-          dplyr::group_by(
-            .data$prompt
-          ) %>%
-          dplyr::add_tally(
-            .data$n,
-            name = 'new_n'
-          ) %>%
-          dplyr::distinct(
-            .data$prompt,
-            .keep_all = TRUE
-          ) %>%
-          dplyr::mutate(
-            new_n = stringr::str_c(
-              .data$prompt %>%
-                stringr::str_trunc(
-                  width = label.length,
-                  side = 'right',
-                  ellipsis = '...'
-                ) %>%
-                stringr::str_trim(),
-              ': ',
-              .data$new_n
-            )
-          ) %>%
-          dplyr::pull(.data$new_n) %>%
-          stringr::str_flatten(', ') %>%
-          stringr::str_c(
-            n,
-            ',\n',
-            group_var_chars[i] %>%
-              stringr::str_trunc(
-                width = label.length,
-                side = 'right',
-                ellipsis = '...'
-              ) %>%
-              stringr::str_trim(),
-            ' = [',
-            .,
-            ']'
-          )
-
-      }
-
-
-
-
-    }
-
-    n <-
-      stringr::str_c(
-        n,
-        ')'
-      )
-
-    message(
-      stringr::str_c(
-        'Note: Stem "',
-        q.stem,
-        '" was used to find n sizes.'
-      )
-    )
-
-  }
-
   n
 
 }
@@ -700,7 +478,7 @@ multi_grouped <- function(
   variable,
   q.stem,
   label.length
-){
+) {
 
   n <-
     data %>%
@@ -709,7 +487,7 @@ multi_grouped <- function(
       tidyselect::starts_with(
         q.stem
       ),
-      .data[[dplyr::group_vars(data)]],
+      tidyselect::all_of(dplyr::group_vars(data)),
       -tidyselect::ends_with('_TEXT')
     ) %>%
     dplyr::mutate(
@@ -771,9 +549,9 @@ check_qtypes <- function(
   df,
   q.type,
   variables
-){
+) {
 
-  if('NULL' %in% q.type){
+  if ('NULL' %in% q.type) {
 
     q_type_check <-
       df %>%
@@ -804,9 +582,9 @@ get_questions <- function(
   prompt.rm,
   variables,
   prompt.stem
-){
+) {
 
-  if(prompt.rm == FALSE){
+  if (prompt.rm == FALSE) {
 
     question <-
       df %>%
@@ -815,7 +593,8 @@ get_questions <- function(
         tidyselect::all_of(variables)
       ) %>%
       labelled::var_label() %>%
-      stringr::str_replace_all('\n', ' ') %>%
+      as.vector(mode = 'character') %>%
+      stringr::str_replace_all('[\\r\\n\\t\\v\\f]', ' ') %>%
       stringr::str_squish()
 
   } else {
@@ -827,12 +606,13 @@ get_questions <- function(
         tidyselect::all_of(variables)
       ) %>%
       labelled::var_label() %>%
-      stringr::str_replace_all('\n', ' ') %>%
+      as.vector(mode = 'character') %>%
+      stringr::str_replace_all('[\\r\\n\\t\\v\\f]', ' ') %>%
       stringr::str_remove(' - .+') %>%
       stringr::str_remove(
         stringr::str_c(
           prompt.stem,
-          '.+')
+          '.*')
       ) %>%
       stringr::str_trim() %>%
       stringr::str_squish()
@@ -847,8 +627,9 @@ get_questions <- function(
 get_stems <- function(
   variables,
   q.text,
-  q.type
-){
+  q.type,
+  label_length
+) {
 
   possible_stems <-
     tibble::tibble(

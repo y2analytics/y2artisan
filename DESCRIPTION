@@ -1,7 +1,7 @@
 Package: y2artisan
 Type: Package
 Title: Shortcuts for mschart and ggplot2
-Version: 0.6.5
+Version: 0.7.0
 Authors@R: c(
     person("Nick", "Moffitt", email = "nicksmoffitt@gmail.com", role = c("aut", "cre")),
     person('Pearce', 'Solomon', email = 'pearce@y2analytics.com', role = 'aut'),
@@ -19,7 +19,6 @@ Imports:
     magrittr,
     mschart (>= 0.4.0),
     officer,
-    orderlabel,
     purrr,
     rlang,
     scales,
@@ -32,5 +31,6 @@ Imports:
     y2clerk
 Suggests:
     htmltools (>= 0.5.1.1),
+    orderlabel,
     testthat (>= 3.0.0)
 RoxygenNote: 7.2.3

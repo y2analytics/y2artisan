@@ -2,39 +2,29 @@
 % Please edit documentation in R/footer_y2.R
 \name{footer_y2}
 \alias{footer_y2}
-\alias{ms_footer_y2}
 \title{Create a string with question wording and n-size}
 \usage{
 footer_y2(
   dataset,
   ...,
   q_type = "NULL",
-  label_length = 15,
-  prompt_rm = TRUE,
-  after_symbol = "Select all that apply"
-)
-
-ms_footer_y2(
-  dataset,
-  ...,
-  q_type = "NULL",
-  label_length = 15,
+  label_length = 100,
   prompt_rm = TRUE,
   after_symbol = "Select all that apply"
 )
 }
 \arguments{
-\item{dataset}{Haven labelled dataset from which to pull the variable}
+\item{dataset}{Haven labelled dataset from which to pull the variable(s)}
 
 \item{...}{Unquoted variables}
 
 \item{q_type}{DEFAULT = 'NULL'; When 'NULL', footer_y2() will automatically choose the variable type when standard Y2 naming conventions are used. When variables have non-standard names, accepts list of any of c('s', 'm', 'oe', 'r', 'sl', 'md', 'n') used to specify question type. s = single select, m = multiple select, etc.}
 
-\item{label_length}{DEFAULT = 15; Truncates labels to length 15 for groups and matrix questions and adds a '...' where truncation has occurred.}
+\item{label_length}{DEFAULT = 100; Truncates question labels to specified length and adds a '...' where truncation has occurred.}
 
-\item{prompt_rm}{DEFAULT TRUE; Attempts to better format the question by removing hard returns and removing the prompt for multi-select type questions. TRUE is needed in order to identify common stems.}
+\item{prompt_rm}{DEFAULT TRUE; Attempts to better format the question by removing hard returns, white space, and anything after " - " or the input of the "after_symbol" argument. TRUE is needed in order to identify common stems.}
 
-\item{after_symbol}{DEFAULT = 'Select all that apply'; Removes all question text after and including the provided symbol.}
+\item{after_symbol}{DEFAULT = 'Select all that apply'; Removes all question text after and including the provided symbol. Must match upper/lower case of question wording.}
 }
 \description{
 Pipe in the dataset (responses) and specify variables. Save out the nicely formatted string to an object to pass to the footer of an ms chart.

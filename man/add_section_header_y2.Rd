@@ -30,11 +30,9 @@ This function adds a new PowerPoint section header along with a title box
 # Before adding additional slides, charts, or tables onto a powerpoint,
 # you must first read a powerpoint into R
 \dontrun{
-doc <- read_pptx('~/Dropbox (Y2 Analytics)/Y2 Analytics Team Folder/
-Projects/Qualtrics/2021 Qualtrics Template Condensed.pptx')
-
+doc <- read_pptx('~/Y2 Analytics Dropbox/Y2 Analytics Team Folder/Projects/
+Qualtrics/2021 Template and Resources/Template for mscharts.pptx')
 doc <- add_section_header_y2()
-
 print(doc, '~/Desktop/test.pptx')
 }
 }
