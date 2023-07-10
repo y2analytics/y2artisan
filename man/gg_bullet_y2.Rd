@@ -19,7 +19,7 @@ gg_bullet_y2(
   chart_width = 11,
   direction = c("vertical", "horizontal"),
   fills,
-  font_family = "flama",
+  font_family = "Flama",
   label_length = 45,
   label_size = 6,
   legend_pos = "top",
@@ -66,7 +66,7 @@ gg_bullet_y2(
 
 \item{fills}{NO DEFAULT; requires a vector of colors for all levels of the color_var/grouping variable}
 
-\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+\item{font_family}{DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 

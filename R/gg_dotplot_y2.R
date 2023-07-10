@@ -12,7 +12,7 @@
 #' @param axis_title_size DEFAULT = 14; Font size for x_label and y_label.
 #' @param direction DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR "vertical"
 #' @param fills DEFAULT = 'NULL'; requires a vector of colors for all levels of the color_var/grouping variable. Otherwise, it will run fills as default ggplot2 colors.
-#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
 #' @param legend_pos DEFAULT = 'top'
@@ -58,7 +58,7 @@ gg_dotplot_y2 <- function(
   axis_title_size = 14,
   direction = c('horizontal', 'vertical'),
   fills = 'NULL',
-  font_family = 'flama',
+  font_family = 'Flama',
   label_length = 45,
   legend_pos = 'top',
   legend_nrow = NULL,
@@ -75,7 +75,13 @@ gg_dotplot_y2 <- function(
   x_max = 0 # auto-fills
 ) {
   ### Set defaults
-  label <- result <- group_var <- NULL
+  if (
+    (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+  ) {
+    stop("The font you specified in the 'font_family' argument does not exist in your R session")
+  }
+
+    label <- result <- group_var <- NULL
   direction <- rlang::arg_match(direction)
 
   max_x_value <- data %>% dplyr::summarise(max({{x_var}})) %>% as.numeric()

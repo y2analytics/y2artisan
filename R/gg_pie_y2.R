@@ -8,7 +8,7 @@
 #' @param y_var DEFAULT = result; When using the freqs function, will typically be result (is by default).
 #' @param colors DEFAULT is white ('#ffffff') for the text of all percent labels; You may also 1) Specify 1 color, and this color will be applied to all color_var levels or 2) Specify a vector of colors for each individual level of the color_var
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the x_var
-#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param label_length DEFAULT = 15; This determines how many characters a label on a pie slice can be before R inserts a line break.
 #' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
@@ -33,7 +33,7 @@ gg_pie_y2 <- function(
   y_var = result,
   colors = '#ffffff',
   fills, #only variable with no default...
-  font_family = 'flama',
+  font_family = 'Flama',
   label_length = 15,
   label_size = 10,
   legend_pos = 'none',
@@ -45,7 +45,6 @@ gg_pie_y2 <- function(
 
   ### Check fonts
   if (
-    font_family == 'flama' &
     (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
   ) {
     stop("The font you specified in the 'font_family' argument does not exist in your R session")
@@ -122,7 +121,7 @@ if (legend_pos != 'none') {
       values = fills
     ) +
     ggplot2::scale_color_manual(
-      guide = FALSE,
+      guide = 'none',
       values = colors
     ) +
     ggplot2::ggtitle(

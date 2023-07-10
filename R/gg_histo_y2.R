@@ -11,7 +11,7 @@
 #' @param bins DEFAULT = 30; The number of bins. Same as the ggplot2 function, geom_histogram
 #' @param binwidth DEFAULT = NULL; The number of units in the x_var that fit in a bin. Overrides the bins argument
 #' @param color_mean_line DEFAULT = '#474747', a gray/black color
-#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param mean_line DEFAULT = "mean", must be one of c("mean", "median", "none")
 #' @param quadrant_lines DEFAULT = FALSE. Set to TRUE to display dotted lines on the 25th and 75th percentiles
 #' @param weight_var DEFAULT = NULL; set to your weights variable if working with weighted data
@@ -37,7 +37,7 @@ gg_histo_y2 <- function(
   bins = NULL,
   binwidth = NULL,
   color_mean_line = '#474747',
-  font_family = 'flama',
+  font_family = 'Flama',
   mean_line = c("mean", "median", "none"),
   quadrant_lines = FALSE,
   weight_var = NULL,
@@ -47,13 +47,11 @@ gg_histo_y2 <- function(
 ){
 
 ### Check fonts
-if(
-  font_family == 'flama' &
-  (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
-){
-  stop("The font you specified in the 'font_family' argument does not exist in your R session")
-}
-
+  if (
+    (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+  ) {
+    stop("The font you specified in the 'font_family' argument does not exist in your R session")
+  }
 
 
 ### Flags

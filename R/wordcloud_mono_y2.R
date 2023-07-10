@@ -9,7 +9,7 @@
 #' @param max_size DEFAULT = 12; the largest text size for the word with the highest frequency#' @keywords openend open end wordcloud word cloud
 #' @param min_size DEFAULT = 1; the smallest text size for the word with the lowest frequency
 #' @param top_x DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end
-#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @export
 #' @examples
 #' responses <- tibble::tibble(
@@ -32,9 +32,16 @@ wordcloud_mono_y2 <- function(
   colors = '#474E7E',
   max_size = 12,
   min_size = 1,
-  font_family = 'flama',
+  font_family = 'Flama',
   top_x = 50
 ) {
+
+  if (
+    (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+  ) {
+    stop("The font you specified in the 'font_family' argument does not exist in your R session")
+  }
+
   flag_var <- dplyr::enquo(variable)
   frequencies <- openend_y2(dataset, !!flag_var, top_x)
   chart <- ggplot2::ggplot(
@@ -53,8 +60,8 @@ wordcloud_mono_y2 <- function(
       segment.size = 0,
       family = font_family
     ) +
-    ggplot2::scale_color_manual(values = colors, guide = FALSE) +
-    ggplot2::scale_size(range = c(min_size, max_size), guide = FALSE) +
+    ggplot2::scale_color_manual(values = colors, guide = 'none') +
+    ggplot2::scale_size(range = c(min_size, max_size), guide = 'none') +
     ggplot2::scale_y_continuous(breaks = NULL) +
     ggplot2::scale_x_continuous(breaks = NULL) +
   ggplot2::theme_minimal()+

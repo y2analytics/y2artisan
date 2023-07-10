@@ -10,7 +10,7 @@ gg_pie_y2(
   y_var = result,
   colors = "#ffffff",
   fills,
-  font_family = "flama",
+  font_family = "Flama",
   label_length = 15,
   label_size = 10,
   legend_pos = "none",
@@ -31,7 +31,7 @@ gg_pie_y2(
 
 \item{fills}{NO DEFAULT; requires a vector of colors for all levels of the x_var}
 
-\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+\item{font_family}{DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{label_length}{DEFAULT = 15; This determines how many characters a label on a pie slice can be before R inserts a line break.}
 

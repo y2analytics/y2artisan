@@ -16,7 +16,7 @@
 #' @param chart_width DEFAULT = 11, If saving out a horizontal bar chart with a different width, set the width here to have the nudge argument adjust itself automatically
 #' @param direction DEFAULT = 'vertical'; Two options: "vertical" (default) OR "horizontal"
 #' @param fills DEFAULT = '#474E7E', the purple Qualtrics color. Three options: 1) Give only 1 color, all bars will be that color. 2) Specify the color for every bar using a vector of colors. 3) Set the "color_var" argument to a variable in the data frame and specify a color for each level in the color_var.
-#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 10. Adjusts the size of the percent labels over each bar.
 #' @param legend_pos DEFAULT = 'none'
@@ -55,7 +55,7 @@ gg_single_y2 <- function(
   chart_width = 11,
   direction = c('vertical', 'horizontal'),
   fills = '#474E7E',
-  font_family = 'flama',
+  font_family = 'Flama',
   label_length = 45,
   label_size = 10,
   legend_pos = 'none',
@@ -73,13 +73,11 @@ gg_single_y2 <- function(
 ) {
 
 ### Check fonts
-if(
-  font_family == 'flama' &
-  (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
-  ){
-  stop("The font you specified in the 'font_family' argument does not exist in your R session")
-}
-
+  if (
+    (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+  ) {
+    stop("The font you specified in the 'font_family' argument does not exist in your R session")
+  }
 
 
 ### Flags
@@ -187,7 +185,7 @@ if(
       values = fills
     ) +
     ggplot2::scale_color_manual(
-      guide = FALSE,
+      guide = 'none',
       values = fills
     ) +
     ggplot2::ggtitle(

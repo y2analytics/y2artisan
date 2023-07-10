@@ -10,7 +10,7 @@ wordcloud_y2(
   colors = "bluepurple",
   max_size = 12,
   min_size = 1,
-  font_family = "flama",
+  font_family = "Flama",
   top_x = 50
 )
 }
@@ -25,7 +25,7 @@ wordcloud_y2(
 
 \item{min_size}{DEFAULT = 1; the smallest text size for the word with the lowest frequency}
 
-\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+\item{font_family}{DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{top_x}{DEFAULT = 50; Shows the top X most commonly mentioned words you want to see from the open-end}
 }
