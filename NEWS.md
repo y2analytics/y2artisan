@@ -1,3 +1,12 @@
+# y2artisan 0.8.0
+## Breaking changes
+* all gg_* functions now have the default font of "Flama" rather than "flama"
+## New features
+* `gg_donut_y2` has a new argument *center_label* with a default of 'NULL'. When set to 'NULL', each individual level of the donut chart will have a label over its respective section. If set to a specific value of the color_var, that percentage will appear in the center without a label, and no other labels will appear on the donut chart.
+## Bug fixes
+* Deprecated ggplot code fixed for gg_* functions. Better warnings for missing fonts
+
+
 # y2artisan 0.7.0
 ## New Functions
 * `gg_donut_y2` - Creates a donut chart ggplot object

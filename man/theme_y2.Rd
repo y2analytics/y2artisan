@@ -4,10 +4,10 @@
 \alias{theme_y2}
 \title{Add the classic y2 theme to any ggplot2 chart}
 \usage{
-theme_y2(font_family = "flama")
+theme_y2(font_family = "Flama")
 }
 \arguments{
-\item{font_family}{DEFAULT = 'flama'}
+\item{font_family}{DEFAULT = 'Flama'}
 }
 \description{
 All y2artisan charts already have the y2 theme built in, but if you're creating a more custom ggplot2 chart and want to add the classic y2 theme, use theme_y2()

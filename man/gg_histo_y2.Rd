@@ -13,7 +13,7 @@ gg_histo_y2(
   bins = NULL,
   binwidth = NULL,
   color_mean_line = "#474747",
-  font_family = "flama",
+  font_family = "Flama",
   mean_line = c("mean", "median", "none"),
   quadrant_lines = FALSE,
   weight_var = NULL,
@@ -39,7 +39,7 @@ gg_histo_y2(
 
 \item{color_mean_line}{DEFAULT = '#474747', a gray/black color}
 
-\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+\item{font_family}{DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{mean_line}{DEFAULT = "mean", must be one of c("mean", "median", "none")}
 

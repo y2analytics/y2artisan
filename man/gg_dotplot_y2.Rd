@@ -14,7 +14,7 @@ gg_dotplot_y2(
   axis_title_size = 14,
   direction = c("horizontal", "vertical"),
   fills = "NULL",
-  font_family = "flama",
+  font_family = "Flama",
   label_length = 45,
   legend_pos = "top",
   legend_nrow = NULL,
@@ -50,7 +50,7 @@ gg_dotplot_y2(
 
 \item{fills}{DEFAULT = 'NULL'; requires a vector of colors for all levels of the color_var/grouping variable. Otherwise, it will run fills as default ggplot2 colors.}
 
-\item{font_family}{DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
+\item{font_family}{DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions}
 
 \item{label_length}{DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.}
 

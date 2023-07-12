@@ -17,7 +17,7 @@
 #' @param direction DEFAULT = 'horizontal'; Two options: "vertical" OR "horizontal" (default)
 #' @param erase_labels DEFAULT = .01; all percent labels less than or equal to erase_labels will be erased to avoid clutter and overlapping labels. This argument pulls from the value in the result column of the dataframe being used
 #' @param fills NO DEFAULT; requires a vector of colors for all levels of the color_var
-#' @param font_family DEFAULT = 'flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
+#' @param font_family DEFAULT = 'Flama'; all fonts used need to be previously loaded in using the font_add() and showtext_auto() functions
 #' @param label_length DEFAULT = 45 for horizontal charts and 15 for vertical charts. This determines how many characters an x-axis label can be before R inserts a line break.
 #' @param label_size DEFAULT = 8. Adjusts the size of the percent labels within each bar.
 #' @param legend_nrow DEFAULT = NULL; Change to a numeric to specify the number of rows for the legend
@@ -79,7 +79,7 @@ gg_stacked_y2 <- function(
   direction = c("horizontal", 'vertical'),
   erase_labels = .01,
   fills, #only argument with no default
-  font_family = 'flama',
+  font_family = 'Flama',
   label_length = 45,
   label_size = 8,
   legend_nrow = NULL,
@@ -96,13 +96,11 @@ gg_stacked_y2 <- function(
 ) {
 
 ### Check fonts
-if(
-  font_family == 'flama' &
-  (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
-){
-  stop("The font you specified in the 'font_family' argument does not exist in your R session")
-}
-
+  if (
+    (stringr::str_detect(sysfonts::font_families(), font_family) %>% sum == 0)
+  ) {
+    stop("The font you specified in the 'font_family' argument does not exist in your R session")
+  }
 
 
 ### Flags
@@ -195,7 +193,7 @@ cond_direction <- if(direction == 'horizontal'){
       values = fills
     ) +
     ggplot2::scale_color_manual(
-      guide = FALSE,
+      guide = 'none',
       values = colors
     ) +
     ggplot2::ggtitle(
