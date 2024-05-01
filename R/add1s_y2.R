@@ -17,9 +17,9 @@
 #' @param title_bg_color DEFAULT: '#1A497A; Background color of slide title text box (only used for Municipal style reports)
 #' @param commentary_bg_color DEFAULT: '#9EBCDB; Background color of slide commentary text box (only used for Municipal style reports)
 #' @param footer_left DEFAULT = NULL; how far footer will start from left of slide. If no value provided, defaults to approximately 0.35 for either report style
-#' @param footer_top DEFAULT = 2; how far footer will start from top of slide. If no value provided, defaults to approximately 7 for either report style
-#' @param footer_width DEFAULT = 5; height of footer on slide. If no value provided, defaults to approximately 11.5 for either report style
-#' @param footer_height DEFAULT = 12; width of footer on slide. If no value provided, defaults to approximately 0.5 for either report style
+#' @param footer_top DEFAULT = NULL; how far footer will start from top of slide. If no value provided, defaults to approximately 7 for either report style
+#' @param footer_width DEFAULT = NULL; height of footer on slide. If no value provided, defaults to approximately 11.5 for either report style
+#' @param footer_height DEFAULT = NULL; width of footer on slide. If no value provided, defaults to approximately 0.5 for either report style
 #' @keywords powerpoint slide
 #' @export
 #' @examples
@@ -61,77 +61,59 @@ add1s_y2 <- function(
   report_style <- rlang::arg_match(report_style)
   
   # Set NULL values from report style
-  if (is.null(title_color)) {
-    if (report_style == 'qualtrics') {
-      title_color <- 'black'
-    } else {
-      title_color <- 'white'
-    }
-  }
+  title_color <- dplyr::case_when(
+    is.null(title_color) & report_style == 'qualtrics' ~ 'black',
+    is.null(title_color) & report_style == 'municipal' ~ 'white',
+    TRUE ~ title_color
+  )
   
-  if (is.null(commentary_color)) {
-    if (report_style == 'qualtrics') {
-      commentary_color <- 'black'
-    } else {
-      commentary_color <- 'white'
-    }
-  }
+  commentary_color <- dplyr::case_when(
+    is.null(commentary_color) & report_style == 'qualtrics' ~ 'black',
+    is.null(commentary_color) & report_style == 'municipal' ~ 'white',
+    TRUE ~ commentary_color
+  )
   
-  if (is.null(footer_color)) {
-    if (report_style == 'qualtrics') {
-      footer_color <- 'black'
-    } else {
-      footer_color <- '#222222'
-    }
-  }
+  footer_color <- dplyr::case_when(
+    is.null(footer_color) & report_style == 'qualtrics' ~ 'black',
+    is.null(footer_color) & report_style == 'municipal' ~ '#222222',
+    TRUE ~ footer_color
+  )
   
-  if (is.null(font_title)) {
-    if (report_style == 'qualtrics') {
-      font_title <- 'BentonSans Regular'
-    } else {
-      font_title <- 'Flama Medium'
-    }
-  }
+  font_title <- dplyr::case_when(
+    is.null(font_title) & report_style == 'qualtrics' ~ 'BentonSans Regular',
+    is.null(font_title) & report_style == 'municipal' ~ 'Flama Medium',
+    TRUE ~ font_title
+  )
   
-  if (is.null(font_text)) {
-    if (report_style == 'qualtrics') {
-      font_text <- 'BentonSans Regular'
-    } else {
-      font_text <- 'Flama Light'
-    }
-  }
+  font_text <- dplyr::case_when(
+    is.null(font_text) & report_style == 'qualtrics' ~ 'BentonSans Regular',
+    is.null(font_text) & report_style == 'municipal' ~ 'Flama Light',
+    TRUE ~ font_text
+  )
   
-  if (is.null(footer_left)) {
-    if (report_style == 'qualtrics') {
-      footer_left <- 0.5
-    } else {
-      footer_left <- 0.24
-    }
-  }
+  footer_left <- dplyr::case_when(
+    is.null(footer_left) & report_style == 'qualtrics' ~ 0.5,
+    is.null(footer_left) & report_style == 'municipal' ~ 0.24,
+    TRUE ~ footer_left
+  )
   
-  if (is.null(footer_top)) {
-    if (report_style == 'qualtrics') {
-      footer_top <- 7
-    } else {
-      footer_top <- 7.1
-    }
-  }
+  footer_top <- dplyr::case_when(
+    is.null(footer_top) & report_style == 'qualtrics' ~ 7,
+    is.null(footer_top) & report_style == 'municipal' ~ 7.1,
+    TRUE ~ footer_top
+  )
   
-  if (is.null(footer_width)) {
-    if (report_style == 'qualtrics') {
-      footer_width <- 10.5
-    } else {
-      footer_width <- 12.76
-    }
-  }
+  footer_width <- dplyr::case_when(
+    is.null(footer_width) & report_style == 'qualtrics' ~ 10.5,
+    is.null(footer_width) & report_style == 'municipal' ~ 12.76,
+    TRUE ~ footer_width
+  )
   
-  if (is.null(footer_height)) {
-    if (report_style == 'qualtrics') {
-      footer_height <- 0.5
-    } else {
-      footer_height <- 0.4
-    }
-  }
+  footer_height <- dplyr::case_when(
+    is.null(footer_height) & report_style == 'qualtrics' ~ 0.5,
+    is.null(footer_height) & report_style == 'municipal' ~ 0.4,
+    TRUE ~ footer_height
+  )
   
   # New blank slide
   if (report_style == 'qualtrics') {
@@ -147,7 +129,7 @@ add1s_y2 <- function(
       
       doc <- doc %>% add_title_findings(title, title_color, font_title, report_style)
       doc <- doc %>% add_commentary_findings(commentary, commentary_color, font_text, report_style)
-      doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style, footer_left, footer_top, footer_width, footer_height)
+      doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style)
       
     }
     
@@ -160,7 +142,7 @@ add1s_y2 <- function(
       
       doc <- doc %>% add_title_findings(title, title_color, font_title, report_style, title_bg_color)
       doc <- doc %>% add_commentary_findings(commentary, commentary_color, font_text, report_style, commentary_bg_color)
-      doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style)
+      doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style, footer_left, footer_top, footer_width, footer_height)
       
     }
 
