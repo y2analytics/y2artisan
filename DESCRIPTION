@@ -28,7 +28,8 @@ Imports:
     tibble,
     tidyselect,
     tidyr,
-    y2clerk
+    y2clerk,
+    flextable
 Suggests:
     htmltools (>= 0.5.1.1),
     orderlabel,
