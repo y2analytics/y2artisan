@@ -23,9 +23,9 @@
 #' @param height DEFAULT = 5; height of chart on slide
 #' @param width DEFAULT = 12; width of chart on slide
 #' @param footer_left DEFAULT = NULL; how far footer will start from left of slide. If no value provided, defaults to approximately 0.35 for either report style
-#' @param footer_top DEFAULT = 2; how far footer will start from top of slide. If no value provided, defaults to approximately 7 for either report style
-#' @param footer_width DEFAULT = 5; height of footer on slide. If no value provided, defaults to approximately 11.5 for either report style
-#' @param footer_height DEFAULT = 12; width of footer on slide. If no value provided, defaults to approximately 0.5 for either report style
+#' @param footer_top DEFAULT = NULL; how far footer will start from top of slide. If no value provided, defaults to approximately 7 for either report style
+#' @param footer_width DEFAULT = NULL; height of footer on slide. If no value provided, defaults to approximately 11.5 for either report style
+#' @param footer_height DEFAULT = NULL; width of footer on slide. If no value provided, defaults to approximately 0.5 for either report style
 #' @keywords chart table
 #' @export
 #' @examples
