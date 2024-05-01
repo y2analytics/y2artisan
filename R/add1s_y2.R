@@ -61,59 +61,59 @@ add1s_y2 <- function(
   report_style <- rlang::arg_match(report_style)
   
   # Set NULL values from report style
-  title_color <- dplyr::case_when(
-    is.null(title_color) & report_style == 'qualtrics' ~ 'black',
-    is.null(title_color) & report_style == 'municipal' ~ 'white',
-    TRUE ~ title_color
-  )
+  if (is.null(title_color) & report_style == 'qualtrics') {
+    title_color <- 'black'
+  } else if (is.null(title_color) & report_style == 'municipal') {
+    title_color <- 'white'
+  }
   
-  commentary_color <- dplyr::case_when(
-    is.null(commentary_color) & report_style == 'qualtrics' ~ 'black',
-    is.null(commentary_color) & report_style == 'municipal' ~ 'white',
-    TRUE ~ commentary_color
-  )
+  if (is.null(commentary_color) & report_style == 'qualtrics') {
+    commentary_color <- 'black'
+  } else if (is.null(commentary_color) & report_style == 'municipal') {
+    commentary_color <- 'white'
+  }
   
-  footer_color <- dplyr::case_when(
-    is.null(footer_color) & report_style == 'qualtrics' ~ 'black',
-    is.null(footer_color) & report_style == 'municipal' ~ '#222222',
-    TRUE ~ footer_color
-  )
+  if (is.null(footer_color) & report_style == 'qualtrics') {
+    footer_color <- 'black'
+  } else if (is.null(footer_color) & report_style == 'municipal') {
+    footer_color <- '#222222'
+  }
   
-  font_title <- dplyr::case_when(
-    is.null(font_title) & report_style == 'qualtrics' ~ 'BentonSans Regular',
-    is.null(font_title) & report_style == 'municipal' ~ 'Flama Medium',
-    TRUE ~ font_title
-  )
+  if (is.null(font_title) & report_style == 'qualtrics') {
+    font_title <- 'BentonSans Regular'
+  } else if (is.null(font_title) & report_style == 'municipal') {
+    font_title <- 'Flama Medium'
+  }
   
-  font_text <- dplyr::case_when(
-    is.null(font_text) & report_style == 'qualtrics' ~ 'BentonSans Regular',
-    is.null(font_text) & report_style == 'municipal' ~ 'Flama Light',
-    TRUE ~ font_text
-  )
+  if (is.null(font_text) & report_style == 'qualtrics') {
+    font_text <- 'BentonSans Regular'
+  } else if (is.null(font_text) & report_style == 'municipal') {
+    font_text <- 'Flama Light'
+  }
   
-  footer_left <- dplyr::case_when(
-    is.null(footer_left) & report_style == 'qualtrics' ~ 0.5,
-    is.null(footer_left) & report_style == 'municipal' ~ 0.24,
-    TRUE ~ footer_left
-  )
+  if (is.null(footer_left) & report_style == 'qualtrics') {
+    footer_left <- 0.5
+  } else if (is.null(footer_left) & report_style == 'municipal') {
+    footer_left <- 0.24
+  }
   
-  footer_top <- dplyr::case_when(
-    is.null(footer_top) & report_style == 'qualtrics' ~ 7,
-    is.null(footer_top) & report_style == 'municipal' ~ 7.1,
-    TRUE ~ footer_top
-  )
+  if (is.null(footer_top) & report_style == 'qualtrics') {
+    footer_top <- 7
+  } else if (is.null(footer_top) & report_style == 'municipal') {
+    footer_top <- 7.1
+  }
   
-  footer_width <- dplyr::case_when(
-    is.null(footer_width) & report_style == 'qualtrics' ~ 10.5,
-    is.null(footer_width) & report_style == 'municipal' ~ 12.76,
-    TRUE ~ footer_width
-  )
+  if (is.null(footer_width) & report_style == 'qualtrics') {
+    footer_width <- 10.5
+  } else if (is.null(footer_width) & report_style == 'municipal') {
+    footer_width <- 12.76
+  }
   
-  footer_height <- dplyr::case_when(
-    is.null(footer_height) & report_style == 'qualtrics' ~ 0.5,
-    is.null(footer_height) & report_style == 'municipal' ~ 0.4,
-    TRUE ~ footer_height
-  )
+  if (is.null(footer_height) & report_style == 'qualtrics') {
+    footer_height <- 0.5
+  } else if (is.null(footer_height) & report_style == 'municipal') {
+    footer_height <- 0.4
+  }
   
   # New blank slide
   if (report_style == 'qualtrics') {
