@@ -34,18 +34,18 @@ add_section_header_y2 <- function(
   report_style <- rlang::arg_match(report_style)
   
   # Null (default) master names
-  master_name <- dplyr::case_when(
-    is.null(master_name) & report_style == 'qualtrics' ~ '1_Office Theme',
-    is.null(master_name) & report_style == 'municipal' ~ 'Office Theme',
-    TRUE ~ master_name
-  )
+  if (is.null(master_name) & report_style == 'qualtrics') {
+    master_name <- '1_Office Theme'
+  } else if (is.null(master_name) & report_style == 'municipal') {
+    master_name <- 'Office Theme'
+  }
   
   # Null (default) section header names
-  slide_name <- dplyr::case_when(
-    is.null(slide_name) & report_style == 'qualtrics' ~ 'XM Sidebar (1)',
-    is.null(slide_name) & report_style == 'municipal' ~ 'Section Header',
-    TRUE ~ slide_name
-  )
+  if (is.null(slide_name) & report_style == 'qualtrics') {
+    slide_name <- 'XM Sidebar (1)'
+  } else if (is.null(slide_name) & report_style == 'municipal') {
+    slide_name <- 'Section Header'
+  }
   
   # New slide with section header text
   doc <- officer::add_slide(
