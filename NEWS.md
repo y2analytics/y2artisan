@@ -1,6 +1,6 @@
 # y2artisan 0.8.1
 ## New features
-* Functions used to automatically create and populate powerpoint slides with charts (`add_section_header_y2`, `add1s_y2`, and `add1c_y2` can now be used to automate municipal style reports of a given style guide. Functions have a new argument called "report_style" which can be used to specify the style of report being made.
+* Functions used to automatically create and populate powerpoint slides with charts (`add_section_header_y2`, `add1s_y2`, and `add1c_y2`) can now be used to automate municipal style reports of a given style guide. Functions have a new argument called "report_style" which can be used to specify the style of report being made.
 ## New Functions
 * `add_legend_y2` - Creates a powerpoint table legend with colored legend keys using flextable and adds it to the report
 
