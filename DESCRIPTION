@@ -12,6 +12,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
+    flextable,
     forcats,
     ggplot2,
     ggrepel,
@@ -28,13 +29,9 @@ Imports:
     tibble,
     tidyselect,
     tidyr,
-    y2clerk,
-    flextable
+    y2clerk
 Suggests:
     htmltools (>= 0.5.1.1),
     orderlabel,
     testthat (>= 3.0.0)
 RoxygenNote: 7.2.3
-Remotes:
-    y2analytics/y2clerk,
-    y2analytics/orderlabel
