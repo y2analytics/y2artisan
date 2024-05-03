@@ -29,12 +29,12 @@ Imports:
     tidyselect,
     tidyr,
     y2clerk,
-    orderlabel,
     flextable
+Suggests:
+    htmltools (>= 0.5.1.1),
+    orderlabel,
+    testthat (>= 3.0.0)
+RoxygenNote: 7.2.3
 Remotes:
     y2analytics/y2clerk,
     y2analytics/orderlabel
-Suggests:
-    htmltools (>= 0.5.1.1),
-    testthat (>= 3.0.0)
-RoxygenNote: 7.2.3
