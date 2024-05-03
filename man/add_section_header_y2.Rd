@@ -7,19 +7,22 @@
 add_section_header_y2(
   title = "Title",
   n = "1",
-  slide_name = "XM Sidebar (1)",
-  master_name = "1_Office Theme",
+  report_style = c("qualtrics", "municipal"),
+  master_name = NULL,
+  slide_name = NULL,
   text_boxes = TRUE
 )
 }
 \arguments{
 \item{title}{DEFAULT: "Title"; Add a title in quotes here to have your Section Headers put in for you by R}
 
-\item{n}{DEFAULT: "1"; The number added to your section header. If section 2, put "2", etc.}
+\item{n}{DEFAULT: "1"; The number added to your section header (for Qualtrics style reports only). If section 2, put "2", etc.}
 
-\item{slide_name}{DEFAULT: "Section Header"; The name of the type of the PP slide you want added to the PP}
+\item{report_style}{DEFAULT: "qualtrics"; The report style/template you are using -- must be either 'qualtrics' or 'municipal'}
 
-\item{master_name}{DEFAULT: "Office Theme"; The name of the PP master layout that the slide_name comes from}
+\item{master_name}{DEFAULT: NULL; The name of the PP master layout that the slide_name comes from. If no argument provided and the report style is 'qualtrics', defaults to "1_Office Theme"; if no argument provided and the report style is 'municipal', defaults to "Office Theme".}
+
+\item{slide_name}{DEFAULT: "Section Header; The name of the type of the PP slide you want added to the PP}
 
 \item{text_boxes}{DEFAULT = TRUE; Automatically adds a title and section number. Set to FALSE for no text boxes}
 }

@@ -10,17 +10,25 @@ add1c_y2(
   commentary = "Commentary",
   footer = "Footer",
   add_slide = TRUE,
+  report_style = c("qualtrics", "municipal"),
   text_boxes = TRUE,
   slide_name = "Blank",
   master_name = "1_Office Theme",
-  title_color = "Black",
-  commentary_color = "Black",
-  footer_color = "Black",
-  font_family = "BentonSans Regular",
+  title_color = NULL,
+  commentary_color = NULL,
+  footer_color = NULL,
+  font_title = NULL,
+  font_text = NULL,
+  title_bg_color = "#1A497A",
+  commentary_bg_color = "#9EBCDB",
   left_start = 0.5,
   top_start = 1.8,
   height = 5.6,
-  width = 12.25
+  width = 12.25,
+  footer_left = NULL,
+  footer_top = NULL,
+  footer_width = NULL,
+  footer_height = NULL
 )
 }
 \arguments{
@@ -40,13 +48,19 @@ add1c_y2(
 
 \item{master_name}{DEFAULT = "Office Theme"; The name of the PP master layout that the slide_name comes from}
 
-\item{title_color}{DEFAULT: 'Black'; Color or hexcode for slide title}
+\item{title_color}{DEFAULT: NULL; Color or hexcode for slide title. If no value provided, will be set to black for Qualtrics style reports and white for Municipal style reports}
 
-\item{commentary_color}{DEFAULT: 'Black'; Color or hexcode for slide commentary}
+\item{commentary_color}{DEFAULT: NULL; Color or hexcode for slide commentary If no value provided, will be set to black for Qualtrics style reports and white for Municipal style reports}
 
-\item{footer_color}{DEFAULT: 'Black'; Color or hexcode for slide footer}
+\item{footer_color}{DEFAULT: NULL; Color or hexcode for slide footer. If no value provided, will be set to black for Qualtrics style reports and white for Municipal style reports}
 
-\item{font_family}{DEFAULT: 'BentonSans Regular'; font for slide title, commentary, and footer}
+\item{font_title}{DEFAULT: NULL; font for slide title. If no value provided, will be set to 'BentonSans Regular' for Qualtrics style reports and 'Flama Medium' for Municipal style reports}
+
+\item{font_text}{DEFAULT: NULL; font for slide text boxes and footer. If no value provided, will be set to 'BentonSans Regular' for Qualtrics style reports and 'Flama Light' for Municipal style reports}
+
+\item{title_bg_color}{DEFAULT: '#1A497A; Background color of slide title text box (only used for Municipal style reports)}
+
+\item{commentary_bg_color}{DEFAULT: '#9EBCDB; Background color of slide commentary text box (only used for Municipal style reports)}
 
 \item{left_start}{DEFAULT = .5; how far chart will start from left of slide}
 
@@ -55,6 +69,14 @@ add1c_y2(
 \item{height}{DEFAULT = 5; height of chart on slide}
 
 \item{width}{DEFAULT = 12; width of chart on slide}
+
+\item{footer_left}{DEFAULT = NULL; how far footer will start from left of slide. If no value provided, defaults to approximately 0.35 for either report style}
+
+\item{footer_top}{DEFAULT = NULL; how far footer will start from top of slide. If no value provided, defaults to approximately 7 for either report style}
+
+\item{footer_width}{DEFAULT = NULL; height of footer on slide. If no value provided, defaults to approximately 11.5 for either report style}
+
+\item{footer_height}{DEFAULT = NULL; width of footer on slide. If no value provided, defaults to approximately 0.5 for either report style}
 }
 \description{
 This function adds a new PowerPoint slide and fits 1 chart/table/other object onto it. For this function to work, you need a powerpoint object saved into R called "doc"

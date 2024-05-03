@@ -29,46 +29,46 @@ add_section_header_y2 <- function(
     slide_name = NULL,
     text_boxes = TRUE
 ) {
-  
+
   # Test matching arguments
   report_style <- rlang::arg_match(report_style)
-  
+
   # Null (default) master names
   if (is.null(master_name) & report_style == 'qualtrics') {
     master_name <- '1_Office Theme'
   } else if (is.null(master_name) & report_style == 'municipal') {
     master_name <- 'Office Theme'
   }
-  
+
   # Null (default) section header names
   if (is.null(slide_name) & report_style == 'qualtrics') {
     slide_name <- 'XM Sidebar (1)'
   } else if (is.null(slide_name) & report_style == 'municipal') {
     slide_name <- 'Section Header'
   }
-  
+
   # New slide with section header text
   doc <- officer::add_slide(
     doc,
     layout = slide_name,
     master = master_name
   )
-  
+
   if (text_boxes == TRUE) {
-    
+
     if (report_style == 'qualtrics') {
-      
+
       doc <- doc %>% add_number_section_header(n)
       doc <- doc %>% add_title_section_header(title, report_style)
-      
+
     } else {
-      
+
       doc <- doc %>% add_title_section_header(title, report_style)
-      
+
     }
-    
+
   }
-  
+
 }
 
 
@@ -78,19 +78,19 @@ add_number_section_header <- function(
     doc,
     text
 ){
-  
+
   properties <- officer::fp_text(
     color = 'white',
     font.size = 139,
     font.family = 'BentonSans Regular',
     bold = TRUE
   )
-  
+
   slide_title <- officer::ftext(
     text,
     properties
   )
-  
+
   officer::ph_with(
     doc,
     value = officer::fpar(slide_title),
@@ -101,7 +101,7 @@ add_number_section_header <- function(
       height = 2
     )
   )
-  
+
 }
 
 add_title_section_header <- function(
@@ -109,20 +109,20 @@ add_title_section_header <- function(
     text,
     report_style
 ){
-  
+
   if (report_style == 'qualtrics') {
-    
+
     properties <- officer::fp_text(
       color = 'black',
       font.size = 60,
       font.family = 'BentonSans Regular'
     )
-    
+
     slide_subtitle <- officer::ftext(
       text,
       properties
     )
-    
+
     officer::ph_with(
       doc,
       value = officer::fpar(slide_subtitle),
@@ -133,25 +133,25 @@ add_title_section_header <- function(
         height = 1
       )
     )
-    
+
   } else {
-    
+
     properties <- officer::fp_text(
       color = 'white',
       font.size = 66,
       font.family = 'Flama Medium'
     )
-    
+
     slide_subtitle <- officer::ftext(
       text,
       properties
     )
-    
+
     officer::ph_with(
       doc,
       value = officer::fpar(
         slide_subtitle,
-        fp_p = fp_par(
+        fp_p = officer::fp_par(
           text.align = 'center'
         )
       ),
@@ -162,7 +162,7 @@ add_title_section_header <- function(
         height = 1.21
       )
     )
-    
+
   }
-  
+
 }

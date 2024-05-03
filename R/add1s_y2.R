@@ -56,98 +56,98 @@ add1s_y2 <- function(
     footer_width = NULL,
     footer_height = NULL
 ) {
-  
+
   # Test matching arguments
   report_style <- rlang::arg_match(report_style)
-  
+
   # Set NULL values from report style
   if (is.null(title_color) & report_style == 'qualtrics') {
     title_color <- 'black'
   } else if (is.null(title_color) & report_style == 'municipal') {
     title_color <- 'white'
   }
-  
+
   if (is.null(commentary_color) & report_style == 'qualtrics') {
     commentary_color <- 'black'
   } else if (is.null(commentary_color) & report_style == 'municipal') {
     commentary_color <- 'white'
   }
-  
+
   if (is.null(footer_color) & report_style == 'qualtrics') {
     footer_color <- 'black'
   } else if (is.null(footer_color) & report_style == 'municipal') {
     footer_color <- '#222222'
   }
-  
+
   if (is.null(font_title) & report_style == 'qualtrics') {
     font_title <- 'BentonSans Regular'
   } else if (is.null(font_title) & report_style == 'municipal') {
     font_title <- 'Flama Medium'
   }
-  
+
   if (is.null(font_text) & report_style == 'qualtrics') {
     font_text <- 'BentonSans Regular'
   } else if (is.null(font_text) & report_style == 'municipal') {
     font_text <- 'Flama Light'
   }
-  
+
   if (is.null(footer_left) & report_style == 'qualtrics') {
     footer_left <- 0.5
   } else if (is.null(footer_left) & report_style == 'municipal') {
     footer_left <- 0.24
   }
-  
+
   if (is.null(footer_top) & report_style == 'qualtrics') {
     footer_top <- 7
   } else if (is.null(footer_top) & report_style == 'municipal') {
     footer_top <- 7.1
   }
-  
+
   if (is.null(footer_width) & report_style == 'qualtrics') {
     footer_width <- 10.5
   } else if (is.null(footer_width) & report_style == 'municipal') {
     footer_width <- 12.76
   }
-  
+
   if (is.null(footer_height) & report_style == 'qualtrics') {
     footer_height <- 0.5
   } else if (is.null(footer_height) & report_style == 'municipal') {
     footer_height <- 0.4
   }
-  
+
   # New blank slide
   if (report_style == 'qualtrics') {
-    
+
     doc <- officer::add_slide(
       doc,
       layout = slide_name,
       master = master_name
     )
-    
+
     # Add text boxes if specified
     if (text_boxes == TRUE) {
-      
+
       doc <- doc %>% add_title_findings(title, title_color, font_title, report_style)
       doc <- doc %>% add_commentary_findings(commentary, commentary_color, font_text, report_style)
       doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style)
-      
+
     }
-    
+
   } else {
-    
+
     doc <- officer::add_slide(doc)
-   
+
     # Add text boxes if specified
     if (text_boxes == TRUE) {
-      
+
       doc <- doc %>% add_title_findings(title, title_color, font_title, report_style, title_bg_color)
       doc <- doc %>% add_commentary_findings(commentary, commentary_color, font_text, report_style, commentary_bg_color)
       doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style, footer_left, footer_top, footer_width, footer_height)
-      
+
     }
 
   }
-  
+
 }
 
 
@@ -161,21 +161,21 @@ add_title_findings <- function(
     report_style,
     title_bg_color = NULL
 ){
-  
+
   # Qualtrics style slide title
   if (report_style == 'qualtrics') {
-    
+
     properties <- officer::fp_text(
       color = title_color,
       font.size = 32,
       font.family = font_family
     )
-    
+
     slide_title <- officer::ftext(
       text,
       properties
     )
-    
+
     officer::ph_with(
       doc,
       value = officer::fpar(slide_title),
@@ -186,22 +186,22 @@ add_title_findings <- function(
         height = 0.75
       )
     )
-    
+
   # Municipal style slide title
   } else {
-    
+
     properties <- officer::fp_text(
       color = title_color,
       font.size = 40,
       font.family = font_family
     )
-    
+
     slide_title <- officer::ftext(
       text,
       properties
     )
-    
-    ph_with(
+
+    officer::ph_with(
       doc,
       value = officer::fpar(slide_title),
       location = officer::ph_location(
@@ -212,9 +212,9 @@ add_title_findings <- function(
         bg = title_bg_color
       )
     )
-    
+
   }
-  
+
 }
 
 add_commentary_findings <- function(
@@ -225,21 +225,21 @@ add_commentary_findings <- function(
     report_style,
     commentary_bg_color = NULL
 ){
-  
-  # Qualtrics style slide comm. 
+
+  # Qualtrics style slide comm.
   if (report_style == 'qualtrics') {
-    
+
     properties <- officer::fp_text(
       color = commentary_color,
       font.size = 14,
       font.family = font_family
     )
-    
+
     slide_commentary <- officer::ftext(
       text,
       properties
     )
-    
+
     officer::ph_with(
       doc,
       value = officer::fpar(slide_commentary),
@@ -250,22 +250,22 @@ add_commentary_findings <- function(
         height = 0.75
       )
     )
-    
+
   # Municipal style slide comm.
   } else {
-    
+
     properties <- officer::fp_text(
       color = commentary_color,
       font.size = 14,
       font.family = font_family
     )
-    
+
     slide_commentary <- officer::ftext(
       text,
       properties
     )
-    
-    ph_with(
+
+    officer::ph_with(
       doc,
       value = officer::fpar(slide_commentary),
       location = officer::ph_location(
@@ -276,9 +276,9 @@ add_commentary_findings <- function(
         bg = commentary_bg_color
       )
     )
-    
+
   }
-  
+
 }
 
 add_footer_findings <- function(
@@ -292,18 +292,18 @@ add_footer_findings <- function(
     footer_width,
     footer_height
 ){
-  
+
   properties <- officer::fp_text(
     color = footer_color,
     font.size = 10,
     font.family = font_family
   )
-  
+
   slide_footer <- officer::ftext(
     text,
     properties
   )
-  
+
   officer::ph_with(
     doc,
     value = officer::fpar(slide_footer),
@@ -314,5 +314,5 @@ add_footer_findings <- function(
       height = footer_height
     )
   )
-  
+
 }
