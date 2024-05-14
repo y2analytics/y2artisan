@@ -129,7 +129,7 @@ add1s_y2 <- function(
 
       doc <- doc %>% add_title_findings(title, title_color, font_title, report_style)
       doc <- doc %>% add_commentary_findings(commentary, commentary_color, font_text, report_style)
-      doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style)
+      doc <- doc %>% add_footer_findings(footer, footer_color, font_text, report_style, footer_left, footer_top, footer_width, footer_height)
 
     }
 
