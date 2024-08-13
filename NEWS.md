@@ -1,3 +1,8 @@
+# y2artisan 0.8.2
+## New features
+* *report_style* argument of the `add_section_header_y2`, `add1s_y2`, and `add1c_y2` functions can now be set to 'y2' for use automating reports using y2's branded report template.
+
+
 # y2artisan 0.8.1
 ## New features
 * Functions used to automatically create and populate powerpoint slides with charts (`add_section_header_y2`, `add1s_y2`, and `add1c_y2`) can now be used to automate municipal style reports of a given style guide. Functions have a new argument called "report_style" which can be used to specify the style of report being made.
