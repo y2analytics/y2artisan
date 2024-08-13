@@ -8,7 +8,7 @@ add1s_y2(
   title = "Title",
   commentary = "Commentary",
   footer = "Footer",
-  report_style = c("qualtrics", "municipal"),
+  report_style = c("qualtrics", "municipal", "y2"),
   text_boxes = TRUE,
   slide_name = "Blank",
   master_name = "1_Office Theme",
@@ -31,6 +31,8 @@ add1s_y2(
 \item{commentary}{DEFAULT: 'Commentary'; Add commentary/desctiption in quotes, automatically formatted to the specified report style template}
 
 \item{footer}{DEFAULT: 'Footer'; Add a footer in quotes}
+
+\item{report_style}{DEFAULT: "qualtrics"; The report style/template you are using -- must be either 'qualtrics', 'municipal', or 'y2'}
 
 \item{text_boxes}{DEFAULT = TRUE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 

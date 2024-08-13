@@ -10,7 +10,7 @@ add1c_y2(
   commentary = "Commentary",
   footer = "Footer",
   add_slide = TRUE,
-  report_style = c("qualtrics", "municipal"),
+  report_style = c("qualtrics", "municipal", "y2"),
   text_boxes = TRUE,
   slide_name = "Blank",
   master_name = "1_Office Theme",
@@ -41,6 +41,8 @@ add1c_y2(
 \item{footer}{DEFAULT: "Footer"; Add a footer in quotes}
 
 \item{add_slide}{DEFAULT = TRUE; Automatically adds a blank slide for the chart/table/other object to be added onto. If F, no new slide is added}
+
+\item{report_style}{DEFAULT: "qualtrics"; The report style/template you are using -- must be either 'qualtrics', 'municipal', or 'y2'}
 
 \item{text_boxes}{DEFAULT = FALSE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes}
 
