@@ -8,6 +8,7 @@
 #' @param commentary DEFAULT: "Commentary"; Add commentary/desctiption in quotes, automatically formatted to the Default Qualtrics template
 #' @param footer DEFAULT: "Footer"; Add a footer in quotes
 #' @param add_slide DEFAULT = TRUE; Automatically adds a blank slide for the chart/table/other object to be added onto. If F, no new slide is added
+#' @param report_style DEFAULT: "qualtrics"; The report style/template you are using -- must be either 'qualtrics', 'municipal', or 'y2'
 #' @param text_boxes DEFAULT = FALSE; Automatically adds title, commentary, and footer boxes to the blank slide. Set to F for no text boxes
 #' @param slide_name DEFAULT = "Findings / 1 chart"; The name of the type of the PP slide you want added to the PP
 #' @param master_name DEFAULT = "Office Theme"; The name of the PP master layout that the slide_name comes from
@@ -56,7 +57,7 @@ add1c_y2 <- function(
     commentary = 'Commentary',
     footer = 'Footer',
     add_slide = TRUE,
-    report_style = c('qualtrics', 'municipal'),
+    report_style = c('qualtrics', 'municipal', 'y2'),
     text_boxes = TRUE,
     slide_name = 'Blank',
     master_name = '1_Office Theme',
