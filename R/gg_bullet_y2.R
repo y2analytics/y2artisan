@@ -213,6 +213,7 @@ if (
         strwrap_mod(
           x,
           width = label_length,
+          overwrite_breaks = overwrite_breaks,
           simplify = FALSE
         ),
         paste,
