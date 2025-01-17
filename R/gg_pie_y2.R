@@ -14,7 +14,7 @@
 #' @param legend_pos DEFAULT = 'none'
 #' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 8
-#' @param overwrite_breaks DEFAULT = TRUE, Whether to overwrite existing linebreaks ("\n") in string label inputs when performing text pre-processing, such as string wrapping
+#' @param overwrite_breaks DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart ggplot bar single
