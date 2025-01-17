@@ -20,7 +20,7 @@
 #' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
-#' @param overwrite_breaks DEFAULT = TRUE, Whether to overwrite existing linebreaks ("\n") in string label inputs when performing text pre-processing, such as string wrapping
+#' @param overwrite_breaks DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal
 #' @param point_size DEFAULT = 6; Size for each point in the dot plot.
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
