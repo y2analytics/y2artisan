@@ -6,7 +6,7 @@
 #' @param x_var DEFAULT = 'label'; The name of your time variable
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = 'group_var'; Each line will be a distinct value of this variable
-#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_text_size DEFAULT = 10; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_display,axis_y_display DEFAULT = TRUE
 #' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
@@ -20,7 +20,7 @@
 #' @param label_show_values DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = text_settings_grouped; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
 #' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', 't'.
-#' @param legend_text_size DEFAULT = 14
+#' @param legend_text_size DEFAULT = 12
 #' @param num_fmt DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis
 #' @param smooth DEFAULT = 0. If 0, the lines will be straight between points. If 1, lines will be smoothed
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
@@ -52,7 +52,7 @@ ms_line_y2 <- function(
     x_var = 'label',
     y_var = 'result',
     group_var = 'group_var',
-    axis_text_size = 14,
+    axis_text_size = 10,
     axis_title_size = 18,
     axis_x_display = TRUE,
     axis_x_label = '',
@@ -70,7 +70,7 @@ ms_line_y2 <- function(
     label_show_values = TRUE,
     label_text = text_settings_grouped,
     legend_pos = c('n', 't', 'b', 'tr', 'l', 'r'),
-    legend_text_size = 16,
+    legend_text_size = 12,
     num_fmt = c('percent', 'general'),
     smooth = 0,
     title_label = '',

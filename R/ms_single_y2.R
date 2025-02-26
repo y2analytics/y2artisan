@@ -7,10 +7,10 @@
 #' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = NULL; If you want the bars to be different colors, set group_var to the same variable as x_var. Then set overlap to 100.
-#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_text_size DEFAULT = 10; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_position DEFAULT = 'nextTo'; Other options include "high", "low", "none". Change to "low" if dealing with negative numbers
-#' @param axis_x_display,axis_y_display DEFAULT = TRUE
+#' @param axis_x_display,axis_y_display DEFAULT = TRUE for x axis, DEFAULT = FALSE for y axis
 #' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
 #' @param axis_y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param axis_y_max DEFAULT = NULL
@@ -50,14 +50,14 @@ ms_single_y2 <-  function(
   data = frequencies,
   x_var = 'label',
   y_var = 'result',
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = '',
   axis_x_position = c('nextTo', 'high', 'low', 'none'),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = TRUE,
+  axis_y_display = FALSE,
   axis_y_label = '',
   axis_y_min = 0,
   axis_y_max = NULL,
