@@ -8,7 +8,7 @@
 #' @keywords text settings ms charts
 #' @param dataset DEFAULT = frequencies; A frequency table named frequencies
 #' @param font_size DEFAULT = 14; Font size applied to all text in chart labels
-#' @param font_color DEFAULT = 'white'; Color applied to all text in chart labels
+#' @param font_color DEFAULT = 'black'; Color applied to all text in chart labels
 #' @param font_family DEFAULT = 'BentonSans'; Font family applied to all text in chart labels
 #' @param text_column DEFAULT = label; Column from which labels are pulled
 #' @param single DEFAULT = FALSE; Set to TRUE for use with a single bar chart
@@ -32,7 +32,7 @@
 set_text_settings_y2 <- function(
   dataset = frequencies,
   font_size = 14,
-  font_color = 'white',
+  font_color = 'black',
   font_family = 'BentonSans',
   text_column = label,
   single = FALSE
