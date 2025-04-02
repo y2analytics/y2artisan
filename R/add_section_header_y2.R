@@ -43,7 +43,7 @@ add_section_header_y2 <- function(
   # Null (default) section header names
   if (is.null(slide_name) & report_style == 'qualtrics') {
     slide_name <- 'XM Sidebar (1)'
-  } else if (is.null(master_name) & report_style != 'qualtrics')  {
+  } else if (is.null(slide_name) & report_style != 'qualtrics')  {
     slide_name <- 'Section Header'
   } 
   
