@@ -26,6 +26,7 @@
 #' @param legend_text_size DEFAULT = 8
 #' @param legend_title_size DEFAULT = 8
 #' @param legend_title DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified
+#' @param overwrite_breaks DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @param x_label,y_label DEFAULT = ''; Title for the x_axis or y_axis
@@ -88,6 +89,7 @@ gg_stacked_y2 <- function(
   legend_text_size = 8,
   legend_title_size = 8,
   legend_title = '',
+  overwrite_breaks = TRUE,
   title_label = '',
   title_size = 14,
   x_label = '',
