@@ -16,6 +16,7 @@ gg_pie_y2(
   legend_pos = "none",
   legend_rev = FALSE,
   legend_text_size = 8,
+  overwrite_breaks = TRUE,
   title_label = "",
   title_size = 14
 )
@@ -42,6 +43,8 @@ gg_pie_y2(
 \item{legend_rev}{DEFAULT = FALSE}
 
 \item{legend_text_size}{DEFAULT = 8}
+
+\item{overwrite_breaks}{DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 

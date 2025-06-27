@@ -9,7 +9,7 @@ ms_line_y2(
   x_var = "label",
   y_var = "result",
   group_var = "group_var",
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = "",
@@ -27,7 +27,7 @@ ms_line_y2(
   label_show_values = TRUE,
   label_text = text_settings_grouped,
   legend_pos = c("n", "t", "b", "tr", "l", "r"),
-  legend_text_size = 16,
+  legend_text_size = 12,
   num_fmt = c("percent", "general"),
   smooth = 0,
   title_label = "",
@@ -43,7 +43,7 @@ ms_line_y2(
 
 \item{group_var}{DEFAULT = 'group_var'; Each line will be a distinct value of this variable}
 
-\item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 10; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
@@ -71,7 +71,7 @@ ms_line_y2(
 
 \item{legend_pos}{DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', 't'.}
 
-\item{legend_text_size}{DEFAULT = 14}
+\item{legend_text_size}{DEFAULT = 12}
 
 \item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 

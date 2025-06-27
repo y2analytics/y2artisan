@@ -9,14 +9,14 @@ ms_grouped_y2(
   x_var = "label",
   y_var = "result",
   group_var = "group_var",
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = "",
   axis_x_position = c("nextTo", "high", "low", "none"),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = TRUE,
+  axis_y_display = FALSE,
   axis_y_label = "",
   axis_y_min = 0,
   axis_y_max = NULL,
@@ -32,7 +32,7 @@ ms_grouped_y2(
   label_text = text_settings_grouped,
   overlapping = -25,
   legend_pos = c("t", "n", "b", "tr", "l", "r"),
-  legend_text_size = 16,
+  legend_text_size = 12,
   num_fmt = c("percent", "general"),
   title_label = "",
   title_size = 18
@@ -47,11 +47,11 @@ ms_grouped_y2(
 
 \item{group_var}{DEFAULT = 'group_var'; All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.}
 
-\item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 10; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{axis_x_display, axis_y_display}{DEFAULT = TRUE}
+\item{axis_x_display, axis_y_display}{DEFAULT = TRUE for x axis, DEFAULT = FALSE for y axis}
 
 \item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
 
@@ -85,7 +85,7 @@ ms_grouped_y2(
 
 \item{legend_pos}{DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
 
-\item{legend_text_size}{DEFAULT = 16}
+\item{legend_text_size}{DEFAULT = 12}
 
 \item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 

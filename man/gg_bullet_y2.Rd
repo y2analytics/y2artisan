@@ -28,6 +28,7 @@ gg_bullet_y2(
   legend_text_size = 8,
   legend_title_size = 8,
   legend_title = "",
+  overwrite_breaks = TRUE,
   nudge = 0,
   title_label = "",
   title_size = 14,
@@ -83,6 +84,8 @@ gg_bullet_y2(
 \item{legend_title_size}{DEFAULT = 8}
 
 \item{legend_title}{DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified}
+
+\item{overwrite_breaks}{DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal}
 
 \item{nudge}{DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
 

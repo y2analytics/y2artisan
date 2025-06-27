@@ -8,14 +8,14 @@ ms_single_y2(
   data = frequencies,
   x_var = "label",
   y_var = "result",
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = "",
   axis_x_position = c("nextTo", "high", "low", "none"),
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = TRUE,
+  axis_y_display = FALSE,
   axis_y_label = "",
   axis_y_min = 0,
   axis_y_max = NULL,
@@ -45,11 +45,11 @@ ms_single_y2(
 
 \item{y_var}{DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).}
 
-\item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 10; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
-\item{axis_x_display, axis_y_display}{DEFAULT = TRUE}
+\item{axis_x_display, axis_y_display}{DEFAULT = TRUE for x axis, DEFAULT = FALSE for y axis}
 
 \item{axis_x_label, axis_y_label}{DEFAULT = ''; Title for the x_axis and y_axis}
 
