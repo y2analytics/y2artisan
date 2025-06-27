@@ -7,7 +7,7 @@
 #' @param y_var NO DEFAULT
 #' @param group_var DEFAULT = NULL; Can be set to a variable to color code points by that variable.
 #' @param label_var DEFAULT = 'label'; This variable will be the text labels that show up on the chart over each point.
-#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_text_size DEFAULT = 10; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param axis_x_display,axis_y_display DEFAULT = TRUE
 #' @param axis_x_label,axis_y_label DEFAULT is automatically set to variable names for x_var and y_var; Title for the x_axis and y_axis
@@ -21,7 +21,7 @@
 #' @param label_show_values DEFAULT = FALSE; TRUE or FALSE. Show percent labels alongside each point label.
 #' @param label_text DEFAULT = text_settings; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings <- list(fp_text(font.size = 10.5, color = bluepurple))
 #' @param legend_pos DEFAULT = 'b' for bottom; All legend positions are 'b', 'n', 't', 'tr', 'l', 'r'.
-#' @param legend_text_size DEFAULT = 14
+#' @param legend_text_size DEFAULT = 12
 #' @param num_fmt DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis
 #' @param point_size DEFAULT = size_settings; A named vector of size settings. Must be between 2-72, typically around 10. Can be a vector of one unnamed number if all points are the same size.
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
@@ -79,7 +79,7 @@ ms_scatter_y2 <- function(
   y_var,
   group_var = NULL,
   label_var = 'label',
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = 'x_var',
@@ -99,7 +99,7 @@ ms_scatter_y2 <- function(
   label_show_values = FALSE,
   label_text = text_settings,
   legend_pos = c('b', 'n', 't', 'tr', 'l', 'r'),
-  legend_text_size = 14,
+  legend_text_size = 12,
   num_fmt = c('percent', 'general'),
   point_size = size_settings,
   title_label = '',

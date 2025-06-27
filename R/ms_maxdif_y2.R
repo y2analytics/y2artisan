@@ -7,14 +7,14 @@
 #' @param x_var DEFAULT = 'label'; When using the freqs function, will typically be label (is by default).
 #' @param y_var DEFAULT = 'result'; When using the freqs function, will typically be result (is by default).
 #' @param group_var DEFAULT = 'group_var'; All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.
-#' @param axis_x_display,axis_y_display DEFAULT = TRUE
+#' @param axis_x_display,axis_y_display DEFAULT = TRUE for x axis, DEFAULT = FALSE for y axis
 #' @param axis_x_label,axis_y_label DEFAULT = ''; Title for the x_axis and y_axis
 #' @param axis_y_min DEFAULT = NULL; unlike other graphs, will almost always be a negative number
 #' @param axis_y_max DEFAULT = NULL
 #' @param axis_x_position DEFAULT = 'low'; The 'low' setting puts the axis below negative numbers instead of its typical spot of 0. Ideal for max-diffs. Other options include "high", "nextTo", "none"
 #' @param axis_x_rotate,axis_y_rotate DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving more space for text.
 #' @param axis_x_rotate_title,axis_y_rotate_title DEFAULT = 0, set y_axis rotation to 360 for horizontal text
-#' @param axis_text_size DEFAULT = 14; Font size for variable levels and percentages.
+#' @param axis_text_size DEFAULT = 10; Font size for variable levels and percentages.
 #' @param axis_title_size DEFAULT = 18; Font size for axis_x_label and axis_y_label.
 #' @param direction DEFAULT = 'horizontal'; Two options: "vertical" (default) OR "horizontal"
 #' @param font_family DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for axis, legends, and titles. Label font is set within label_color and label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
@@ -25,7 +25,7 @@
 #' @param label_show_values DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = text_settings_grouped; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
 #' @param legend_pos DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l', 'r', and 't' for top
-#' @param legend_text_size DEFAULT = 16
+#' @param legend_text_size DEFAULT = 12
 #' @param num_fmt DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis
 #' @param overlapping DEFAULT = 100 This leaves 0\% extra space between variable group levels
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
@@ -60,14 +60,14 @@ ms_maxdif_y2 <-  function(
   x_var = 'label',
   y_var = 'result',
   group_var = 'group_var',
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = '',
   axis_x_position = 'low',
   axis_x_rotate = 0,
   axis_x_rotate_title = 0,
-  axis_y_display = TRUE,
+  axis_y_display = FALSE,
   axis_y_label = '',
   axis_y_min = NULL,
   axis_y_max = NULL,
@@ -82,7 +82,7 @@ ms_maxdif_y2 <-  function(
   label_show_values = TRUE,
   label_text = text_settings_grouped,
   legend_pos = c('n', 't', 'b', 'tr', 'l', 'r'),
-  legend_text_size = 16,
+  legend_text_size = 12,
   overlapping = 100,
   num_fmt = c('percent', 'general'),
   title_label = '',
