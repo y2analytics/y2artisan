@@ -1,7 +1,13 @@
+# y2artisan 0.8.3
+## New features
+* Various `ms_*_y2()` and other automated charting functions have *new and more intuitive default aesthetic settings* for more efficient integration with common reporting workflows
+## Bug fixes
+* Fixed a bug in various `gg_*_y2()` functions where existing linebreaks in strings were overwritten by the "string wrapping" function for formatting labels
+* Fixed a bug in the `add_section_header_y2()` function that erroneously returned an error for correctly specified section headers of "municipal" style reports
+
 # y2artisan 0.8.2
 ## New features
 * *report_style* argument of the `add_section_header_y2`, `add1s_y2`, and `add1c_y2` functions can now be set to 'y2' for use automating reports using y2's branded report template.
-
 
 # y2artisan 0.8.1
 ## New features
