@@ -34,7 +34,7 @@ test_that('set_text_settings_y2, single', {
   text_settings_man <- list(
     'result' = officer::fp_text(
       font.size = 14,
-      color = 'white',
+      color = 'black',
       font.family = 'BentonSans'
         )
   )
@@ -53,11 +53,11 @@ test_that('set_text_settings_y2, stacked', {
   )
   text_settings_fun <- set_text_settings_y2(dataset = frequencies)
   text_settings_man <- list(
-    'One' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans'),
-    'Two' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans'),
-    'Three' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans'),
-    'Four' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans'),
-    'Five' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans')
+    'One' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans'),
+    'Two' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans'),
+    'Three' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans'),
+    'Four' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans'),
+    'Five' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans')
   )
 
   expect_equal(text_settings_fun, text_settings_man)
@@ -77,8 +77,8 @@ test_that('set_text_settings_y2, grouped', {
     text_column = group_var
     )
   text_settings_man <- list(
-    'group1' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans'),
-    'group2' = officer::fp_text(font.size = 14, color = 'white',font.family = 'BentonSans')
+    'group1' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans'),
+    'group2' = officer::fp_text(font.size = 14, color = 'black',font.family = 'BentonSans')
   )
 
   expect_equal(text_settings_fun, text_settings_man)

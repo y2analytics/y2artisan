@@ -7,7 +7,7 @@
 set_text_settings_y2(
   dataset = frequencies,
   font_size = 14,
-  font_color = "white",
+  font_color = "black",
   font_family = "BentonSans",
   text_column = label,
   single = FALSE
@@ -18,7 +18,7 @@ set_text_settings_y2(
 
 \item{font_size}{DEFAULT = 14; Font size applied to all text in chart labels}
 
-\item{font_color}{DEFAULT = 'white'; Color applied to all text in chart labels}
+\item{font_color}{DEFAULT = 'black'; Color applied to all text in chart labels}
 
 \item{font_family}{DEFAULT = 'BentonSans'; Font family applied to all text in chart labels}
 

@@ -27,6 +27,7 @@ gg_grouped_y2(
   legend_title_size = 8,
   legend_title = "",
   nudge = 0,
+  overwrite_breaks = TRUE,
   title_label = "",
   title_size = 14,
   x_label = "",
@@ -79,6 +80,8 @@ gg_grouped_y2(
 \item{legend_title}{DEFAULT = '', If you put in a title, the legend will default to 'top' unless otherwise specified}
 
 \item{nudge}{DEFAULT = 0; however, nudge automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
+
+\item{overwrite_breaks}{DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal}
 
 \item{title_label}{DEFAULT = ''; Add your title in "" as the title of the chart.}
 

@@ -14,6 +14,7 @@
 #' @param legend_pos DEFAULT = 'none'
 #' @param legend_rev DEFAULT = FALSE
 #' @param legend_text_size DEFAULT = 8
+#' @param overwrite_breaks DEFAULT = TRUE, Whether to overwrite existing linebreaks in string label inputs when performing text pre-processing, such as string wrapping and whitespace removal
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
 #' @param title_size DEFAULT = 18
 #' @keywords chart ggplot bar single
@@ -39,6 +40,7 @@ gg_pie_y2 <- function(
   legend_pos = 'none',
   legend_rev = FALSE,
   legend_text_size = 8,
+  overwrite_breaks = TRUE,
   title_label = '',
   title_size = 14
 ) {
@@ -147,9 +149,10 @@ if (legend_pos != 'none') {
     ) +
     ggplot2::scale_x_discrete(
       labels = function(x) lapply(
-        strwrap(
+        strwrap_helper(
           x,
           width = label_length,
+          overwrite_breaks = overwrite_breaks,
           simplify = FALSE
         ),
         paste,
@@ -157,5 +160,3 @@ if (legend_pos != 'none') {
       )
     )
 }
-
-

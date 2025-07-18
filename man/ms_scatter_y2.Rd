@@ -10,7 +10,7 @@ ms_scatter_y2(
   y_var,
   group_var = NULL,
   label_var = "label",
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_display = TRUE,
   axis_x_label = "x_var",
@@ -30,7 +30,7 @@ ms_scatter_y2(
   label_show_values = FALSE,
   label_text = text_settings,
   legend_pos = c("b", "n", "t", "tr", "l", "r"),
-  legend_text_size = 14,
+  legend_text_size = 12,
   num_fmt = c("percent", "general"),
   point_size = size_settings,
   title_label = "",
@@ -48,7 +48,7 @@ ms_scatter_y2(
 
 \item{label_var}{DEFAULT = 'label'; This variable will be the text labels that show up on the chart over each point.}
 
-\item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 10; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
@@ -76,7 +76,7 @@ ms_scatter_y2(
 
 \item{legend_pos}{DEFAULT = 'b' for bottom; All legend positions are 'b', 'n', 't', 'tr', 'l', 'r'.}
 
-\item{legend_text_size}{DEFAULT = 14}
+\item{legend_text_size}{DEFAULT = 12}
 
 \item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 

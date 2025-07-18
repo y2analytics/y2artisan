@@ -9,7 +9,7 @@ ms_stacked_y2(
   x_var = "group_var",
   y_var = "result",
   group_var = "label",
-  axis_text_size = 14,
+  axis_text_size = 10,
   axis_title_size = 18,
   axis_x_text_color = "black",
   axis_x_display = TRUE,
@@ -31,7 +31,7 @@ ms_stacked_y2(
   label_show_values = TRUE,
   label_text = text_settings_stacked,
   legend_pos = c("t", "n", "b", "tr", "l", "r"),
-  legend_text_size = 10,
+  legend_text_size = 12,
   num_fmt = c("percent", "general"),
   overlapping = 100,
   title_label = "",
@@ -47,7 +47,7 @@ ms_stacked_y2(
 
 \item{group_var}{DEFAULT = 'label'; When using the freqs function, will typically be label (is by default). All levels of the group_var must be present or the chart may break. To do this, save the variable as_factor() before running freqs. Also remember that label_text and label_color must exactly match all the levels of the group_var or the function will break.}
 
-\item{axis_text_size}{DEFAULT = 14; Font size for variable levels and percentages.}
+\item{axis_text_size}{DEFAULT = 10; Font size for variable levels and percentages.}
 
 \item{axis_title_size}{DEFAULT = 18; Font size for axis_x_label and axis_y_label.}
 
@@ -85,7 +85,7 @@ ms_stacked_y2(
 
 \item{legend_pos}{DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
 
-\item{legend_text_size}{DEFAULT = 10}
+\item{legend_text_size}{DEFAULT = 13}
 
 \item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 
