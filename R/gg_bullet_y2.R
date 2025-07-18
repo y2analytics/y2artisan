@@ -1,5 +1,5 @@
 #### gg_bullet_y2 ####
-### Fuck this
+### Description
 #' Create a bullet chart: UNDER CONSTRUCTION
 #'
 #' This function creates a ggplot2 object automatically formatted for an overlapping bullet chart.
