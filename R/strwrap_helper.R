@@ -1,10 +1,10 @@
 #' String Wrapping Function (Y2 Private)
-#' 
+#'
 #' Modified string wrapping helper function that does not over-write linebreaks by default (see also the base R `strwrap()` function)
-#' 
+#'
 #' @param x a character vector, or an object which can be converted to a character vector by `as.character()`.
 #' @param width a positive integer giving the target column for wrapping lines in the output.
-#' @param overwrite_breaks DEFAULT: FALSE; Whether the function overwrites existing linebreaks ("\n") in an input string.
+#' @param overwrite_breaks DEFAULT: FALSE; Whether the function overwrites existing linebreaks in an input string.
 #' @param indent a non-negative integer giving the indentation of the first line in a paragraph.
 #' @param exdent a non-negative integer specifying the indentation of subsequent lines in paragraphs.
 #' @param prefix,initial a character string to be used as prefix for each line except the first, for which `initial` is used.
