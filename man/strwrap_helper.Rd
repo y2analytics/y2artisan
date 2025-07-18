@@ -7,7 +7,7 @@
 strwrap_helper(
   x,
   width = width,
-  overwrite_breaks = FALSE,
+  overwrite_breaks = TRUE,
   indent = 0,
   exdent = 0,
   prefix = "",
@@ -20,7 +20,7 @@ strwrap_helper(
 
 \item{width}{a positive integer giving the target column for wrapping lines in the output.}
 
-\item{overwrite_breaks}{DEFAULT: FALSE; Whether the function overwrites existing linebreaks in an input string.}
+\item{overwrite_breaks}{DEFAULT: TRUE; Whether the function overwrites existing linebreaks in an input string.}
 
 \item{indent}{a non-negative integer giving the indentation of the first line in a paragraph.}
 
