@@ -1,5 +1,5 @@
 #### gg_maxdif_y2 ####
-### Description
+### Fuck this
 #' Create a grouped ggplot object: UNDER CONSTRUCTION
 #'
 #' This function creates a ggplot2 object automatically formatted for a maxdiff type variable with a positive and negative side.
