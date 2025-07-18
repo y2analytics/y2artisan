@@ -26,7 +26,7 @@
 #' @param label_show_values DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
 #' @param label_text DEFAULT = text_settings_stacked; A list of text settings for the percent labels. This affects font size and color. Specified outside of the function. If a list of one, no need to specify values. Otherwise, they must exactly match the group_var levels. Example: text_settings_grouped <- list('Name of Group 1' = fp_text(font.size = 16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color = brightblue))
 #' @param legend_pos DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.
-#' @param legend_text_size DEFAULT = 13
+#' @param legend_text_size DEFAULT = 12
 #' @param num_fmt DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis
 #' @param overlapping DEFAULT = 100
 #' @param title_label DEFAULT = ''; Add your title in "" as the title of the chart.
