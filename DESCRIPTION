@@ -13,6 +13,7 @@ Description: Use shortcuts to create ms and ggplot charts. Create chart objects 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+URL: https://y2analytics.github.io/y2artisan/
 Imports:
     dplyr,
     flextable,
@@ -38,3 +39,4 @@ Suggests:
     orderlabel,
     testthat (>= 3.0.0)
 RoxygenNote: 7.3.2
+
