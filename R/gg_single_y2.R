@@ -70,7 +70,7 @@ gg_single_y2 <- function(
   title_size = 14,
   x_label = '',
   y_label = '',
-  y_min = 0,
+  y_min = 5,
   y_max = 0 #auto-fills
 ) {
 
