@@ -11,35 +11,30 @@ test_that('set_color_settings_y2, error messages', {
   )
 
 
-  expect_error(
-    color_settings_fun <- set_color_settings_y2(
+  expect_snapshot(error = TRUE, 
+    set_color_settings_y2(
       dataset = frequencies,
       color_column = lable
-    ),
-    'Missing column "lable" in dataset'
+    )
   )
 
 
-  expect_error(
-    color_settings_fun <- set_color_settings_y2(
+  expect_snapshot(error = TRUE, 
+    set_color_settings_y2(
       dataset = frequencies,
       'blue'
-    ),
-    'Not enough colors provided. Please provide 4 more color(s) OR check the "label" column in the data.',
-    fixed = TRUE
+    )
   )
 
 
-  expect_error(
-    color_settings_fun <- set_color_settings_y2(
+  expect_snapshot(error = TRUE, 
+    set_color_settings_y2(
       dataset = frequencies,
       color_column = group_var,
       'blue',
       'yellow',
       'red'
-    ),
-    'Too many colors provided. Please provide 1 less color(s) OR check the \"group_var\" column in the data.',
-    fixed = TRUE
+    )
   )
 
 })

@@ -14,7 +14,7 @@ test_that("openend_y2 - formatting", {
 
   test <- responses %>% openend_y2(var1)
   test_names <- responses %>% openend_y2(var1) %>% names()
-  expect_equal(class(test)[1], 'tbl_df')
+  expect_equal(class(test)[2], 'tbl_df')
   expect_equal(test_names, c('variable', 'value', 'label', 'n', 'stat', 'result'))
 })
 

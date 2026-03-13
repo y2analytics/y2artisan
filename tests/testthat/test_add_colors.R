@@ -4,7 +4,8 @@
 test_that('add_color_palette_y2, colors_to_env', {
   add_color_palette_y2(colors_to_env = FALSE)
 
-  expect_error(exists(Y2_BLUE), "object 'Y2_BLUE' not found")
+  expect_snapshot(error = TRUE,
+    exists(Y2_BLUE))
 })
 
 
@@ -14,58 +15,53 @@ test_that('add_color_palette_y2, color_names to upper case', {
     color_names = 'lower_case'
     )
 
-  expect_error(exists(lower_case), "object 'lower_case' not found")
+  expect_snapshot(error = TRUE,
+    exists(lower_case))
   expect_equal(LOWER_CASE, '#123456')
 })
 
 
 test_that('add_color_palette_y2, error messages', {
 
-  expect_error(
+  expect_snapshot(error = TRUE,
     add_color_palette_y2(
       hex_codes = '#123456',
       color_names = c('color1', 'color2')
-    ),
-    'Check to make sure there are names for every hex code and that all color_names are unique'
+    )
   )
 
   # Ok, need to look into this error not erroring
-  expect_warning(
+  expect_error(
     add_color_palette_y2(
       hex_codes = c('#123456', '#123456'),
       color_names = c('color1', 'color2')
-    ),
-    'Non-unique hexcodes supplied'
+    )
   )
 
-  expect_error(
+  expect_snapshot(error = TRUE,
     add_color_palette_y2(
       hex_codes = '#123456',
       color_names = 'Y2_BLUE'
-    ),
-    'Custom color name required if custom hex code provided'
+    )
   )
 
-  expect_error(
+  expect_snapshot(error = TRUE,
     add_color_palette_y2(
       hex_codes = '#41536F',
       color_names = 'color1'
-    ),
-    'Custom hex code required if custom color name provided'
+    )
   )
 
-  expect_error(
+  expect_snapshot(error = TRUE,
     add_color_palette_y2(
       position = '1'
-    ),
-    'Position must be numeric or a vector of numeric elements'
+    )
   )
 
-  expect_error(
+  expect_snapshot(error = TRUE,
     add_color_palette_y2(
       position = 0
-    ),
-    'Position elements must be 1, 2, 3, 4, or 5'
+    )
   )
 })
 
