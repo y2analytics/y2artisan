@@ -61,7 +61,7 @@ gg_single_y2 <- function(
   label_size = 10,
   legend_pos = 'none',
   legend_rev = FALSE,
-  legend_text_size = 8,
+  legend_text_size = 10,
   legend_title_size = 8,
   legend_title = '',
   nudge = 0, #auto-fills
