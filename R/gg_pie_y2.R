@@ -39,7 +39,7 @@ gg_pie_y2 <- function(
   label_size = 10,
   legend_pos = 'none',
   legend_rev = FALSE,
-  legend_text_size = 8,
+  legend_text_size = 10,
   overwrite_breaks = TRUE,
   title_label = '',
   title_size = 14
