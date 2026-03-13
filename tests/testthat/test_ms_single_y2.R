@@ -9,14 +9,12 @@ test_that('Special symbols error, stops', {
   text_settings <- list('result' = officer::fp_text())
   color_settings <- list('result' = 'black')
 
-  expect_error(
+  expect_snapshot(error = TRUE,
     ms_single_y2(
       data = frequencies,
       label_color = color_settings,
       label_text = text_settings
-    ),
-    'mschart objects cannot contain the special symbols "&" or "<". Please remove those symbols from your data frame'
-  )
+    ))
 })
 
 
@@ -34,7 +32,7 @@ test_that('Special symbols error, NAs give no error', {
     label_color = color_settings,
     label_text = text_settings
   )
-  expect_error(chart, NA)
+  expect_no_error(chart)
 })
 
 

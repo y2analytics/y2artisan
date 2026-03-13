@@ -4,7 +4,7 @@
 test_that('frequencies', {
   frequencies <- mtcars %>% y2clerk::freqs(gear)
     chart <- gg_single_y2(frequencies, font_family = 'sans')
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('frequencies', chart)
 })
 
 
@@ -16,7 +16,7 @@ test_that('all defaults', {
     percent_label = stringr::str_c(result * 100, '%')
   ) %>%
     gg_single_y2(font_family = 'sans')
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('all defaults', chart)
 })
 
 
@@ -30,7 +30,7 @@ test_that('x_var', {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(x_var = value, font_family = 'sans')
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using x_var', chart)
 })
 # y_var
 test_that('y_var', {
@@ -40,7 +40,7 @@ test_that('y_var', {
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(y_var = test, font_family = 'sans')
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using y_var', chart)
 })
 # label_var
 test_that('label_var', {
@@ -50,7 +50,7 @@ test_that('label_var', {
     test = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(label_var = test, font_family = 'sans')
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using label_var', chart)
 })
 # color_var
 test_that('color_var', {
@@ -65,7 +65,7 @@ test_that('color_var', {
       fills = c('#474E7E', '#A3A7BF'),
       font_family = 'sans'
       )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using color_var',chart)
 })
 
 
@@ -82,7 +82,7 @@ test_that('axis text', {
       axis_title_size = 20,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using_axis text', chart)
 })
 # y_min & y_max
 test_that('mins and maxes', {
@@ -96,7 +96,7 @@ test_that('mins and maxes', {
       y_max = 2,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using mins and maxes', chart)
 })
 # x_label & y_label
 test_that('axis labels', {
@@ -110,7 +110,7 @@ test_that('axis labels', {
       y_label = 'Y axis label',
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using axis labels', chart)
 })
 
 
@@ -126,7 +126,7 @@ test_that('bar width', {
       bar_width = 1,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using bar width', chart)
 })
 # direction
 test_that('direction', {
@@ -139,7 +139,7 @@ test_that('direction', {
       direction = 'horizontal',
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using direction', chart)
 })
 # nudge
 test_that('nudge', {
@@ -152,7 +152,7 @@ test_that('nudge', {
       nudge = .1,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using nudge', chart)
 })
 
 
@@ -169,7 +169,7 @@ test_that('legend_pos & legend_rev', {
       legend_rev = T,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using legend_pos and legend_rev', chart)
 })
 # legend_text_size & legend_title_size
 test_that('legend size', {
@@ -183,7 +183,7 @@ test_that('legend size', {
       legend_title_size = 10,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using legend_size', chart)
 })
 # legend_title
 test_that('legend_title', {
@@ -196,7 +196,7 @@ test_that('legend_title', {
       legend_title = 'Legend title',
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using legend_title', chart)
 })
 
 
@@ -213,7 +213,7 @@ test_that('label_length & label_size', {
       label_size = 5,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using label_length & label_size', chart)
 })
 
 
@@ -230,7 +230,7 @@ test_that('title_label & title_size', {
       title_size = 20,
       font_family = 'sans'
     )
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('using title_label & title_size', chart)
 })
 
 

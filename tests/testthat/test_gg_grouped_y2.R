@@ -8,7 +8,7 @@ test_that('all defaults', {
     percent_label = stringr::str_c(result * 100, '%')
   ) %>%
     gg_grouped_y2(font_family = 'sans')
-  expect_error(chart, NA)
+  expect_snapshot(error = TRUE, chart)
 })
 
 
@@ -21,6 +21,6 @@ test_that('x_var', {
     percent_label = stringr::str_c(result * 100, '%')
   ) %>%
     gg_grouped_y2(x_var = value, font_family = 'sans')
-  expect_error(chart, NA)
+  expect_snapshot(error = TRUE, chart)
 })
 

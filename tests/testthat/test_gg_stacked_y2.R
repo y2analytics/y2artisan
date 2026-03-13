@@ -10,7 +10,7 @@ test_that('all defaults', {
   ) %>%
     gg_stacked_y2(fills = FILLS, font_family = 'sans')
   chart
-  expect_error(chart, NA)
+  vdiffr::expect_doppelganger('all defaults', chart)
 })
 
 
@@ -29,5 +29,5 @@ test_that('x_var', {
     font_family = 'sans'
     )
   chart
-expect_error(chart, NA)
+vdiffr::expect_doppelganger('x_var', chart)
 })

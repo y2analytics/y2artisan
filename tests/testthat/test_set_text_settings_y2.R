@@ -10,12 +10,11 @@ test_that('set_text_settings_y2, error messages', {
     n = rep(100, 5)
   )
 
-  expect_error(
-    text_settings_fun <- set_text_settings_y2(
+  expect_snapshot(error = TRUE, 
+    set_text_settings_y2(
       dataset = frequencies,
       text_column = lable
-    ),
-    'Missing column "lable" in dataset'
+    )
   )
 })
 

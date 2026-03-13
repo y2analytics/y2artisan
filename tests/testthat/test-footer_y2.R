@@ -10,9 +10,8 @@ test_that("footer_y2 - error grouped x2", {
   ) %>%
     dplyr::group_by(s_var, m_var_1)
 
-  expect_error(
-    footer_y2(dataset),
-    'footer_y2 can currently only handle one grouping. Your data has multiple groups'
+  expect_snapshot(error = TRUE,
+    footer_y2(dataset)
   )
 })
 
@@ -26,10 +25,8 @@ test_that("footer_y2 - error NAs in grouping", {
   ) %>%
     dplyr::group_by(m_var_1)
 
-  expect_error(
-    footer_y2(dataset),
-    'Grouping variable has missingness (NA\'s). Please manually filter out NA\'s or replace NA\'s with an explicit variable level.',
-    fixed = TRUE
+  expect_snapshot(error = TRUE,
+    footer_y2(dataset)
     )
 })
 
@@ -42,10 +39,8 @@ test_that("footer_y2 - error var names", {
     m_var_3 = c(1, 1)
   )
 
-  expect_error(
-    footer_y2(dataset),
-    "Variable names do not match standardized format. Please specify q_types for all questions.",
-    fixed = TRUE
+  expect_snapshot(error = TRUE,
+    footer_y2(dataset)
   )
 
   dataset <- tibble::tibble(
@@ -55,10 +50,8 @@ test_that("footer_y2 - error var names", {
   labelled::var_label(dataset$s_var) <- '1 or 1?'
   labelled::var_label(dataset$oe_var) <- 'Text this up'
 
-  expect_message(
-    footer_y2(dataset),
-    "Note: Variable names match standardized format. Assuming question types.",
-    fixed = TRUE
+  expect_snapshot(
+    footer_y2(dataset)
   )
 })
 
@@ -77,10 +70,8 @@ test_that("footer_y2 - error not haven labelled", {
   )
   labelled::var_label(dataset$s_var) <- '1 or 1?'
 
-  expect_error(
-    footer_y2(dataset),
-    'variable "oe_var" is not haven labelled, please use labelled data with this function.',
-    fixed = TRUE
+  expect_snapshot(error = TRUE,
+    footer_y2(dataset)
   )
 })
 
@@ -101,13 +92,11 @@ test_that("footer_y2 - message on question types", {
   labelled::var_label(dataset$m_var_4_TEXT) <- 'Fav color? - please specify'
   labelled::var_label(dataset$oe_var) <- 'Your name:'
 
-  expect_message(
-    dataset %>% footer_y2(m_var_1),
-    'Note: Variable names match standardized format. Assuming question types.'
+  expect_snapshot(
+    dataset %>% footer_y2(m_var_1)
   )
-  expect_message(
-    dataset %>% footer_y2(s_var, q_type = 's'),
-    regexp = NA
+  expect_snapshot(
+    dataset %>% footer_y2(s_var, q_type = 's')
   )
 })
 
@@ -128,9 +117,8 @@ test_that("footer_y2 - multi select questions", {
   labelled::var_label(dataset$m_var_3) <- 'Fav color? - Cattleya'
   dataset_grouped <- dataset %>% dplyr::group_by(groupvar)
 
-  expect_message(
-    dataset %>% footer_y2(m_var_1),
-    'Note: Stem "m_var" was used to find n size.'
+  expect_snapshot(
+    dataset %>% footer_y2(m_var_1)
   )
   expect_equal(
     dataset %>% footer_y2(m_var_1),
