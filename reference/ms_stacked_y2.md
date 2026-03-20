@@ -1,0 +1,217 @@
+# Create a groupedbar mschart object
+
+This function creates a mschart object automatically formatted for a
+stacked variable with an inherent order. It requires two lists called
+"text_settings_stacked" and "color_settings_stacked" by default that
+specify the colors desired for the chart.
+
+## Usage
+
+``` r
+ms_stacked_y2(
+  data = frequencies,
+  x_var = "group_var",
+  y_var = "result",
+  group_var = "label",
+  axis_text_size = 10,
+  axis_title_size = 18,
+  axis_x_text_color = "black",
+  axis_x_display = TRUE,
+  axis_x_label = "",
+  axis_x_rotate = 0,
+  axis_x_rotate_title = 0,
+  axis_y_display = FALSE,
+  axis_y_label = "",
+  axis_y_min = 0,
+  axis_y_max = 1,
+  axis_y_rotate = 0,
+  axis_y_rotate_title = 0,
+  direction = c("horizontal", "vertical"),
+  font_family = "BentonSans Regular",
+  gap_width = 25,
+  grouping = "percentStacked",
+  label_color = color_settings_stacked,
+  label_show_percent = FALSE,
+  label_show_values = TRUE,
+  label_text = text_settings_stacked,
+  legend_pos = c("t", "n", "b", "tr", "l", "r"),
+  legend_text_size = 12,
+  num_fmt = c("percent", "general"),
+  overlapping = 100,
+  title_label = "",
+  title_size = 18
+)
+```
+
+## Arguments
+
+- data:
+
+  DEFAULT = frequencies; The name of the data frame that the mscharts
+  pulls from.
+
+- x_var:
+
+  DEFAULT = 'group_var'; For a single stacked bar, use x_var =
+  'variable' or 'stat', really anything that will only have 1 level.
+
+- y_var:
+
+  DEFAULT = 'result'; When using the freqs function, will typically be
+  result (is by default).
+
+- group_var:
+
+  DEFAULT = 'label'; When using the freqs function, will typically be
+  label (is by default). All levels of the group_var must be present or
+  the chart may break. To do this, save the variable as_factor() before
+  running freqs. Also remember that label_text and label_color must
+  exactly match all the levels of the group_var or the function will
+  break.
+
+- axis_text_size:
+
+  DEFAULT = 10; Font size for variable levels and percentages.
+
+- axis_title_size:
+
+  DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+
+- axis_x_text_color:
+
+  DEFAULT = 'black'; Set to 'transparent' for no text on single bars
+
+- axis_x_display:
+
+  DEFAULT = TRUE
+
+- axis_x_label, axis_y_label:
+
+  DEFAULT = ”; Title for the x_axis and y_axis
+
+- axis_x_rotate, axis_y_rotate:
+
+  DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving
+  more space for text.
+
+- axis_x_rotate_title, axis_y_rotate_title:
+
+  DEFAULT = 0, set y_axis rotation to 360 for horizontal text
+
+- axis_y_display:
+
+  DEFAULT = FALSE; set axis_x_display to FALSE when it is a single
+  stacked bar
+
+- axis_y_min:
+
+  DEFAULT = 0 to show full data without skewing perspective, but can be
+  adjusted.
+
+- axis_y_max:
+
+  DEFAULT = 1 to allow percent totals to add to 100%.
+
+- direction:
+
+  DEFAULT = 'horizontal'; Two options: "horizontal" (default) OR
+  "vertical"
+
+- font_family:
+
+  DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for
+  axis, legends, and titles. Label font is set within label_color and
+  label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+
+- gap_width:
+
+  DEFAULT = 25, meaning the size of the space between bars is 25% the
+  size of the bar itself
+
+- grouping:
+
+  DEFAULT = 'percentStacked'; grouping for a stacked bar chart. must be
+  one of "percentStacked", "clustered", "standard" or "stacked".
+
+- label_color:
+
+  DEFAULT = color_settings_stacked; A list of color settings for the
+  levels within each stacked bar. This affects font size and color.
+  Specified outside of the function. If a list of one, no need to
+  specify values. Otherwise, they must exactly match the group_var
+  levels. Example: color_settings_grouped \<- list('Name of Group 1' =
+  lime,'Name of Group 2' = brightblue)
+
+- label_show_percent:
+
+  DEFAULT = FALSE
+
+- label_show_values:
+
+  DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
+
+- label_text:
+
+  DEFAULT = text_settings_stacked; A list of text settings for the
+  percent labels. This affects font size and color. Specified outside of
+  the function. If a list of one, no need to specify values. Otherwise,
+  they must exactly match the group_var levels. Example:
+  text_settings_grouped \<- list('Name of Group 1' = fp_text(font.size =
+  16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color =
+  brightblue))
+
+- legend_pos:
+
+  DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r',
+  and 'n' for none.
+
+- legend_text_size:
+
+  DEFAULT = 13
+
+- num_fmt:
+
+  DEFAULT = 'percent'; Can also be set to 'general' for non-percentages.
+  Changes formatting for both the labels and axis
+
+- overlapping:
+
+  DEFAULT = 100
+
+- title_label:
+
+  DEFAULT = ”; Add your title in "" as the title of the chart.
+
+- title_size:
+
+  DEFAULT = 18
+
+## Examples
+
+``` r
+frequencies <- tibble::tibble(
+  label = rep(c('Promoter', 'Passive', 'Detractor'), 3),
+  result = c(.33, .33, .34, .20, .30, .50, .25, .50, .25),
+  value = rep(c(1, 2, 3), 3),
+  group_var = c(rep('Group A', 3), rep('Group B', 3), rep('Group C', 3))
+) %>% orderlabel::order_label(
+  group_var = group_var,
+  stacked = 'ms'
+)
+
+color_settings_stacked <- list(
+  'Promoter' = 'green',
+  'Passive' = 'yellow',
+  'Detractor' = 'red'
+)
+text_settings_stacked <- list(
+  'Promoter' = officer::fp_text(font.size = 16, font.family = 'Roboto', color = 'white'),
+  'Passive' = officer::fp_text(font.size = 16, font.family = 'Roboto', color = 'black'),
+  'Detractor' = officer::fp_text(font.size = 16, font.family = 'Roboto', color = 'white')
+)
+
+chart <- ms_stacked_y2()
+#> Error in ms_stacked_y2(): object 'frequencies' not found
+print(chart, preview = TRUE)
+#> Error: object 'chart' not found
+```

@@ -1,0 +1,181 @@
+# Create a line chart mschart object
+
+This function creates a mschart object automatically formatted for a
+line chart. It requires two lists called "text_settings_grouped" and
+"color_settings_grouped" by default that specify the colors desired for
+the chart.
+
+## Usage
+
+``` r
+ms_line_y2(
+  data = frequencies,
+  x_var = "label",
+  y_var = "result",
+  group_var = "group_var",
+  axis_text_size = 10,
+  axis_title_size = 18,
+  axis_x_display = TRUE,
+  axis_x_label = "",
+  axis_x_rotate = 0,
+  axis_x_rotate_title = 0,
+  axis_y_display = TRUE,
+  axis_y_label = "",
+  axis_y_min = 0,
+  axis_y_max = NULL,
+  axis_y_rotate = 0,
+  axis_y_rotate_title = 0,
+  font_family = "BentonSans Regular",
+  label_color = color_settings_grouped,
+  label_position = "t",
+  label_show_values = TRUE,
+  label_text = text_settings_grouped,
+  legend_pos = c("n", "t", "b", "tr", "l", "r"),
+  legend_text_size = 12,
+  num_fmt = c("percent", "general"),
+  smooth = 0,
+  title_label = "",
+  title_size = 18
+)
+```
+
+## Arguments
+
+- data:
+
+  DEFAULT = frequencies;The name of the data frame that the mscharts
+  pulls from.
+
+- x_var:
+
+  DEFAULT = 'label'; The name of your time variable
+
+- y_var:
+
+  DEFAULT = 'result'; When using the freqs function, will typically be
+  result (is by default).
+
+- group_var:
+
+  DEFAULT = 'group_var'; Each line will be a distinct value of this
+  variable
+
+- axis_text_size:
+
+  DEFAULT = 10; Font size for variable levels and percentages.
+
+- axis_title_size:
+
+  DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+
+- axis_x_display, axis_y_display:
+
+  DEFAULT = TRUE
+
+- axis_x_label, axis_y_label:
+
+  DEFAULT = ”; Title for the x_axis and y_axis
+
+- axis_x_rotate, axis_y_rotate:
+
+  DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving
+  more space for text.
+
+- axis_x_rotate_title, axis_y_rotate_title:
+
+  DEFAULT = 0, set y_axis rotation to 360 for horizontal text
+
+- axis_y_min:
+
+  DEFAULT = 0 to show full data without skewing perspective, but can be
+  adjusted.
+
+- axis_y_max:
+
+  DEFAULT = NULL
+
+- font_family:
+
+  DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for
+  axis, legends, and titles. Label font is set within label_color and
+  label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+
+- label_color:
+
+  DEFAULT = color_settings_grouped; A list of color settings for the
+  bars. This affects font size and color. Specified outside of the
+  function. If a list of one, no need to specify values. Otherwise, they
+  must exactly match the group_var levels. Example: color_settings \<-
+  list('District 1' = lime, 'District 2' = bluepurple)
+
+- label_position:
+
+  DEFAULT = 't'; Specifies the position of the data label. It should be
+  one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r', 't'. When
+  grouping is 'clustered', it should be one of
+  'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should
+  be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it
+  should be one of 'b','ctr','l','r','t'.
+
+- label_show_values:
+
+  DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
+
+- label_text:
+
+  DEFAULT = text_settings_grouped; A list of text settings for the
+  percent labels. This affects font size and color. Specified outside of
+  the function. If a list of one, no need to specify values. Otherwise,
+  they must exactly match the group_var levels. Example: text_settings
+  \<- list(fp_text(font.size = 10.5, color = bluepurple))
+
+- legend_pos:
+
+  DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l',
+  'r', 't'.
+
+- legend_text_size:
+
+  DEFAULT = 12
+
+- num_fmt:
+
+  DEFAULT = 'percent'; Can also be set to 'general' for non-percentages.
+  Changes formatting for both the labels and axis
+
+- smooth:
+
+  DEFAULT = 0. If 0, the lines will be straight between points. If 1,
+  lines will be smoothed
+
+- title_label:
+
+  DEFAULT = ”; Add your title in "" as the title of the chart.
+
+- title_size:
+
+  DEFAULT = 18
+
+## Examples
+
+``` r
+frequencies <- tibble::tibble(
+  label = rep(c('2000', '2001', '2002'), 2),
+  group_var = rep(c('Brand 1', 'Brand 2'), 3),
+  result = c(.18, .20, .24, .25, .24, .23)
+)
+
+color_settings_grouped <- list(
+  'Brand 1' = 'green',
+  'Brand 2' = 'red'
+)
+text_settings_grouped <- list(
+  'Brand 1' = officer::fp_text(color = 'green'),
+  'Brand 2' = officer::fp_text(color = 'red')
+)
+
+chart <- ms_line_y2()
+#> Error in ms_line_y2(): object 'frequencies' not found
+print(chart, preview = TRUE)
+#> Error: object 'chart' not found
+```

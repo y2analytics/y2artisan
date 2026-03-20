@@ -1,0 +1,62 @@
+# Add 6 charts to PowerPoint slide
+
+This function adds 6 charts/tables/other objects to a PowerPoint slide.
+The charts are automatically added to the last slide of the PP object in
+R. For this function to work, you need a powerpoint object saved into R
+called "doc"
+
+## Usage
+
+``` r
+add6c_y2(name, position, label_first_only = FALSE)
+```
+
+## Arguments
+
+- name:
+
+  The name of the chart/table/other object to be added to a new
+  PowerPoint slide.
+
+- position:
+
+  Position options: "topright"; "bottomright"; "topleft"; "bottomleft";
+  "topcenter"; "bottomcenter". The chart layout can either be
+  left-centerleft-centerright-right OR
+  topleft-bottomleft-topright-bottomright.
+
+- label_first_only:
+
+  DEFAULT = FALSE; Set to TTRUE when only the first charts on the left
+  has axis labels. Changing this setting to T in this case will slightly
+  adjut positioning for equally sized graphs
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# First create a chart that you can add into a powerpoint object
+frequencies <- mtcars %>%
+  y2clerk::freqs(carb) %>%
+  orderlabel::order_label(inherent_order_label = TRUE)
+color_settings <- list('blue')
+text_settings<- list('result' = officer::fp_text(font.size = 20))
+chart_name <- y2artisan::ms_single_y2()
+
+# Then before adding additional slides, charts, or tables onto a powerpoint,
+# you must first read a PowerPoint into R
+doc <- read_pptx('~/Y2 Analytics Dropbox/Y2 Analytics Team Folder/Projects/
+Qualtrics/2021 Template and Resources/Template for mscharts.pptx')
+
+# Now start adding in your charts
+doc <- add1s_y2()
+doc <- add6c_y2(chart_name, 'topleft')
+doc <- add6c_y2(chart_name, 'bottomleft')
+doc <- add6c_y2(chart_name, 'topcenter')
+doc <- add6c_y2(chart_name, 'bottomcenter')
+doc <- add6c_y2(chart_name, 'topright')
+doc <- add6c_y2(chart_name, 'bottomright')
+
+print(doc, '~/Desktop/test.pptx')
+} # }
+```

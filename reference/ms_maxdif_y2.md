@@ -1,0 +1,217 @@
+# Create a groupedbar mschart object
+
+This function creates a mschart object automatically formatted for a
+maxdiff question. It requires two lists called "text_settings_grouped"
+and "color_settings_grouped" by default that specify the colors desired
+for the chart.
+
+## Usage
+
+``` r
+ms_maxdif_y2(
+  data = frequencies,
+  x_var = "label",
+  y_var = "result",
+  group_var = "group_var",
+  axis_text_size = 10,
+  axis_title_size = 18,
+  axis_x_display = TRUE,
+  axis_x_label = "",
+  axis_x_position = "low",
+  axis_x_rotate = 0,
+  axis_x_rotate_title = 0,
+  axis_y_display = FALSE,
+  axis_y_label = "",
+  axis_y_min = NULL,
+  axis_y_max = NULL,
+  axis_y_rotate = 0,
+  axis_y_rotate_title = 0,
+  direction = c("horizontal", "vertical"),
+  font_family = "BentonSans Regular",
+  gap_width = 75,
+  grouping = "standard",
+  label_color = color_settings_grouped,
+  label_position = c("outEnd", "inEnd", "ctr", "inBase"),
+  label_show_values = TRUE,
+  label_text = text_settings_grouped,
+  legend_pos = c("n", "t", "b", "tr", "l", "r"),
+  legend_text_size = 12,
+  overlapping = 100,
+  num_fmt = c("percent", "general"),
+  title_label = "",
+  title_size = 18
+)
+```
+
+## Arguments
+
+- data:
+
+  DEFAULT = frequencies; The name of the data frame that the mscharts
+  pulls from.
+
+- x_var:
+
+  DEFAULT = 'label'; When using the freqs function, will typically be
+  label (is by default).
+
+- y_var:
+
+  DEFAULT = 'result'; When using the freqs function, will typically be
+  result (is by default).
+
+- group_var:
+
+  DEFAULT = 'group_var'; All levels of the group_var must be present or
+  the chart may break. To do this, save the variable as_factor() before
+  running freqs. Also remember that label_text and label_color must
+  exactly match all the levels of the group_var or the function will
+  break.
+
+- axis_text_size:
+
+  DEFAULT = 10; Font size for variable levels and percentages.
+
+- axis_title_size:
+
+  DEFAULT = 18; Font size for axis_x_label and axis_y_label.
+
+- axis_x_display, axis_y_display:
+
+  DEFAULT = TRUE for x axis, DEFAULT = FALSE for y axis
+
+- axis_x_label, axis_y_label:
+
+  DEFAULT = ”; Title for the x_axis and y_axis
+
+- axis_x_position:
+
+  DEFAULT = 'low'; The 'low' setting puts the axis below negative
+  numbers instead of its typical spot of 0. Ideal for max-diffs. Other
+  options include "high", "nextTo", "none"
+
+- axis_x_rotate, axis_y_rotate:
+
+  DEFAULT = 0; Rotation of axis text. Set to -45 for diagonal, giving
+  more space for text.
+
+- axis_x_rotate_title, axis_y_rotate_title:
+
+  DEFAULT = 0, set y_axis rotation to 360 for horizontal text
+
+- axis_y_min:
+
+  DEFAULT = NULL; unlike other graphs, will almost always be a negative
+  number
+
+- axis_y_max:
+
+  DEFAULT = NULL
+
+- direction:
+
+  DEFAULT = 'horizontal'; Two options: "vertical" (default) OR
+  "horizontal"
+
+- font_family:
+
+  DEFAULT = 'BentonSans Regular' (Qualtrics font). Sets the fonts for
+  axis, legends, and titles. Label font is set within label_color and
+  label_text lists. May specify fonts in quotes, e.g. "Times New Roman"
+
+- gap_width:
+
+  DEFAULT = 150, meaning the size of the space between bars is 150% the
+  size of the bar itself
+
+- grouping:
+
+  DEFAULT = 'standard'; grouping for a barchart, a linechart or an area
+  chart. must be one of "percentStacked", "clustered", "standard" or
+  "stacked".
+
+- label_color:
+
+  DEFAULT = color_settings_grouped; A list of color settings for the
+  bars. This affects font size and color. Specified outside of the
+  function. If a list of one, no need to specify values. Otherwise, they
+  must exactly match the group_var levels. Example:
+  color_settings_grouped \<- list('Name of Group 1' = lime,'Name of
+  Group 2' = brightblue)
+
+- label_position:
+
+  DEFAULT = 'outEnd'; Specifies the position of the data label. It
+  should be one of 'b', 'ctr', 'inBase', 'inEnd', 'l', 'outEnd', 'r',
+  't'. When grouping is 'clustered', it should be one of
+  'ctr','inBase','inEnd','outEnd'. When grouping is 'stacked', it should
+  be one of 'ctr','inBase','inEnd'. When grouping is 'standard', it
+  should be one of 'b','ctr','l','r','t'.
+
+- label_show_values:
+
+  DEFAULT = TRUE; TRUE or FALSE. Show percent labels for each value.
+
+- label_text:
+
+  DEFAULT = text_settings_grouped; A list of text settings for the
+  percent labels. This affects font size and color. Specified outside of
+  the function. If a list of one, no need to specify values. Otherwise,
+  they must exactly match the group_var levels. Example:
+  text_settings_grouped \<- list('Name of Group 1' = fp_text(font.size =
+  16, color = lime),'Name of Group 2' = fp_text(font.size = 16, color =
+  brightblue))
+
+- legend_pos:
+
+  DEFAULT = 'n' for none; Other legend positions are 'b', 'tr', 'l',
+  'r', and 't' for top
+
+- legend_text_size:
+
+  DEFAULT = 12
+
+- overlapping:
+
+  DEFAULT = 100 This leaves 0% extra space between variable group levels
+
+- num_fmt:
+
+  DEFAULT = 'percent'; Can also be set to 'general' for non-percentages.
+  Changes formatting for both the labels and axis
+
+- title_label:
+
+  DEFAULT = ”; Add your title in "" as the title of the chart.
+
+- title_size:
+
+  DEFAULT = 18
+
+## Examples
+
+``` r
+frequencies <- tibble::tibble(
+  label = rep(c('Attribute 1', 'Attribute 2', 'Attribute 3'), 2),
+  group_var = c(rep('Positive', 3), rep('Negative', 3)),
+  result = c(.10, .20, .30, -.1, -.05, -.15)
+) %>%
+  orderlabel::order_label(
+    group_var = group_var,
+    group_first = 'Positive',
+    horizontal = TRUE
+  )
+
+color_settings_grouped <- list(
+  'Positive' = 'green',
+  'Negative' = 'red'
+)
+text_settings_grouped <- list(
+  'Positive' = officer::fp_text(color = 'green', font.size = 16),
+  'Negative' = officer::fp_text(color = 'red', font.size = 16)
+)
+chart <- ms_maxdif_y2()
+#> Error in ms_maxdif_y2(): object 'frequencies' not found
+print(chart, preview = TRUE)
+#> Error: object 'chart' not found
+```

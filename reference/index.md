@@ -1,0 +1,86 @@
+# Package index
+
+## All functions
+
+- [`add1c_y2()`](https://y2analytics.github.io/y2artisan/reference/add1c_y2.md)
+  : Add PowerPoint slide & 1 chart
+- [`add1s_y2()`](https://y2analytics.github.io/y2artisan/reference/add1s_y2.md)
+  : Add 1 Blank PowerPoint slide
+- [`add2c_y2()`](https://y2analytics.github.io/y2artisan/reference/add2c_y2.md)
+  : Add 2 charts to PowerPoint slide
+- [`add3c_y2()`](https://y2analytics.github.io/y2artisan/reference/add3c_y2.md)
+  : Add 3 charts to PowerPoint slide
+- [`add4c_y2()`](https://y2analytics.github.io/y2artisan/reference/add4c_y2.md)
+  : Add 4 charts to PowerPoint slide
+- [`add5c_y2()`](https://y2analytics.github.io/y2artisan/reference/add5c_y2.md)
+  : Add 5 charts to PowerPoint slide
+- [`add6c_y2()`](https://y2analytics.github.io/y2artisan/reference/add6c_y2.md)
+  : Add 6 charts to PowerPoint slide
+- [`add_color_palette_y2()`](https://y2analytics.github.io/y2artisan/reference/add_color_palette_y2.md)
+  : Add a 5 color palette
+- [`add_colors_facebook_y2()`](https://y2analytics.github.io/y2artisan/reference/add_colors_facebook_y2.md)
+  : Add base Facebook colors
+- [`add_colors_internal_y2()`](https://y2analytics.github.io/y2artisan/reference/add_colors_internal_y2.md)
+  : Add base Y2 colors
+- [`add_colors_microsoft_y2()`](https://y2analytics.github.io/y2artisan/reference/add_colors_microsoft_y2.md)
+  : Add base Microsoft colors
+- [`add_colors_qualtrics_y2()`](https://y2analytics.github.io/y2artisan/reference/add_colors_qualtrics_y2.md)
+  : Add base Qualtrics colors
+- [`add_fonts_y2()`](https://y2analytics.github.io/y2artisan/reference/add_fonts_y2.md)
+  : Adds fonts and font families to your R session
+- [`add_legend_y2()`](https://y2analytics.github.io/y2artisan/reference/add_legend_y2.md)
+  : Add a Custom PPT Table Legend
+- [`add_section_header_y2()`](https://y2analytics.github.io/y2artisan/reference/add_section_header_y2.md)
+  : Add Blank PowerPoint Section Header
+- [`footer_y2()`](https://y2analytics.github.io/y2artisan/reference/footer_y2.md)
+  : Create a string with question wording and n-size
+- [`gg_bullet_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_bullet_y2.md)
+  : Create a bullet chart: UNDER CONSTRUCTION
+- [`gg_donut_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_donut_y2.md)
+  : Create a donut chart ggplot object
+- [`gg_dotplot_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_dotplot_y2.md)
+  : Create a grouped ggplot object
+- [`gg_grouped_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_grouped_y2.md)
+  : Create a grouped ggplot object
+- [`gg_histo_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_histo_y2.md)
+  : Create a ggplot2 histogram
+- [`gg_maxdif_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_maxdif_y2.md)
+  : Create a grouped ggplot object: UNDER CONSTRUCTION
+- [`gg_pie_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_pie_y2.md)
+  : Create a pie chart ggplot object
+- [`gg_single_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_single_y2.md)
+  : Create an ungrouped ggplot object
+- [`gg_stacked_y2()`](https://y2analytics.github.io/y2artisan/reference/gg_stacked_y2.md)
+  : Create a grouped ggplot object
+- [`ggchart_save_y2()`](https://y2analytics.github.io/y2artisan/reference/ggchart_save_y2.md)
+  : Quickly save out a chart from ggplot
+- [`list_fonts_y2()`](https://y2analytics.github.io/y2artisan/reference/list_fonts_y2.md)
+  : Lists the fonts loaded in by add_fonts_y2
+- [`mpg`](https://y2analytics.github.io/y2artisan/reference/mpg.md) :
+  Example data from ggplot2 package
+- [`ms_grouped_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_grouped_y2.md)
+  : Create a groupedbar mschart object
+- [`ms_line_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_line_y2.md)
+  : Create a line chart mschart object
+- [`ms_maxdif_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_maxdif_y2.md)
+  : Create a groupedbar mschart object
+- [`ms_print_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_print_y2.md)
+  : Print an ms_chart object for your viewing pleasure
+- [`ms_scatter_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_scatter_y2.md)
+  : Create a scatter plot mschart object
+- [`ms_single_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_single_y2.md)
+  : Create an ugrouped mschart object
+- [`ms_stacked_y2()`](https://y2analytics.github.io/y2artisan/reference/ms_stacked_y2.md)
+  : Create a groupedbar mschart object
+- [`openend_y2()`](https://y2analytics.github.io/y2artisan/reference/openend_y2.md)
+  : Look at the frequencies of each word in an open end question
+- [`set_color_settings_y2()`](https://y2analytics.github.io/y2artisan/reference/set_color_settings_y2.md)
+  : Setup the color setting for ms charts
+- [`set_text_settings_y2()`](https://y2analytics.github.io/y2artisan/reference/set_text_settings_y2.md)
+  : Setup the text setting for ms charts
+- [`theme_y2()`](https://y2analytics.github.io/y2artisan/reference/theme_y2.md)
+  : Add the classic y2 theme to any ggplot2 chart
+- [`wordcloud_mono_y2()`](https://y2analytics.github.io/y2artisan/reference/wordcloud_mono_y2.md)
+  : Creates a word cloud from an open end question
+- [`wordcloud_y2()`](https://y2analytics.github.io/y2artisan/reference/wordcloud_y2.md)
+  : Creates a word cloud from an open end question
