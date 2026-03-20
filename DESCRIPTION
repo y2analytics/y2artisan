@@ -41,3 +41,4 @@ Suggests:
 RoxygenNote: 7.3.2
 Remotes:
     y2analytics/y2clerk
+    y2analytics/orderlabel
