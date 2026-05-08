@@ -31,6 +31,7 @@
 #' @param x_label,y_label DEFAULT = ''; Title for the x_axis or y_axis
 #' @param y_min DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.
 #' @param y_max DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly
+#' @param bar_spacing DEFAULT = 0.9; The amount of spacing between the bars on the graph within each group
 #' @keywords chart ggplot bar single
 #' @export
 #' @examples
@@ -73,7 +74,8 @@ gg_grouped_y2 <- function(
   x_label = '',
   y_label = '',
   y_min = 0,
-  y_max = 0 # auto-fills
+  y_max = 0, # auto-fills
+  bar_spacing = 0.9
 ) {
 
 ### Check fonts
@@ -151,7 +153,7 @@ gg_grouped_y2 <- function(
         fill = !!color_flag
       ),
       stat = 'identity',
-      position = ggplot2::position_dodge(width = 0.9),
+      position = ggplot2::position_dodge(width = bar_spacing),
       width = bar_width
     ) +
     ggplot2::geom_text(
@@ -162,7 +164,7 @@ gg_grouped_y2 <- function(
       ),
       family = font_family,
       size = label_size,
-      position = ggplot2::position_dodge2(width = 0.9),
+      position = ggplot2::position_dodge2(width = bar_spacing),
       hjust = nudge_x,
       vjust = nudge_y
     ) +

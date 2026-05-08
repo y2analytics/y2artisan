@@ -1,11 +1,3 @@
-# add_color_palette_y2, colors_to_env
-
-    Code
-      exists(Y2_BLUE)
-    Condition
-      Error:
-      ! object 'Y2_BLUE' not found
-
 # add_color_palette_y2, color_names to upper case
 
     Code

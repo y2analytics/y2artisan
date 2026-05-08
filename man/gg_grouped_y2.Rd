@@ -33,7 +33,8 @@ gg_grouped_y2(
   x_label = "",
   y_label = "",
   y_min = 0,
-  y_max = 0
+  y_max = 0,
+  bar_spacing = 0.9
 )
 }
 \arguments{
@@ -92,6 +93,8 @@ gg_grouped_y2(
 \item{y_min}{DEFAULT = 0 to show full data without skewing perspective, but can be adjusted.}
 
 \item{y_max}{DEFAULT = 0; however, the y_max automatically adjusts based on the max value of 'result', in most cases fitting the chart perfectly}
+
+\item{bar_spacing}{DEFAULT = 0.9; The amount of spacing between the bars on the graph within each group}
 }
 \description{
 This function creates a ggplot2 object automatically formatted for a grouped variable."fills" is the only argument with no default.
