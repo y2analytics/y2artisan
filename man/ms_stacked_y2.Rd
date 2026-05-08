@@ -85,7 +85,7 @@ ms_stacked_y2(
 
 \item{legend_pos}{DEFAULT = 't' for top; Other legend positions are 'b', 'tr', 'l', 'r', and 'n' for none.}
 
-\item{legend_text_size}{DEFAULT = 13}
+\item{legend_text_size}{DEFAULT = 12}
 
 \item{num_fmt}{DEFAULT = 'percent'; Can also be set to 'general' for non-percentages. Changes formatting for both the labels and axis}
 

@@ -92,7 +92,8 @@ gg_grouped_y2 <- function(
   label_flag <- dplyr::enquo(label_var)
   direction <- rlang::arg_match(direction)
 
-
+  ### Ungroup data
+  data <- ungroup(data)
 
 ### Set defaults
   max_y_val <- data %>% dplyr::summarise(max(!!y_flag)) %>% as.numeric()

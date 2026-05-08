@@ -40,7 +40,7 @@ Suggests:
     testthat (>= 3.0.0),
     vdiffr
 Config/testthat/edition: 3
-RoxygenNote: 7.3.2
 Remotes:
     y2analytics/y2clerk,
     y2analytics/orderlabel
+Config/roxygen2/version: 8.0.0
