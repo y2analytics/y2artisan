@@ -18,6 +18,7 @@ ms_print_y2(chart_name = chart)
 ## Examples
 
 ``` r
+
 frequencies <- mtcars %>%
   y2clerk::freqs(carb) %>%
   orderlabel::order_label(inherent_order_label = TRUE)

@@ -38,6 +38,7 @@ set_color_settings_y2(
 ## Examples
 
 ``` r
+
 add_colors_internal_y2()
 
 

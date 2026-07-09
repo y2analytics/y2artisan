@@ -201,6 +201,9 @@ frequencies <- tibble::tibble(
     group_first = 'Positive',
     horizontal = TRUE
   )
+#> Warning: The `horizontal` argument of `order_label()` is deprecated as of orderlabel
+#> 0.4.3.
+#> ℹ Please use the `direction` argument instead.
 
 color_settings_grouped <- list(
   'Positive' = 'green',

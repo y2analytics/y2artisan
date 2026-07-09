@@ -127,6 +127,7 @@ add1s_y2(
 ## Examples
 
 ``` r
+
 # Before adding slides, charts, or tables onto a powerpoint,
 # you must first read a PowerPoint into R
 if (FALSE) { # \dontrun{

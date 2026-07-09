@@ -167,7 +167,7 @@ ms_stacked_y2(
 
 - legend_text_size:
 
-  DEFAULT = 13
+  DEFAULT = 12
 
 - num_fmt:
 

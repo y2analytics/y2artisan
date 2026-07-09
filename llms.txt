@@ -23,12 +23,14 @@ You can install the released version of y2clerk from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+
 install.packages("y2artisan")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("nick-moffitt/y2artisan")
 ```
@@ -40,6 +42,7 @@ get a frequencies table with
 [`freqs()`](https://y2analytics.github.io/y2clerk/reference/freqs.html):
 
 ``` r
+
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'

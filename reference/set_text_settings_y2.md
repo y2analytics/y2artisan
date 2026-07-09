@@ -46,6 +46,7 @@ set_text_settings_y2(
 ## Examples
 
 ``` r
+
 frequencies <-
   mtcars %>%
   y2clerk::freqs(

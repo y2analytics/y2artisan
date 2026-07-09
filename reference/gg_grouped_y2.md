@@ -35,7 +35,8 @@ gg_grouped_y2(
   x_label = "",
   y_label = "",
   y_min = 0,
-  y_max = 0
+  y_max = 0,
+  bar_spacing = 0.9
 )
 ```
 
@@ -174,6 +175,11 @@ gg_grouped_y2(
   DEFAULT = 0; however, the y_max automatically adjusts based on the max
   value of 'result', in most cases fitting the chart perfectly
 
+- bar_spacing:
+
+  DEFAULT = 0.9; The amount of spacing between the bars on the graph
+  within each group
+
 ## Examples
 
 ``` r
@@ -187,5 +193,5 @@ chart <- gg_grouped_y2(
   fills = c('orange', 'gray'),
   font_family = 'sans'
 )
-#> Error in gg_grouped_y2(fills = c("orange", "gray"), font_family = "sans"): object 'frequencies' not found
+#> Error in ungroup(data): could not find function "ungroup"
 ```

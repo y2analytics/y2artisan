@@ -201,6 +201,7 @@ frequencies <- tibble::tibble(
  value = c(1, 2, 3),
  variable = rep('QNPS', 3)
 ) %>% orderlabel::order_label(stacked = 'gg')
+#> Warning: You used a "stacked" ordering system without specifying group_var. Is your data grouped?
 
 chart <- gg_stacked_y2(
    x_var = variable,

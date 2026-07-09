@@ -47,6 +47,7 @@ add_legend_y2(
 ## Examples
 
 ``` r
+
 # Before adding a legend onto a powerpoint,
 # you must first read a PowerPoint into R
 if (FALSE) { # \dontrun{
