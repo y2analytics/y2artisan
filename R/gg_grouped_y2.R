@@ -125,7 +125,7 @@ gg_grouped_y2 <- function(
     direction == 'vertical' ~ 15,
     TRUE ~ label_length
   )
-  legend_rev = dplyr::case_when(
+  legend_rev <- dplyr::case_when(
     legend_rev == FALSE & direction == 'horizontal' ~ TRUE,
     legend_rev == TRUE & direction == 'horizontal' ~ FALSE,
     TRUE ~ legend_rev

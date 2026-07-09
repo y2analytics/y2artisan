@@ -1,9 +1,8 @@
-
 #### Errors when changing the defaults? ####
 ### Overall
 test_that('frequencies', {
   frequencies <- mtcars %>% y2clerk::freqs(gear)
-    chart <- gg_single_y2(frequencies, font_family = 'sans')
+  chart <- gg_single_y2(frequencies, font_family = 'sans')
   vdiffr::expect_doppelganger('frequencies', chart)
 })
 
@@ -12,7 +11,7 @@ test_that('frequencies', {
 test_that('all defaults', {
   chart <- tibble::tibble(
     label = c(1:5) %>% as.character(),
-    result = rep(.2, 5),
+    result = rep(0.2, 5),
     percent_label = stringr::str_c(result * 100, '%')
   ) %>%
     gg_single_y2(font_family = 'sans')
@@ -26,7 +25,7 @@ test_that('x_var', {
   chart <- data.frame(
     label = c(1:5) %>% as.character(),
     value = c(1:5),
-    result = rep(.2, 5),
+    result = rep(0.2, 5),
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(x_var = value, font_family = 'sans')
@@ -36,7 +35,7 @@ test_that('x_var', {
 test_that('y_var', {
   chart <- data.frame(
     label = c(1:5) %>% as.character(),
-    test = rep(.2, 5),
+    test = rep(0.2, 5),
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(y_var = test, font_family = 'sans')
@@ -46,7 +45,7 @@ test_that('y_var', {
 test_that('label_var', {
   chart <- data.frame(
     label = c(1:5) %>% as.character(),
-    result = rep(.2, 5),
+    result = rep(0.2, 5),
     test = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(label_var = test, font_family = 'sans')
@@ -57,15 +56,15 @@ test_that('color_var', {
   chart <- data.frame(
     label = c(1:5) %>% as.character(),
     colors = c(1, 1, 1, 2, 2) %>% as.character(),
-    result = rep(.2, 5),
+    result = rep(0.2, 5),
     percent_label = stringr::str_c(c(1:5), '%')
   ) %>%
     gg_single_y2(
       color_var = colors,
       fills = c('#474E7E', '#A3A7BF'),
       font_family = 'sans'
-      )
-  vdiffr::expect_doppelganger('using color_var',chart)
+    )
+  vdiffr::expect_doppelganger('using color_var', chart)
 })
 
 
