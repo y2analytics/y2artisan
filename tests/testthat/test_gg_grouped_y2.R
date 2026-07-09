@@ -24,3 +24,17 @@ test_that('x_var', {
   expect_snapshot(error = TRUE, chart)
 })
 
+### Working stuff
+test_that('bar_spacing works', {
+chart <- dplyr::starwars |>
+  dplyr::filter(hair_color %in% c('black', 'brown', 'white')) |>
+  dplyr::group_by(gender) |>
+  y2clerk::freq(hair_color, nas_group = FALSE) |>
+  gg_grouped_y2(
+    font_family = 'sans',
+    fills = c('blue', 'red'),
+    label_var = result,
+    bar_spacing = 0.6
+  )
+    vdiffr::expect_doppelganger('bar_spacing works', chart)
+})

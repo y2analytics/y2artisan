@@ -231,3 +231,4 @@ test_that('title_label & title_size', {
     )
   vdiffr::expect_doppelganger('using title_label & title_size', chart)
 })
+
