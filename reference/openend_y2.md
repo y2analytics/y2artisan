@@ -40,7 +40,7 @@ responses <- tibble::tibble(
 )
 
 responses %>% openend_y2(var1)
-#> # A frequency tibble: 18 × 6
+#> # A tibble: 18 × 6
 #>    variable value     label         n stat    result
 #>    <chr>    <chr>     <chr>     <int> <chr>    <dbl>
 #>  1 Words    DOGS      DOGS          6 percent   1   

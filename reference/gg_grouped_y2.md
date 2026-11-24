@@ -187,7 +187,6 @@ frequencies <- ToothGrowth %>%
   dplyr::group_by(supp) %>%
   y2clerk::freqs(dose) %>%
   orderlabel::order_label(group_var = group_var)
-#> Adding missing grouping variables: `supp`
 
 chart <- gg_grouped_y2(
   fills = c('orange', 'gray'),

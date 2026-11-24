@@ -159,8 +159,6 @@ frequencies <- mpg %>%
     group_var = group_var,
     inherent_order_group = TRUE
     )
-#> Adding missing grouping variables: `manufacturer`
-#> Adding missing grouping variables: `manufacturer`
 chart <- gg_dotplot_y2(
   fills = c(
     "#F8766D", "#E58700", "#C99800", "#A3A500",

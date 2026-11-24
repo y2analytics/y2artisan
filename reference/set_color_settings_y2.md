@@ -63,7 +63,6 @@ frequencies <-
   y2clerk::freqs(
     cyl
   )
-#> Adding missing grouping variables: `gear`
 
 set_color_settings_y2(
   BLUE_DARKER,
